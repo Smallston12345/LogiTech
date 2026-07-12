@@ -33,7 +33,7 @@ public class PlayerIdCard extends DataRecordedItem {
     }
 
     private final NamespacedKey KEY_UID = AddUtils.getNameKey("plaid");
-    public static final String UID_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B绑定的玩家: &f");
+    public static final String UID_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B綁定的玩家: &f");
 
     public UUID getUid(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
@@ -61,7 +61,7 @@ public class PlayerIdCard extends DataRecordedItem {
                         meta.lore(lores);
                     }
                     item.setItemMeta(meta);
-                    AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功清除记录的玩家信息");
+                    AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功清除記錄的玩家信息");
                 }
             } else {
                 dataContainer.set(
@@ -73,7 +73,7 @@ public class PlayerIdCard extends DataRecordedItem {
                 lores.add(UID_DISPLAY_PREFIX + event.getPlayer().getUniqueId().toString());
                 meta.setLore(lores);
                 item.setItemMeta(meta);
-                AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功绑定当前玩家信息");
+                AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功綁定當前玩家信息");
             }
         }
     }

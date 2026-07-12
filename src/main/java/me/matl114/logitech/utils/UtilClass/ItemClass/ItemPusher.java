@@ -102,12 +102,12 @@ public class ItemPusher extends ItemCounter {
      * @return
      */
     public long transportFrom(ItemCounter counter, long limit) {
-        // 该物品槽能转运的最大数量
+        // 該物品槽能轉運的最大數量
         long left = Math.min(maxStackCnt - cnt, limit);
         long retLeft;
-        // 如果这个数量比提供的少
+        // 如果這個數量比提供的少
         if (left > counter.getAmountLong()) {
-            // 设置真正被传输的数量是... 提供的数量 小于预期left
+            // 設置真正被傳輸的數量是... 提供的數量 小於預期left
             long counterAmount = counter.getAmountLong();
             // counter清空
             counter.setAmount(0L);
@@ -115,8 +115,8 @@ public class ItemPusher extends ItemCounter {
             addAmount(counterAmount);
             retLeft = counterAmount;
         } else {
-            // 否则这个数量提供的比那个多
-            // 设置数量+=left
+            // 否則這個數量提供的比那個多
+            // 設置數量+=left
             retLeft = left;
             setAmount(cnt + retLeft);
             // left <= counter.getAmount()

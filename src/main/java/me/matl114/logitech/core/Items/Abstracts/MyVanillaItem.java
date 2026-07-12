@@ -59,7 +59,7 @@ public class MyVanillaItem extends VanillaItem implements RecipeDisplay {
         if (AddSlimefunItems.INSTANCE != null) {
             register(AddSlimefunItems.INSTANCE);
         } else {
-            Debug.logger("找不到附属实例!  注册信息: " + this.toString());
+            Debug.logger("找不到附屬實例!  註冊信息: " + this.toString());
         }
         return this;
     }

@@ -23,8 +23,8 @@ public class ExportAddons {
             String addonName, boolean doExportIfAbsent, boolean doExportWhenEmpty, Consumer<String> outputStream) {
         Plugin pl = Bukkit.getPluginManager().getPlugin(addonName);
         if (pl instanceof SlimefunAddon sfaddon) {
-            outputStream.accept("检测到相关的附属! %s".formatted(sfaddon.toString()));
-            outputStream.accept("准备导出该附属相关机器信息");
+            outputStream.accept("檢測到相關的附屬! %s".formatted(sfaddon.toString()));
+            outputStream.accept("準備導出該附屬相關機器信息");
             HashSet<SlimefunItem> addonItems = new LinkedHashSet<>();
             HashSet<SlimefunItem> addonItemsWithoutRecipe = new LinkedHashSet<>();
             for (SlimefunItem sfitem : Slimefun.getRegistry().getAllSlimefunItems()) {
@@ -35,13 +35,13 @@ public class ExportAddons {
                     }
                 }
             }
-            outputStream.accept("读取到该附属的 %d 项sf物品".formatted(addonItems.size()));
-            outputStream.accept("检测到该附属的 %d 项拥有标准配方表的物品".formatted(addonItems.size() - addonItemsWithoutRecipe.size()));
-            outputStream.accept("其余物品将导出展示用配方列表");
+            outputStream.accept("讀取到該附屬的 %d 項sf物品".formatted(addonItems.size()));
+            outputStream.accept("檢測到該附屬的 %d 項擁有標準配方表的物品".formatted(addonItems.size() - addonItemsWithoutRecipe.size()));
+            outputStream.accept("其餘物品將導出展示用配方列表");
             Config outputConfig = ConfigLoader.loadExternalConfig("exports/" + addonName);
             outputConfig.setValue(addonName + ".enable", true);
             if (doExportIfAbsent) {
-                outputStream.accept("提示:暂未支持转换随机配方!");
+                outputStream.accept("提示:暫未支持轉換隨機配方!");
             }
             for (SlimefunItem sfitem : addonItems) {
                 String root = addonName + "." + sfitem.getId();
@@ -106,10 +106,10 @@ public class ExportAddons {
                 }
             }
             outputConfig.save();
-            outputStream.accept("配方配置已导出至 %s".formatted(outputConfig.getFile().getPath()));
+            outputStream.accept("配方配置已導出至 %s".formatted(outputConfig.getFile().getPath()));
         } else {
             Debug.logger("this is not a SlimefunAddon");
-            outputStream.accept("这不是一个有效的粘液附属名称! %s".formatted(addonName));
+            outputStream.accept("這不是一個有效的粘液附屬名稱! %s".formatted(addonName));
         }
     }
 }

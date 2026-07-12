@@ -38,8 +38,8 @@ import org.bukkit.util.Vector;
 
 public class TimerSlimefun extends AbstractMachine implements ChunkLimit, MenuTogglableBlock {
 
-    private ItemStack PARTICLE_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a点击切换粒子效果", "&7当前状态: &c关");
-    private ItemStack PARTICLE_ON = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a点击切换粒子效果", "&7当前状态: &a开");
+    private ItemStack PARTICLE_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a點擊切換粒子效果", "&7當前狀態: &c關");
+    private ItemStack PARTICLE_ON = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a點擊切換粒子效果", "&7當前狀態: &a開");
     /**
      * constructor of abstractMachines will keep Collections of MachineRecipes,will register energyNetwork params,
      * will set up menu by overriding constructMenu method
@@ -123,16 +123,16 @@ public class TimerSlimefun extends AbstractMachine implements ChunkLimit, MenuTo
         if (total >= 0) {
             return new CustomItemStack(
                     Material.GREEN_STAINED_GLASS_PANE,
-                    "&a运行信息",
-                    "&7加速机器总量: %s/%s(max)".formatted(String.valueOf(total), String.valueOf(MAX_MACHINE_PER_CHUNK)),
-                    "&7异步并行数: %s".formatted(String.valueOf(async)),
+                    "&a運行信息",
+                    "&7加速機器總量: %s/%s(max)".formatted(String.valueOf(total), String.valueOf(MAX_MACHINE_PER_CHUNK)),
+                    "&7異步並行數: %s".formatted(String.valueOf(async)),
                     "&7加速倍率: %sx".formatted(String.valueOf(timer)),
-                    "&7共计耗时: %.2f&ams".formatted(nanoTime / 1_000_000.0));
+                    "&7共計耗時: %.2f&ams".formatted(nanoTime / 1_000_000.0));
         } else {
             return new CustomItemStack(
                     Material.RED_STAINED_GLASS_PANE,
-                    "&a运行信息",
-                    "&c该区块内含有过多的机器! %s/%s(max)"
+                    "&a運行信息",
+                    "&c該區塊內含有過多的機器! %s/%s(max)"
                             .formatted(String.valueOf(-total), String.valueOf(MAX_MACHINE_PER_CHUNK)));
         }
     }
@@ -280,7 +280,7 @@ public class TimerSlimefun extends AbstractMachine implements ChunkLimit, MenuTo
             reportError.invokeCallback((nul) -> {}, () -> {}, Slimefun.getTickerTask(), l, item, var11);
         }
     }
-    // 公用一个表
+    // 公用一個表
     private static HashMap<Chunk, Location> RECORDS = new HashMap<>();
 
     @Override

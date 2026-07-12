@@ -47,22 +47,22 @@ public class LogitechMain extends AbstractMainCommand {
         return null;
     }
 
-    private SubCommand helpCommand = new SubCommand("help", new SimpleCommandArgs(), "/logitech export 显示指令列表") {
+    private SubCommand helpCommand = new SubCommand("help", new SimpleCommandArgs(), "/logitech export 顯示指令列表") {
         @Override
         public boolean onCommand(CommandSender var1, Command var2, String var3, String[] var4) {
             showHelpCommand(var1);
             return true;
         }
     }.register(this);
-    private SubCommand exportAddonCommand = new SubCommand("export", new SimpleCommandArgs(), "/logitech export 内部开发指令")
+    private SubCommand exportAddonCommand = new SubCommand("export", new SimpleCommandArgs(), "/logitech export 內部開發指令")
             .setCommandExecutor(new AddonCommand(null))
             .register(this);
     private SubCommand multiBlockCommand =
-            new SubCommand("multiblock", new SimpleCommandArgs(), "&a/logitech multiblock 获取本附属多方块结构搭建教程") {
+            new SubCommand("multiblock", new SimpleCommandArgs(), "&a/logitech multiblock 獲取本附屬多方塊結構搭建教程") {
                 @Override
                 public boolean onCommand(CommandSender var1, Command var2, String var3, String[] var4) {
                     if (var1 instanceof Player p) {
-                        final TextComponent link = new TextComponent("单击此处打开附属多方块结构搭建教程");
+                        final TextComponent link = new TextComponent("單擊此處打開附屬多方塊結構搭建教程");
                         link.setColor(ChatColor.YELLOW);
                         link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, multiBlockVideo));
                         p.spigot().sendMessage(link);
@@ -71,7 +71,7 @@ public class LogitechMain extends AbstractMainCommand {
                 }
             }.register(this);
     private SubCommand testCommand =
-            new SubCommand("runTest", new SimpleCommandArgs("test"), "/logitech runTest 内部开发指令") {
+            new SubCommand("runTest", new SimpleCommandArgs("test"), "/logitech runTest 內部開發指令") {
                 public boolean onCommand(CommandSender var1, Command var2, String var3, String[] var4) {
                     AddUtils.sendMessage(var1, "No Permission!");
                     if (var1.hasPermission("logitech.command.op")) {
@@ -81,7 +81,7 @@ public class LogitechMain extends AbstractMainCommand {
                 }
             }.setTabCompletor("test", List::of).register(this);
     private SubCommand chargeCommand =
-            new SubCommand("charge", new SimpleCommandArgs("name", "amount"), "/logitech charge 给物品充电") {
+            new SubCommand("charge", new SimpleCommandArgs("name", "amount"), "/logitech charge 給物品充電") {
                 public boolean onCommand(CommandSender var1, Command var2, String var3, String[] var4) {
                     Player player;
                     var re = parseInput(var4).getA();
@@ -123,9 +123,9 @@ public class LogitechMain extends AbstractMainCommand {
             } else {
                 LogiTechChargable.changeChargeSafe(item, charge);
             }
-            AddUtils.sendMessage(player, "&a充电成功");
+            AddUtils.sendMessage(player, "&a充電成功");
         } else {
-            AddUtils.sendMessage(player, "&c这个物品无法以任意方式被充电");
+            AddUtils.sendMessage(player, "&c這個物品無法以任意方式被充電");
         }
     }
 

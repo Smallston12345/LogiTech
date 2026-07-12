@@ -63,12 +63,12 @@ public class ConfigLoader {
                 Files.copy(plugin.getClass().getResourceAsStream("/" + name + ".yml"), file.toPath());
             } catch (Throwable e) {
 
-                Debug.logger("创建配置文件时找不到相关默认配置文件,即将生成空文件");
+                Debug.logger("創建配置文件時找不到相關默認配置文件,即將生成空文件");
                 try {
                     Files.createDirectories(file.toPath().getParent());
                     Files.createFile(file.toPath());
                 } catch (IOException e1) {
-                    Debug.logger("创建空配置文件失败!");
+                    Debug.logger("創建空配置文件失敗!");
                 }
             }
         }

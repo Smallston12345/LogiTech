@@ -54,14 +54,14 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
     protected final HashSet<RecipeType> BW_LIST;
     protected final ItemStack PARSE_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&e点击解析配方",
-            "&b机制:",
-            "&6将配方表输出的物品(若有多个则第一个)，",
-            "&e置于下方第一个槽位",
-            "&6将合成该物品所使用的特殊机器(物品)",
-            "&e置于下方第二个槽位",
-            "&6机器将会尝试解析该物品的配方",
-            "&6机器将按照解析出的指定配方合成");
+            "&e點擊解析配方",
+            "&b機制:",
+            "&6將配方表輸出的物品(若有多個則第一個)，",
+            "&e置於下方第一個槽位",
+            "&6將合成該物品所使用的特殊機器(物品)",
+            "&e置於下方第二個槽位",
+            "&6機器將會嘗試解析該物品的配方",
+            "&6機器將按照解析出的指定配方合成");
     protected final ItemStack DISPLAY_BKGROUND = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, " ");
     protected final ItemStack DISPLAY_DEFAULT_BKGROUND = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, " ");
     protected ItemPusherProvider MACHINE_PROVIDER = CraftUtils.getpusher;
@@ -128,7 +128,7 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             Debug.debug(BW_LIST);
             for (RecipeType e : types.values()) {
                 Debug.debug(e.getKey());
-                if (BW_LIST.contains(e)) { // 黑名单
+                if (BW_LIST.contains(e)) { // 黑名單
                     Debug.debug(e.getKey());
                     continue;
                 }
@@ -152,9 +152,9 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
 
-        // 输入槽边框
+        // 輸入槽邊框
         int[] border = getBorderSlot();
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -215,12 +215,12 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             // MultiCraftType.setRecipeTypeIndex(loc,-1);
             return false;
         }
-        // TODO 继续进行这块的优化检查，虽然我也不知道优化啥
+        // TODO 繼續進行這塊的優化檢查，雖然我也不知道優化啥
         RecipeType type = providedRecipesMap.get(machineType);
         RecipeType[] ctype = getCraftTypes();
         for (int i = 0; i < ctype.length; ++i) {
             if (type == ctype[i]) {
-                // 0位设置type
+                // 0位設置type
                 handler.setInt(0, i);
                 handler.setInt(2, machine.getAmount());
                 break;
@@ -228,7 +228,7 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
         }
         ItemStack target = menu.getItemInSlot(RECIPEITEM_SLOT);
         if (target == null || target.getType() == Material.AIR) {
-            // record 1 配方位记录-1
+            // record 1 配方位記錄-1
             handler.setInt(1, -1);
             return false;
         } else {
@@ -247,7 +247,7 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int[] intdata = new int[3];
 
             public int getInt(int i) {
@@ -325,9 +325,9 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             int maxCraftlimit = getCraftLimit(b, inv);
             int time = next.getTicks();
             time = time < 0 ? this.publicTime : time;
-            if (time != 0) { // 超频机制
-                // 尝试让time归1
-                // 按比例减少maxlimit ,按最小值取craftlimit
+            if (time != 0) { // 超頻機制
+                // 嘗試讓time歸1
+                // 按比例減少maxlimit ,按最小值取craftlimit
                 if (maxCraftlimit <= time) {
                     time = ((time + 1) / maxCraftlimit) - 1;
                     maxCraftlimit = 1;
@@ -416,11 +416,11 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
                     hasOne = true;
                 } else {
                     if (pusher == null) {
-                        // 保证比较之前pusher非null，不用重复计算
+                        // 保證比較之前pusher非null，不用重複計算
                         pusher = CraftUtils.getCounter(item);
                     }
 
-                    // 由于StackMachineRecipe 材料已经被折叠过了 只需要找到一个匹配就行
+                    // 由於StackMachineRecipe 材料已經被摺疊過了 只需要找到一個匹配就行
                     if (CraftUtils.matchItemStack(recipeInput[i], pusher, false)) {
                         amountLimit = Math.max(recipeInput[i].getAmount() * craftlimit, maxStack);
                         break;
@@ -437,10 +437,10 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
         for (int slot : inputSlots) {
             ItemStack itemInSlot = menu.getItemInSlot(slot);
             if (itemInSlot == null) continue;
-            // 出现类型匹配
+            // 出現類型匹配
             if (itemInSlot.getType() == item.getType() && itemInSlot.hasItemMeta() == hasItemMeta) {
-                // 如果pusher!=null,说明上面出现了两个相同type 需要比较
-                // 如果比较不匹配 跳过
+                // 如果pusher!=null,説明上面出現了兩個相同type 需要比較
+                // 如果比較不匹配 跳過
                 if (pusher != null && hasItemMeta && !CraftUtils.matchItemStack(itemInSlot, pusher, false)) {
                     continue;
                 }
@@ -462,7 +462,7 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
                 if (BW_LIST.contains(e.getValue())) {
                     continue;
                 }
-                displayRecipe.add(AddUtils.getInfoShow("&f支持的机器", "&7将机器插入指定槽位以进行合成"));
+                displayRecipe.add(AddUtils.getInfoShow("&f支持的機器", "&7將機器插入指定槽位以進行合成"));
                 displayRecipe.add(new DisplayItemStack(e.getKey().getItem()));
             }
         }

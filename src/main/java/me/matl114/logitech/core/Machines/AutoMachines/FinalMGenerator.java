@@ -24,15 +24,15 @@ public class FinalMGenerator extends MMGenerator {
         super(itemGroup, item, recipeType, recipe, time, energybuffer, energyConsumption, outputs_w);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c终极合成",
-                        "&7机器的输出槽支持终极合成的特性",
-                        "&e可以直接消耗存储类物品或者链接绑定的实体存储内的物品参与合成",
-                        "&e产出的物品也可以直接地存入存储类物品或者链接绑定的实体存储",
-                        "&7当前支持的物品:",
-                        "&7逻辑工艺 概念奇点存储(存储类物品)",
-                        "&7逻辑工艺 量子纠缠奇点(存储链接物品)",
-                        "&7网络(拓展) 量子存储系列(存储类物品)",
-                        "&a建议:多使用量子纠缠奇点,可以大幅度减少卡顿!"),
+                        "&f機制 - &c終極合成",
+                        "&7機器的輸出槽支持終極合成的特性",
+                        "&e可以直接消耗存儲類物品或者鏈接綁定的實體存儲內的物品參與合成",
+                        "&e產出的物品也可以直接地存入存儲類物品或者鏈接綁定的實體存儲",
+                        "&7當前支持的物品:",
+                        "&7邏輯工藝 概念奇點存儲(存儲類物品)",
+                        "&7邏輯工藝 量子糾纏奇點(存儲鏈接物品)",
+                        "&7網絡(拓展) 量子存儲系列(存儲類物品)",
+                        "&a建議:多使用量子糾纏奇點,可以大幅度減少卡頓!"),
                 null));
         this.CRAFT_PROVIDER = FinalFeature.STORAGE_AND_LOCPROXY_READER;
     }

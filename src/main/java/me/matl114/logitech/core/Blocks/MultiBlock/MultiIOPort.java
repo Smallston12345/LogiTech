@@ -60,9 +60,9 @@ public class MultiIOPort extends AbstractMachine implements MultiBlockPart {
         this.CONFIG_SYMM = isSym;
         this.INFO_ITEM = new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a传输器信息",
-                AddUtils.concat("&7类别: &6", CONFIG_TO ? "输入接口" : "输出接口"),
-                AddUtils.concat("&7强对称: &6", CONFIG_SYMM ? "是" : "否"),
+                "&a傳輸器信息",
+                AddUtils.concat("&7類別: &6", CONFIG_TO ? "輸入接口" : "輸出接口"),
+                AddUtils.concat("&7強對稱: &6", CONFIG_SYMM ? "是" : "否"),
                 "&7可配置: &6否");
     }
 

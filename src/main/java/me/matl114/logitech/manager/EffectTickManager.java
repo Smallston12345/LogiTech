@@ -33,7 +33,7 @@ public class EffectTickManager {
         }
     }
     /**
-     * 该操作会自动把自己变成同步的
+     * 該操作會自動把自己變成同步的
      * @param p
      */
     public static void clearEffect(Player p, AbstractEffect effect) {
@@ -50,7 +50,7 @@ public class EffectTickManager {
     }
 
     /**
-     * 该操作只能在同步线程中调用
+     * 該操作只能在同步線程中調用
      * @param p
      */
     public static void clearAllEffects(Player p) {
@@ -63,7 +63,7 @@ public class EffectTickManager {
     }
 
     /**
-     * 该操作只能在death监听器中调用
+     * 該操作只能在death監聽器中調用
      * @param e
      */
     public static void clearEffectsOnDeath(PlayerDeathEvent e) {
@@ -89,7 +89,7 @@ public class EffectTickManager {
     }
 
     /**
-     * 该操作只能在同步线程中调用!
+     * 該操作只能在同步線程中調用!
      * @param player
      * @param effect
      * @return
@@ -98,7 +98,7 @@ public class EffectTickManager {
         addEffect(player, effect, (player1 -> true));
     }
     /**
-     * 该操作只能在同步线程中调用!
+     * 該操作只能在同步線程中調用!
      * @param player
      * @param effect
      * @return
@@ -144,7 +144,7 @@ public class EffectTickManager {
     }
 
     /**
-     * 该runnable只能在Schedules的effect线程运行
+     * 該runnable只能在Schedules的effect線程運行
      */
     public static void scheduleEffects() {
         HashMap<AbstractEffect, PlayerEffects> effects;

@@ -28,31 +28,31 @@ public abstract class AbstractSorter extends AbstractSyncTickCargo implements Ch
         super(itemGroup, item, recipeType, recipe);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7这是一个同步货运机器,属于[CHIP_SYNC]组",
-                        "&7位于同组的机器将共享同一个ticker计数器",
-                        "&7出于对时序安全性的保障,&c每1s该计数器+1并让机器工作一次",
-                        "&7机器用该计数器数值顺序读取%s中记录的01码".formatted(Language.get("Items.CHIP.Name")),
-                        "&7具体地,机器会读取01码的第<ticker>(mod32)位",
-                        "&7机器根据读取结果是0/1会执行相应的行为"),
+                        "&f機制",
+                        "&7這是一個同步貨運機器,屬於[CHIP_SYNC]組",
+                        "&7位於同組的機器將共享同一個ticker計數器",
+                        "&7出於對時序安全性的保障,&c每1s該計數器+1並讓機器工作一次",
+                        "&7機器用該計數器數值順序讀取%s中記錄的01碼".formatted(Language.get("Items.CHIP.Name")),
+                        "&7具體地,機器會讀取01碼的第<ticker>(mod32)位",
+                        "&7機器根據讀取結果是0/1會執行相應的行為"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7机器拥有%d个输入槽位以及%d个输入白名单槽".formatted(divideAmount, divideAmount),
-                        "&7你将会在界面中看见用彩色玻璃板标出的槽位序号",
-                        "&7白名单槽会对货运的输入流进行限制",
-                        "&7其中,白名单槽不放物品代表对应槽位允许任意输入",
-                        "&7其中,白名单槽放物品代表对应槽位运行相同的物品的输入",
-                        "&ePS:网络附属和原版货运会接受该限制"),
+                        "&f機制",
+                        "&7機器擁有%d個輸入槽位以及%d個輸入白名單槽".formatted(divideAmount, divideAmount),
+                        "&7你將會在界面中看見用彩色玻璃板標出的槽位序號",
+                        "&7白名單槽會對貨運的輸入流進行限制",
+                        "&7其中,白名單槽不放物品代表對應槽位允許任意輸入",
+                        "&7其中,白名單槽放物品代表對應槽位運行相同的物品的輸入",
+                        "&ePS:網絡附屬和原版貨運會接受該限制"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7机器会选中一个输入槽",
-                        "&7在公共ticker计数器<ticker>(mod32)=0时,机器一定会选择第0槽位",
-                        "&7每个tick机器将选中槽位的物品转移至输出槽",
-                        "&7玩家可以使用%s控制机器选择输入槽".formatted(Language.get("Items.CHIP.Name")),
-                        "&e当机器读取到01码中的1时会选择至下一个输入槽位,若已经为最后一槽则循环至第0槽",
-                        "&e当机器读取到01码中的0时会保持选择当前槽位不动"),
+                        "&f機制",
+                        "&7機器會選中一個輸入槽",
+                        "&7在公共ticker計數器<ticker>(mod32)=0時,機器一定會選擇第0槽位",
+                        "&7每個tick機器將選中槽位的物品轉移至輸出槽",
+                        "&7玩家可以使用%s控制機器選擇輸入槽".formatted(Language.get("Items.CHIP.Name")),
+                        "&e當機器讀取到01碼中的1時會選擇至下一個輸入槽位,若已經為最後一槽則循環至第0槽",
+                        "&e當機器讀取到01碼中的0時會保持選擇當前槽位不動"),
                 null));
     }
 
@@ -79,11 +79,11 @@ public abstract class AbstractSorter extends AbstractSyncTickCargo implements Ch
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&a信息",
-                "&7下方为货运输出槽",
-                "&7上方为芯片槽",
-                AddUtils.concat("&7当前读取编码位数: ", String.valueOf(ticks)),
+                "&7下方為貨運輸出槽",
+                "&7上方為芯片槽",
+                AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)),
                 AddUtils.concat(
-                        "&7当前选择的槽位数: ", String.valueOf(MathUtils.bitCount(code, ticks + 1) % getInputSlots().length)));
+                        "&7當前選擇的槽位數: ", String.valueOf(MathUtils.bitCount(code, ticks + 1) % getInputSlots().length)));
     }
 
     public ItemStack getInfoOffItem(int tickCount) {
@@ -91,10 +91,10 @@ public abstract class AbstractSorter extends AbstractSyncTickCargo implements Ch
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&a信息",
-                "&7下方为货运输出槽",
-                "&7上方为芯片槽",
-                AddUtils.concat("&7当前读取编码位数: ", String.valueOf(ticks)),
-                "&e待机中,芯片不存在或已损坏");
+                "&7下方為貨運輸出槽",
+                "&7上方為芯片槽",
+                AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)),
+                "&e待機中,芯片不存在或已損壞");
     }
 
     public abstract int[] getInputWLSlot();

@@ -10,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
  */
 public class StackMachineRecipe extends MachineRecipe {
     /**
-     * 标记哪些输入项索引不消耗（仅作为催化剂存在，不从输入槽扣除）
-     * 索引对应 getInput() 数组的位置
+     * 標記哪些輸入項索引不消耗（僅作為催化劑存在，不從輸入槽扣除）
+     * 索引對應 getInput() 數組的位置
      */
     private Set<Integer> noConsumeInputs = Collections.emptySet();
 

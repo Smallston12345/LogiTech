@@ -73,7 +73,7 @@ public abstract class AbstractAdvancedProcessor extends AbstractMachine
     public void addInfo(ItemStack stack) {
 
         stack.setItemMeta(AddUtils.machineInfoAdd(
-                        AddUtils.addLore(stack, "&8⇨ &7并行处理机器"), this.energybuffer, this.energyConsumption)
+                        AddUtils.addLore(stack, "&8⇨ &7並行處理機器"), this.energybuffer, this.energyConsumption)
                 .getItemMeta());
     }
     /**
@@ -99,13 +99,13 @@ public abstract class AbstractAdvancedProcessor extends AbstractMachine
      * @param preset
      */
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_SLOT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -153,9 +153,9 @@ public abstract class AbstractAdvancedProcessor extends AbstractMachine
             MachineRecipe next = nextQ.getFirstValue();
             int time = next.getTicks();
 
-            if (time != 0) { // 超频机制
-                // 尝试让time归1
-                // 按比例减少maxlimit ,按最小值取craftlimit
+            if (time != 0) { // 超頻機制
+                // 嘗試讓time歸1
+                // 按比例減少maxlimit ,按最小值取craftlimit
                 if (maxCraftlimit <= time) {
                     time = ((time + 1) / maxCraftlimit) - 1;
                     maxCraftlimit = 1;
@@ -164,10 +164,10 @@ public abstract class AbstractAdvancedProcessor extends AbstractMachine
                     time = 0;
                 }
             }
-            // 最小能减到的刻数
+            // 最小能減到的刻數
             long craftlimit = CraftUtils.calMaxCraftTime(nextQ.getSecondValue(), maxCraftlimit);
-            // 要末time=0 要末craftlimit=1 两者在这里都一样,不需要再修改time
-            // 如果底下这玩意还能给你减,那就craftlimit=0需要考虑,craftlimit=0直接堵上了 否则都一样time=0无区别
+            // 要末time=0 要末craftlimit=1 兩者在這裏都一樣,不需要再修改time
+            // 如果底下這玩意還能給你減,那就craftlimit=0需要考慮,craftlimit=0直接堵上了 否則都一樣time=0無區別
             ItemGreedyConsumer[] nextP = CraftUtils.countMultiOutput(
                     nextQ.getSecondValue(), inv, getOutputSlots(), next, craftlimit, CRAFT_PROVIDER);
             if (nextP != null) {

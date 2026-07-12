@@ -60,7 +60,7 @@ public class ItemSlotPusher extends ItemPusher {
     public void updateMenu(@Nonnull BlockMenu menu) {
         if (dirty && getItem() != null && !getItem().getType().isAir()) {
             if (wasNull) { // 空
-                // 从数据源clone一个 正式转变为有实体的ItemStack 因为consumer那边可能是sfItem MultiItem
+                // 從數據源clone一個 正式轉變為有實體的ItemStack 因為consumer那邊可能是sfItem MultiItem
                 if (getAmount() > 0) { // bugfix: do not replace a <=0 item here
                     item = MenuUtils.getCraftCopyOf(item);
                     // creating copy of source item
@@ -68,8 +68,8 @@ public class ItemSlotPusher extends ItemPusher {
                     super.updateMenu(menu);
                     item = MenuUtils.syncSlotNoCopy(menu, slot, item);
                 } // <=0 will be marked as still null
-            } else { // 不为空，同正常一样
-                // 已经是之前有了的 可以直接修改
+            } else { // 不為空，同正常一樣
+                // 已經是之前有了的 可以直接修改
                 super.updateMenu(menu);
             }
         }

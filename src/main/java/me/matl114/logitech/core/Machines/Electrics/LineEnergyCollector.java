@@ -81,8 +81,8 @@ public class LineEnergyCollector extends AbstractEnergyCollector implements Dire
     }
 
     private final int PARTICLE_SLOT = 0;
-    private ItemStack PARTICLE_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a点击切换粒子效果", "&7当前状态: &c关");
-    private ItemStack PARTICLE_ON = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a点击切换粒子效果", "&7当前状态: &a开");
+    private ItemStack PARTICLE_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a點擊切換粒子效果", "&7當前狀態: &c關");
+    private ItemStack PARTICLE_ON = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a點擊切換粒子效果", "&7當前狀態: &a開");
 
     @Override
     public boolean[] getStatus(BlockMenu inv) {

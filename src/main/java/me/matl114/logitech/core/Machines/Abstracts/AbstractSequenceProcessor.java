@@ -49,16 +49,16 @@ public abstract class AbstractSequenceProcessor extends AbstractMachine
     protected int INFO_SLOT = 13;
     protected int CLEAN_SLOT = 31;
     protected ItemStack[] CLEAN_ITEM = new CustomItemStack[] {
-        new CustomItemStack(SlimefunItems.TRASH_CAN, "&3开启输入槽清空模式", "&7当输入槽物品无法匹配有序输入配方时,会清空输入槽", "&7当前状态: &c关闭"),
-        new CustomItemStack(SlimefunItems.TRASH_CAN, "&3关闭输入槽清空模式", "&7当输入槽物品无法匹配有序输入配方时,会清空输入槽", "&7当前状态: &a开启")
+        new CustomItemStack(SlimefunItems.TRASH_CAN, "&3開啓輸入槽清空模式", "&7當輸入槽物品無法匹配有序輸入配方時,會清空輸入槽", "&7當前狀態: &c關閉"),
+        new CustomItemStack(SlimefunItems.TRASH_CAN, "&3關閉輸入槽清空模式", "&7當輸入槽物品無法匹配有序輸入配方時,會清空輸入槽", "&7當前狀態: &a開啓")
     };
     protected ItemStack INFO_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&6机制",
-            "&b该机器类型用于合成阶段输入配方",
-            "&b放入配方序列的第一个物品开启配方",
-            "&b按顺序满足配方每阶段输入需求才会进入下一阶段",
-            "&b完成全部阶段机器会尝试输出结果");
+            "&6機制",
+            "&b該機器類型用於合成階段輸入配方",
+            "&b放入配方序列的第一個物品開啓配方",
+            "&b按順序滿足配方每階段輸入需求才會進入下一階段",
+            "&b完成全部階段機器會嘗試輸出結果");
 
     public AbstractSequenceProcessor(
             ItemGroup category,
@@ -98,28 +98,28 @@ public abstract class AbstractSequenceProcessor extends AbstractMachine
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_IN;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 空白边框
+        // 空白邊框
         preset.addItem(PROCESSOR_SLOT, MenuUtils.PROCESSOR_NULL, ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(INFO_SLOT, INFO_ITEM, ChestMenuUtils.getEmptyClickHandler());
     }
@@ -144,7 +144,7 @@ public abstract class AbstractSequenceProcessor extends AbstractMachine
             if (nextP == null) {
                 if (inv.hasViewer()) {
                     inv.replaceExistingItem(PROCESSOR_SLOT, MenuUtils.PROCESSOR_NULL);
-                } // 满载清空
+                } // 滿載清空
                 return;
             } else {
                 MachineRecipe next = nextP.getFirstValue();
@@ -174,25 +174,25 @@ public abstract class AbstractSequenceProcessor extends AbstractMachine
                     inputers[i] = pusherIntFunction.apply(i); // CRAFT_PROVIDER.get(Settings.INPUT,inv,slots[i]);
                 }
                 if (!CraftUtils.matchSequenceRecipeTarget(inputers, fastNext)) {
-                    // 没有更改 触发清除，清除输入槽内全部物品
+                    // 沒有更改 觸發清除，清除輸入槽內全部物品
                     if (clear != 0) {
                         CraftUtils.clearAmount(inv, inputers);
                     }
-                    // 显然没动 也不需要刷新
+                    // 顯然沒動 也不需要刷新
                 } else {
-                    // 同步关联的物品，即消耗
+                    // 同步關聯的物品，即消耗
                     fastNext.updateItems(inv, Settings.GRAB);
-                    // 只清除记录，不同步数据
+                    // 只清除記錄，不同步數據
                     fastNext.clearRelated();
                     // 更新界面再+1
 
                 }
-                // 进度加一
+                // 進度加一
             }
             if (fastNext.isDirty()) currentOperation.progress(1);
             if (inv.hasViewer()) {
                 inv.replaceExistingItem(PROCESSOR_SLOT, currentOperation.getDisplays());
-            } // 记得保证这玩意先于getDisplay 否则会数组越界
+            } // 記得保證這玩意先於getDisplay 否則會數組越界
         }
     }
 

@@ -101,8 +101,8 @@ import org.bukkit.potion.PotionEffectType;
 @SuppressWarnings("all")
 public class AddSlimefunItems {
     public static void registerSlimefunItems() {
-        Debug.logger("注册附属物品...");
-        Debug.logger("注册附属机器...");
+        Debug.logger("註冊附屬物品...");
+        Debug.logger("註冊附屬機器...");
         CRAFTTYPE_MANUAL_RECIPETYPE.put(CRAFT_MANUAL, BukkitUtils.VANILLA_CRAFTTABLE);
         CRAFTTYPE_MANUAL_RECIPETYPE.put(ENHANCED_CRAFT_MANUAL, ENHANCED_CRAFTING_TABLE);
         CRAFTTYPE_MANUAL_RECIPETYPE.put(MAGIC_WORKBENCH_MANUAL, MAGIC_WORKBENCH);
@@ -222,7 +222,7 @@ public class AddSlimefunItems {
                     AddItem.STAR_SMELTERY,
                     AddItem.STAR_SMELTERY.getDisplayName(),
                     "",
-                    "&c在%s中锻造!".formatted(Language.get("Machines.STAR_SMELTERY.Name"))));
+                    "&c在%s中鍛造!".formatted(Language.get("Machines.STAR_SMELTERY.Name"))));
     public static HashMap<SlimefunItem, RecipeType> CRAFTTYPE_MANUAL_RECIPETYPE = new HashMap<>();
     public static final SlimefunItem MATL114 = new MaterialItem(
                     MATERIAL,
@@ -272,11 +272,11 @@ public class AddSlimefunItems {
                     NULL,
                     nullRecipe(),
                     list(getInfoShow(
-                            "&f获取方式",
-                            "&7不要害怕,这只是一个基础材料...",
-                            "&a它会出现在一些隐蔽的地方...",
-                            "&7当你出现疑问,为什么这个物品找不到配方时",
-                            "&7你可能需要多看看&e\"逻辑工艺 版本与说明\"&7分类(物理意义)")))
+                            "&f獲取方式",
+                            "&7不要害怕,這只是一個基礎材料...",
+                            "&a它會出現在一些隱蔽的地方...",
+                            "&7當你出現疑問,為什麼這個物品找不到配方時",
+                            "&7你可能需要多看看&e\"邏輯工藝 版本與説明\"&7分類(物理意義)")))
             .register();
 
     public static final SlimefunItem TRUE = new MaterialItem(
@@ -689,7 +689,7 @@ public class AddSlimefunItems {
                     recipe(setC(AddItem.ABSTRACT_INGOT, 2), "BATTERY", "POTATO", AddItem.CHIP_INGOT),
                     null)
             .register();
-    // TODO 修改输出数量
+    // TODO 修改輸出數量
     public static final SlimefunItem DIMENSIONAL_SHARD = new AbstractGeoResource(
                     MATERIAL,
                     AddItem.DIMENSIONAL_SHARD,
@@ -698,7 +698,7 @@ public class AddSlimefunItems {
                             AddItem.END_MINER,
                             null,
                             null,
-                            getInfoShow("&f获取方式", "&7在末地大部分群系", "或风袭沙丘或蘑菇岛开采", "&7或者在本附属的矿机中获取")),
+                            getInfoShow("&f獲取方式", "&7在末地大部分羣系", "或風襲沙丘或蘑菇島開採", "&7或者在本附屬的礦機中獲取")),
                     1,
                     new HashMap<>() {
                         {
@@ -722,7 +722,7 @@ public class AddSlimefunItems {
                     MATERIAL,
                     AddItem.STAR_GOLD,
                     NULL,
-                    recipe(null, AddItem.END_MINER, null, null, getInfoShow("&f获取方式", "&7在本附属的矿机中获取")),
+                    recipe(null, AddItem.END_MINER, null, null, getInfoShow("&f獲取方式", "&7在本附屬的礦機中獲取")),
                     null)
             .register();
     public static final SlimefunItem STAR_GOLD_INGOT = new MaterialItem(
@@ -871,7 +871,7 @@ public class AddSlimefunItems {
                             addGlow(new ItemStack(Material.IRON_PICKAXE)),
                             null,
                             null,
-                            getInfoShow("&f获取方式", "&7当 挖掘任意刷怪笼方块时 ", "&750%额外掉落随机种类的生物特征"),
+                            getInfoShow("&f獲取方式", "&7當 挖掘任意刷怪籠方塊時 ", "&750%額外掉落隨機種類的生物特徵"),
                             null,
                             null,
                             new ItemStack(Material.SPAWNER),
@@ -2835,10 +2835,10 @@ public class AddSlimefunItems {
                     1280,
                     8848,
                     mkMp(
-                            // 重金核心铜铁金 下界  重金核心-------
-                            // 镁铅锡锌 冶炼核心-------
-                            // 银铝 红石 钻石 科技核心-------
-                            // 煤炭 青金石 石英 绿宝石 物质核心-------
+                            // 重金核心銅鐵金 下界  重金核心-------
+                            // 鎂鉛錫鋅 冶煉核心-------
+                            // 銀鋁 紅石 鑽石 科技核心-------
+                            // 煤炭 青金石 石英 綠寶石 物質核心-------
                             mkP(
                                             mkl(
                                                     "512COPPER_INGOT",
@@ -3130,7 +3130,7 @@ public class AddSlimefunItems {
             if (b.isPresent() && event.getPlayer() != null) {
                 Block block = b.get();
                 Location loc = block.getLocation();
-                // 不是sf方块
+                // 不是sf方塊
                 if (WorldUtils.hasPermission(event.getPlayer(), loc, Interaction.BREAK_BLOCK, Interaction.PLACE_BLOCK)
                         && canUse(event.getPlayer(), false)) {
                     SlimefunItem item;
@@ -3143,19 +3143,19 @@ public class AddSlimefunItems {
                                 if (item != null) {
                                     WorldUtils.removeSlimefunBlock(loc, event.getPlayer(), false);
                                 }
-                                sendMessage(event.getPlayer(), "&a已成功破坏方块");
+                                sendMessage(event.getPlayer(), "&a已成功破壞方塊");
                             } else {
-                                sendMessage(event.getPlayer(), "&c抱歉,您没有在这里破坏方块的权限");
+                                sendMessage(event.getPlayer(), "&c抱歉,您沒有在這裏破壞方塊的權限");
                             }
                         } else {
 
                             sendMessage(event.getPlayer(), "&c所需物品不足!");
                         }
                     } else {
-                        sendMessage(event.getPlayer(), "&c该方块是粘液方块!不能被该道具破坏");
+                        sendMessage(event.getPlayer(), "&c該方塊是粘液方塊!不能被該道具破壞");
                     }
                 } else {
-                    sendMessage(event.getPlayer(), "&c抱歉,您没有在这里使用该物品的权限");
+                    sendMessage(event.getPlayer(), "&c抱歉,您沒有在這裏使用該物品的權限");
                 }
             }
             event.cancel();
@@ -3182,7 +3182,7 @@ public class AddSlimefunItems {
             Player p = event.getPlayer();
             if (p != null) {
                 if (COOL_DOWN.contains(p)) {
-                    sendMessage(p, "&c物品冷却中");
+                    sendMessage(p, "&c物品冷卻中");
                 } else {
 
                     Location loc = p.getLocation();
@@ -3201,7 +3201,7 @@ public class AddSlimefunItems {
                                         int dx = loc.getBlockX();
                                         int dy = loc.getBlockY();
                                         int dz = loc.getBlockZ();
-                                        sendMessage(p, "&a开始搜索");
+                                        sendMessage(p, "&a開始搜索");
                                         for (int i = -SEARCH_RANGE; i <= SEARCH_RANGE; i++) {
                                             for (int j = -SEARCH_RANGE; j <= SEARCH_RANGE; j++) {
                                                 for (int k = -SEARCH_RANGE; k <= SEARCH_RANGE; k++) {
@@ -3223,7 +3223,7 @@ public class AddSlimefunItems {
                                         if (!liquids.isEmpty()
                                                 || !blockInLiquids.isEmpty()
                                                 || !forceLiquids.isEmpty()) {
-                                            sendMessage(p, "&a搜索完成,正在吸取液体");
+                                            sendMessage(p, "&a搜索完成,正在吸取液體");
                                             BukkitUtils.executeSync(() -> {
                                                 List<BlockState> blocksToBeChanged =
                                                         new ArrayList<>(liquids.size() + blockInLiquids.size() + 2);
@@ -3237,7 +3237,7 @@ public class AddSlimefunItems {
                                                         new SpongeAbsorbEvent(loc.getBlock(), blocksToBeChanged);
                                                 Bukkit.getPluginManager().callEvent(spongeAbsorbEvent);
                                                 if (spongeAbsorbEvent.isCancelled()) {
-                                                    sendMessage(p, "&c抱歉,你没有在这里吸取液体的权限");
+                                                    sendMessage(p, "&c抱歉,你沒有在這裏吸取液體的權限");
                                                 } else {
                                                     for (Block b : liquids) {
                                                         b.setType(Material.AIR);
@@ -3250,7 +3250,7 @@ public class AddSlimefunItems {
                                                         }
                                                     }
 
-                                                    sendMessage(p, "&a成功移除液体!");
+                                                    sendMessage(p, "&a成功移除液體!");
                                                 }
                                                 if (!forceLiquids.isEmpty()) {
                                                     for (Block b : forceLiquids) {
@@ -3258,11 +3258,11 @@ public class AddSlimefunItems {
                                                             b.setType(Material.AIR);
                                                         }
                                                     }
-                                                    sendMessage(p, "&a成功移除海草和海带!");
+                                                    sendMessage(p, "&a成功移除海草和海帶!");
                                                 }
                                             });
                                         } else {
-                                            sendMessage(p, "&c附近没有剩余的液体");
+                                            sendMessage(p, "&c附近沒有剩餘的液體");
                                         }
                                     } finally {
                                         COOL_DOWN.remove(p);
@@ -3272,7 +3272,7 @@ public class AddSlimefunItems {
                                 false,
                                 0);
                     } else {
-                        sendMessage(p, "&c抱歉,你没有在这里吸水的权限");
+                        sendMessage(p, "&c抱歉,你沒有在這裏吸水的權限");
                     }
                 }
             }
@@ -3607,7 +3607,7 @@ public class AddSlimefunItems {
                             "16QUARTZ", 8,
                             "4ANCIENT_DEBRIS", 8)))
             .register();
-    // TODO 完成这块
+    // TODO 完成這塊
 
     public static final SlimefunItem MAGIC_PLANT = new MMGenerator(
                     GENERATORS,
@@ -4494,25 +4494,25 @@ public class AddSlimefunItems {
             .register();
 
     // register recips
-    // 平衡性调整
-    // 虚拟世界 等生成器 有了
-    // 发电机 123
-    // 更多的智能货运
+    // 平衡性調整
+    // 虛擬世界 等生成器 有了
+    // 發電機 123
+    // 更多的智能貨運
     // 垃圾提 ok
-    // 终极路线
-    // 高级芯片之类的? 高级芯片机 ok
-    // 补充说明 堆叠机器 ok
-    // 正反发电机 ok
-    // 方舟反应堆 ok
+    // 終極路線
+    // 高級芯片之類的? 高級芯片機 ok
+    // 補充説明 堆疊機器 ok
+    // 正反發電機 ok
+    // 方舟反應堆 ok
     // 百度
-    // 吃掉实体
-    // 红石控制的货运
-    // 芯片控制的货运
-    // 红石tnt生成器
-    // 终极机器 物质重构器
-    // 终极机器 逆机器
-    // ,物质重构机，小型多方块结构 射线 出逻辑核心
-    // 最终发展路线 。快捷->圆石生成器->逻辑核心->概念同化体->终极堆叠,逆机器
+    // 吃掉實體
+    // 紅石控制的貨運
+    // 芯片控制的貨運
+    // 紅石tnt生成器
+    // 終極機器 物質重構器
+    // 終極機器 逆機器
+    // ,物質重構機，小型多方塊結構 射線 出邏輯核心
+    // 最終發展路線 。快捷->圓石生成器->邏輯核心->概念同化體->終極堆疊,逆機器
 
     // multiblock
     public static final SlimefunItem PORTAL_CORE = new PortalCore(
@@ -4670,30 +4670,30 @@ public class AddSlimefunItems {
                             75))
             .setDisplayRecipes(Utils.list(
                     getInfoShow(
-                                    "&f机制",
-                                    "&7该机器需要搭建超新星外壳方可运行",
-                                    "&7搭建成功后需要保证外壳内部(除机器顶部)不包含任何非空气方块",
-                                    "&7才可以成功启动多方块机器",
-                                    "&7在此你可以使用[%s]等远程访问工具打开内部的界面".formatted(Language.get("Items.HYPER_LINK.Name")),
-                                    "&7或者开启自动构建模式让机器自行启动"),
+                                    "&f機制",
+                                    "&7該機器需要搭建超新星外殼方可運行",
+                                    "&7搭建成功後需要保證外殼內部(除機器頂部)不包含任何非空氣方塊",
+                                    "&7才可以成功啓動多方塊機器",
+                                    "&7在此你可以使用[%s]等遠程訪問工具打開內部的界面".formatted(Language.get("Items.HYPER_LINK.Name")),
+                                    "&7或者開啓自動構建模式讓機器自行啓動"),
                             null,
                     getInfoShow(
-                                    "&f机制",
-                                    "&7该机器在构建/待机/运行时候拥有相同的电力消耗量",
-                                    "&7当电力不足时会强制关机",
-                                    "&7注意:为了防止意外发生,当重启/使用不安全的远程传输时,请确认机器所在区块的加载状态",
-                                    "&7并确保能源网络在加载范围内并且能给机器提供足够电力"),
+                                    "&f機制",
+                                    "&7該機器在構建/待機/運行時候擁有相同的電力消耗量",
+                                    "&7當電力不足時會強制關機",
+                                    "&7注意:為了防止意外發生,當重啓/使用不安全的遠程傳輸時,請確認機器所在區塊的加載狀態",
+                                    "&7並確保能源網絡在加載範圍內並且能給機器提供足夠電力"),
                             null,
                     getInfoShow(
-                                    "&f机制",
-                                    "&7机器自动关闭且&e进程未结束时&c会发生爆炸",
-                                    "&7机器爆炸会在四周生成爆炸强度为80的爆炸,并伴有多方块结构1/3损坏",
-                                    "&7机器会在以下条件自动关闭",
-                                    "&7- 电力不足",
-                                    "&7- 人为的破坏多方块框架(挖掘,或者数据清除)",
-                                    "&7- 手动关机而多方块不处于\"自动构建\"模式",
-                                    "&7- 超新星特效丢失或者距离源位置超过1格(&a不会发起爆炸)",
-                                    "&7服务器重启时多方块会安全关闭,并在重启后自动恢复"),
+                                    "&f機制",
+                                    "&7機器自動關閉且&e進程未結束時&c會發生爆炸",
+                                    "&7機器爆炸會在四周生成爆炸強度為80的爆炸,並伴有多方塊結構1/3損壞",
+                                    "&7機器會在以下條件自動關閉",
+                                    "&7- 電力不足",
+                                    "&7- 人為的破壞多方塊框架(挖掘,或者數據清除)",
+                                    "&7- 手動關機而多方塊不處於\"自動構建\"模式",
+                                    "&7- 超新星特效丟失或者距離源位置超過1格(&a不會發起爆炸)",
+                                    "&7服務器重啓時多方塊會安全關閉,並在重啓後自動恢復"),
                             null))
             .register();
     public static final SlimefunItem SOLAR_REACTOR_FRAME = new MultiPart(
@@ -4939,31 +4939,31 @@ public class AddSlimefunItems {
                             10000))
             .setDisplayRecipes(Utils.list(
                     getInfoShow(
-                                    "&f机制",
-                                    "&7该机器需要搭建元素嬗变机结构方可运行",
-                                    "&7该多方块为可变高度多方块机器",
-                                    "&7点击开启投影只会显示5层机器",
-                                    "&7在顶层之下重复搭建投影的第4层即可增高多方块机器",
-                                    "&7最多可重复搭建10层(投影中的第四层计入数量)",
-                                    "&a每多搭建一层该机器并行处理数x2(即机器快一倍)"),
+                                    "&f機制",
+                                    "&7該機器需要搭建元素嬗變機結構方可運行",
+                                    "&7該多方塊為可變高度多方塊機器",
+                                    "&7點擊開啓投影只會顯示5層機器",
+                                    "&7在頂層之下重複搭建投影的第4層即可增高多方塊機器",
+                                    "&7最多可重複搭建10層(投影中的第四層計入數量)",
+                                    "&a每多搭建一層該機器並行處理數x2(即機器快一倍)"),
                             null,
                     getInfoShow(
-                                    "&f机制",
-                                    "&7该机器在构建/待机/运行时候拥有相同的电力消耗量",
-                                    "&7当电力不足时会强制关机",
-                                    "&7注意:为了防止意外发生,当重启/使用不安全的远程传输时,请确认机器所在区块的加载状态",
-                                    "&7并确保能源网络在加载范围内并且能给机器提供足够电力"),
+                                    "&f機制",
+                                    "&7該機器在構建/待機/運行時候擁有相同的電力消耗量",
+                                    "&7當電力不足時會強制關機",
+                                    "&7注意:為了防止意外發生,當重啓/使用不安全的遠程傳輸時,請確認機器所在區塊的加載狀態",
+                                    "&7並確保能源網絡在加載範圍內並且能給機器提供足夠電力"),
                             null,
                     getInfoShow(
-                                    "&f机制",
-                                    "&7机器自动关闭且&e进程未结束时&c会发生&c熔毁",
-                                    "&7熔毁会形成范围40的1级辐射圈持续约1小时",
-                                    "&7并伴有所有\"原子合金燃料棒\"损坏",
-                                    "&7机器会在以下条件自动关闭",
-                                    "&7- 电力不足",
-                                    "&7- 人为的破坏多方块框架(挖掘,或者数据清除)",
-                                    "&7- 手动关机而多方块不处于\"自动构建\"模式",
-                                    "&7服务器重启时多方块会安全关闭,并在重启后自动恢复"),
+                                    "&f機制",
+                                    "&7機器自動關閉且&e進程未結束時&c會發生&c熔燬",
+                                    "&7熔燬會形成範圍40的1級輻射圈持續約1小時",
+                                    "&7並伴有所有\"原子合金燃料棒\"損壞",
+                                    "&7機器會在以下條件自動關閉",
+                                    "&7- 電力不足",
+                                    "&7- 人為的破壞多方塊框架(挖掘,或者數據清除)",
+                                    "&7- 手動關機而多方塊不處於\"自動構建\"模式",
+                                    "&7服務器重啓時多方塊會安全關閉,並在重啓後自動恢復"),
                             null))
             .register();
     public static final SlimefunItem TIMER_RD = new TimerRandomtick(
@@ -5314,7 +5314,7 @@ public class AddSlimefunItems {
                     0,
                     0,
                     () -> {
-                        // keep a question,if we get 铸锭机 recipe.
+                        // keep a question,if we get 鑄錠機 recipe.
                         return RecipeSupporter.MACHINE_RECIPELIST.getOrDefault(
                                 SlimefunItems.ELECTRIC_INGOT_PULVERIZER.getItem(), new ArrayList<>());
                     })
@@ -5498,7 +5498,7 @@ public class AddSlimefunItems {
                             "COBBLESTONE",
                             "GLASS_PANE",
                             "COBBLESTONE"),
-                    List.of(getInfoShow("&f机制 - &7伪装", "&7该物品可以在快捷多方块结构模拟器中", "&7填充多方块模拟部分的空白", "&7多方块模拟检测会忽视该物品")))
+                    List.of(getInfoShow("&f機制 - &7偽裝", "&7該物品可以在快捷多方塊結構模擬器中", "&7填充多方塊模擬部分的空白", "&7多方塊模擬檢測會忽視該物品")))
             .register()
             .setOutput(setC(AddItem.FAKE_UI, 4));
     public static final ReplaceCard REPLACE_CARD = (ReplaceCard) (new ReplaceCard(
@@ -5598,7 +5598,7 @@ public class AddSlimefunItems {
             for (int i = 0; i < size; ++i) {
                 targetRecipe.add(MachineRecipeUtils.stackFrom(
                         machineRecipes.get(i).getTicks(),
-                        Utils.array(getInfoShow("&f有序配方合成", "&7请在配方显示界面或者机器界面查看")),
+                        Utils.array(getInfoShow("&f有序配方合成", "&7請在配方顯示界面或者機器界面查看")),
                         machineRecipes.get(i).getOutput()));
             }
             return targetRecipe;
@@ -5620,11 +5620,11 @@ public class AddSlimefunItems {
         }
     }.setDisplayRecipes(Utils.list(
                     getInfoShow(
-                            "&f配方说明",
-                            "&7你将会在这里的配方中找到所有可以在原版工作台中合成的物品的替代卡配方",
-                            "&7其配方读取于原版合成配方",
-                            "&a你还会找到一些由@haiman添加的其他不可堆叠物品的替代卡配方",
-                            "&7如各种桶,下界合金工具等等"),
+                            "&f配方説明",
+                            "&7你將會在這裏的配方中找到所有可以在原版工作台中合成的物品的替代卡配方",
+                            "&7其配方讀取於原版合成配方",
+                            "&a你還會找到一些由@haiman添加的其他不可堆疊物品的替代卡配方",
+                            "&7如各種桶,下界合金工具等等"),
                     FinalFeature.MANUAL_CARD_INFO))
             .register();
     public static final SlimefunItem ADV_MANUAL = new AdvancedManual(
@@ -5824,7 +5824,7 @@ public class AddSlimefunItems {
                             "IRON_INGOT",
                             "IRON_INGOT",
                             "IRON_INGOT"),
-                    list(getInfoShow("&f机制", "")))
+                    list(getInfoShow("&f機制", "")))
             .register();
     public static final SlimefunItem REMOTE_CARGO = new RemoteCargo(
                     CARGO,
@@ -6396,8 +6396,8 @@ public class AddSlimefunItems {
         public void addInfo(ItemStack item) {
             item.setItemMeta(addLore(
                             item,
-                            "&7世界范围: "
-                                    + "&7坐标范围: 2^(max(10+丢出数量,%s))"
+                            "&7世界範圍: "
+                                    + "&7座標範圍: 2^(max(10+丟出數量,%s))"
                                             .formatted(String.valueOf(10 + rtpRange2pow.getValue())))
                     .getItemMeta());
         }
@@ -6418,7 +6418,7 @@ public class AddSlimefunItems {
                                 Location center = var3.getLocation();
                                 center.getWorld().strikeLightningEffect(center);
                                 int ranges = 1 << (10 + Math.min(amount / 2, rtpRange2pow.getValue()));
-                                sendMessage(var2, "&a即将开始随机传送,传送范围: " + ranges);
+                                sendMessage(var2, "&a即將開始隨機傳送,傳送範圍: " + ranges);
                                 BukkitUtils.executeAsync(() -> {
                                     onRtp(var2, center, ranges, RETRY_TIME);
                                 });
@@ -6447,7 +6447,7 @@ public class AddSlimefunItems {
             };
             CountDownLatch latch = effectResult.runThreadBackground();
             Location loc = onRandomLocationFind(center, range);
-            // 预加载的过程中执行例子效果
+            // 預加載的過程中執行例子效果
             try {
                 latch.await();
             } catch (InterruptedException e) {
@@ -6460,14 +6460,14 @@ public class AddSlimefunItems {
                 Schedules.launchSchedules(
                         () -> {
                             player.teleport(loc);
-                            sendTitle(player, "&a传送成功!", "");
+                            sendTitle(player, "&a傳送成功!", "");
                         },
                         0,
                         true,
                         0);
             } else {
                 if (leftTime > 0) {
-                    sendTitle(player, "&c传送失败!剩余次数%d次".formatted(leftTime), "&e将在三秒后重新传送");
+                    sendTitle(player, "&c傳送失敗!剩餘次數%d次".formatted(leftTime), "&e將在三秒後重新傳送");
                     Schedules.launchSchedules(
                             () -> {
                                 onRtp(player, center, range, leftTime - 1);
@@ -6476,7 +6476,7 @@ public class AddSlimefunItems {
                             false,
                             0);
                 } else {
-                    sendTitle(player, "&c传送失败!", "");
+                    sendTitle(player, "&c傳送失敗!", "");
                 }
             }
         }
@@ -6486,7 +6486,7 @@ public class AddSlimefunItems {
 
         public Location onRandomLocationFind(Location center, int range) {
             World world;
-            // 不切换世界
+            // 不切換世界
             if (!false && rand.nextInt(20) % 2 == 0) {
                 world = center.getWorld();
             } else {
@@ -6509,7 +6509,7 @@ public class AddSlimefunItems {
                     validCoord(center.getBlockZ() + rand.nextDouble(-range, range), minZ, maxZ));
             int x = newLocation.getBlockX() >> 4;
             int z = newLocation.getBlockZ() >> 4;
-            // 执行预加载 提前生成3x3范围
+            // 執行預加載 提前生成3x3範圍
             Schedules.launchRepeatingSchedule(
                     (i) -> {
                         newLocation.getWorld().getChunkAt(x - 1 + i % 3, z - 1 + i / 3, true);
@@ -6550,15 +6550,15 @@ public class AddSlimefunItems {
                             if (player.getWorld() != world
                                     || player.getLocation().distance(loc) > 0.25) {
                                 hasCancelled.set(true);
-                                sendTitle(player, "&c传送已被取消!", "&e您的位置移动了!");
+                                sendTitle(player, "&c傳送已被取消!", "&e您的位置移動了!");
                                 return;
                             }
 
                             if ((DELAY_BEFORE_TP - EFFECT_PERIOD * i) % 20 < EFFECT_PERIOD) {
                                 sendTitle(
                                         player,
-                                        "&a即将传送,请勿移动!",
-                                        "&e倒计时 %d 秒".formatted((DELAY_BEFORE_TP - EFFECT_PERIOD * i) / 20));
+                                        "&a即將傳送,請勿移動!",
+                                        "&e倒計時 %d 秒".formatted((DELAY_BEFORE_TP - EFFECT_PERIOD * i) / 20));
                             }
                             for (Location location : originLocations) {
                                 Location testLoc2 = location.clone();
@@ -6619,7 +6619,7 @@ public class AddSlimefunItems {
             } else {
                 sendMessage(
                         event.getPlayer(),
-                        concat("&c电力不足! ", String.valueOf(itemCharge), "J/", String.valueOf(energyConsumption), "J"));
+                        concat("&c電力不足! ", String.valueOf(itemCharge), "J/", String.valueOf(energyConsumption), "J"));
             }
         }
     }.register();
@@ -6731,9 +6731,9 @@ public class AddSlimefunItems {
                     Optional<Block> b = event.getClickedBlock();
                     if (b.isPresent()) {
                         if (RadiationRegionManager.removeNearRadiation(b.get().getLocation(), 40)) {
-                            sendMessage(event.getPlayer(), "&a成功清除附近40格内的辐射区");
+                            sendMessage(event.getPlayer(), "&a成功清除附近40格內的輻射區");
                         } else {
-                            sendMessage(event.getPlayer(), "&c附近没有辐射区!");
+                            sendMessage(event.getPlayer(), "&c附近沒有輻射區!");
                         }
                     }
                 }
@@ -6744,7 +6744,7 @@ public class AddSlimefunItems {
             Player p = event.getPlayer();
             if (p.isOp() || p.getGameMode() == GameMode.CREATIVE) {
                 if (p.isSneaking()) {
-                    AddUtils.sendMessage(p, "&a输入一种材料以替换&c当前世界&a所有逻辑核心,输入取消以取消");
+                    AddUtils.sendMessage(p, "&a輸入一種材料以替換&c當前世界&a所有邏輯核心,輸入取消以取消");
                     AddUtils.asyncWaitPlayerInput(p, (str) -> {
                         try {
                             Material material = WorldUtils.getBlock(Material.getMaterial(str.toUpperCase(Locale.ROOT)));
@@ -6772,7 +6772,7 @@ public class AddSlimefunItems {
                                     0,
                                     false,
                                     0);
-                            AddUtils.sendMessage(p, "&a已替换材质,并删除原有的逻辑核心");
+                            AddUtils.sendMessage(p, "&a已替換材質,並刪除原有的邏輯核心");
                         } catch (Throwable e) {
                             AddUtils.sendMessage(p, "&a已取消");
                         }
@@ -6793,7 +6793,7 @@ public class AddSlimefunItems {
                                 .collect(Collectors.toSet());
                         location.forEach(Slimefun.getDatabaseManager().getBlockDataController()::removeBlock);
 
-                        sendMessage(event.getPlayer(), "&a反概念物质已成功清除");
+                        sendMessage(event.getPlayer(), "&a反概念物質已成功清除");
                         Schedules.launchSchedules(
                                 () -> {
                                     location.forEach(sb::createResultAt);
@@ -6804,7 +6804,7 @@ public class AddSlimefunItems {
                     }
                 }
             } else {
-                AddUtils.sendMessage(p, "&c你没有权限使用这个道具");
+                AddUtils.sendMessage(p, "&c你沒有權限使用這個道具");
             }
         }
     }.register();
@@ -6822,15 +6822,15 @@ public class AddSlimefunItems {
             if (p != null) {
                 if (WorldUtils.hasPermission(p, p.getLocation().getBlock(), Interaction.INTERACT_BLOCK)) {
                     if (COOLDOWNS.contains(p)) {
-                        sendMessage(p, "&c物品冷却中!");
+                        sendMessage(p, "&c物品冷卻中!");
                     } else {
                         MultiBlockService.removeUnrecordedHolograms(p.getLocation(), 20);
-                        sendMessage(p, "&a成功清除!进入5s(100gt)冷却");
+                        sendMessage(p, "&a成功清除!進入5s(100gt)冷卻");
                         COOLDOWNS.add(p);
                         Schedules.launchSchedules(() -> COOLDOWNS.remove(p), 100, true, 0);
                     }
                 } else {
-                    sendMessage(p, "&c你没有权限在这里使用该道具");
+                    sendMessage(p, "&c你沒有權限在這裏使用該道具");
                 }
             }
             event.cancel();
@@ -7350,14 +7350,14 @@ public class AddSlimefunItems {
                     "smith.core")
             .setDisplayRecipes(Utils.list(
                     getInfoShow(
-                                    "&f机制",
-                                    "&7该机器需要搭建锻铸工坊的结构方可运行",
-                                    "&7该多方块投影中海晶灯部分需放置\"工坊接口\"",
-                                    "&7其余方块均为原版方块",
-                                    "&7对于铜质组成部分,任意生锈状态/打蜡状态的同类型方块均可识别",
-                                    "&a每多搭建一层该机器并行处理数x2(即机器快一倍)"),
+                                    "&f機制",
+                                    "&7該機器需要搭建鍛鑄工坊的結構方可運行",
+                                    "&7該多方塊投影中海晶燈部分需放置\"工坊接口\"",
+                                    "&7其餘方塊均為原版方塊",
+                                    "&7對於銅質組成部分,任意生鏽狀態/打蠟狀態的同類型方塊均可識別",
+                                    "&a每多搭建一層該機器並行處理數x2(即機器快一倍)"),
                             null,
-                    getInfoShow("&f机制", "&7任意\"工坊接口\"类型的机器需要在该多方块", "&7中方可执行其功效", "&7"), null))
+                    getInfoShow("&f機制", "&7任意\"工坊接口\"類型的機器需要在該多方塊", "&7中方可執行其功效", "&7"), null))
             .register();
     public static final SlimefunItem SMITH_INTERFACE_NONE = new SmithingInterface(
                     TOOLS_FUNCTIONAL,
@@ -7446,7 +7446,7 @@ public class AddSlimefunItems {
                             AddItem.LPLATE,
                             AddItem.ABSTRACT_INGOT),
                     Utils.list(
-                            getInfoShow("&f介绍", "&7用于合成子分类\"功能单元\"中的物品", "&7功能单元是一种&e类似附魔的组件型物品", "&7安装在装备上可以给玩家带来增益")))
+                            getInfoShow("&f介紹", "&7用於合成子分類\"功能單元\"中的物品", "&7功能單元是一種&e類似附魔的組件型物品", "&7安裝在裝備上可以給玩家帶來增益")))
             .register();
     public static final SlimefunItem AMPLIFY_BASE = new MaterialItem(
                     TOOLS_SUBGROUP_1,
@@ -7649,9 +7649,9 @@ public class AddSlimefunItems {
 
         private static int TOGGLE_AUTO_SLOT = 46;
         private static ItemStack INFO_AUTO_ON = new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&3切换自动合成", "&6当前状态: &a启用", "&6每刻&b合成 &d64次 &b当前物品", "&c测试功能,谨慎使用");
+                Material.GREEN_STAINED_GLASS_PANE, "&3切換自動合成", "&6當前狀態: &a啓用", "&6每刻&b合成 &d64次 &b當前物品", "&c測試功能,謹慎使用");
         private static ItemStack INFO_AUTO_OFF = new CustomItemStack(
-                Material.RED_STAINED_GLASS_PANE, "&3切换自动合成", "&6当前状态: &c禁用", "&6每刻&b合成 &d64次 &b当前物品", "&c测试功能,谨慎使用");
+                Material.RED_STAINED_GLASS_PANE, "&3切換自動合成", "&6當前狀態: &c禁用", "&6每刻&b合成 &d64次 &b當前物品", "&c測試功能,謹慎使用");
 
         public boolean isAutoCraft(BlockMenu inv) {
             ItemStack item = inv.getItemInSlot(TOGGLE_AUTO_SLOT);
@@ -7667,7 +7667,7 @@ public class AddSlimefunItems {
                 Location loc = inv.getLocation();
                 int recordIndex = getNowRecordRecipe(loc);
                 List<MachineRecipe> mRecipe = getMachineRecipes(null, inv);
-                // 没有匹配配方会直接返回失败
+                // 沒有匹配配方會直接返回失敗
                 if (recordIndex < 0 || recordIndex >= mRecipe.size()) {
                     return;
                 }
@@ -7742,8 +7742,8 @@ public class AddSlimefunItems {
                 }
             }.register();
 
-    // TODO 大型配方快捷机器 可切换型
-    // TODO 远程充电机
+    // TODO 大型配方快捷機器 可切換型
+    // TODO 遠程充電機
 
     public static final SlimefunItem TESTUNIT1 =
             register(new TestStorageUnit(FUNCTIONAL, AddItem.TESTUNIT1, NULL, NULL_RECIPE, 0, 0));

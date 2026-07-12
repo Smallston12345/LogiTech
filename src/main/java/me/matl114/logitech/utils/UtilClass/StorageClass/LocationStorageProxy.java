@@ -25,8 +25,8 @@ public class LocationStorageProxy extends ItemStorageCache {
     }
 
     public void updateStorage() {
-        // 这里是代理存储 并不是唯一修改源
-        // 需要刷新一下并加上用当前记录-历史记录 的东西
+        // 這裏是代理存儲 並不是唯一修改源
+        // 需要刷新一下並加上用當前記錄-歷史記錄 的東西
         long locationNowAmount = ((LocationProxy) storageType).getAmount(location);
         long delta = locationNowAmount - this.lastStorageAmount;
         long locationSetAmount = Math.min(getMaxStackCnt(), getStorageAmountLong() + delta);

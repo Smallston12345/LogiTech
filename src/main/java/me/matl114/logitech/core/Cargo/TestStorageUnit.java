@@ -44,7 +44,7 @@ public class TestStorageUnit extends AbstractMachine {
             Debug.stackTrace();
         }));
         preset.addMenuClickHandler(18, (player, i, itemStack, clickAction) -> {
-            new MenuFactory(MenuUtils.SIMPLE_MENU, "测试BYD", 4) {
+            new MenuFactory(MenuUtils.SIMPLE_MENU, "測試BYD", 4) {
                 public void init() {
                     setDefaultNPSlots();
                     addInventory(0, new ItemStack(Material.COMMAND_BLOCK));

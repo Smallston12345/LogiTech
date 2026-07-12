@@ -34,8 +34,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class MenuUtils {
     public static final ItemStack PROCESSOR_NULL = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
     public static final ItemStack PROCESSOR_SPACE =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6进程完成", "&c空间不足");
-    public static final ItemStack PROCESSOR_ENERGY = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c电力不足", "");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6進程完成", "&c空間不足");
+    public static final ItemStack PROCESSOR_ENERGY = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c電力不足", "");
     public static final ItemStack PREV_BUTTON_ACTIVE = new SlimefunItemStack(
             "_UI_PREVIOUS_ACTIVE", Material.LIME_STAINED_GLASS_PANE, "&r⇦ Previous Page", new String[0]);
     public static final ItemStack NEXT_BUTTON_ACTIVE =
@@ -49,9 +49,9 @@ public class MenuUtils {
                 meta.addItemFlags(new ItemFlag[] {ItemFlag.HIDE_ENCHANTS});
             });
     public static final ItemStack SEARCH_BUTTON =
-            new SlimefunItemStack("_UI_SEARCH", Material.NAME_TAG, "&b搜索...", "", ChatColor.GRAY + "⇨ " + "&b单击搜索物品");
+            new SlimefunItemStack("_UI_SEARCH", Material.NAME_TAG, "&b搜索...", "", ChatColor.GRAY + "⇨ " + "&b單擊搜索物品");
     public static final ItemStack NO_ITEM = new SlimefunItemStack("_UI_NO_ITEM", Material.BARRIER, "&8 ");
-    public static final ItemStack PRESET_INFO = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, "&3配方类型信息");
+    public static final ItemStack PRESET_INFO = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, "&3配方類型信息");
     public static final ItemStack PRESET_MORE = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a更多物品(已省略)");
 
     public static final ChestMenu.MenuClickHandler CLOSE_HANDLER = ((player, i, itemStack, clickAction) -> {
@@ -105,12 +105,12 @@ public class MenuUtils {
         return pages != 1 && page != 1
                 ? new CustomItemStack(PREV_BUTTON_ACTIVE, (meta) -> {
                     ChatColor var10001 = ChatColor.WHITE;
-                    meta.setDisplayName("" + var10001 + "⇦ " + "上一页");
+                    meta.setDisplayName("" + var10001 + "⇦ " + "上一頁");
                     meta.setLore(Arrays.asList("", ChatColor.GRAY + "(" + page + " / " + pages + ")"));
                 })
                 : new CustomItemStack(PREV_BUTTON_INACTIVE, (meta) -> {
                     ChatColor var10001 = ChatColor.DARK_GRAY;
-                    meta.setDisplayName("" + var10001 + "⇦ " + "上一页");
+                    meta.setDisplayName("" + var10001 + "⇦ " + "上一頁");
                     meta.setLore(Arrays.asList("", ChatColor.GRAY + "(" + page + " / " + pages + ")"));
                 });
     }
@@ -119,12 +119,12 @@ public class MenuUtils {
         return pages != 1 && page != pages
                 ? new CustomItemStack(NEXT_BUTTON_ACTIVE, (meta) -> {
                     ChatColor var10001 = ChatColor.WHITE;
-                    meta.setDisplayName("" + var10001 + "下一页" + " ⇨");
+                    meta.setDisplayName("" + var10001 + "下一頁" + " ⇨");
                     meta.setLore(Arrays.asList("", ChatColor.GRAY + "(" + page + " / " + pages + ")"));
                 })
                 : new CustomItemStack(NEXT_BUTTON_INACTIVE, (meta) -> {
                     ChatColor var10001 = ChatColor.DARK_GRAY;
-                    meta.setDisplayName("" + var10001 + "下一页" + " ⇨");
+                    meta.setDisplayName("" + var10001 + "下一頁" + " ⇨");
                     meta.setLore(Arrays.asList("", ChatColor.GRAY + "(" + page + " / " + pages + ")"));
                 });
     }
@@ -133,40 +133,40 @@ public class MenuUtils {
         return new CustomItemStack(BACK_BUTTON, "&7⇦ " + "返回", lore);
     }
     // clickType of InventoryClickEvnet
-    // 左键
+    // 左鍵
     //    LEFT,
-    // shift左键
+    // shift左鍵
     //    SHIFT_LEFT,
-    // 右键
+    // 右鍵
 
     //    RIGHT,
-    // shift右键
+    // shift右鍵
     //    SHIFT_RIGHT,
-    // 左键点空白
+    // 左鍵點空白
     //    WINDOW_BORDER_LEFT,
-    // 右键点空白
+    // 右鍵點空白
     //    WINDOW_BORDER_RIGHT,
-    // 中键物品
+    // 中鍵物品
     //    MIDDLE,
-    // 用数字切换
+    // 用數字切換
     //    NUMBER_KEY,
-    // 双击
+    // 雙擊
     //    DOUBLE_CLICK,
     // q
     //    DROP,
     // ctrl+q
     //    CONTROL_DROP,
-    // 创造
+    // 創造
     //    CREATIVE,
     // F切副手
     //    SWAP_OFFHAND,
     // 不知道
     //    UNKNOWN;
 
-    // sf不能监听的对槽位的修改
+    // sf不能監聽的對槽位的修改
     // SHIFT_..
     // DOUBLE_CLICK
-    // NUMBER有一些没有监听
+    // NUMBER有一些沒有監聽
     //
     //    public static void strictHandleInventoryClick(InventoryClickEvent e){
     //
@@ -174,7 +174,7 @@ public class MenuUtils {
 
     private static final int[] RECIPE_DISPLAY_INDEX2SLOT =
             new int[] {36, 45, 37, 46, 38, 47, 39, 48, 40, 49, 41, 50, 42, 51, 43, 52, 44, 53};
-    // 3x3配方表的显示
+    // 3x3配方表的顯示
     public static final MenuPreset SIMPLE_MENU = new MenuPreset(54, 9, 9)
             .addItem(BACK_BUTTON, 1)
             .addItem(new CustomItemStack(Material.BOOK, "&aINFO_TEST"), 7);
@@ -183,7 +183,7 @@ public class MenuUtils {
     // not used yet need
     public static final MenuPreset RECIPE_MENU_3x3_PLUS =
             new MenuPreset(54, 0, 0).addItem(ChestMenuUtils.getBackground(), 27, 29, 30, 31, 32, 33, 35);
-    // 6x6大配方的显示
+    // 6x6大配方的顯示
     public static final MenuPreset RECIPE_MENU_6X6 = new MenuPreset(54, 0, 0)
             .addItem(BACK_BUTTON, 0)
             .addItem(PRESET_INFO, 7, 16, 17)
@@ -262,7 +262,7 @@ public class MenuUtils {
         int pageNum = (1 + (RecipeSize - 1) / pageContent);
         ItemStack displayMachine;
         if (machine != null) {
-            displayMachine = AddUtils.addLore(machine, "&8机器配方显示");
+            displayMachine = AddUtils.addLore(machine, "&8機器配方顯示");
         } else {
             displayMachine = NO_ITEM;
         }
@@ -326,12 +326,12 @@ public class MenuUtils {
         ItemStack typeIcon = type.toItem();
         if (typeIcon != null) {
 
-            displayMachine = AddUtils.addLore(typeIcon, "&8配方类型显示");
+            displayMachine = AddUtils.addLore(typeIcon, "&8配方類型顯示");
         } else {
             displayMachine = NO_ITEM;
         }
         MenuFactory a = new MenuFactory(
-                SIMPLE_MENU, AddUtils.color("类型:" + type.getKey().toString()), pageNum) {
+                SIMPLE_MENU, AddUtils.color("類型:" + type.getKey().toString()), pageNum) {
             public void init() {
                 setDefaultNPSlots();
             }
@@ -381,7 +381,7 @@ public class MenuUtils {
             List<String> namelist = new ArrayList<>() {
                 {
                     add("");
-                    add("&3随机物品输出~");
+                    add("&3隨機物品輸出~");
 
                     List<Double> wlist = ((MultiItemStack) it).getWeight(1.0);
                     int len = list.size();
@@ -396,7 +396,7 @@ public class MenuUtils {
                     }
                 }
             };
-            // 如果是proItemStack就获得其实例 因为不能整一个air出来
+            // 如果是proItemStack就獲得其實例 因為不能整一個air出來
             ItemStack sample = list.get(0);
             if (sample.getType().isAir()) return null;
             finalStack = AddUtils.addLore(sample, namelist.toArray(new String[namelist.size()]));
@@ -405,7 +405,7 @@ public class MenuUtils {
             List<String> namelist = new ArrayList<>() {
                 {
                     add("");
-                    add("&3等价物品输入~");
+                    add("&3等價物品輸入~");
                     int len = list.size();
                     for (int i = 0; i < len; i++) {
                         add(AddUtils.concat(
@@ -417,20 +417,20 @@ public class MenuUtils {
             if (sample.getType().isAir()) return null;
             finalStack = AddUtils.addLore(sample, namelist.toArray(new String[namelist.size()]));
         } else if (it instanceof RandAmountStack) {
-            finalStack = AddUtils.addLore(AddUtils.getCleaned(it), AddUtils.concat("&e随机数量: ", getAmountDisplay(it)));
+            finalStack = AddUtils.addLore(AddUtils.getCleaned(it), AddUtils.concat("&e隨機數量: ", getAmountDisplay(it)));
         } else {
             finalStack = it;
         }
-        // 防止因为意外出现的air 指
+        // 防止因為意外出現的air 指
         if (finalStack.getType().isAir()) {
             ItemMeta meta = finalStack.getItemMeta();
             finalStack = NO_ITEM.clone();
             finalStack.setItemMeta(meta);
         }
         if (finalStack.getAmount() > 64) {
-            finalStack = AddUtils.addLore(finalStack, "&c数量: " + finalStack.getAmount());
+            finalStack = AddUtils.addLore(finalStack, "&c數量: " + finalStack.getAmount());
         } else if (finalStack.getAmount() <= 0) {
-            finalStack = AddUtils.addLore(finalStack, "&c数量: " + finalStack.getAmount());
+            finalStack = AddUtils.addLore(finalStack, "&c數量: " + finalStack.getAmount());
             finalStack.setAmount(1);
         }
         return finalStack;
@@ -498,8 +498,8 @@ public class MenuUtils {
             if (machine != null && !machine.getType().isAir()) {
                 if (recipe.getTicks() >= 0)
                     a.addOverrides(
-                            RECIPETYPESLOT_3X3, AddUtils.addLore(machine, "", "&a在此处耗时" + recipe.getTicks() + "&at制作"));
-                else a.addOverrides(RECIPETYPESLOT_3X3, AddUtils.addLore(machine, "", "&a在此处制作"));
+                            RECIPETYPESLOT_3X3, AddUtils.addLore(machine, "", "&a在此處耗時" + recipe.getTicks() + "&at製作"));
+                else a.addOverrides(RECIPETYPESLOT_3X3, AddUtils.addLore(machine, "", "&a在此處製作"));
             }
             for (int i = 0; i < input.length; ++i) {
                 a.addOverrides(RECIPESLOT_3X3[i], getDisplayItem(input[i]));
@@ -531,13 +531,13 @@ public class MenuUtils {
             if (!displayedDown.isEmpty()) {
                 a.setPrev(28);
                 a.setNext(34);
-                // 绘制栏目
+                // 繪製欄目
                 for (int i = 27; i < 36; ++i) {
                     if (i == 28 || i == 34) continue;
                     a.addOverrides(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
                 }
                 int size = displayedDown.size();
-                // 绘制dsplayed
+                // 繪製dsplayed
                 for (int i = 0; i < size; ++i) {
                     int pageI = i / 18;
                     int indexI = i % 18;
@@ -569,8 +569,8 @@ public class MenuUtils {
             }
             if (recipe.getTicks() >= 0)
                 a.addInventory(
-                        RECIPETYPESLOT_6X6, AddUtils.addLore(machine, "", "&a在该机器中耗时" + recipe.getTicks() + "&at制作"));
-            else a.addInventory(RECIPETYPESLOT_6X6, AddUtils.addLore(machine, "", "&a在该机器中制作"));
+                        RECIPETYPESLOT_6X6, AddUtils.addLore(machine, "", "&a在該機器中耗時" + recipe.getTicks() + "&at製作"));
+            else a.addInventory(RECIPETYPESLOT_6X6, AddUtils.addLore(machine, "", "&a在該機器中製作"));
             int len = Math.min(inputlen, RECIPESLOT_6x6.length);
 
             for (int i = 0; i < len; ++i) {
@@ -603,11 +603,11 @@ public class MenuUtils {
             if (optionalItem instanceof RecipeDisplayItem recipeDisplay) {
                 a.addOverrides(
                         53,
-                        AddUtils.addGlow(new CleanItemStack(Material.KNOWLEDGE_BOOK, "&a点击查看物品展示的配方", "&7以及物品额外说明")),
+                        AddUtils.addGlow(new CleanItemStack(Material.KNOWLEDGE_BOOK, "&a點擊查看物品展示的配方", "&7以及物品額外説明")),
                         (cm) -> ((player, i, itemStack, clickAction) -> {
                             List<ItemStack> displayedDown = recipeDisplay.getDisplayRecipes();
                             if (displayedDown.isEmpty()) {
-                                AddUtils.sendMessage(player, "&c该物品并无展示的配方");
+                                AddUtils.sendMessage(player, "&c該物品並無展示的配方");
                                 return false;
                             }
                             var recipeMenu =
@@ -668,7 +668,7 @@ public class MenuUtils {
     }
 
     /**
-     * 制造 “制造配方类型展示界面的MenuFactory” 并且将其返回CMHandler设置为backHandler
+     * 製造 “製造配方類型展示界面的MenuFactory” 並且將其返回CMHandler設置為backHandler
      * @param recipeTypes
      * @param backHandler
      * @return
@@ -689,7 +689,7 @@ public class MenuUtils {
         int pageContent = 36;
         int pageNum = (1 + (RecipeSize - 1) / pageContent);
 
-        MenuFactory a = new MenuFactory(SIMPLE_MENU, AddUtils.colorful("合法配方类型大赏"), pageNum) {
+        MenuFactory a = new MenuFactory(SIMPLE_MENU, AddUtils.colorful("合法配方類型大賞"), pageNum) {
             public void init() {
                 setDefaultNPSlots();
             }
@@ -712,7 +712,7 @@ public class MenuUtils {
             List<SlimefunItem> recipe = RecipeSupporter.RECIPETYPE_TO_ITEMS.get(entry);
             if (recipe == null || recipe.isEmpty()) {
                 a.addHandler(1, ((player, i1, itemStack, clickAction) -> {
-                    player.sendMessage(ChatColors.color("&e该配方类型在本附属的配方类型黑名单中,暂不支持查看"));
+                    player.sendMessage(ChatColors.color("&e該配方類型在本附屬的配方類型黑名單中,暫不支持查看"));
                     return false;
                 }));
             } else {
@@ -744,7 +744,7 @@ public class MenuUtils {
         int pageContent = 36;
         int pageNum = (1 + (RecipeSize - 1) / pageContent);
 
-        MenuFactory a = new MenuFactory(SIMPLE_MENU, AddUtils.colorful("识别机器类型大赏"), pageNum) {
+        MenuFactory a = new MenuFactory(SIMPLE_MENU, AddUtils.colorful("識別機器類型大賞"), pageNum) {
             public void init() {
                 setDefaultNPSlots();
             }
@@ -766,7 +766,7 @@ public class MenuUtils {
             List<MachineRecipe> recipe = map.get(entry);
             if (recipe == null) {
                 a.addHandler(i, ((player, i1, itemStack, clickAction) -> {
-                    player.sendMessage(ChatColors.color("&e该机器类型无法识别,暂不支持查看"));
+                    player.sendMessage(ChatColors.color("&e該機器類型無法識別,暫不支持查看"));
                     return false;
                 }));
             } else {

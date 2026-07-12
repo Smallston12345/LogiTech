@@ -38,12 +38,12 @@ public class HeadAnalyzer extends AbstractMachine {
     protected final int ENCODE_DISPLAY = 16;
     protected final int DECODE_INPUTSLOT = 10;
     protected final ItemStack CHANGE_ITEM = new CustomItemStack(
-            Material.CRAFTING_TABLE, "&e点击转换头颅", "&7当下方为默认头颅时,点击输入hash,可以更改头颅样式", "&7当下方为展示示例头颅或非粘液物品时,将头颅转为默认头颅");
-    protected final ItemStack ENCODE_ITEM = new CustomItemStack(Material.NAME_TAG, "&e点击输入hash", "&7将在下方显示头颅样式");
+            Material.CRAFTING_TABLE, "&e點擊轉換頭顱", "&7當下方為默認頭顱時,點擊輸入hash,可以更改頭顱樣式", "&7當下方為展示示例頭顱或非粘液物品時,將頭顱轉為默認頭顱");
+    protected final ItemStack ENCODE_ITEM = new CustomItemStack(Material.NAME_TAG, "&e點擊輸入hash", "&7將在下方顯示頭顱樣式");
     protected final ItemStack ENCODE_DISPLAY_NULL =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c空", "&c暂未输入hash或者不是有效的hash");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c空", "&c暫未輸入hash或者不是有效的hash");
     protected final ItemStack DECODE_ITEM =
-            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&e点击解析下方头颅", "&7若下方为有效物品,则显示hash", "&3hash: &f空");
+            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&e點擊解析下方頭顱", "&7若下方為有效物品,則顯示hash", "&3hash: &f空");
     protected final ItemMeta BLANK_SKULL = new ItemStack(Material.PLAYER_HEAD).getItemMeta();
 
     private String getHash(ItemStack item) {
@@ -55,7 +55,7 @@ public class HeadAnalyzer extends AbstractMachine {
     private ItemStack getSkull(String string) {
         try {
             return new CustomItemStack(
-                    SlimefunUtils.getCustomHead(string), "&a头颅样式展示品", "&7这是一个展示头颅", "&3hash: &f" + string);
+                    SlimefunUtils.getCustomHead(string), "&a頭顱樣式展示品", "&7這是一個展示頭顱", "&3hash: &f" + string);
         } catch (Throwable t) {
             return ENCODE_DISPLAY_NULL.clone();
         }
@@ -98,7 +98,7 @@ public class HeadAnalyzer extends AbstractMachine {
         blockMenu.addMenuClickHandler(ENCODE_SLOT, ((player, i, itemStack, clickAction) -> {
             player.closeInventory();
 
-            player.sendMessage(ChatColors.color("&e请输入头颅的hash码"));
+            player.sendMessage(ChatColors.color("&e請輸入頭顱的hash碼"));
             ChatInput.waitForPlayer(Slimefun.instance(), player, msg -> {
                 blockMenu.replaceExistingItem(ENCODE_DISPLAY, getSkull(msg));
                 blockMenu.open(player);
@@ -112,7 +112,7 @@ public class HeadAnalyzer extends AbstractMachine {
                 String res = "&3hash: &f" + st;
                 ItemStack it = blockMenu.getItemInSlot(DECODE_SLOT);
                 AddUtils.setLore(it, 1, res);
-                AddUtils.displayCopyString(player, "单击此处拷贝hash码", "点击复制到剪贴板", st);
+                AddUtils.displayCopyString(player, "單擊此處拷貝hash碼", "點擊複製到剪貼板", st);
 
             } else {
                 blockMenu.replaceExistingItem(DECODE_SLOT, DECODE_ITEM);
@@ -125,7 +125,7 @@ public class HeadAnalyzer extends AbstractMachine {
 
                 if (!it.hasItemMeta()) {
                     blockMenu.replaceExistingItem(CHANGE_INPUT, null);
-                    AddUtils.sendMessage(player, "&e请输入头颅的hash码");
+                    AddUtils.sendMessage(player, "&e請輸入頭顱的hash碼");
                     player.closeInventory();
                     ChatInput.waitForPlayer(Slimefun.instance(), player, msg -> {
                         ItemStack it2 = AddItem.SAMPLE_HEAD.clone();
@@ -146,7 +146,7 @@ public class HeadAnalyzer extends AbstractMachine {
                     if (id == null || id.equals(AddItem.SAMPLE_HEAD.getItemId())) {
                         it.setItemMeta(null);
                     } else {
-                        AddUtils.sendMessage(player, "&c不是合法物品,无法清除头颅数据!");
+                        AddUtils.sendMessage(player, "&c不是合法物品,無法清除頭顱數據!");
                     }
                 }
             }

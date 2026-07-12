@@ -56,41 +56,41 @@ public class InverseMachine extends AbstractAdvancedProcessor {
     protected final int INFO_SLOT = 4;
     protected final ItemStack INFO_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&b机制",
-            "&6将要模拟的机器放在下方槽位",
-            "&6机器会进行反向配方合成,其中",
-            "&7<并行处理数>=<机器数*工作效率>",
-            "&7<耗电数>=<机器数量*单个机器耗电/工作效率>",
-            "&6有关高级机器和并行处理数的信息,请见粘液书<版本与说明>",
-            "&6支持的机器可以在粘液书<通用机器类型大全>",
-            "&6或者左边按钮查看",
-            "&6机器支持的反向配方可以点击右侧按钮查看");
-    protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c机器信息", "&7待机中");
+            "&b機制",
+            "&6將要模擬的機器放在下方槽位",
+            "&6機器會進行反向配方合成,其中",
+            "&7<並行處理數>=<機器數*工作效率>",
+            "&7<耗電數>=<機器數量*單個機器耗電/工作效率>",
+            "&6有關高級機器和並行處理數的信息,請見粘液書<版本與説明>",
+            "&6支持的機器可以在粘液書<通用機器類型大全>",
+            "&6或者左邊按鈕查看",
+            "&6機器支持的反向配方可以點擊右側按鈕查看");
+    protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c機器信息", "&7待機中");
     protected final int MACHINEMENU_SLOT = 3;
     protected final int RECIPEMENU_SLOT = 5;
     protected final ItemStack MACHINEMENU_ICON =
-            new CustomItemStack(Material.BLAST_FURNACE, "&b该机器支持的机器列表", "&6点击打开菜单");
+            new CustomItemStack(Material.BLAST_FURNACE, "&b該機器支持的機器列表", "&6點擊打開菜單");
     protected final ItemStack RECIPEMENU_ICON =
-            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b当前模拟的机器配方列表", "&6点击打开菜单");
+            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b當前模擬的機器配方列表", "&6點擊打開菜單");
 
     protected ItemStack getInfoItem(int craftlimit, int energyCost, int charge, double efficiency, String name) {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a机器信息",
-                AddUtils.concat("&7当前模拟的机器名称: ", (name)),
-                "&7当前并行处理数: %-3d".formatted(craftlimit),
-                AddUtils.concat("&7当前工作效率: ", AddUtils.getPercentFormat(efficiency)));
+                "&a機器信息",
+                AddUtils.concat("&7當前模擬的機器名稱: ", (name)),
+                "&7當前並行處理數: %-3d".formatted(craftlimit),
+                AddUtils.concat("&7當前工作效率: ", AddUtils.getPercentFormat(efficiency)));
     }
 
     protected ItemStack getInfoOffItem(int craftlimit, int energyCost, int charge, String name) {
         return new CustomItemStack(
                 Material.RED_STAINED_GLASS_PANE,
-                "&c机器信息",
-                "&c缺少电力!",
-                AddUtils.concat("&7当前模拟的机器名称: ", (name)),
-                "&7当前并行处理数: %-3d".formatted(craftlimit),
-                "&7当前每刻耗电量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
-                "&7当前电量: %sJ".formatted(AddUtils.formatDouble(charge)));
+                "&c機器信息",
+                "&c缺少電力!",
+                AddUtils.concat("&7當前模擬的機器名稱: ", (name)),
+                "&7當前並行處理數: %-3d".formatted(craftlimit),
+                "&7當前每刻耗電量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
+                "&7當前電量: %sJ".formatted(AddUtils.formatDouble(charge)));
     }
 
     protected Double efficiency;
@@ -118,12 +118,12 @@ public class InverseMachine extends AbstractAdvancedProcessor {
         this.efficiency = efficiency;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c反配方",
-                        "&7在界面的机器槽中放入机器",
-                        "&7堆叠机器会载入该机器的&c反向&7配方列表并进行进程",
-                        "&7机器槽中的机器数目决定并行处理数",
-                        "&7堆叠机器并行处理数=<机器数>*<工作效率>",
-                        "&7堆叠机器耗电量=<机器数>*<机器耗电量>"),
+                        "&f機制 - &c反配方",
+                        "&7在界面的機器槽中放入機器",
+                        "&7堆疊機器會載入該機器的&c反向&7配方列表並進行進程",
+                        "&7機器槽中的機器數目決定並行處理數",
+                        "&7堆疊機器並行處理數=<機器數>*<工作效率>",
+                        "&7堆疊機器耗電量=<機器數>*<機器耗電量>"),
                 null));
     }
 
@@ -221,7 +221,7 @@ public class InverseMachine extends AbstractAdvancedProcessor {
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -254,7 +254,7 @@ public class InverseMachine extends AbstractAdvancedProcessor {
                         })
                         .open(player);
             } else {
-                player.sendMessage(ChatColors.color("&e您所放置的机器为空或者为不支持的机器"));
+                player.sendMessage(ChatColors.color("&e您所放置的機器為空或者為不支持的機器"));
                 // player.sendMessage();
             }
             return false;
@@ -275,7 +275,7 @@ public class InverseMachine extends AbstractAdvancedProcessor {
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int[] intdata = new int[2];
 
             public int getInt(int i) {
@@ -344,8 +344,8 @@ public class InverseMachine extends AbstractAdvancedProcessor {
                     historyMachine = null;
                 }
                 if (sfitem == historyMachine) {
-                    // 和历史机器一样
-                    // 设置当前数量
+                    // 和歷史機器一樣
+                    // 設置當前數量
                     db.setInt(0, it.getAmount());
                     int charge = getEnergy(index);
                     db.setInt(1, charge == -1 ? energyConsumption : charge);
@@ -360,7 +360,7 @@ public class InverseMachine extends AbstractAdvancedProcessor {
                             continue;
                         }
                         if (sfitem == item || thisId.equals(item.getId())) {
-                            // 是该机器,设置下标，都不用查了 肯定不一样
+                            // 是該機器,設置下標，都不用查了 肯定不一樣
                             MultiCraftType.forceSetRecipeTypeIndex(data, i);
                             int charge = getEnergy(i);
                             //  DataCache.setCustomData(data,"mae",charge==-1?energyConsumption:charge);
@@ -369,22 +369,22 @@ public class InverseMachine extends AbstractAdvancedProcessor {
                             return;
                         }
                     }
-                } // 找不到,给你机会你不重用啊
+                } // 找不到,給你機會你不重用啊
             }
         }
-        if (index != -1) // 即将变成-1,不一样才变,不用重复查询
+        if (index != -1) // 即將變成-1,不一樣才變,不用重複查詢
         MultiCraftType.forceSetRecipeTypeIndex(data, -1);
         db.setInt(0, 0);
         db.setInt(1, 0);
     }
 
     public void tick(Block b, @Nullable BlockMenu inv, SlimefunBlockData data, int tickCount) {
-        // 首先 加载
+        // 首先 加載
         if (inv.hasViewer()) {
             updateMenu(inv, b, Settings.RUN);
         }
         int index = MultiCraftType.getRecipeTypeIndex(data);
-        if (index >= 0 && index < getListSize()) { // 有效机器
+        if (index >= 0 && index < getListSize()) { // 有效機器
             DataMenuClickHandler db = this.getDataHolder(b, inv);
             int charge = db.getInt(1);
             int craftLimit = db.getInt(0);
@@ -406,7 +406,7 @@ public class InverseMachine extends AbstractAdvancedProcessor {
                 }
                 process(b, inv, data);
             } else {
-                // 没电
+                // 沒電
                 if (inv.hasViewer()) {
                     DataMenuClickHandler dh = getDataHolder(b, inv);
                     inv.replaceExistingItem(

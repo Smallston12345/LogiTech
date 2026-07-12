@@ -51,16 +51,16 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
         37, 38, 39, 40, 41, 42, 43
     };
     protected final ItemStack NO_MULTIBLOCK_ITEM =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c待机中", "&7没有接入多方块结构");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c待機中", "&7沒有接入多方塊結構");
 
     public static enum SmithOperation {
-        // 原修饰
+        // 原修飾
         TRIM,
-        // 原升级
+        // 原升級
         TRANSFORM,
         // 全要
         BOTH;
-        // 剩下的呢?还么想好
+        // 剩下的呢?還麼想好
         SmithOperation() {}
     }
 
@@ -72,11 +72,11 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
     public static final CustomRecipeType INTERFACED_DISPLAY_USE = new CustomRecipeType(
             AddUtils.getNameKey("interfaced-display-use"),
             AddUtils.addGlow(new CustomItemStack(
-                    Material.TARGET, "&a锻铸作坊配方", "&7该配方需要在", "&e\"锻造合成端口\"", "&7邻接的工作台中合成", "&c该配方仅作示意图用")));
+                    Material.TARGET, "&a鍛鑄作坊配方", "&7該配方需要在", "&e\"鍛造合成端口\"", "&7鄰接的工作台中合成", "&c該配方僅作示意圖用")));
     public static final CustomRecipeType INTERFACED_CRAFTTABLE = new CustomRecipeType(
                     AddUtils.getNameKey("interfaced-craft-table"),
                     AddUtils.addGlow(new CustomItemStack(
-                            Material.CRAFTING_TABLE, "&a锻铸作坊配方", "&7该配方需要在", "&e\"锻造合成端口\"", "&7邻接的工作台中合成")))
+                            Material.CRAFTING_TABLE, "&a鍛鑄作坊配方", "&7該配方需要在", "&e\"鍛造合成端口\"", "&7鄰接的工作台中合成")))
             .relatedTo(
                     (in, out) -> {
                         interfacedCrafttableRecipes.add(
@@ -89,11 +89,11 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
     public static final CustomRecipeType INTERFACED_ANVIL = new CustomRecipeType(
             AddUtils.getNameKey("interfaced-anvil-icon"),
             AddUtils.addGlow(
-                    new CustomItemStack(Material.ANVIL, "&a锻铸作坊配方", "&7该配方需要在", "&e\"锻造合成端口\"", "&7邻接的铁砧中操作")));
+                    new CustomItemStack(Material.ANVIL, "&a鍛鑄作坊配方", "&7該配方需要在", "&e\"鍛造合成端口\"", "&7鄰接的鐵砧中操作")));
     public static final CustomRecipeType INTERFACED_SMITH_TRIM = new CustomRecipeType(
                     AddUtils.getNameKey("interfaced-smith-icon-trim"),
                     AddUtils.addGlow(new CustomItemStack(
-                            Material.SMITHING_TABLE, "&a锻铸作坊配方", "&7该配方需要在", "&e\"锻造合成端口\"", "&7邻接的锻造台中强化")))
+                            Material.SMITHING_TABLE, "&a鍛鑄作坊配方", "&7該配方需要在", "&e\"鍛造合成端口\"", "&7鄰接的鍛造台中強化")))
             .relatedTo(
                     (input, output) -> {
                         // send to vanilla
@@ -123,7 +123,7 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
     public static final CustomRecipeType INTERFACED_SMITH_UPDATE = new CustomRecipeType(
                     AddUtils.getNameKey("interfaced-smith-icon-update"),
                     AddUtils.addGlow(new CustomItemStack(
-                            Material.SMITHING_TABLE, "&a锻铸作坊配方", "&7该配方需要在", "&e\"锻造合成端口\"", "&7邻接的锻造台中升级")))
+                            Material.SMITHING_TABLE, "&a鍛鑄作坊配方", "&7該配方需要在", "&e\"鍛造合成端口\"", "&7鄰接的鍛造台中升級")))
             .relatedTo(
                     (input, output) -> {
                         // send to vanilla
@@ -145,8 +145,8 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
     public static final CustomRecipeType INTERFACED_GRIND = new CustomRecipeType(
             AddUtils.getNameKey("interfaced-gride"),
             AddUtils.addGlow(
-                    new CustomItemStack(Material.GRINDSTONE, "&a锻铸作坊配方", "&7该配方需要在", "&e\"锻造合成端口\"", "&7邻接的砂轮中进行")));
-    // 感觉这玩意问题挺大
+                    new CustomItemStack(Material.GRINDSTONE, "&a鍛鑄作坊配方", "&7該配方需要在", "&e\"鍛造合成端口\"", "&7鄰接的砂輪中進行")));
+    // 感覺這玩意問題挺大
     @Getter
     private static HashSet<Function<AnvilInventory, Supplier<MultiCraftingOperation>>> anvilLogics =
             new LinkedHashSet<>();
@@ -158,7 +158,7 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
     @Getter
     private static EnumMap<SmithOperation, HashSet<Function<SmithingInventory, Supplier<MultiCraftingOperation>>>>
             smithLogics = new EnumMap<>(SmithOperation.class);
-    // operation是干啥的？
+    // operation是幹啥的？
     public static void registerSmithLogic(
             Function<SmithingInventory, Supplier<MultiCraftingOperation>> smithCraft, SmithOperation operation) {
         smithLogics.computeIfAbsent(operation, k -> new LinkedHashSet<>()).add(smithCraft);
@@ -384,13 +384,13 @@ public class SmithInterfaceProcessor extends SmithingInterface implements Machin
         this.processor.setProgressBar(AddUtils.addGlow(new ItemStack(Material.CHIPPED_ANVIL)));
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                                "&f机制",
-                                "&7该机器需要位于锻铸工坊结构中方可运行",
-                                "&7将原版工作方块(如工作台,铁砧,锻造台)等置于其左右邻接的方块",
-                                "&7即可在工作方块中制作特殊的配方",
-                                "&7或者执行特殊的操作",
-                                "&7其结果将被输出至该机器运行",
-                                "&e若是操作结果需要等待时间,则该机器需要电力以执行进程"),
+                                "&f機制",
+                                "&7該機器需要位於鍛鑄工坊結構中方可運行",
+                                "&7將原版工作方塊(如工作台,鐵砧,鍛造台)等置於其左右鄰接的方塊",
+                                "&7即可在工作方塊中製作特殊的配方",
+                                "&7或者執行特殊的操作",
+                                "&7其結果將被輸出至該機器運行",
+                                "&e若是操作結果需要等待時間,則該機器需要電力以執行進程"),
                         null,
                 INTERFACED_CRAFTTABLE.toItem(), null,
                 INTERFACED_ANVIL.toItem(), null,

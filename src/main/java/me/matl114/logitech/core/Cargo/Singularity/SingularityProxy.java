@@ -77,13 +77,13 @@ public class SingularityProxy extends StorageType implements LocationProxy {
         // only when this loc is in cache map
         ItemStorageCache cache = getCache(meta);
         return cache != null && !cache.isNotValid();
-        // 废弃后不会删除 但是无法读取 就只能卡在这
-        // 防止有人移走存储目标然后再使用它读取卡bug
+        // 廢棄後不會刪除 但是無法讀取 就只能卡在這
+        // 防止有人移走存儲目標然後再使用它讀取卡bug
         // return getCache(meta)!=null;
     }
 
     public boolean canStorage(ItemMeta meta) {
-        // 该位置禁止
+        // 該位置禁止
         return false;
     }
 

@@ -57,7 +57,7 @@ public class Language {
             Map.Entry<String, Object> entry = it.next();
             entry.setValue(replacePlaceHolder(entry.getValue()));
         }
-        Debug.logger("语言配置加载完毕");
+        Debug.logger("語言配置加載完畢");
         return true;
     }
 

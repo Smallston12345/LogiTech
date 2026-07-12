@@ -32,30 +32,30 @@ public class RegisteryLogger extends AbstractMachine {
     protected final int CHOOSE_SLOT = 7;
     protected final int TOGGLE_RECIPE = 25;
     protected final int ID_SLOT = 15;
-    protected final ItemStack ID_ITEM = new CustomItemStack(Material.PAPER, "&a点击输入SlimefunID");
-    protected final ItemStack USE_RECIPE = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a使用该配方注册");
-    protected final ItemStack DEFAULT_RECIPE = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a使用默认配方注册");
+    protected final ItemStack ID_ITEM = new CustomItemStack(Material.PAPER, "&a點擊輸入SlimefunID");
+    protected final ItemStack USE_RECIPE = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a使用該配方註冊");
+    protected final ItemStack DEFAULT_RECIPE = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a使用默認配方註冊");
     protected final ItemStack[] CHOOSE_ITEM = new ItemStack[] {
         new CustomItemStack(Material.GRASS_BLOCK, "&a生成: 普通材料"),
-        new CustomItemStack(Material.FURNACE, "&a生成: 普通机器模板"),
+        new CustomItemStack(Material.FURNACE, "&a生成: 普通機器模板"),
         new CustomItemStack(Material.DIAMOND_BLOCK, "&a生成: 普通生成器模板"),
         new CustomItemStack(Material.EMERALD, "&a生成: 普通定向模板"),
         new CustomItemStack(Material.CRAFTING_TABLE, "&a生成: 普通快捷"),
         new CustomItemStack(Material.PAPER, "&a生成: 普通物品"),
-        new CustomItemStack(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE, "&a生成: FU单元")
+        new CustomItemStack(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE, "&a生成: FU單元")
     };
 
     protected final ItemStack LANGUAGE_ITEM =
-            new CustomItemStack(Material.WRITABLE_BOOK, "&a点击打印本附属语言文件模板", "&7开发者专用", "&7因为其他人也不用这格式");
+            new CustomItemStack(Material.WRITABLE_BOOK, "&a點擊打印本附屬語言文件模板", "&7開發者專用", "&7因為其他人也不用這格式");
     protected final int LANGUAGE_SLOT = 8;
     protected final ItemStack ADDITEM_ITEM =
-            new CustomItemStack(Material.BEACON, "&a点击打印本附属物品注册模板", "&7开发者专用", "&7因为其他人也不用这格式");
+            new CustomItemStack(Material.BEACON, "&a點擊打印本附屬物品註冊模板", "&7開發者專用", "&7因為其他人也不用這格式");
     protected final int ADDITEM_SLOT = 17;
     protected final ItemStack ADDSFITEM_ITEM =
-            new CustomItemStack(Material.SLIME_BLOCK, "&a点击打印本附属粘液物品注册模板", "&7开发者专用", "&7因为其他人也不用这格式");
+            new CustomItemStack(Material.SLIME_BLOCK, "&a點擊打印本附屬粘液物品註冊模板", "&7開發者專用", "&7因為其他人也不用這格式");
     protected final int ADDSFITEM_SLOT = 26;
     protected final ItemStack LOGGER_ITEM =
-            new CustomItemStack(Material.COMMAND_BLOCK, "&a点击打印本附属格式化配方注册字符串", "&7开发者专用", "&7因为其他人也不用这格式");
+            new CustomItemStack(Material.COMMAND_BLOCK, "&a點擊打印本附屬格式化配方註冊字符串", "&7開發者專用", "&7因為其他人也不用這格式");
     protected final String LANGUAGE_CODE = "%s:\n" + "      Name: ''\n" + "      Lore:\n" + "        - ''";
     protected final String DEFAULT_RECIPE_CODE = "formatInfoRecipe(AddItem.TMP1,get(\"Tmp.TMP1.Name\"))";
     protected final String[] ADDITEM_CODE = new String[] {
@@ -181,7 +181,7 @@ public class RegisteryLogger extends AbstractMachine {
         }
         blockMenu.addMenuClickHandler(LOGGER_SLOT, ((player, i, itemStack, clickAction) -> {
             String recipeString = getRecipeString(blockMenu, READING_SLOT);
-            AddUtils.displayCopyString(player, "单击此处拷贝recipe字符串", "点击复制到剪贴板", recipeString);
+            AddUtils.displayCopyString(player, "單擊此處拷貝recipe字符串", "點擊複製到剪貼板", recipeString);
             return false;
         }));
         if (blockMenu.getItemInSlot(CHOOSE_SLOT) == null) {
@@ -211,10 +211,10 @@ public class RegisteryLogger extends AbstractMachine {
             return false;
         }));
         blockMenu.addMenuClickHandler(ID_SLOT, ((player, i, itemStack, clickAction) -> {
-            AddUtils.sendMessage(player, "&e请输入新物品的slimefunID");
+            AddUtils.sendMessage(player, "&e請輸入新物品的slimefunID");
             player.closeInventory();
             AddUtils.asyncWaitPlayerInput(player, (msg) -> {
-                // displayCopyString(player,"点击拷贝语言配置文件框架","点击复制到剪贴板",LANGUAGE_CODE.formatted(msg));
+                // displayCopyString(player,"點擊拷貝語言配置文件框架","點擊複製到剪貼板",LANGUAGE_CODE.formatted(msg));
                 setRecordId(blockMenu.getLocation(), msg);
                 blockMenu.open(player);
             });
@@ -222,7 +222,7 @@ public class RegisteryLogger extends AbstractMachine {
         }));
         blockMenu.addMenuClickHandler(LANGUAGE_SLOT, ((player, i, itemStack, clickAction) -> {
             AddUtils.displayCopyString(
-                    player, "点击拷贝语言配置文件框架", "点击复制到剪贴板", LANGUAGE_CODE.formatted(getRecordId(blockMenu.getLocation())));
+                    player, "點擊拷貝語言配置文件框架", "點擊複製到剪貼板", LANGUAGE_CODE.formatted(getRecordId(blockMenu.getLocation())));
             return false;
         }));
         blockMenu.addMenuClickHandler(ADDITEM_SLOT, ((player, i, itemStack, clickAction) -> {
@@ -240,7 +240,7 @@ public class RegisteryLogger extends AbstractMachine {
                 material = "null";
             }
             AddUtils.displayCopyString(
-                    player, "点击拷贝物品注册代码", "点击复制到剪贴板", ADDITEM_CODE[index].formatted(id, id, material, id, id));
+                    player, "點擊拷貝物品註冊代碼", "點擊複製到剪貼板", ADDITEM_CODE[index].formatted(id, id, material, id, id));
             return false;
         }));
         blockMenu.addMenuClickHandler(ADDSFITEM_SLOT, ((player, i, itemStack, clickAction) -> {
@@ -257,7 +257,7 @@ public class RegisteryLogger extends AbstractMachine {
                 recipe = getRecipeString(blockMenu, READING_SLOT);
             }
             AddUtils.displayCopyString(
-                    player, "点击拷贝物品注册代码", "点击复制到剪贴板", ADDSFITEM_CODE[index].formatted(id, id, recipe));
+                    player, "點擊拷貝物品註冊代碼", "點擊複製到剪貼板", ADDSFITEM_CODE[index].formatted(id, id, recipe));
             return false;
         }));
     }

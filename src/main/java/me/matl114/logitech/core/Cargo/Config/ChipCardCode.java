@@ -18,7 +18,7 @@ public class ChipCardCode {
     /**
      *
      */
-    public static final String LORE_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B芯片内存: &f");
+    public static final String LORE_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B芯片內存: &f");
 
     public static final NamespacedKey KEY_LOC = AddUtils.getNameKey("chip_config");
     public static final String LORE_MATCH = AddUtils.resolveColor("&8⇨ &3Code:&f ");

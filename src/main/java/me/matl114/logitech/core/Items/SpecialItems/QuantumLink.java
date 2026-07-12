@@ -27,42 +27,42 @@ public class QuantumLink extends DataRecordedItem {
         super(itemGroup, item, recipeType, recipe, new ArrayList<>());
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c终极合成",
+                        "&f機制 - &c終極合成",
                         "&c特性 ",
-                        "&7终极合成是本附属某些终极机器中的机制",
-                        "&c具体说明请看\"版本与说明\"分类中的信息",
-                        "&7直白了说是让物品存储中的物品直接参与合成/进程",
-                        "&7从而打破槽位限制",
-                        "&7该物品是终极机器支持的物品之一",
-                        "&a建议:推荐使用该物品绑定存储性方块放入终极机器,方便且会降低卡顿!"),
+                        "&7終極合成是本附屬某些終極機器中的機制",
+                        "&c具體説明請看\"版本與説明\"分類中的信息",
+                        "&7直白了説是讓物品存儲中的物品直接參與合成/進程",
+                        "&7從而打破槽位限制",
+                        "&7該物品是終極機器支持的物品之一",
+                        "&a建議:推薦使用該物品綁定存儲性方塊放入終極機器,方便且會降低卡頓!"),
                 null,
                 AddUtils.getInfoShow(
-                        "&7机制 -&c 代理存储",
-                        "&7本物品可以类似%s一样绑定某个方块".formatted(Language.get("Items.HYPER_LINK.Name")),
-                        "&7若该方块是支持的存储性方块,则该物品会与此存储建立纠缠链接",
-                        "&7当该物品被放入终极机器的槽位中时,",
-                        "&7可以代理绑定的存储中的物品&e直接参与合成!",
-                        "&7产出的物品也可以通过它&e直接进入绑定的存储!",
-                        "&7支持的存储性方块:",
-                        "&7逻辑工艺 存储接口系列",
-                        "&7网络(拓展) 量子存储系列"),
+                        "&7機制 -&c 代理存儲",
+                        "&7本物品可以類似%s一樣綁定某個方塊".formatted(Language.get("Items.HYPER_LINK.Name")),
+                        "&7若該方塊是支持的存儲性方塊,則該物品會與此存儲建立糾纏鏈接",
+                        "&7當該物品被放入終極機器的槽位中時,",
+                        "&7可以代理綁定的存儲中的物品&e直接參與合成!",
+                        "&7產出的物品也可以通過它&e直接進入綁定的存儲!",
+                        "&7支持的存儲性方塊:",
+                        "&7邏輯工藝 存儲接口系列",
+                        "&7網絡(拓展) 量子存儲系列"),
                 null,
                 AddUtils.getInfoShow(
-                        "&7机制 -&c 纠缠记录",
-                        "&7当绑定了存储后",
-                        "&7该物品的描述上会显示该绑定存储中的物品类型",
-                        "&7当你右键该物品时,该显示将被更新为当前的绑定存储的物品类型",
-                        "&7除此之外,该物品描述将不会更新,也不会影响其参与合成",
-                        "&7参与合成时所代理的存储只与存储位置有关,与描述无关"),
+                        "&7機制 -&c 糾纏記錄",
+                        "&7當綁定了存儲後",
+                        "&7該物品的描述上會顯示該綁定存儲中的物品類型",
+                        "&7當你右鍵該物品時,該顯示將被更新為當前的綁定存儲的物品類型",
+                        "&7除此之外,該物品描述將不會更新,也不會影響其參與合成",
+                        "&7參與合成時所代理的存儲只與存儲位置有關,與描述無關"),
                 null,
                 AddUtils.getInfoShow(
-                        "&7机制 -&c 报错",
-                        "&e如果网络版本不兼容或使用了错误的测试版,会造成报错",
-                        "&7如果使用绑定量子存储的该物品进行合成时,出现合成不成功的情况",
-                        "&7很可能这是量子存储数据不兼容或者错误版本导致的问题",
-                        "&e请立刻将其移出槽位",
-                        "&7并判断是存储数据损坏问题还是网络版本问题",
-                        "&7若累计报错达到一定数目,将会禁用该兼容"),
+                        "&7機制 -&c 報錯",
+                        "&e如果網絡版本不兼容或使用了錯誤的測試版,會造成報錯",
+                        "&7如果使用綁定量子存儲的該物品進行合成時,出現合成不成功的情況",
+                        "&7很可能這是量子存儲數據不兼容或者錯誤版本導致的問題",
+                        "&e請立刻將其移出槽位",
+                        "&7並判斷是存儲數據損壞問題還是網絡版本問題",
+                        "&7若累計報錯達到一定數目,將會禁用該兼容"),
                 null));
     }
 
@@ -82,9 +82,9 @@ public class QuantumLink extends DataRecordedItem {
                     if (WorldUtils.hasPermission(event.getPlayer(), b.get(), Interaction.INTERACT_BLOCK)) {
                         StorageLink.setLink(im, b.get().getLocation());
                         it.setItemMeta(im);
-                        AddUtils.sendMessage(event.getPlayer(), "&a成功建立纠缠链接,存储历史记录已刷新!");
+                        AddUtils.sendMessage(event.getPlayer(), "&a成功建立糾纏鏈接,存儲歷史記錄已刷新!");
                     } else {
-                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎并不能在该位置使用此物品.");
+                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎並不能在該位置使用此物品.");
                     }
                 }
             }
@@ -97,7 +97,7 @@ public class QuantumLink extends DataRecordedItem {
                 if (loc != null) {
                     StorageLink.updateLinkLocationDisplay(im, loc);
                     it.setItemMeta(im);
-                    AddUtils.sendMessage(event.getPlayer(), "&a纠缠链接的历史记录已经刷新!");
+                    AddUtils.sendMessage(event.getPlayer(), "&a糾纏鏈接的歷史記錄已經刷新!");
                     if (WorldUtils.hasPermission(event.getPlayer(), loc, Interaction.INTERACT_BLOCK)) {
                         SlimefunBlockData data = DataCache.safeLoadBlock(loc);
                         if (data != null) {
@@ -105,7 +105,7 @@ public class QuantumLink extends DataRecordedItem {
                             if (menu != null) menu.open(event.getPlayer());
                         }
                     } else {
-                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎并没有访问该位置的权限.");
+                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎並沒有訪問該位置的權限.");
                     }
                 }
             }

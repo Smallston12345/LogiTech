@@ -2,38 +2,38 @@ package me.matl114.logitech.utils.UtilClass.CargoClass;
 
 public enum CargoConfigs {
     /**
-     * 是否强对称
+     * 是否強對稱
      */
     IS_SYMM(0),
     /**
-     * 是否仅空
+     * 是否僅空
      */
     IS_NULL(1),
     /**
-     * 是否首位阻断 即只运输一次就停止
+     * 是否首位阻斷 即只運輸一次就停止
      */
     IS_LAZY(2),
     /**
-     * 是否使用黑名单,若否则使用白名单
+     * 是否使用黑名單,若否則使用白名單
      */
     IS_WHITELST(3),
     /**
-     * 是否从源头的输入槽输入，默认否 为输出槽
+     * 是否從源頭的輸入槽輸入，默認否 為輸出槽
      */
     REVERSE(6),
     FROM_INPUT_FIRST(4),
     /**
-     * 是否从目标的输出槽输入，默认否 为输入槽
+     * 是否從目標的輸出槽輸入，默認否 為輸入槽
      */
     TO_OUTPUT_FIRST(5),
     FROM_REVERSED(30),
     TO_REVERSED(29),
     /**
-     * 是否反向传输,即从设置的目标向源头传输
+     * 是否反向傳輸,即從設置的目標向源頭傳輸
      */
 
     /**
-     *传输数量 ，最大2^16
+     *傳輸數量 ，最大2^16
      */
     TRANSLIMIT(7, 16),
     /**

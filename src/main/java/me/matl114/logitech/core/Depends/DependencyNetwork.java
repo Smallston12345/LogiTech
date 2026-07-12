@@ -62,10 +62,10 @@ public class DependencyNetwork {
 
     public static void init() {
         if (AddDepends.hasNetwork) {
-            Debug.logger("已检测到网络附属");
+            Debug.logger("已檢測到網絡附屬");
         }
         if (AddDepends.hasNetworkExpansion) {
-            Debug.logger("已检测到网络拓展");
+            Debug.logger("已檢測到網絡拓展");
         }
     }
 }

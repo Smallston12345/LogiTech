@@ -27,8 +27,8 @@ public class NetworksQuantumStorageAdapter extends StorageType {
 
     @Override
     public boolean canStorage(ItemMeta meta) {
-        // 我们不帮网络存储设置类型 。
-        // 该方法只在设置类型的时候被调用
+        // 我們不幫網絡存儲設置類型 。
+        // 該方法只在設置類型的時候被調用
         return false;
         //        if(AddDepends.NETWORKSQUANTUMSTORAGE==null){
         //            return false;
@@ -42,7 +42,7 @@ public class NetworksQuantumStorageAdapter extends StorageType {
 
     @Override
     public boolean canStorage(SlimefunItem item) {
-        // 我们不帮网络存储设置类型 。
+        // 我們不幫網絡存儲設置類型 。
         return false;
         //        if(AddDepends.NETWORKSQUANTUMSTORAGE==null){
         //            return false;
@@ -94,7 +94,7 @@ public class NetworksQuantumStorageAdapter extends StorageType {
 
     @Override
     public void setStorage(ItemMeta meta, ItemStack content) {
-        // 我们不帮网络存储设置类型 。
+        // 我們不幫網絡存儲設置類型 。
         //        DataTypeMethods.setCustom(meta, Keys.QUANTUM_STORAGE_INSTANCE, PersistentQuantumStorageType.TYPE,
         // cache);
         //        cache.addMetaLore(itemMeta);

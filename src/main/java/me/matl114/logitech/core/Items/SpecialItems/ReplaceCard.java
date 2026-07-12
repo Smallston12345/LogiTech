@@ -50,7 +50,7 @@ public class ReplaceCard extends DataRecordedItem {
     public ReplaceCard(
             ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ReplaceType type) {
         super(itemGroup, item, recipeType, recipe);
-        this.setDisplayRecipes(Utils.list(AddUtils.getInfoShow("&f机制", "&7可以在快捷机器中替代其中记录的不可堆叠物品", "&7桶类物品会在合成之后返还铁桶")));
+        this.setDisplayRecipes(Utils.list(AddUtils.getInfoShow("&f機制", "&7可以在快捷機器中替代其中記錄的不可堆疊物品", "&7桶類物品會在合成之後返還鐵桶")));
         this.type = type;
         instances.add(this);
     }

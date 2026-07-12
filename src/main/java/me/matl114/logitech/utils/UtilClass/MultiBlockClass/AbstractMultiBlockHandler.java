@@ -17,14 +17,14 @@ public interface AbstractMultiBlockHandler {
      * @return
      */
     public boolean isActive();
-    // 响应部件信号
+    // 響應部件信號
     public void toggleOff(MultiBlockService.DeleteCause cause);
     /**
      * accept in part ticks
      * @param loc
      */
     public void acceptPartRequest(Location loc);
-    // 响应主核信号 返回是否还正常
+    // 響應主核信號 返回是否還正常
 
     /**
      * accept in core ticks,check if active and return boolean value,when active is down, return false,

@@ -12,13 +12,13 @@ import org.bukkit.inventory.ItemStack;
 
 public interface DirectionalBlock {
     static ItemStack[] DIRECTION_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 无"),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向北")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向西")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向南")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向东")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向上")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向下"))
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 無"),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向北")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向西")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向南")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向東")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向上")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向下"))
     };
     // keep index num
     String[] getSaveKeys();
@@ -84,7 +84,7 @@ public interface DirectionalBlock {
     default boolean canModify() {
         return true;
     }
-    // 返回拷贝的数量
+    // 返回拷貝的數量
     default int pasteDirectionSettings(SlimefunBlockData data, Directions[] dir) {
         if (this.canModify()) {
             String[] saveKeys = getSaveKeys();

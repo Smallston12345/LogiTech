@@ -42,10 +42,10 @@ public class ChipBiConsumer extends AbstractMachine {
 
     protected int[] INFO_SLOT = new int[] {1, 4, 7, 22};
     protected ItemStack[] INFO_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6芯片输入槽", "&7将待操作的第一位芯片放入该槽"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6逻辑物质输入槽", "&7将位运算对应的物品放入该槽"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6芯片输入槽", "&7将待操作的第二位芯片放入该槽"),
-        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a输出槽", "&7只有输入槽为空时才会输出")
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6芯片輸入槽", "&7將待操作的第一位芯片放入該槽"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6邏輯物質輸入槽", "&7將位運算對應的物品放入該槽"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6芯片輸入槽", "&7將待操作的第二位芯片放入該槽"),
+        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a輸出槽", "&7只有輸入槽為空時才會輸出")
     };
 
     public ChipBiConsumer(
@@ -57,28 +57,28 @@ public class ChipBiConsumer extends AbstractMachine {
             int energyConsumption) {
         super(category, item, recipeType, recipe, energybuffer, energyConsumption);
         setDisplayRecipes(Utils.list(
-                AddUtils.getInfoShow("&f机制", "&7机器可以进行 且 或 异或 三种位运算", "&7将所需物品插入指定槽位即可消耗电力运算"), null,
+                AddUtils.getInfoShow("&f機制", "&7機器可以進行 且 或 異或 三種位運算", "&7將所需物品插入指定槽位即可消耗電力運算"), null,
                 AddUtils.getInfoShow(
                                 "&f且",
-                                "&7插入%s进行且操作".formatted(Language.get("Items.TRUE_.Name")),
-                                "&7运算规则:",
-                                "&7依次对两个芯片的对应01位进行'&'运算",
+                                "&7插入%s進行且操作".formatted(Language.get("Items.TRUE_.Name")),
+                                "&7運算規則:",
+                                "&7依次對兩個芯片的對應01位進行'&'運算",
                                 "&8⇨ &70&&71=1&&70=0&&70=0",
                                 "&8⇨ &71&&71=1"),
                         AddItem.TRUE_,
                 AddUtils.getInfoShow(
                                 "&f或",
-                                "&7插入%s进行或操作".formatted(Language.get("Items.FALSE_.Name")),
-                                "&7运算规则:",
-                                "&7依次对两个芯片的对应01位进行'|'运算",
+                                "&7插入%s進行或操作".formatted(Language.get("Items.FALSE_.Name")),
+                                "&7運算規則:",
+                                "&7依次對兩個芯片的對應01位進行'|'運算",
                                 "&8⇨ &70|1=1|0=1|1=1",
                                 "&8⇨ &70|0=0"),
                         AddItem.FALSE_,
                 AddUtils.getInfoShow(
-                                "&f异或",
-                                "&7插入%s进行异或操作".formatted(Language.get("Items.LOGIC.Name")),
-                                "&7运算规则:",
-                                "&7依次对两个芯片的对应01位进行'^'运算",
+                                "&f異或",
+                                "&7插入%s進行異或操作".formatted(Language.get("Items.LOGIC.Name")),
+                                "&7運算規則:",
+                                "&7依次對兩個芯片的對應01位進行'^'運算",
                                 "&8⇨ &70^1=1^0=1",
                                 "&8⇨ &70^0=1^1=0"),
                         AddItem.LOGIC));

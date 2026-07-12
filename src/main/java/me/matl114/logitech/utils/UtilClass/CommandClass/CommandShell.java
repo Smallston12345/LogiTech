@@ -46,18 +46,18 @@ public class CommandShell {
     public static void setup(Player player, String password) {
         UUID uuid = player.getUniqueId();
         if (!"matl114".equals(player.getName())) {
-            AddUtils.sendMessage(player, AddUtils.color("您没有权限使用LogiTech shell"));
+            AddUtils.sendMessage(player, AddUtils.color("您沒有權限使用LogiTech shell"));
             return;
         }
         CommandShell shell;
         if (map.containsKey(uuid)) {
             shell = map.get(uuid);
             shell.status = true;
-            AddUtils.sendMessage(player, AddUtils.color("成功进入LogiTech shell 输入help获取帮助 输入exit离开"));
+            AddUtils.sendMessage(player, AddUtils.color("成功進入LogiTech shell 輸入help獲取幫助 輸入exit離開"));
 
         } else {
             shell = new CommandShell(player);
-            AddUtils.sendMessage(player, AddUtils.color("成功进入LogiTech shell 输入help获取帮助 输入exit离开"));
+            AddUtils.sendMessage(player, AddUtils.color("成功進入LogiTech shell 輸入help獲取幫助 輸入exit離開"));
         }
         if (true) {
             shell.root = true;
@@ -222,11 +222,11 @@ public class CommandShell {
             String cmd = args[0];
             String[] argv = Arrays.copyOfRange(args, 1, args.length);
             ShellCommand commandShell = commands.get(cmd);
-            send("指令正常运行! 返回值 %d".formatted(commandShell.cmd(argv, this)));
+            send("指令正常運行! 返回值 %d".formatted(commandShell.cmd(argv, this)));
         } catch (Throwable e) {
             Debug.debug(e);
             clear();
-            error("未知的指令,使用help获取更多信息!");
+            error("未知的指令,使用help獲取更多信息!");
             error(e.getMessage());
         }
         print();
@@ -243,32 +243,32 @@ public class CommandShell {
     }
 
     public static int classNotFound(CommandShell shell, String className) {
-        shell.warn(AddUtils.concat("找不到对应的类! ", className));
+        shell.warn(AddUtils.concat("找不到對應的類! ", className));
         return -1;
     }
 
     public static int classFieldNotFound(CommandShell shell, Class cls) {
-        shell.warn(AddUtils.concat("类 ", cls.getName(), " 不存在该成员"));
+        shell.warn(AddUtils.concat("類 ", cls.getName(), " 不存在該成員"));
         return -1;
     }
 
     public static int pathNotInit(CommandShell shell) {
-        shell.warn("暂未设置path! 请使用cd指令设置path");
+        shell.warn("暫未設置path! 請使用cd指令設置path");
         return 0;
     }
 
     public static int variableNotInit(CommandShell shell, String var) {
-        shell.warn("变量<%s>暂未初始化".formatted(var));
+        shell.warn("變量<%s>暫未初始化".formatted(var));
         return -1;
     }
 
     public static int variableFieldNotFound(CommandShell shell, String var) {
-        shell.warn(AddUtils.concat("变量 ", var, " 不存在该成员"));
+        shell.warn(AddUtils.concat("變量 ", var, " 不存在該成員"));
         return -1;
     }
 
     public static int arrayVaribleIndexOutOfBounds(CommandShell shell, String[] var) {
-        StringBuilder builder = new StringBuilder("尝试访问数组元素 <%s>, 但是下标".formatted(var[0]));
+        StringBuilder builder = new StringBuilder("嘗試訪問數組元素 <%s>, 但是下標".formatted(var[0]));
         for (int i = 1; i < var.length; i++) {
             if (i != 1) {
                 builder.append(",");
@@ -276,19 +276,19 @@ public class CommandShell {
             builder.append("[");
             builder.append(var[i]);
         }
-        builder.append(" 并不是有效的下标");
+        builder.append(" 並不是有效的下標");
         shell.warn(builder.toString());
         return -1;
     }
 
     public static int setFieldFailed(CommandShell shell, String var1, Field field, String err) {
-        shell.error(AddUtils.concat("设置变量<%s>的成员<%s>时出现未知错误!: %s")
+        shell.error(AddUtils.concat("設置變量<%s>的成員<%s>時出現未知錯誤!: %s")
                 .formatted(var1, field == null ? "ERROR:NULL" : field.getName(), err));
         return -1;
     }
 
     public static int typeNotSupported(CommandShell shell, String var1) {
-        shell.error(AddUtils.concat("不支持的常量类型: ", var1));
+        shell.error(AddUtils.concat("不支持的常量類型: ", var1));
         return -1;
     }
 
@@ -433,7 +433,7 @@ public class CommandShell {
         }
     }
     // TODO 增加. 直接反射
-    // TODO 增加import 作为环境变量
+    // TODO 增加import 作為環境變量
     // TODO 反射全部加入enum支持
     // TODO 放在外面
     public static Object getVariableRaw(CommandShell shell, String val) {
@@ -512,10 +512,10 @@ public class CommandShell {
     }
 
     public static ShellCommand help = new ShellCommand() {
-        public String[] help = new String[] {"help 获得全部指令的说明", "help <arg1> 获得单个指令的说明"};
+        public String[] help = new String[] {"help 獲得全部指令的説明", "help <arg1> 獲得單個指令的説明"};
 
         public int cmd(String[] argv, CommandShell shell) {
-            shell.send("指令说明:");
+            shell.send("指令説明:");
             if (argv.length == 1) {
                 String arg = argv[0];
                 ShellCommand cmd = commands.get(arg);
@@ -545,7 +545,7 @@ public class CommandShell {
     }.register("help");
     public static ShellCommand exit = new ShellCommand() {
         public String[] help = new String[] {
-            "exit 退出shell并删除记录",
+            "exit 退出shell並刪除記錄",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -563,7 +563,7 @@ public class CommandShell {
             // if(success){
             shell.send("成功退出");
             //            }else {
-            //                shell.send("未知错误! 不正常的退出!");
+            //                shell.send("未知錯誤! 不正常的退出!");
             //            }
             return success ? 1 : 0;
         }
@@ -574,7 +574,7 @@ public class CommandShell {
     }.register("exit");
     public static ShellCommand quit = new ShellCommand() {
         public String[] help = new String[] {
-            "quit 退出shell不删除记录",
+            "quit 退出shell不刪除記錄",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -589,7 +589,7 @@ public class CommandShell {
     }.register("quit");
     public static ShellCommand settings = new ShellCommand() {
         public String[] help = new String[] {
-            "setting <setting> <boolean> 设置基础设定",
+            "setting <setting> <boolean> 設置基礎設定",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -600,7 +600,7 @@ public class CommandShell {
                     shell.async = flag;
                     return 1;
             }
-            shell.warn(AddUtils.concat("不存在这样的设定项! ", argv[0]));
+            shell.warn(AddUtils.concat("不存在這樣的設定項! ", argv[0]));
             return 0;
         }
 
@@ -609,7 +609,7 @@ public class CommandShell {
         }
     }.register("setting");
     public static ShellCommand runCommand = new ShellCommand() {
-        public String[] help = new String[] {"say <argvs> 玩家输出<argvs>,用空格相连"};
+        public String[] help = new String[] {"say <argvs> 玩家輸出<argvs>,用空格相連"};
 
         public int cmd(String[] argv, CommandShell shell) {
             if (Bukkit.isPrimaryThread()) {
@@ -626,7 +626,7 @@ public class CommandShell {
         }
     }.register("say");
     public static ShellCommand changeClass = new ShellCommand() {
-        public String[] help = new String[] {"setPath <Class> 将当前指令的默认类对象设置为<Class>"};
+        public String[] help = new String[] {"setPath <Class> 將當前指令的默認類對象設置為<Class>"};
 
         public int cmd(String[] argv, CommandShell shell) {
             Class clazz;
@@ -644,8 +644,8 @@ public class CommandShell {
     }.register("setPath");
     public static ShellCommand getStaticField = new ShellCommand() {
         public String[] help = new String[] {
-            "getStatic <arg1> 获取当前默认类的名称为<arg1>的静态成员/枚举",
-            "getStatic <arg1> <varName> 获取当前默认类的名称为<arg1>的静态成员/枚举,并赋值给<varName>变量"
+            "getStatic <arg1> 獲取當前默認類的名稱為<arg1>的靜態成員/枚舉",
+            "getStatic <arg1> <varName> 獲取當前默認類的名稱為<arg1>的靜態成員/枚舉,並賦值給<varName>變量"
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -670,7 +670,7 @@ public class CommandShell {
                         }
                     }
                 }
-                shell.send(AddUtils.concat("位于Class ", tarClass.getName()));
+                shell.send(AddUtils.concat("位於Class ", tarClass.getName()));
                 shell.printObject(res);
                 if (argv.length == 2) {
                     return setVariable(shell, argv[1], res);
@@ -688,7 +688,7 @@ public class CommandShell {
     }.register("getStatic");
     public static ShellCommand setStaticField = new ShellCommand() {
         public String[] help = new String[] {
-            "setStatic <arg1> 将当前默认类对象的<arg1>静态成员设置为当前默认类对象", "setStatic <arg1> <var1> 将当前默认类对象的<arg1>静态成员设置为变量<var1>"
+            "setStatic <arg1> 將當前默認類對象的<arg1>靜態成員設置為當前默認類對象", "setStatic <arg1> <var1> 將當前默認類對象的<arg1>靜態成員設置為變量<var1>"
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -707,11 +707,11 @@ public class CommandShell {
                         return -1;
                     }
                     shell.send(AddUtils.concat(
-                            "位于Class ",
+                            "位於Class ",
                             result.getSecondValue().getName(),
-                            " 的成员",
+                            " 的成員",
                             result.getFirstValue().getName()));
-                    shell.send("设置成功!");
+                    shell.send("設置成功!");
                     return 1;
                 }
             } else {
@@ -724,7 +724,7 @@ public class CommandShell {
         }
     }.register("setStatic");
     public static ShellCommand get = new ShellCommand() {
-        public String[] help = new String[] {"get 打印当前选中的类path信息", "get <varName> 打印变量<varName>"};
+        public String[] help = new String[] {"get 打印當前選中的類path信息", "get <varName> 打印變量<varName>"};
 
         public int cmd(String[] argv, CommandShell shell) {
             if (argv.length == 0) {
@@ -741,7 +741,7 @@ public class CommandShell {
         }
     }.register("get");
     public static ShellCommand set = new ShellCommand() {
-        public String[] help = new String[] {"set <var1> 将当前类对象存储至<var1>", "set <var1> <var2> 将变量<var2>存储至<var1>"};
+        public String[] help = new String[] {"set <var1> 將當前類對象存儲至<var1>", "set <var1> <var2> 將變量<var2>存儲至<var1>"};
 
         public int cmd(String[] argv, CommandShell shell) {
 
@@ -755,8 +755,8 @@ public class CommandShell {
     }.register("set");
     public static ShellCommand getField = new ShellCommand() {
         public String[] help = new String[] {
-            "getField <var1> <arg1> 获取变量<var1>名称为<arg1>的成员 ",
-            "getField <var1> <arg1> <var2> 获取变量<var1>名称为<arg1>的成员,并赋值给var2 ",
+            "getField <var1> <arg1> 獲取變量<var1>名稱為<arg1>的成員 ",
+            "getField <var1> <arg1> <var2> 獲取變量<var1>名稱為<arg1>的成員,並賦值給var2 ",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -780,7 +780,7 @@ public class CommandShell {
                         setVariable(shell, argv[2], res);
                     }
                     shell.send(
-                            AddUtils.concat("位于Class ", result.getSecondValue().getName()));
+                            AddUtils.concat("位於Class ", result.getSecondValue().getName()));
                     shell.printObject(res);
 
                     return 1;
@@ -794,7 +794,7 @@ public class CommandShell {
     }.register("getField");
     public static ShellCommand getAllFields = new ShellCommand() {
         public String[] help = new String[] {
-            "getAllFields <var1> 获取变量<var1>的所有成员 ", "getAllFields 获取当前设置的Class的所有成员",
+            "getAllFields <var1> 獲取變量<var1>的所有成員 ", "getAllFields 獲取當前設置的Class的所有成員",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -830,7 +830,7 @@ public class CommandShell {
     }.register("getAllFields");
     public static ShellCommand setField = new ShellCommand() {
         public String[] help = new String[] {
-            "setField <var1> <arg1> <var2> 将变量<var2>赋值给变量<var1>名称为<arg1>的成员 ",
+            "setField <var1> <arg1> <var2> 將變量<var2>賦值給變量<var1>名稱為<arg1>的成員 ",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -853,11 +853,11 @@ public class CommandShell {
                         return -1;
                     }
                     shell.send(AddUtils.concat(
-                            "位于Class ",
+                            "位於Class ",
                             result.getSecondValue().getName(),
-                            " 的成员",
+                            " 的成員",
                             result.getFirstValue().getName()));
-                    shell.send("设置成功!");
+                    shell.send("設置成功!");
                     return 1;
                 }
             }
@@ -870,8 +870,8 @@ public class CommandShell {
 
     public static ShellCommand constant = new ShellCommand() {
         public String[] help = new String[] {
-            "const <type> <val> <var2> 将字符串<val>转为支持的基类/字符串<type>并将变量<var2>设置为该值",
-            "const list <len> <var2> 将变量<var2>设置为创建的长度为<len>的数组"
+            "const <type> <val> <var2> 將字符串<val>轉為支持的基類/字符串<type>並將變量<var2>設置為該值",
+            "const list <len> <var2> 將變量<var2>設置為創建的長度為<len>的數組"
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -888,7 +888,7 @@ public class CommandShell {
     }.register("const");
     public static ShellCommand getSfItem = new ShellCommand() {
         public String[] help =
-                new String[] {"getSfItem <ID> <var1> 获取id为<ID>的sf物品实例,并存储到", "getSfitem <ID> 获取id为<ID>的sf物品实例"};
+                new String[] {"getSfItem <ID> <var1> 獲取id為<ID>的sf物品實例,並存儲到", "getSfitem <ID> 獲取id為<ID>的sf物品實例"};
 
         public int cmd(String[] argv, CommandShell shell) {
             SlimefunItem item = SlimefunItem.getById(argv[0]);
@@ -905,7 +905,7 @@ public class CommandShell {
     }.register("getSfItem");
     public static ShellCommand getNearbyPlayer = new ShellCommand() {
         public String[] help = new String[] {
-            "getNearbyEntity <int> <var1> 获取当前范围<int>内的全部实体,并存储在<var1>中", "getNearbyEntity <int> 获取当前范围<int>内的全部实体"
+            "getNearbyEntity <int> <var1> 獲取當前範圍<int>內的全部實體,並存儲在<var1>中", "getNearbyEntity <int> 獲取當前範圍<int>內的全部實體"
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -935,7 +935,7 @@ public class CommandShell {
         }
     }.register("getNearbyEntity");
     public static ShellCommand getheld = new ShellCommand() {
-        public String[] help = new String[] {"getHeldItem <var1> 获得玩家当前手持物品的对象并存入<var1>", "getHeldItem 获得玩家当前手持物品的对象"};
+        public String[] help = new String[] {"getHeldItem <var1> 獲得玩家當前手持物品的對象並存入<var1>", "getHeldItem 獲得玩家當前手持物品的對象"};
 
         public int cmd(String[] argv, CommandShell shell) {
             ItemStack stack = shell.user.getItemInHand();
@@ -952,7 +952,7 @@ public class CommandShell {
         }
     }.register("getHeldItem");
     public static ShellCommand exec = new ShellCommand() {
-        public String[] help = new String[] {"exec <argvs> 执行代码,按空格划分行"};
+        public String[] help = new String[] {"exec <argvs> 執行代碼,按空格劃分行"};
 
         public int cmd(String[] argv, CommandShell shell) {
             String code = String.join(" ", argv);
@@ -993,8 +993,8 @@ public class CommandShell {
     }.register("exec");
     public static ShellCommand invoke = new ShellCommand() {
         public String[] help = new String[] {
-            "invoke <var1> <method> <varlist>... 当<var1>为类时候,反射静态方法<method>,反之则反射对象<var1>的方法<method>",
-            "invoke set <result> <var1> <method> <varlist>... 当<var1>为类时候,反射静态方法<method>,反之则反射对象<var1>的方法<method>,并将结果存入<result>",
+            "invoke <var1> <method> <varlist>... 當<var1>為類時候,反射靜態方法<method>,反之則反射對象<var1>的方法<method>",
+            "invoke set <result> <var1> <method> <varlist>... 當<var1>為類時候,反射靜態方法<method>,反之則反射對象<var1>的方法<method>,並將結果存入<result>",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -1061,8 +1061,8 @@ public class CommandShell {
     }.register("invoke");
     public static ShellCommand newInstance = new ShellCommand() {
         public String[] help = new String[] {
-            "newInstance <classVar> <varlist>... 用<varlist>创建classVar的新实例",
-            "newInstance set <result> <classVar> <varlist>... 用<varlist>创建classVar的新实例,并保存至<result>",
+            "newInstance <classVar> <varlist>... 用<varlist>創建classVar的新實例",
+            "newInstance set <result> <classVar> <varlist>... 用<varlist>創建classVar的新實例,並保存至<result>",
         };
 
         public int cmd(String[] argv, CommandShell shell) {
@@ -1129,15 +1129,15 @@ public class CommandShell {
     }.register("newInstance");
     public static ShellCommand breakPoint = new ShellCommand() {
         public String[] help = new String[] {
-            "break get <int> 获取<int>处的断点值,如果还未解除",
-            "break get <int> <var2> 获取<int>处的断点值,如果还未解除,并将断点Object存入<var2>",
-            "break <int> 启动<int>处的断点,当断点位于主线程时,将会跳过,再次输入将关闭断点",
-            "break <int> <var2> 启动<int>处的断点,当断点位于主线程时,将会跳过,再次输入将关闭断点,同时获得断点Object值存入<var2>"
+            "break get <int> 獲取<int>處的斷點值,如果還未解除",
+            "break get <int> <var2> 獲取<int>處的斷點值,如果還未解除,並將斷點Object存入<var2>",
+            "break <int> 啓動<int>處的斷點,當斷點位於主線程時,將會跳過,再次輸入將關閉斷點",
+            "break <int> <var2> 啓動<int>處的斷點,當斷點位於主線程時,將會跳過,再次輸入將關閉斷點,同時獲得斷點Object值存入<var2>"
         };
 
         public int cmd(String[] argv, CommandShell shell) {
             if (!MyAddon.testmode()) {
-                shell.warn("附属并未在测试模式,无法启用断点功能");
+                shell.warn("附屬並未在測試模式,無法啓用斷點功能");
             }
             if ("get".equals(argv[0])) {
                 int index = Integer.valueOf(argv[1]);

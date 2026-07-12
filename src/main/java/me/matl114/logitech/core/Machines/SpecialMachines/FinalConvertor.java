@@ -147,9 +147,9 @@ public class FinalConvertor extends AbstractMachine
 
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6机器信息", "&7状态: &a已激活");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6機器信息", "&7狀態: &a已激活");
     protected final ItemStack STATUS_OFF =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6机器信息", "&7状态: &c未激活");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6機器信息", "&7狀態: &c未激活");
     protected final ItemStack NULL_OUTPUT;
     protected final RandOutItem NULL_OUT;
     protected final MachineRecipe RECIPE_FOR_DISPLAY;
@@ -167,22 +167,22 @@ public class FinalConvertor extends AbstractMachine
         this.NULL_OUT = nullOutput;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c充能",
-                        "&7当置于贰级终极祭坛上时",
-                        "&7且机器被终极祭坛结构中的所有宏激光发射器充能时",
-                        "&7即终极祭坛中四个宏激光发射器分别位于四个壹级以上终极祭坛上时",
-                        "&7机器激活,进行运转"),
+                        "&f機制 - &c充能",
+                        "&7當置於貳級終極祭壇上時",
+                        "&7且機器被終極祭壇結構中的所有宏激光發射器充能時",
+                        "&7即終極祭壇中四個宏激光發射器分別位於四個壹級以上終極祭壇上時",
+                        "&7機器激活,進行運轉"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制 - &c随机波动",
-                        "&7当机器运转时,",
-                        "&7机器会随机波动若干次输入测的物品材质id",
-                        "&7并尝试将其转为其他材质的原版物品",
-                        "&7同时赋予其随机的数量",
-                        "&7当转换失败时,机器会随机从下方可能的输出中选择一项",
-                        "&7进行输出")));
+                        "&f機制 - &c隨機波動",
+                        "&7當機器運轉時,",
+                        "&7機器會隨機波動若干次輸入測的物品材質id",
+                        "&7並嘗試將其轉為其他材質的原版物品",
+                        "&7同時賦予其隨機的數量",
+                        "&7當轉換失敗時,機器會隨機從下方可能的輸出中選擇一項",
+                        "&7進行輸出")));
         this.RECIPE_FOR_DISPLAY = MachineRecipeUtils.stackFrom(
-                -1, new ItemStack[] {AddUtils.getInfoShow("&f可能的输出", "&7如下所示")}, new ItemStack[] {NULL_OUTPUT});
+                -1, new ItemStack[] {AddUtils.getInfoShow("&f可能的輸出", "&7如下所示")}, new ItemStack[] {NULL_OUTPUT});
     }
 
     public void constructMenu(BlockMenuPreset preset) {

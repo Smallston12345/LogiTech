@@ -553,7 +553,7 @@ public class AddItem {
                 meta.setUnbreakable(true);
                 meta.addEnchant(VersionedRegistry.enchantment("efficiency"), 30, true);
                 meta.addEnchant(VersionedRegistry.enchantment("fortune"), 20, true);
-                meta.setLore(List.of(DEFAULT_COLOR + "超级钴镐"));
+                meta.setLore(List.of(DEFAULT_COLOR + "超級鈷鎬"));
                 item.setItemMeta(meta);
             })
             .get();
@@ -1035,7 +1035,7 @@ public class AddItem {
             get("Machines.TIMER_RD.Name"),
             getList("Machines.TIMER_RD.Lore"));
     public static final SlimefunItemStack TIMER_SF = themed(
-            "TIMER_SF_入机",
+            "TIMER_SF_入機",
             Material.SOUL_TORCH,
             Theme.MACHINE1,
             get("Machines.TIMER_SF.Name"),
@@ -1638,35 +1638,35 @@ public class AddItem {
             getList("MultiBlock.SMITH_INTERFACE_CRAFT.Lore"));
     // feat
     public static final SlimefunItemStack CUSTOM1 =
-            themed("CUSTOM1", new ItemStack(Material.COMMAND_BLOCK), Theme.ITEM1, "测试物件1", "只是一个简单的测试");
+            themed("CUSTOM1", new ItemStack(Material.COMMAND_BLOCK), Theme.ITEM1, "測試物件1", "只是一個簡單的測試");
     public static final SlimefunItemStack MACHINE1 =
-            themed("MACHINE1", new ItemStack(Material.FURNACE), Theme.MACHINE1, "测试机器1", "tnnd对照组");
+            themed("MACHINE1", new ItemStack(Material.FURNACE), Theme.MACHINE1, "測試機器1", "tnnd對照組");
     public static final SlimefunItemStack MACHINE2 =
-            themed("MACHINE2", new ItemStack(Material.FURNACE), Theme.MACHINE1, "测试机2", "tnnd实验组");
+            themed("MACHINE2", new ItemStack(Material.FURNACE), Theme.MACHINE1, "測試機2", "tnnd實驗組");
     public static final SlimefunItemStack MACHINE3 =
-            themed("MACHINE3", new ItemStack(Material.FURNACE), Theme.MACHINE1, "测试机3", "tnnd测试组 AbstractProcessor");
+            themed("MACHINE3", new ItemStack(Material.FURNACE), Theme.MACHINE1, "測試機3", "tnnd測試組 AbstractProcessor");
     public static final SlimefunItemStack MACHINE4 = themed(
-            "MACHINE4", new ItemStack(Material.FURNACE), Theme.MACHINE1, "测试机4", "tnnd测试组 AbstractAdvancedProcessor");
+            "MACHINE4", new ItemStack(Material.FURNACE), Theme.MACHINE1, "測試機4", "tnnd測試組 AbstractAdvancedProcessor");
     public static final SlimefunItemStack SMG1 =
-            themed("SMG1", new ItemStack(Material.DIAMOND_BLOCK), Theme.MACHINE2, "测试生成器1", "测测我的");
+            themed("SMG1", new ItemStack(Material.DIAMOND_BLOCK), Theme.MACHINE2, "測試生成器1", "測測我的");
     public static final SlimefunItemStack MMG1 =
-            themed("MMG1", new ItemStack(Material.EMERALD_BLOCK), Theme.MACHINE2, "定向生成器1", "测测我的");
+            themed("MMG1", new ItemStack(Material.EMERALD_BLOCK), Theme.MACHINE2, "定向生成器1", "測測我的");
     public static final SlimefunItemStack MANUAL1 =
-            themed("MANUAL1", new ItemStack(Material.CRAFTING_TABLE), Theme.MANUAL1, "测试快捷机器", "强化工作台");
+            themed("MANUAL1", new ItemStack(Material.CRAFTING_TABLE), Theme.MANUAL1, "測試快捷機器", "強化工作台");
     public static final SlimefunItemStack MANUAL_MULTI =
-            themed("MANUAL_MULTI", new ItemStack(Material.CRAFTING_TABLE), Theme.MANUAL1, "测试快捷机器", "多方块机器");
+            themed("MANUAL_MULTI", new ItemStack(Material.CRAFTING_TABLE), Theme.MANUAL1, "測試快捷機器", "多方塊機器");
     public static final SlimefunItemStack MANUAL_KILL =
-            themed("MANUAL_KILL", new ItemStack(Material.RESPAWN_ANCHOR), Theme.MANUAL1, "测试快捷机器", "击杀掉落");
+            themed("MANUAL_KILL", new ItemStack(Material.RESPAWN_ANCHOR), Theme.MANUAL1, "測試快捷機器", "擊殺掉落");
     public static final SlimefunItemStack MANUAL_INF =
-            themed("MANUAL_INF", new ItemStack(Material.RESPAWN_ANCHOR), Theme.MANUAL1, "测试快捷机器", "无尽工作台");
+            themed("MANUAL_INF", new ItemStack(Material.RESPAWN_ANCHOR), Theme.MANUAL1, "測試快捷機器", "無盡工作台");
     public static final SlimefunItemStack MANUAL_MOB =
-            themed("MANUAL_MOB", new ItemStack(Material.LODESTONE), Theme.MANUAL1, "测试快捷机器", "无尽芯片注入");
+            themed("MANUAL_MOB", new ItemStack(Material.LODESTONE), Theme.MANUAL1, "測試快捷機器", "無盡芯片注入");
     public static final SlimefunItemStack MANUAL_NTWBENCH =
-            themed("MANUAL_NTWBENCH", new ItemStack(Material.DRIED_KELP_BLOCK), Theme.MANUAL1, "测试快捷机器", "网络工作台");
+            themed("MANUAL_NTWBENCH", new ItemStack(Material.DRIED_KELP_BLOCK), Theme.MANUAL1, "測試快捷機器", "網絡工作台");
     public static final SlimefunItemStack AUTOSMELTING1 =
-            themed("AUTOCRAFT_SMELT", new ItemStack(Material.FURNACE), Theme.MANUAL1, "测试AutoCraft", "冶炼炉");
+            themed("AUTOCRAFT_SMELT", new ItemStack(Material.FURNACE), Theme.MANUAL1, "測試AutoCraft", "冶煉爐");
     public static final SlimefunItemStack AUTO_INF =
-            themed("AUTOCRAFT_INF", new ItemStack(Material.RESPAWN_ANCHOR), Theme.MANUAL1, "测试定向合成机", "无尽工作台");
+            themed("AUTOCRAFT_INF", new ItemStack(Material.RESPAWN_ANCHOR), Theme.MANUAL1, "測試定向合成機", "無盡工作台");
 
     // experimental items
     public static final SlimefunItemStack FINAL_SPECIAL_CRAFTER = themed(
@@ -1684,21 +1684,21 @@ public class AddItem {
             getList("Experimental.FINAL_MULTIBLOCK_MANUAL.Lore"));
 
     //    public static final SlimefunItemStack INPORT=
-    //            themed("INPORT",new ItemStack(Material.END_STONE),Theme.CARGO1,"存入接口","较快的将物品存入奇点...");
+    //            themed("INPORT",new ItemStack(Material.END_STONE),Theme.CARGO1,"存入接口","較快的將物品存入奇點...");
     //    public static final SlimefunItemStack OUTPORT=
-    //            themed("OUTPORT",new ItemStack(Material.END_STONE),Theme.CARGO1,"取出接口","较快的将物品取出奇点...");
+    //            themed("OUTPORT",new ItemStack(Material.END_STONE),Theme.CARGO1,"取出接口","較快的將物品取出奇點...");
     public static final SlimefunItemStack TESTUNIT1 =
-            themed("TESTUNIT1", new ItemStack(Material.GLASS), Theme.CARGO1, "测试存储单元", "啥用都没");
+            themed("TESTUNIT1", new ItemStack(Material.GLASS), Theme.CARGO1, "測試存儲單元", "啥用都沒");
     public static final SlimefunItemStack TESTUNIT2 =
-            themed("TESTUNIT2", new ItemStack(Material.GLASS), Theme.CARGO1, "测试存储单元2", "啥用都没");
+            themed("TESTUNIT2", new ItemStack(Material.GLASS), Theme.CARGO1, "測試存儲單元2", "啥用都沒");
     public static final SlimefunItemStack TESTUNIT3 =
-            themed("TESTUNIT3", new ItemStack(Material.GLASS), Theme.CARGO1, "测试存储单元3", "啥用都没");
+            themed("TESTUNIT3", new ItemStack(Material.GLASS), Theme.CARGO1, "測試存儲單元3", "啥用都沒");
     public static final SlimefunItemStack AUTO_SPECIAL =
-            themed("AUTOCRAFT_SPECIAL", new ItemStack(Material.LOOM), Theme.MACHINE2, "测试特殊合成机", "测试测试");
+            themed("AUTOCRAFT_SPECIAL", new ItemStack(Material.LOOM), Theme.MACHINE2, "測試特殊合成機", "測試測試");
     public static final SlimefunItemStack AUTO_MULTIBLOCK =
-            themed("AUTOCRAFT_MULTIBLOCK", new ItemStack(Material.BRICKS), Theme.MANUAL1, "测试快捷多方块", "测试测试");
+            themed("AUTOCRAFT_MULTIBLOCK", new ItemStack(Material.BRICKS), Theme.MANUAL1, "測試快捷多方塊", "測試測試");
     public static final SlimefunItemStack WORKBENCH1 =
-            themed("WORKBENCH1", new ItemStack(Material.ENCHANTING_TABLE), Theme.BENCH1, "测试工作站", "测试测试");
+            themed("WORKBENCH1", new ItemStack(Material.ENCHANTING_TABLE), Theme.BENCH1, "測試工作站", "測試測試");
     // final
     public static final SlimefunItemStack FINAL_SEQUENTIAL = themed(
             "FINAL_SEQUENTIAL",
@@ -1726,8 +1726,8 @@ public class AddItem {
             get("Generators.FINAL_STONE_MG.Name"),
             getList("Generators.FINAL_STONE_MG.Lore"));
 
-    // tmp占位符
-    public static final SlimefunItemStack TMP1 = new SlimefunItemStack("TMP1", Material.STONE, "&b占位符", "&7暂未开发");
+    // tmp佔位符
+    public static final SlimefunItemStack TMP1 = new SlimefunItemStack("TMP1", Material.STONE, "&b佔位符", "&7暫未開發");
     public static final SlimefunItemStack RESOLVE_FAILED = themed(
             "RESOLVE_FAILED0",
             Material.STRUCTURE_VOID,
@@ -1735,7 +1735,7 @@ public class AddItem {
             get("Items.RESOLVE_FAILED.Name"),
             getList("Items.RESOLVE_FAILED.Lore"));
     public static final SlimefunItemStack SHELL =
-            themed("调试终端", Material.BOOK, Theme.ITEM1, get("Items.SHELL.Name"), getList("Items.SHELL.Lore"));
+            themed("調試終端", Material.BOOK, Theme.ITEM1, get("Items.SHELL.Name"), getList("Items.SHELL.Lore"));
     public static final HashSet<ItemStack> ADDGLOW = new HashSet<>() {
         {
             add(RESOLVE_FAILED);

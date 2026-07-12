@@ -47,11 +47,11 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
     protected int PARSE_SLOT = 4;
     protected final ItemStack PARSE_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&e点击解析配方",
-            "&b机制:",
-            "&6将配方表输出的物品(若有多个则第一个)置于下方",
-            "&6右键该槽位,或者开关容器界面,配方将被解析",
-            "&6机器将按照解析出的指定配方合成");
+            "&e點擊解析配方",
+            "&b機制:",
+            "&6將配方表輸出的物品(若有多個則第一個)置於下方",
+            "&6右鍵該槽位,或者開關容器界面,配方將被解析",
+            "&6機器將按照解析出的指定配方合成");
     protected final ItemStack DISPLAY_BKGROUND = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, " ");
     protected final ItemStack DISPLAY_DEFAULT_BKGROUND = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, " ");
     protected final ItemStack progressItem;
@@ -59,7 +59,7 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
     protected final int publicTime;
     protected final String KEY_CTIME = "ct";
     protected final int CTIME_SLOT = 5;
-    protected final ItemStack CTIME_ITEM = new CustomItemStack(Material.CLOCK, "&6自定义进度时间", "&7点击输入自定义进度时常");
+    protected final ItemStack CTIME_ITEM = new CustomItemStack(Material.CLOCK, "&6自定義進度時間", "&7點擊輸入自定義進度時常");
 
     public AdvanceRecipeCrafter(
             ItemGroup category,
@@ -144,13 +144,13 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_SLOT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -174,7 +174,7 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
             menu.addMenuClickHandler(CTIME_SLOT, ((player, i, itemStack, clickAction) -> {
                 AddUtils.sendMessage(
                         player,
-                        "&6[&7自动配方工作台&6]&a 请输入自定义的进度时长(单位:sf tick)&e(必须>=%s)".formatted(String.valueOf(publicTime)));
+                        "&6[&7自動配方工作台&6]&a 請輸入自定義的進度時長(單位:sf tick)&e(必須>=%s)".formatted(String.valueOf(publicTime)));
                 player.closeInventory();
                 AddUtils.asyncWaitPlayerInput(player, (str) -> {
                     try {
@@ -183,12 +183,12 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
                         DataCache.setCustomData(menu.getLocation(), KEY_CTIME, a);
                         menu.replaceExistingItem(
                                 CTIME_SLOT,
-                                AddUtils.addLore(CTIME_ITEM, "&c当前的自定义进度时长为: &f%s".formatted(String.valueOf(a))));
-                        AddUtils.sendMessage(player, "&6[&7自动配方工作台&6]&a 成功设置!");
+                                AddUtils.addLore(CTIME_ITEM, "&c當前的自定義進度時長為: &f%s".formatted(String.valueOf(a))));
+                        AddUtils.sendMessage(player, "&6[&7自動配方工作台&6]&a 成功設置!");
                     } catch (Throwable e) {
                         AddUtils.sendMessage(
                                 player,
-                                "&6[&7自动配方工作台&6]&c 这不是有效的进度时常&e(必须>=%s)".formatted(String.valueOf(this.publicTime)));
+                                "&6[&7自動配方工作台&6]&c 這不是有效的進度時常&e(必須>=%s)".formatted(String.valueOf(this.publicTime)));
                     }
                 });
                 return false;
@@ -402,10 +402,10 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
                     hasOne = true;
                 } else {
                     if (pusher == null) {
-                        // 保证比较之前pusher非null，不用重复计算
+                        // 保證比較之前pusher非null，不用重複計算
                         pusher = CraftUtils.getCounter(item);
                     }
-                    // 由于StackMachineRecipe 材料已经被折叠过了 只需要找到一个匹配就行
+                    // 由於StackMachineRecipe 材料已經被摺疊過了 只需要找到一個匹配就行
                     if (CraftUtils.matchItemStack(recipeInput[i], pusher, false)) {
                         amountLimit = Math.max(recipeInput[i].getAmount() * craftlimit, maxStack);
                         break;
@@ -422,10 +422,10 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
         for (int slot : inputSlots) {
             ItemStack itemInSlot = menu.getItemInSlot(slot);
             if (itemInSlot == null) continue;
-            // 出现类型匹配
+            // 出現類型匹配
             if (itemInSlot.getType() == item.getType() && itemInSlot.hasItemMeta() == hasItemMeta) {
-                // 如果pusher!=null,说明上面出现了两个相同type 需要比较
-                // 如果比较不匹配 跳过
+                // 如果pusher!=null,説明上面出現了兩個相同type 需要比較
+                // 如果比較不匹配 跳過
                 if (pusher != null && hasItemMeta && !CraftUtils.matchItemStack(itemInSlot, pusher, false)) {
                     continue;
                 }

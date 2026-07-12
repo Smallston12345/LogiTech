@@ -39,9 +39,9 @@ public class TntGenerator extends AbstractMachine {
     protected final int[] BORDER = new int[] {1, 2, 3, 5, 6, 7};
     protected final int START_SLOT = 0;
     protected final ItemStack START_ITEM_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6当前状态", "&a已启动", "&e点击关闭");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6當前狀態", "&a已啓動", "&e點擊關閉");
     protected final ItemStack START_ITEM_OFF =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6当前状态", "&a已关闭", "&e点击启动");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6當前狀態", "&a已關閉", "&e點擊啓動");
     protected final int ADJUSTMENT_SLOT = 4;
     protected final int DELAY_SLOT = 8;
 
@@ -131,7 +131,7 @@ public class TntGenerator extends AbstractMachine {
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int[] intdata = new int[4];
             Object runnable = null;
 
@@ -191,16 +191,16 @@ public class TntGenerator extends AbstractMachine {
                 Material.COMPASS,
                 "&6生成信息",
                 "&7上下偏移: %.1f格".formatted(dh.getInt(0) / 10.0),
-                "&7爆炸延时: %dgt".formatted(dh.getInt(1)),
-                "&e左键 增加偏移 0.1",
-                "&e右键 减少偏移 0.1",
-                "&eshift+左键 增加爆炸延时 1gt",
-                "&eshift+右键 减少爆炸延时 1gt");
+                "&7爆炸延時: %dgt".formatted(dh.getInt(1)),
+                "&e左鍵 增加偏移 0.1",
+                "&e右鍵 減少偏移 0.1",
+                "&eshift+左鍵 增加爆炸延時 1gt",
+                "&eshift+右鍵 減少爆炸延時 1gt");
     }
 
     public ItemStack getDelayDisplay(DataMenuClickHandler dh) {
         return new CustomItemStack(
-                Material.CLOCK, "&6生成频率信息", "&7生成间隔: %dgt".formatted(dh.getInt(2)), "&e左键 增加延时 1gt", "&e右键 减少延时 1gt");
+                Material.CLOCK, "&6生成頻率信息", "&7生成間隔: %dgt".formatted(dh.getInt(2)), "&e左鍵 增加延時 1gt", "&e右鍵 減少延時 1gt");
     }
 
     public void saveData(Location loc, DataMenuClickHandler dh) {

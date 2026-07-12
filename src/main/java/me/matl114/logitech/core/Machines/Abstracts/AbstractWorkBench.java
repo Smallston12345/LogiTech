@@ -36,9 +36,9 @@ public abstract class AbstractWorkBench extends AbstractMachine {
     }
 
     protected static final ItemStack LAZY_ONECLICK =
-            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b使用物品栏中的物品摆放配方", "&7左键放入一份配方", "&7右键放入64份配方", "&a欢呼吧 懒狗们");
+            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b使用物品欄中的物品擺放配方", "&7左鍵放入一份配方", "&7右鍵放入64份配方", "&a歡呼吧 懶狗們");
     protected static final ItemStack RECIPEBOOK_SHOW_ITEM =
-            new CustomItemStack(Material.BOOK, "&6点击查看配方", "", "&a而且有一键放置配方的功能", "&b欢呼吧 懒狗们");
+            new CustomItemStack(Material.BOOK, "&6點擊查看配方", "", "&a而且有一鍵放置配方的功能", "&b歡呼吧 懶狗們");
 
     protected final ItemSetting<Boolean> checkRecipePermission;
 
@@ -85,7 +85,7 @@ public abstract class AbstractWorkBench extends AbstractMachine {
         for (int i = 0; i < size; ++i) {
             targetRecipe.add(MachineRecipeUtils.stackFrom(
                     machineRecipes.get(i).getTicks(),
-                    Utils.array(AddUtils.getInfoShow("&f有序配方合成", "&7请在配方显示界面或者机器界面查看")),
+                    Utils.array(AddUtils.getInfoShow("&f有序配方合成", "&7請在配方顯示界面或者機器界面查看")),
                     machineRecipes.get(i).getOutput()));
         }
         return targetRecipe;
@@ -150,7 +150,7 @@ public abstract class AbstractWorkBench extends AbstractMachine {
                 AddUtils.sendMessage(
                         player,
                         AddUtils.concat(
-                                "&6[&7工作台&6]&c 电力不足或条件不足! ",
+                                "&6[&7工作台&6]&c 電力不足或條件不足! ",
                                 String.valueOf(charge),
                                 "J/ ",
                                 String.valueOf(this.energyConsumption),
@@ -162,13 +162,13 @@ public abstract class AbstractWorkBench extends AbstractMachine {
             limit = getCraftLimit(b, inv);
         }
         if (limit == 0) {
-            AddUtils.sendMessage(player, "&6[&7工作台&6]&c 合成失败,请检查合成条件是否均具备");
+            AddUtils.sendMessage(player, "&6[&7工作台&6]&c 合成失敗,請檢查合成條件是否均具備");
             return;
         }
         MachineRecipe recipe = CraftUtils.findNextShapedRecipe(
                 inv, getInputSlots(), getOutputSlots(), getMachineRecipes(), true, Settings.SEQUNTIAL, CRAFT_PROVIDER);
         if (recipe == null) {
-            AddUtils.sendMessage(player, "&6[&7工作台&6]&c 合成失败,这不是一个有效的配方");
+            AddUtils.sendMessage(player, "&6[&7工作台&6]&c 合成失敗,這不是一個有效的配方");
             return;
         }
         if (this.checkRecipePermission.getValue() && CraftUtils.checkRecipePermission(player, recipe, true)) {
@@ -239,7 +239,7 @@ public abstract class AbstractWorkBench extends AbstractMachine {
         int[] inputs = getRecipeSlots();
         int maxCnt = max ? 64 : 1;
         if (recipe.length > inputs.length) {
-            AddUtils.sendMessage(player, "&c配方大小不匹配,不能在该工作台进行");
+            AddUtils.sendMessage(player, "&c配方大小不匹配,不能在該工作台進行");
             player.closeInventory();
             return;
         }
@@ -263,16 +263,16 @@ public abstract class AbstractWorkBench extends AbstractMachine {
                 if (itcs[slot] == null) {
                     continue;
                 }
-                // 重置consumer计数器
+                // 重置consumer計數器
                 itcs[slot].syncAmount();
                 int recipeCount = itcs[slot].getAmount();
-                // 获取当前槽位的东西
+                // 獲取當前槽位的東西
                 if (firstTime) {
                     itps[slot] = CraftUtils.getpusher.getPusher(Settings.OUTPUT, menu, inputs[slot]);
-                    // 不匹配，即非空且不match，就没有下次了
+                    // 不匹配，即非空且不match，就沒有下次了
                     if (!itps[slot].isNull() && !CraftUtils.matchItemCounter(itps[slot], itcs[slot], false)) {
                         continue;
-                    } else { // 匹配，设置为consumer的
+                    } else { // 匹配，設置為consumer的
                         match[slot] = true;
                         itps[slot].setFrom(itcs[slot]);
                     }
@@ -282,7 +282,7 @@ public abstract class AbstractWorkBench extends AbstractMachine {
                 for (int s = 0; s < playerInv.length; ++s) { // each slot in their inv\
                     if (ips[s] == null || ips[s].getAmount() == 0) {
                         continue;
-                    } // 空和为0 直接早退
+                    } // 空和為0 直接早退
                     else if (CraftUtils.matchItemCounter(ips[s], itcs[slot], false)) { // matches recipe
                         // consume,
                         itcs[slot].consume(ips[s]);
@@ -293,14 +293,14 @@ public abstract class AbstractWorkBench extends AbstractMachine {
                 }
                 // try safe push
                 // 能全放下
-                if (itcs[slot].getAmount() <= 0 && itps[slot].safeAddAmount(recipeCount)) { // push的数量
-                    // 真的有地方,同步背包里的相关counter
+                if (itcs[slot].getAmount() <= 0 && itps[slot].safeAddAmount(recipeCount)) { // push的數量
+                    // 真的有地方,同步揹包裏的相關counter
                     itcs[slot].updateItems(menu, Settings.PUSH);
                 } else {
-                    // 放不进去,返回z物品
+                    // 放不進去,返回z物品
                     itcs[slot].syncItems();
                 }
-            } // 提前中断,意味着没有后面的了
+            } // 提前中斷,意味着沒有後面的了
         }
         for (int i = 0; i < recipe.length; ++i) {
             if (itps[i] != null) {

@@ -38,7 +38,7 @@ public class RandomItemStack extends CleanItemStack implements MultiItemStack, R
         }
         itemMap = new ArrayList<>(itemSettings);
     }
-    // 递归地解析全体物品列
+    // 遞歸地解析全體物品列
     public List<ItemStack> getItemStacks() {
         List<ItemStack> items = new ArrayList<>();
         for (int i = 0; i < sum; i++) {

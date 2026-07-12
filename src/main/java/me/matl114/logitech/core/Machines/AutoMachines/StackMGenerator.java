@@ -59,43 +59,43 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
     protected final int INFO_SLOT = 4;
     protected final ItemStack INFO_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&b机制",
-            "&6将要模拟的机器放在下方槽位",
-            "&6机器会进行模拟,其中",
-            "&7<并行处理数>=<机器数*工作效率>",
-            "&7<耗电数>=min(<机器数量*单个机器耗电/工作效率>,<最大电容量>)",
-            "&6有关高级机器和并行处理数的信息,请见粘液书<版本与说明>",
-            "&6支持的机器可以在粘液书<通用机器类型大全>",
-            "&6或者左边按钮查看",
-            "&6机器支持的配方可以点击右侧按钮查看");
-    protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c机器信息", "&7待机中");
+            "&b機制",
+            "&6將要模擬的機器放在下方槽位",
+            "&6機器會進行模擬,其中",
+            "&7<並行處理數>=<機器數*工作效率>",
+            "&7<耗電數>=min(<機器數量*單個機器耗電/工作效率>,<最大電容量>)",
+            "&6有關高級機器和並行處理數的信息,請見粘液書<版本與説明>",
+            "&6支持的機器可以在粘液書<通用機器類型大全>",
+            "&6或者左邊按鈕查看",
+            "&6機器支持的配方可以點擊右側按鈕查看");
+    protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c機器信息", "&7待機中");
     protected final int MACHINEMENU_SLOT = 3;
     protected final int RECIPEMENU_SLOT = 5;
     protected final ItemStack MACHINEMENU_ICON =
-            new CustomItemStack(Material.BLAST_FURNACE, "&b该机器支持的机器列表", "&6点击打开菜单");
+            new CustomItemStack(Material.BLAST_FURNACE, "&b該機器支持的機器列表", "&6點擊打開菜單");
     protected final ItemStack RECIPEMENU_ICON =
-            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b当前模拟的机器配方列表", "&6点击打开菜单");
+            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b當前模擬的機器配方列表", "&6點擊打開菜單");
 
     protected ItemStack getInfoItem(int craftlimit, int energyCost, int charge, double efficiency, String name) {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&a生成器信息",
-                AddUtils.concat("&7当前模拟的生成器名称: ", (name)),
-                "&7当前并行处理数: %-3d".formatted(craftlimit),
-                "&7当前每刻耗电量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
-                "&7当前电量: %sJ".formatted(AddUtils.formatDouble(charge)),
-                AddUtils.concat("&7当前工作效率: ", AddUtils.getPercentFormat(efficiency)));
+                AddUtils.concat("&7當前模擬的生成器名稱: ", (name)),
+                "&7當前並行處理數: %-3d".formatted(craftlimit),
+                "&7當前每刻耗電量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
+                "&7當前電量: %sJ".formatted(AddUtils.formatDouble(charge)),
+                AddUtils.concat("&7當前工作效率: ", AddUtils.getPercentFormat(efficiency)));
     }
 
     protected ItemStack getInfoOffItem(int craftlimit, int energyCost, int charge, String name) {
         return new CustomItemStack(
                 Material.RED_STAINED_GLASS_PANE,
                 "&c生成器信息",
-                "&c缺少电力!",
-                AddUtils.concat("&7当前模拟的生成器名称: ", (name)),
-                "&7当前并行处理数: %-3d".formatted(craftlimit),
-                "&7当前每刻耗电量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
-                "&7当前电量: %sJ".formatted(AddUtils.formatDouble(charge)));
+                "&c缺少電力!",
+                AddUtils.concat("&7當前模擬的生成器名稱: ", (name)),
+                "&7當前並行處理數: %-3d".formatted(craftlimit),
+                "&7當前每刻耗電量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
+                "&7當前電量: %sJ".formatted(AddUtils.formatDouble(charge)));
     }
 
     protected int efficiency;
@@ -121,19 +121,19 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
             int energyConsumption,
             int efficiency) {
         super(itemGroup, item, recipeType, recipe, time, energybuffer, energyConsumption, new PairList<>());
-        String[] lores = new String[] {"&7下侧为输出槽,左侧为输入检测槽", "&a输入检测槽中的物品不会被消耗!", "&e生产数量只与堆叠机器的数目有关,与输入检测数目无关"};
+        String[] lores = new String[] {"&7下側為輸出槽,左側為輸入檢測槽", "&a輸入檢測槽中的物品不會被消耗!", "&e生產數量只與堆疊機器的數目有關,與輸入檢測數目無關"};
         AddUtils.setLore(this.INFO_WORKING, lores);
         AddUtils.setLore(this.INFO_NULL, lores);
         this.efficiency = efficiency;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c堆叠",
-                        "&7在界面的机器槽中放入生成器",
-                        "&7堆叠生成器会载入该机器的配方列表并进行进程",
-                        "&7机器槽中的机器数目决定并行处理数",
-                        "&7堆叠生成器并行处理数=<机器数>*<工作效率>",
-                        "&7堆叠生成器耗电量=<机器数>*<机器耗电量>",
-                        "&c堆叠生成器并行处理数并不会增加运行速度!"),
+                        "&f機制 - &c堆疊",
+                        "&7在界面的機器槽中放入生成器",
+                        "&7堆疊生成器會載入該機器的配方列表並進行進程",
+                        "&7機器槽中的機器數目決定並行處理數",
+                        "&7堆疊生成器並行處理數=<機器數>*<工作效率>",
+                        "&7堆疊生成器耗電量=<機器數>*<機器耗電量>",
+                        "&c堆疊生成器並行處理數並不會增加運行速度!"),
                 null));
         this.PROCESSOR_SLOT = 12;
     }
@@ -190,7 +190,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         preset.setSize(54);
         int[] border = BORDER;
         int len = border.length;
@@ -225,7 +225,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                         }))
                         .open(player);
             } else {
-                player.sendMessage(ChatColors.color("&e您所放置的机器为空或者为不支持的机器"));
+                player.sendMessage(ChatColors.color("&e您所放置的機器為空或者為不支持的機器"));
                 // player.sendMessage();
             }
             return false;
@@ -245,7 +245,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int[] intdata = new int[4];
 
             public int getInt(int i) {
@@ -322,8 +322,8 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                     historyMachine = null;
                 }
                 if (sfitem == historyMachine) {
-                    // 和历史机器一样
-                    // 设置当前数量
+                    // 和歷史機器一樣
+                    // 設置當前數量
                     int lastCount = db.getInt(0);
                     if (lastCount != it.getAmount()) {
                         db.setInt(0, it.getAmount());
@@ -336,7 +336,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                                     inv,
                                     getInputSlots(),
                                     RecipeSupporter.MACHINE_RECIPELIST.get(historyMachine),
-                                    // 不许用高级的 你是多有病才能在不消耗的槽里面塞存储
+                                    // 不許用高級的 你是多有病才能在不消耗的槽裏面塞存儲
                                     true,
                                     Settings.SEQUNTIAL,
                                     CraftUtils.getpusher)
@@ -354,13 +354,13 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                             continue;
                         }
                         if (sfitem == item || thisId.equals(item.getId())) {
-                            // 是该机器,设置下标，都不用查了 肯定不一样
+                            // 是該機器,設置下標，都不用查了 肯定不一樣
                             MultiCraftType.forceSetRecipeTypeIndex(data, i);
                             int charge = getEnergy(i);
                             //  DataCache.setCustomData(data,"mae",charge==-1?energyConsumption:charge);
                             db.setInt(0, it.getAmount());
                             db.setInt(1, charge == -1 ? energyConsumption : charge);
-                            // 重置机器时间
+                            // 重置機器時間
                             db.setInt(2, -1);
                             inv.replaceExistingItem(this.PROCESSOR_SLOT, this.INFO_NULL);
 
@@ -377,10 +377,10 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                             return;
                         }
                     }
-                } // 找不到,给你机会你不重用啊
+                } // 找不到,給你機會你不重用啊
             }
         }
-        if (index != -1) // 即将变成-1,不一样才变,不用重复查询
+        if (index != -1) // 即將變成-1,不一樣才變,不用重複查詢
         MultiCraftType.forceSetRecipeTypeIndex(data, -1);
         db.setInt(0, 0);
         db.setInt(1, 0);
@@ -415,7 +415,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
     }
 
     public final void tick(Block b, @Nullable BlockMenu inv, SlimefunBlockData data, int tickCount) {
-        // 首先 加载
+        // 首先 加載
         boolean hasViewer = inv.hasViewer();
         if (hasViewer) {
             updateMenu(inv, b, Settings.RUN);
@@ -427,7 +427,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
             //            });
         }
         int index = MultiCraftType.getRecipeTypeIndex(data);
-        if (index >= 0 && index < getListSize()) { // 有效机器
+        if (index >= 0 && index < getListSize()) { // 有效機器
             DataMenuClickHandler db = this.getDataHolder(b, inv);
             long charge = db.getInt(1);
             long rawCraftLimit = db.getInt(0);
@@ -453,7 +453,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                 progressorCost(b, inv);
                 if (tick <= 0) {
                     if (rawCraftLimit == 0) {
-                        // 这很明显有问题？
+                        // 這很明顯有問題？
                         updateMenu(inv, b, Settings.RUN);
                         return;
                     }
@@ -476,9 +476,9 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                         int maxCraftlimit = getCraftLimit(b, inv);
                         int tickNext = nextP.getTicks();
                         if (maxCraftlimit != 0) {
-                            if (tickNext != 0) { // 超频机制
-                                // 尝试让time归1
-                                // 按比例减少maxlimit ,按最小值取craftlimit
+                            if (tickNext != 0) { // 超頻機制
+                                // 嘗試讓time歸1
+                                // 按比例減少maxlimit ,按最小值取craftlimit
                                 if (maxCraftlimit <= tickNext) {
                                     tickNext = ((tickNext + 1) / maxCraftlimit) - 1;
                                     maxCraftlimit = 1;
@@ -492,7 +492,7 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
                         db.setInt(3, maxCraftlimit);
 
                     } else if (index2 != -1) {
-                        // 遇到了之前的数据 需要重置
+                        // 遇到了之前的數據 需要重置
                         updateMenu(inv, b, Settings.RUN);
                     }
                 } else {

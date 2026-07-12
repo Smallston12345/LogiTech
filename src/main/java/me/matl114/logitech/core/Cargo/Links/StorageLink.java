@@ -17,10 +17,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class StorageLink {
-    public static final String LOC_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B纠缠链接目标: ");
-    public static final String NAME_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B历史访问记录: ");
+    public static final String LOC_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B糾纏鏈接目標: ");
+    public static final String NAME_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B歷史訪問記錄: ");
     public static final String BLANK_COLOR = AddUtils.resolveColor("&f");
-    public static final String BLANK_STORAGE = AddUtils.resolveColor("&f空存储位");
+    public static final String BLANK_STORAGE = AddUtils.resolveColor("&f空存儲位");
     public static final NamespacedKey KEY_LOC = AddUtils.getNameKey("cache_loc");
     public static final String LOC_DISPLAY = AddUtils.resolveColor("&3[%s,x=%d,y=%d,z=%d]");
 

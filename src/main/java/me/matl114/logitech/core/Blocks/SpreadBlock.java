@@ -43,27 +43,27 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
         this.RESULT_MATERIAL = finalMaterial;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c同化",
-                        "&7该物品拥有着将邻接的方块同化为自身的能力",
-                        "&7方块尝试同化邻接方块的行为,我们称之为一次同化",
-                        "&7被玩家放下或者被同化出来的方块会进行一次同化",
-                        "&a进行同化行为后该位置的方块将将不会继续同化,也不会被同化",
-                        "&7在随机的时长后被该位置的方块将会转变为目标物品",
-                        "&e当转变为目标物品时,将有%d%%的概率不改变方块材质".formatted(CHANCE_KEEP_MATERIAL)),
-                AddUtils.addLore(result.getItem(), "&a同化最终的结果"),
+                        "&f機制 - &c同化",
+                        "&7該物品擁有着將鄰接的方塊同化為自身的能力",
+                        "&7方塊嘗試同化鄰接方塊的行為,我們稱之為一次同化",
+                        "&7被玩家放下或者被同化出來的方塊會進行一次同化",
+                        "&a進行同化行為後該位置的方塊將將不會繼續同化,也不會被同化",
+                        "&7在隨機的時長後被該位置的方塊將會轉變為目標物品",
+                        "&e當轉變為目標物品時,將有%d%%的概率不改變方塊材質".formatted(CHANCE_KEEP_MATERIAL)),
+                AddUtils.addLore(result.getItem(), "&a同化最終的結果"),
                 AddUtils.getInfoShow(
-                        "&f机制 - &c反能量",
-                        "&7该物品同化的能量来源是所谓的\"反能量值\"",
-                        "&7当玩家放下时候,方块反能量值为%d".formatted(LIFE_DEFAULT),
-                        "&7被同化出的方块将会继承同化者的反能量值,并有60%的概率衰减1",
-                        "&7同化进行后的方块每sft将有60%的概率将自身反能量值衰减1",
-                        "&7当反能量值为0的时候,方块将转变为目标物品"),
+                        "&f機制 - &c反能量",
+                        "&7該物品同化的能量來源是所謂的\"反能量值\"",
+                        "&7當玩家放下時候,方塊反能量值為%d".formatted(LIFE_DEFAULT),
+                        "&7被同化出的方塊將會繼承同化者的反能量值,並有60%的概率衰減1",
+                        "&7同化進行後的方塊每sft將有60%的概率將自身反能量值衰減1",
+                        "&7當反能量值為0的時候,方塊將轉變為目標物品"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制 - &c数量阈值",
-                        "&7整个服务器中最多有%d个方块同时进行同化行为".formatted(ONE_TICK_SPREAD_MAXCNT),
-                        "&7当超过该阈值后余下的方块将&c停止运行",
-                        "&a因此该物品并不会对服务器tps造成影响")));
+                        "&f機制 - &c數量閾值",
+                        "&7整個服務器中最多有%d個方塊同時進行同化行為".formatted(ONE_TICK_SPREAD_MAXCNT),
+                        "&7當超過該閾值後餘下的方塊將&c停止運行",
+                        "&a因此該物品並不會對服務器tps造成影響")));
     }
 
     protected Random rand = new Random();
@@ -182,7 +182,7 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
                     if (event.getPlayer() != null) {
                         AddUtils.sendMessage(
                                 event.getPlayer(),
-                                "&c不能同时存在超过1个[%s]&c的扩散进程"
+                                "&c不能同時存在超過1個[%s]&c的擴散進程"
                                         .formatted(this.getItem().getItemMeta().getDisplayName()));
                     }
                 }

@@ -42,19 +42,19 @@ public class RandomEditor extends AbstractMachine implements FinalAltarCore.Fina
     protected final int INFO_SLOT = 13;
     protected final ItemStack INFO_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&6机制说明",
-            "&7将任意物品放入下方槽位",
-            "&7机器将修改物品的随机一项附魔,属性",
-            "&7等物品信息的数值,并将其随机强化",
-            "&c每个格子只能放入一个物品!");
+            "&6機制説明",
+            "&7將任意物品放入下方槽位",
+            "&7機器將修改物品的隨機一項附魔,屬性",
+            "&7等物品信息的數值,並將其隨機強化",
+            "&c每個格子只能放入一個物品!");
     protected final int LIMIT_SLOT = 31;
     protected final ItemStack LIMIT_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&6说明",
-            "&7由于强化物品发包巨大",
-            "&7对玩家造成困扰",
-            "&7故减少槽位数量至9个",
-            "&e请玩家不要过量堆词条,以免造成困扰",
+            "&6説明",
+            "&7由於強化物品發包巨大",
+            "&7對玩家造成困擾",
+            "&7故減少槽位數量至9個",
+            "&e請玩家不要過量堆詞條,以免造成困擾",
             "&7望周知");
     protected final int[] ITEM_SLOT = new int[] {
         18, 19, 20, 21, 22, 23, 24, 25, 26,
@@ -74,9 +74,9 @@ public class RandomEditor extends AbstractMachine implements FinalAltarCore.Fina
 
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6机器信息", "&7状态: &a已激活");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6機器信息", "&7狀態: &a已激活");
     protected final ItemStack STATUS_OFF =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6机器信息", "&7状态: &c未激活");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6機器信息", "&7狀態: &c未激活");
     protected final int MAX_UPGRADE_ONE_TIME = 3;
     protected final ItemSetting<Boolean> ENABLE_STACKABLE_ITEM = create("enable-stackable-item", true);
 
@@ -115,31 +115,31 @@ public class RandomEditor extends AbstractMachine implements FinalAltarCore.Fina
             resultDisplay.setItemMeta(meta);
             this.setDisplayRecipes(Utils.list(
                     AddUtils.getInfoShow(
-                            "&f机制 - &c充能",
-                            "&7当置于贰级终极祭坛上时",
-                            "&7且机器被终极祭坛结构中的所有宏激光发射器充能时",
-                            "&7即终极祭坛中四个宏激光发射器分别位于四个壹级以上终极祭坛上时",
-                            "&7机器激活,进行运转"),
+                            "&f機制 - &c充能",
+                            "&7當置於貳級終極祭壇上時",
+                            "&7且機器被終極祭壇結構中的所有宏激光發射器充能時",
+                            "&7即終極祭壇中四個宏激光發射器分別位於四個壹級以上終極祭壇上時",
+                            "&7機器激活,進行運轉"),
                     null,
                     AddUtils.getInfoShow(
-                            "&f机制 - &c量化升级",
-                            "&7每次运行机器会对所有槽位的物品进行升级",
-                            "&7每次随机选择一种附魔/属性增幅",
-                            "&7并将该物品的该项数值提示随机1~%d".formatted(MAX_UPGRADE_ONE_TIME),
-                            "&7下面是所有可能的升级展示",
-                            "&7注:附魔<=%d,属性基值<=%.1f".formatted(MAX_ENCHANT, MAX_ATTRIBUTE)),
+                            "&f機制 - &c量化升級",
+                            "&7每次運行機器會對所有槽位的物品進行升級",
+                            "&7每次隨機選擇一種附魔/屬性增幅",
+                            "&7並將該物品的該項數值提示隨機1~%d".formatted(MAX_UPGRADE_ONE_TIME),
+                            "&7下面是所有可能的升級展示",
+                            "&7注:附魔<=%d,屬性基值<=%.1f".formatted(MAX_ENCHANT, MAX_ATTRIBUTE)),
                     resultDisplay,
                     AddUtils.getInfoShow(
-                            "&f注意 - &c原版机制",
-                            "&7高版本专属:1.20.5+",
-                            "&7属性有风险,强化需谨慎,",
-                            "&7操作不规范,装备全白搭",
-                            "&c由于高版本属性的等级限制,可能会出现等级过高造成属性重置",
-                            "&c希望大家谨慎使用"),
+                            "&f注意 - &c原版機制",
+                            "&7高版本專屬:1.20.5+",
+                            "&7屬性有風險,強化需謹慎,",
+                            "&7操作不規範,裝備全白搭",
+                            "&c由於高版本屬性的等級限制,可能會出現等級過高造成屬性重置",
+                            "&c希望大家謹慎使用"),
                     ENABLE_STACKABLE_ITEM.getValue()
                             ? null
                             : AddUtils.getInfoShow(
-                                    "&f注意 - &c堆叠限制", "&7本服的机器配置中禁用了可堆叠物品的属性增幅", "&7只有最大堆叠数为1的物品才可以进行强化!")));
+                                    "&f注意 - &c堆疊限制", "&7本服的機器配置中禁用了可堆疊物品的屬性增幅", "&7只有最大堆疊數為1的物品才可以進行強化!")));
         });
     }
 

@@ -30,7 +30,7 @@ public class BugCrafter extends AbstractWorkBench implements ImportRecipes {
                     AddItem.BUG_CRAFTER,
                     AddItem.BUG_CRAFTER.getDisplayName(),
                     "",
-                    "&c配方显示不完整，请从%s查看正确的配方!".formatted(Language.get("Machines.BUG_CRAFTER.Name"))));
+                    "&c配方顯示不完整，請從%s查看正確的配方!".formatted(Language.get("Machines.BUG_CRAFTER.Name"))));
     protected static final int[] INPUT_SLOT = new int[] {
         0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 18, 19, 20, 21, 22, 23, 27, 28, 29, 30, 31, 32, 36, 37, 38, 39, 40, 41,
         45, 46, 47, 48, 49, 50
@@ -41,10 +41,10 @@ public class BugCrafter extends AbstractWorkBench implements ImportRecipes {
     protected static final int CRAFT_SLOT = 16;
     protected static final int LASTRECIPE_SLOT = 25;
     protected final ItemStack LASTRECIPE_ITEM =
-            new CleanItemStack(Material.KNOWLEDGE_BOOK, "&6点击放置上一次配方", "&7左键放入一份配方", "&7右键放入64份配方", "&a欢呼吧 懒狗们");
+            new CleanItemStack(Material.KNOWLEDGE_BOOK, "&6點擊放置上一次配方", "&7左鍵放入一份配方", "&7右鍵放入64份配方", "&a歡呼吧 懶狗們");
     protected static final int MENU_SLOT = 7;
     protected final ItemStack CRAFT_ITEM =
-            new CustomItemStack(Material.COMMAND_BLOCK, "&e点我进行合成", "&7一次性最多合成%s个".formatted(CRAFT_LIMIT));
+            new CustomItemStack(Material.COMMAND_BLOCK, "&e點我進行合成", "&7一次性最多合成%s個".formatted(CRAFT_LIMIT));
 
     public BugCrafter(
             ItemGroup category,
@@ -78,7 +78,7 @@ public class BugCrafter extends AbstractWorkBench implements ImportRecipes {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -112,13 +112,13 @@ public class BugCrafter extends AbstractWorkBench implements ImportRecipes {
         int index = DataCache.getLastRecipe(loc);
         List<MachineRecipe> recipeList = getMachineRecipes();
         if (index == -1 || index >= recipeList.size()) {
-            blockMenu.replaceExistingItem(LASTRECIPE_SLOT, AddUtils.addLore(LASTRECIPE_ITEM, "&7合成历史记录: &c无"));
+            blockMenu.replaceExistingItem(LASTRECIPE_SLOT, AddUtils.addLore(LASTRECIPE_ITEM, "&7合成歷史記錄: &c無"));
             blockMenu.addMenuClickHandler(LASTRECIPE_SLOT, ChestMenuUtils.getEmptyClickHandler());
         } else {
             MachineRecipe recipe = recipeList.get(index);
             ItemStack icon = recipe.getOutput()[0];
             blockMenu.replaceExistingItem(
-                    LASTRECIPE_SLOT, AddUtils.addLore(LASTRECIPE_ITEM, "&7合成历史记录: &r" + CraftUtils.getItemName(icon)));
+                    LASTRECIPE_SLOT, AddUtils.addLore(LASTRECIPE_ITEM, "&7合成歷史記錄: &r" + CraftUtils.getItemName(icon)));
             blockMenu.addMenuClickHandler(LASTRECIPE_SLOT, ((player, i, itemStack, clickAction) -> {
                 moveRecipe(player, blockMenu, recipe, clickAction.isRightClicked());
                 return false;

@@ -158,22 +158,22 @@ public class AbstractMultiThreadProcessor extends AbstractMachine
      * @param preset
      */
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
-        // 输入槽边框
+        // 空白背景 禁止點擊
+        // 輸入槽邊框
         int[] border = BORDER_IN;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 空白边框
+        // 空白邊框
         border = PROCESSOR_SLOT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {

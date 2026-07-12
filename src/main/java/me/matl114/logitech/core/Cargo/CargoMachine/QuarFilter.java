@@ -15,11 +15,11 @@ public class QuarFilter extends AbstractFilter {
 
     protected final int[] OUTPUT_BORDER = new int[] {36, 38, 40, 42, 44};
     protected final ItemStack[] OUTPUT_BORDERS_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方为输出槽0", "&7下方为白名单槽0"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位1", "&7上方为输出槽1", "&7下方为白名单槽1"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6默认槽位", "&7上方为默认输出槽", "&7下方为输入槽清空模式切换按钮"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位2", "&7上方为输出槽2", "&7下方为白名单槽2"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位3", "&7上方为输出槽3", "&7下方为白名单槽3")
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方為輸出槽0", "&7下方為白名單槽0"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位1", "&7上方為輸出槽1", "&7下方為白名單槽1"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6默認槽位", "&7上方為默認輸出槽", "&7下方為輸入槽清空模式切換按鈕"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位2", "&7上方為輸出槽2", "&7下方為白名單槽2"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位3", "&7上方為輸出槽3", "&7下方為白名單槽3")
     };
     protected final int[] OUTPUT_SLOTS = new int[] {27, 29, 33, 35, 31};
     protected final int[] OUTPUT_WLSLOTS = new int[] {45, 47, 51, 53};

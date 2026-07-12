@@ -23,7 +23,7 @@ public class EWorkBench extends AbstractWorkBench {
     protected static final int[] INPUT_SLOT = new int[] {11, 12, 13, 20, 21, 22, 29, 30, 31};
     protected static final int[] OUTPUT_SLOT = new int[] {15, 16, 24, 25, 33, 34};
     protected static final int CRAFT_SLOT = 23;
-    protected static final ItemStack CRAFT_ITEM = new CustomItemStack(Material.PAPER, "&e点我进行合成");
+    protected static final ItemStack CRAFT_ITEM = new CustomItemStack(Material.PAPER, "&e點我進行合成");
     protected static final int MENU_SLOT = 14;
     protected static final int[] BORDER = new int[] {
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 17, 18, 19, 26, 27, 28, 32, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44

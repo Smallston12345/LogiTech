@@ -91,7 +91,7 @@ public class TransportUtils {
         // move update in loop
         // updatePushers(tarCounter,menu);
         return tarCounter;
-        // 代表是否全部推送完毕
+        // 代表是否全部推送完畢
     }
 
     /**
@@ -124,9 +124,9 @@ public class TransportUtils {
                     if (cache.getItem() == null) {
                         cache.setFrom(tarCounter2);
                         cache.grab(tarCounter2);
-                        // 立刻设置种类,防止设置源被同步
+                        // 立刻設置種類,防止設置源被同步
                         cache.updateMenu(cacheInv);
-                        // 设置完后再更新源
+                        // 設置完後再更新源
                         tarCounter2.updateMenu(menu);
                     } else if (CraftUtils.matchItemCounter(tarCounter2, cache, true)) {
                         cache.grab(tarCounter2);
@@ -220,18 +220,18 @@ public class TransportUtils {
 
             int[] fromSlot = getSlotAccess(from, configCode, true, from_input, AIR);
             int[] toSlot = getSlotAccess(to, configCode, false, to_output, AIR);
-            // 只有目标INSERT才需要
+            // 只有目標INSERT才需要
             ItemTransportFlow flow = to_output ? ItemTransportFlow.WITHDRAW : ItemTransportFlow.INSERT;
             smart = smart && (CargoConfigs.TO_REVERSED.getConfig(configCode) || flow == ItemTransportFlow.INSERT);
             transportItemEnsureLock(from, fromSlot, to, toSlot, configCode, smart, bwlist, flow, provider);
             // if (CargoConfigs.F)
         } else {
-            // 逆向传输: to 变为实际取物源, from 变为实际放物目标
-            // 复用 getSlotAccess 以正确处理 FROM_REVERSED/TO_REVERSED 配置
+            // 逆向傳輸: to 變為實際取物源, from 變為實際放物目標
+            // 複用 getSlotAccess 以正確處理 FROM_REVERSED/TO_REVERSED 配置
             int[] toSlot = getSlotAccess(to, configCode, true, to_output, AIR);
             int[] fromSlot = getSlotAccess(from, configCode, false, from_input, AIR);
             ItemTransportFlow flow = from_input ? ItemTransportFlow.INSERT : ItemTransportFlow.WITHDRAW;
-            // 只有目标INSERT才需要
+            // 只有目標INSERT才需要
             smart = smart && (CargoConfigs.TO_REVERSED.getConfig(configCode) || flow == ItemTransportFlow.INSERT);
             transportItemEnsureLock(to, toSlot, from, fromSlot, configCode, smart, bwlist, flow, provider);
         }
@@ -417,18 +417,18 @@ public class TransportUtils {
         //        ItemStack stack;
         //        for(int i=0;i<len2;++i){
         //            stack=to.getItemInSlot(toSlot[i]);
-        //            //如果是空 则大概率要考虑这玩意
+        //            //如果是空 則大概率要考慮這玩意
         //            if(stack==null){
         //                toCacheIndex[indexLen]=toSlot[i];
         //                ++indexLen;
         //            }
-        //            //如果不是非空模式 且非满 才要考虑这玩意
+        //            //如果不是非空模式 且非滿 才要考慮這玩意
         //            else if(!isnull&&stack.getAmount()<stack.getMaxStackSize()){
         //                toCacheIndex[indexLen]=toSlot[i];
         //                ++indexLen;
         //            }
         //        }
-        //        //我那么大一个输出槽呢？
+        //        //我那麼大一個輸出槽呢？
         //        if(indexLen<=0)return;
         DynamicArray<ItemPusher> toCache =
                 new DynamicArray<>(ItemPusher[]::new, 54, provider.getMenuInstance(Settings.OUTPUT, to));
@@ -452,36 +452,36 @@ public class TransportUtils {
                     toPusher = toCache.get(slot);
                     if (toPusher.getItem() == null) {
                         toPusher.setFrom(fromPusher);
-                        // 转运方法,
+                        // 轉運方法,
                         fromAmount = Math.min(translimit, fromPusher.getAmountLong());
                         toPusher.setAmount(fromAmount);
                         translimit -= fromAmount;
-                        // 拆开写转运
+                        // 拆開寫轉運
                         //
                         if (fromAmount >= fromPusher.getMaxStackCnt()) {
-                            // 满了 或者非空了 ?,全转,下次别来了
+                            // 滿了 或者非空了 ?,全轉,下次別來了
                             fromPusher.setAmount(0);
-                            // 标记为true说明已经转完了
+                            // 標記為true説明已經轉完了
                             toRecord[slot] = true;
                             maxSizeSlotTill += (index == maxSizeSlotTill) ? 1 : 0;
                         } else {
                             fromPusher.addAmount(-fromAmount);
-                            // 设置历史,如果为空按理说应该没有先前的设置过
+                            // 設置歷史,如果為空按理説應該沒有先前的設置過
                         }
                         toPusher.updateMenu(to);
                         fromPusher.updateMenu(from);
-                        // FME 非空逻辑有问题 需要在获取槽位的时候剔除掉
+                        // FME 非空邏輯有問題 需要在獲取槽位的時候剔除掉
                     } else if (isnull || toPusher.isFull()) {
-                        // 这个槽已经被处理过了，不可能继续塞物品
+                        // 這個槽已經被處理過了，不可能繼續塞物品
                         toRecord[slot] = true;
                     } else if (CraftUtils.matchItemCounter(fromPusher, toPusher, true)) {
                         translimit = toPusher.transportFrom(fromPusher, translimit);
-                        // DO 将update改到不同的地方 不要做存储
+                        // DO 將update改到不同的地方 不要做存儲
                         toPusher.updateMenu(to);
                         fromPusher.updateMenu(from);
                     }
-                    // 结束了,,
-                    // 没有转运份额了,终结
+                    // 結束了,,
+                    // 沒有轉運份額了,終結
                     if (translimit <= 0) {
                         break loop;
                     }
@@ -491,10 +491,10 @@ public class TransportUtils {
                 }
             }
             if (lazy && fromPusher.isDirty()) {
-                // 当前非空 且被运输了 并且是首位阻断模式 直接退出
+                // 當前非空 且被運輸了 並且是首位阻斷模式 直接退出
                 break;
             }
-            // 不一样则新增record,下次用
+            // 不一樣則新增record,下次用
         }
     }
 
@@ -531,21 +531,21 @@ public class TransportUtils {
         //        int[] slotMappers=new int[54];//we assert that slot is under 54
         //        for(int i=0;i<len2;++i){
         //            stack=to.getItemInSlot(toSlot[i]);
-        //            //如果是空 则大概率要考虑这玩意
+        //            //如果是空 則大概率要考慮這玩意
         //            if(stack==null){
         //                toCacheIndex[indexLen]=toSlot[i];
         //                ++indexLen;
-        //                slotMappers[toSlot[i]]=indexLen;//以区别0
+        //                slotMappers[toSlot[i]]=indexLen;//以區別0
         //            }
-        //            //如果不是非空模式 且非满 才要考虑这玩意
+        //            //如果不是非空模式 且非滿 才要考慮這玩意
         //            else if(!isnull&&stack.getAmount()<stack.getMaxStackSize()){
         //                toCacheIndex[indexLen]=toSlot[i];
         //                ++indexLen;
-        //                slotMappers[toSlot[i]]=indexLen;//+1.，以区别0
-        //                //这里会重复
+        //                slotMappers[toSlot[i]]=indexLen;//+1.，以區別0
+        //                //這裏會重複
         //            }
         //        }
-        // 我那么大一个输出槽呢？
+        // 我那麼大一個輸出槽呢？
         // todo use directly mapped index cache to avoid same slot in slots!
         DynamicArray<ItemPusher> toCache =
                 new DynamicArray<>(ItemPusher[]::new, 54, provider.getMenuInstance(Settings.OUTPUT, to));
@@ -577,35 +577,35 @@ public class TransportUtils {
                         toPusher = toCache.get(indexJ);
                         if (toPusher.getItem() == null) {
                             toPusher.setFrom(fromPusher);
-                            // 转运方法,
+                            // 轉運方法,
                             fromAmount = Math.min(translimit, fromPusher.getAmountLong());
                             toPusher.setAmount(fromAmount);
                             translimit -= fromAmount;
-                            // 拆开写转运
+                            // 拆開寫轉運
                             //
                             if (fromAmount >= fromPusher.getMaxStackCnt()) {
-                                // 满了 或者非空了 ?,全转,下次别来了
+                                // 滿了 或者非空了 ?,全轉,下次別來了
                                 fromPusher.setAmount(0);
-                                // 标记为true说明已经转完了
+                                // 標記為true説明已經轉完了
                                 toRecord[indexJ] = true;
                             } else {
                                 fromPusher.addAmount(-fromAmount);
-                                // 设置历史,如果为空按理说应该没有先前的设置过
+                                // 設置歷史,如果為空按理説應該沒有先前的設置過
                             }
                             toPusher.updateMenu(to);
                             fromPusher.updateMenu(from);
-                            // E 非空逻辑有问题 需要在获取槽位的时候剔除掉
+                            // E 非空邏輯有問題 需要在獲取槽位的時候剔除掉
                         } else if (isnull || toPusher.isFull()) {
                             toRecord[indexJ] = true;
                         } else if (CraftUtils.matchItemCounter(fromPusher, toPusher, true)) { // 如果匹配
                             translimit = toPusher.transportFrom(fromPusher, translimit);
-                            // TO 将update改到不同的地方 不要做存储
+                            // TO 將update改到不同的地方 不要做存儲
                             toPusher.updateMenu(to);
                             fromPusher.updateMenu(from);
                         }
 
-                        // 结束了,,
-                        // 没有转运份额了,终结
+                        // 結束了,,
+                        // 沒有轉運份額了,終結
                         if (translimit == 0) {
                             break loop;
                         }
@@ -616,10 +616,10 @@ public class TransportUtils {
                 }
             }
             if (lazy && fromPusher.isDirty()) {
-                // 当前非空 且被运输了 并且是首位阻断模式 直接退出
+                // 當前非空 且被運輸了 並且是首位阻斷模式 直接退出
                 break;
             }
-            // 不一样则新增record,下次用
+            // 不一樣則新增record,下次用
         }
     }
 
@@ -642,24 +642,24 @@ public class TransportUtils {
         int indexLen = 0;
         ItemStack stack;
         // TOO what if we do loop on outputslot first
-        // TDO 调整for顺序 将输出作为主循环 输入作为
-        // TDO 这样output槽可以不生成cache？ 其实我觉得生成的也没啥
-        // TDO 增加一个动态迭代器 或者动态获取的什么玩意
-        // TDO 还是先整个最简单的
+        // TDO 調整for順序 將輸出作為主循環 輸入作為
+        // TDO 這樣output槽可以不生成cache？ 其實我覺得生成的也沒啥
+        // TDO 增加一個動態迭代器 或者動態獲取的什麼玩意
+        // TDO 還是先整個最簡單的
         for (int i = 0; i < len2; ++i) {
             stack = to.getItemInSlot(toSlot[i]);
-            // 如果是空 则大概率要考虑这玩意
+            // 如果是空 則大概率要考慮這玩意
             if (stack == null) {
                 toCacheIndex[indexLen] = toSlot[i];
                 ++indexLen;
             }
-            // 如果不是非空模式 且非满 才要考虑这玩意
+            // 如果不是非空模式 且非滿 才要考慮這玩意
             else if (!isnull && stack.getAmount() < stack.getMaxStackSize()) {
                 toCacheIndex[indexLen] = toSlot[i];
                 ++indexLen;
             }
         }
-        // 我那么大一个输出槽呢？
+        // 我那麼大一個輸出槽呢？
         if (indexLen <= 0) return;
         DynamicArray<ItemPusher> toCache = new DynamicArray<>(
                 ItemPusher[]::new, indexLen, provider.getMenuInstance(Settings.OUTPUT, to, toCacheIndex));
@@ -679,34 +679,34 @@ public class TransportUtils {
                     toPusher = toCache.get(index);
                     if (toPusher.getItem() == null) {
                         toPusher.setFrom(fromPusher);
-                        // 转运方法,
+                        // 轉運方法,
                         fromAmount = Math.min(translimit, fromPusher.getAmount());
                         toPusher.setAmount(fromAmount);
                         translimit -= fromAmount;
-                        // 拆开写转运
+                        // 拆開寫轉運
                         //
                         if (fromAmount >= fromPusher.getMaxStackCnt()) {
-                            // 满了 或者非空了 ?,全转,下次别来了
+                            // 滿了 或者非空了 ?,全轉,下次別來了
                             fromPusher.setAmount(0);
-                            // 标记为true说明已经转完了
+                            // 標記為true説明已經轉完了
                             toRecord[index] = true;
                         } else {
                             fromPusher.addAmount(-fromAmount);
-                            // 设置历史,如果为空按理说应该没有先前的设置过
+                            // 設置歷史,如果為空按理説應該沒有先前的設置過
                         }
                         toPusher.updateMenu(to);
                         fromPusher.updateMenu(from);
-                        // 非空逻辑有问题 需要在获取槽位的时候剔除掉
+                        // 非空邏輯有問題 需要在獲取槽位的時候剔除掉
                     } else {
                         if (CraftUtils.matchItemCounter(fromPusher, toPusher, true)) { // 如果匹配
                             translimit = toPusher.transportFrom(fromPusher, translimit);
-                            // T 将update改到不同的地方 不要做存储
+                            // T 將update改到不同的地方 不要做存儲
                             toPusher.updateMenu(to);
                             fromPusher.updateMenu(from);
                         }
                     }
-                    // 结束了,,
-                    // 没有转运份额了,终结
+                    // 結束了,,
+                    // 沒有轉運份額了,終結
                     if (translimit == 0) {
                         break loop;
                     }
@@ -716,10 +716,10 @@ public class TransportUtils {
                 }
             }
             if (lazy && fromPusher.isDirty()) {
-                // 当前非空 且被运输了 并且是首位阻断模式 直接退出
+                // 當前非空 且被運輸了 並且是首位阻斷模式 直接退出
                 break;
             }
-            // 不一样则新增record,下次用
+            // 不一樣則新增record,下次用
         }
     }
 

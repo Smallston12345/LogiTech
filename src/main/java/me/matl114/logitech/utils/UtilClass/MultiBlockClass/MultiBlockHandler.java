@@ -32,15 +32,15 @@ public class MultiBlockHandler implements AbstractMultiBlockHandler {
 
             Vector delta = type.getStructurePart(i);
             Location partloc = core.clone().add(delta);
-            // 设置部件的响应目标
+            // 設置部件的響應目標
             MultiBlockService.setUUID(partloc, uid);
-            // 启用部件的响应
+            // 啓用部件的響應
             MultiBlockService.setStatus(partloc, 1);
-            // 设置部件的响应码
+            // 設置部件的響應碼
         }
-        // 设置部件的响应目标
+        // 設置部件的響應目標
         MultiBlockService.setUUID(core, uid);
-        // 启用部件的响应
+        // 啓用部件的響應
         MultiBlockService.setStatus(core, 1);
         // on enable
         SlimefunItem it = DataCache.getSfItem(core);
@@ -98,7 +98,7 @@ public class MultiBlockHandler implements AbstractMultiBlockHandler {
         for (int i = 0; i < len; i++) {
             Vector delta = STRUCTURE_TYPE.getStructurePart(i);
             Location partloc = CORE.clone().add(delta);
-            // 如果当前匹配 且响应当前uid才允许过，否则任意一条均为false
+            // 如果當前匹配 且響應當前uid才允許過，否則任意一條均為false
             if ((!STRUCTURE_TYPE.getStructurePartId(i).equals(MultiBlockService.safeGetPartId(partloc)))
                     || (!this.uid.equals(MultiBlockService.safeGetUUID(partloc)))) {
                 return i;
@@ -111,13 +111,13 @@ public class MultiBlockHandler implements AbstractMultiBlockHandler {
 
     public int checkIfCompleteRandom() {
         int len = this.size;
-        int checkChance = 10; // 随机选取1/10的方块检测
+        int checkChance = 10; // 隨機選取1/10的方塊檢測
         for (int s = 0; s < len; s++) {
             int i = rand.nextInt(checkChance);
             if (i == 0) {
                 Vector delta = STRUCTURE_TYPE.getStructurePart(s);
                 Location partloc = CORE.clone().add(delta);
-                // 如果当前匹配 且响应当前uid才允许过，否则任意一条均为false
+                // 如果當前匹配 且響應當前uid才允許過，否則任意一條均為false
                 if ((!STRUCTURE_TYPE.getStructurePartId(s).equals(MultiBlockService.safeGetPartId(partloc)))
                         || (!this.uid.equals(MultiBlockService.safeGetUUID(partloc)))) {
                     return s;
@@ -134,7 +134,7 @@ public class MultiBlockHandler implements AbstractMultiBlockHandler {
             //
             //            }
         } else {
-            // multiblock被关闭 被抛出但是有part恰好响应了，则手动关掉part
+            // multiblock被關閉 被拋出但是有part恰好響應了，則手動關掉part
             MultiBlockService.setStatus(loc, 0);
             MultiBlockService.setUUID(loc, "null");
         }

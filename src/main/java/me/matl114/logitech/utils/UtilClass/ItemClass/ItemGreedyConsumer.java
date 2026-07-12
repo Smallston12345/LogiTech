@@ -188,7 +188,7 @@ public class ItemGreedyConsumer extends ItemCounter implements Comparable<ItemGr
         if (targetConsumers == null) {
             return;
         }
-        // noConsume 的输入不执行扣除
+        // noConsume 的輸入不執行扣除
         if (noConsume && mod == Settings.GRAB) {
             return;
         }

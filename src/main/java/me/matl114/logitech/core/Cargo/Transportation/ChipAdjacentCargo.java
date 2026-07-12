@@ -30,21 +30,21 @@ public class ChipAdjacentCargo extends AdjacentCargo implements ChipControllable
         super(itemGroup, item, recipeType, recipe, displayList);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7这是一个同步货运机器,属于[CHIP_SYNC]组",
-                        "&7位于同组的机器将共享同一个ticker计数器",
-                        "&7出于对时序安全性的保障,&c每1s该计数器+1并让机器工作一次",
-                        "&7机器用该计数器数值顺序读取%s中记录的01码".formatted(Language.get("Items.CHIP.Name")),
-                        "&7具体地,机器会读取01码的第<ticker>(mod32)位",
-                        "&7机器根据读取结果是0/1会执行相应的行为"),
+                        "&f機制",
+                        "&7這是一個同步貨運機器,屬於[CHIP_SYNC]組",
+                        "&7位於同組的機器將共享同一個ticker計數器",
+                        "&7出於對時序安全性的保障,&c每1s該計數器+1並讓機器工作一次",
+                        "&7機器用該計數器數值順序讀取%s中記錄的01碼".formatted(Language.get("Items.CHIP.Name")),
+                        "&7具體地,機器會讀取01碼的第<ticker>(mod32)位",
+                        "&7機器根據讀取結果是0/1會執行相應的行為"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7本机器可以选择与其相邻的方块参与传输",
-                        "&7本机器接受芯片信息的调控",
-                        "&7当读取结果为1时,执行运输",
-                        "&7当读取结果为0时,待机",
-                        "&c信息将实时生效"),
+                        "&f機制",
+                        "&7本機器可以選擇與其相鄰的方塊參與傳輸",
+                        "&7本機器接受芯片信息的調控",
+                        "&7當讀取結果為1時,執行運輸",
+                        "&7當讀取結果為0時,待機",
+                        "&c信息將實時生效"),
                 null));
     }
 
@@ -94,12 +94,12 @@ public class ChipAdjacentCargo extends AdjacentCargo implements ChipControllable
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&a信息",
-                "&7左侧为货运配置卡槽",
-                "&7右侧为芯片槽",
-                "&7在左侧配置源方方块邻接方向",
-                "&7在右侧配置目标方块邻接方向",
-                AddUtils.concat("&7当前读取编码位数: ", String.valueOf(ticks)),
-                AddUtils.concat("&7当前运行状态: ", bit == 1 ? "运行" : "待机"));
+                "&7左側為貨運配置卡槽",
+                "&7右側為芯片槽",
+                "&7在左側配置源方方塊鄰接方向",
+                "&7在右側配置目標方塊鄰接方向",
+                AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)),
+                AddUtils.concat("&7當前運行狀態: ", bit == 1 ? "運行" : "待機"));
     }
 
     public ItemStack getInfoOffItem(int tickCount) {
@@ -107,12 +107,12 @@ public class ChipAdjacentCargo extends AdjacentCargo implements ChipControllable
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&a信息",
-                "&7左侧为货运配置卡槽",
-                "&7右侧为芯片槽",
-                "&7在左侧配置源方方块邻接方向",
-                "&7在右侧配置目标方块邻接方向",
-                AddUtils.concat("&7当前运行状态: ", String.valueOf(ticks)),
-                "&e待机中,芯片不存在或已损坏");
+                "&7左側為貨運配置卡槽",
+                "&7右側為芯片槽",
+                "&7在左側配置源方方塊鄰接方向",
+                "&7在右側配置目標方塊鄰接方向",
+                AddUtils.concat("&7當前運行狀態: ", String.valueOf(ticks)),
+                "&e待機中,芯片不存在或已損壞");
     }
 
     public void syncTick(Block b, BlockMenu inv, SlimefunBlockData data, int synTickCount) {

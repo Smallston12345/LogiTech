@@ -58,45 +58,45 @@ public class SmithInterfaceCharger extends SmithingInterface implements MenuTogg
     protected final double SPEED_MULTIPLY;
     protected final ItemStack CHARGER_DISPLAY = new CleanItemStack(
             ChestMenuUtils.getOutputSlotTexture(),
-            "&6充电物品输入槽",
-            "&7放入可充电物品以充电",
-            "&7可以向本附属自定义的充电物品充电",
-            "&a充电速率 = <基础充电速率>* <速度增幅量>^(<速度增幅组件数量>)");
+            "&6充電物品輸入槽",
+            "&7放入可充電物品以充電",
+            "&7可以向本附屬自定義的充電物品充電",
+            "&a充電速率 = <基礎充電速率>* <速度增幅量>^(<速度增幅組件數量>)");
     protected final ItemStack REMOTE_DISPLAY = new CleanItemStack(
             ChestMenuUtils.getInputSlotTexture(),
             "&6玩家ID卡插入槽",
-            "&7放入绑定玩家的玩家ID卡",
-            "&7可以对该玩家进行远程充电",
-            "&7充电范围包括玩家的盔甲槽和主手副手",
-            "&7可以向本附属自定义的充电物品充电",
-            "&a充电速率 = <远程充电速率>* <速度增幅量>^(<速度增幅组件数量>)",
-            "&a充电范围受<范围增幅组件>数量影响",
-            "&7分别为16格(0个),1600格(1个),同一世界(2个),任意位置(>2个)");
+            "&7放入綁定玩家的玩家ID卡",
+            "&7可以對該玩家進行遠程充電",
+            "&7充電範圍包括玩家的盔甲槽和主手副手",
+            "&7可以向本附屬自定義的充電物品充電",
+            "&a充電速率 = <遠程充電速率>* <速度增幅量>^(<速度增幅組件數量>)",
+            "&a充電範圍受<範圍增幅組件>數量影響",
+            "&7分別為16格(0個),1600格(1個),同一世界(2個),任意位置(>2個)");
     protected final int LV0_LEN_SQ = 256;
     protected final int LV1_LEN_SQ = 2560000;
     protected final int TOGGLE_LAZYMOD = 8;
     protected final int remoteSpeed;
     protected final ItemStack TOGGLE_LAZYMOD_OFF =
-            new CleanItemStack(Material.RED_STAINED_GLASS_PANE, "&6懒惰模式: &c关", "&7懒惰模式开启时", "&7仅装备电量过半才会进行远程充电");
+            new CleanItemStack(Material.RED_STAINED_GLASS_PANE, "&6懶惰模式: &c關", "&7懶惰模式開啓時", "&7僅裝備電量過半才會進行遠程充電");
     protected final ItemStack TOGGLE_LAZYMOD_ON =
-            new CleanItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6懒惰模式: &a开", "&7懒惰模式开启时", "&7仅装备电量过半才会进行远程充电");
+            new CleanItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6懶惰模式: &a開", "&7懶惰模式開啓時", "&7僅裝備電量過半才會進行遠程充電");
     protected final ItemStack FUNCTION_DISPLAY = new CleanItemStack(
             SlimefunItems.BATTERY,
-            "&6充电台功能概述",
-            "&7充电台基础充电速率: %dJ".formatted(energyConsumption),
-            "&7本充电台拥有三种充电方式,他们同时进行",
-            "&71.将可充电物品放入下方槽位,对所有可充电物品进行充电",
-            "&72.玩家打开界面时,将对玩家的盔甲槽和主副手进行充电",
-            "&73.将绑定了玩家的玩家ID卡插入右侧槽位,会对玩家进行远程充电",
-            "&7机器会尽可能尝试保证自身加载(暂未实现)",
-            "&a向锻铸工坊插入对应增幅组件可以提升充电台的相应功能");
-    // todo: 这个显示正确数值
+            "&6充電台功能概述",
+            "&7充電台基礎充電速率: %dJ".formatted(energyConsumption),
+            "&7本充電台擁有三種充電方式,他們同時進行",
+            "&71.將可充電物品放入下方槽位,對所有可充電物品進行充電",
+            "&72.玩家打開界面時,將對玩家的盔甲槽和主副手進行充電",
+            "&73.將綁定了玩家的玩家ID卡插入右側槽位,會對玩家進行遠程充電",
+            "&7機器會盡可能嘗試保證自身加載(暫未實現)",
+            "&a向鍛鑄工坊插入對應增幅組件可以提升充電台的相應功能");
+    // todo: 這個顯示正確數值
     protected final ItemStack[] DISPLAY_CHARGE_LEVEL = {
-        new CleanItemStack(Material.RED_STAINED_GLASS_PANE, "&6电力显示: &c不足20%"),
-        new CleanItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&6电力显示: &e20%~40%"),
-        new CleanItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6电力显示: &e40%~60%"),
-        new CleanItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6电力显示: &b60%~80%"),
-        new CleanItemStack(Material.LIME_STAINED_GLASS_PANE, "&6电力显示: &a80%~100%")
+        new CleanItemStack(Material.RED_STAINED_GLASS_PANE, "&6電力顯示: &c不足20%"),
+        new CleanItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&6電力顯示: &e20%~40%"),
+        new CleanItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6電力顯示: &e40%~60%"),
+        new CleanItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6電力顯示: &b60%~80%"),
+        new CleanItemStack(Material.LIME_STAINED_GLASS_PANE, "&6電力顯示: &a80%~100%")
     };
 
     public Pair<ItemStack, Integer> getChargeDisplay(int charge) {
@@ -206,8 +206,8 @@ public class SmithInterfaceCharger extends SmithingInterface implements MenuTogg
         stack.setItemMeta(AddUtils.addLore(
                         stack,
                         LoreBuilder.powerBuffer(energybuffer),
-                        "&8⇨ &e⚡ &7" + energyConsumption + " J/次 基础充电速率",
-                        "&8⇨ &e⚡ &7" + remoteSpeed + " J/次 远程充电速率",
+                        "&8⇨ &e⚡ &7" + energyConsumption + " J/次 基礎充電速率",
+                        "&8⇨ &e⚡ &7" + remoteSpeed + " J/次 遠程充電速率",
                         "&8⇨ &e⚡ &7" + SPEED_MULTIPLY + " 速度增幅量")
                 .getItemMeta());
     }

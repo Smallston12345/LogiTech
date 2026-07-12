@@ -52,12 +52,12 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
     protected final int BASE_SPEED_FLYMACHINE = 80;
     protected final ItemStack FLY_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&6飞行道具槽位",
-            "&7可放入鞘翅/无尽飞行器",
-            "&7当为空时,基础探索速度=%s".formatted(String.valueOf(BASE_SPEED_WALK)),
-            "&7当放入鞘翅时,基础探索速度=%s".formatted(String.valueOf(BASE_SPEED_ELYTRA)),
-            "&7当放入鞘翅时,&e需要同时放入飞行驱动道具",
-            "&7当放入无尽飞行器时,基础探索速度=%s".formatted(String.valueOf(BASE_SPEED_FLYMACHINE)));
+            "&6飛行道具槽位",
+            "&7可放入鞘翅/無盡飛行器",
+            "&7當為空時,基礎探索速度=%s".formatted(String.valueOf(BASE_SPEED_WALK)),
+            "&7當放入鞘翅時,基礎探索速度=%s".formatted(String.valueOf(BASE_SPEED_ELYTRA)),
+            "&7當放入鞘翅時,&e需要同時放入飛行驅動道具",
+            "&7當放入無盡飛行器時,基礎探索速度=%s".formatted(String.valueOf(BASE_SPEED_FLYMACHINE)));
     protected final int FOOD_SPEED = 4;
     protected final int ROCKET_TOTAL_TIME = 12;
     protected final int MUL_ROCKET = 8;
@@ -67,36 +67,36 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
 
     protected final ItemStack ELYTRA_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&6飞行驱动道具",
-            "&7可放入元素法杖-风/多功能工具/烟花火箭",
-            "&7当放入烟花火箭时,%s刻消耗一个,探索速度x%s".formatted(String.valueOf(ROCKET_TOTAL_TIME), String.valueOf(MUL_ROCKET)),
-            "&7当放入元素法杖-风时,食物消耗x%s,探索速度x%s".formatted(String.valueOf(FOOD_MUL_WIND), String.valueOf(MUL_WIND)),
-            "&7当放入多功能工具时,多功能工具会消耗自身电力,探索速度x%s".formatted(MUL_TOOL));
+            "&6飛行驅動道具",
+            "&7可放入元素法杖-風/多功能工具/煙花火箭",
+            "&7當放入煙花火箭時,%s刻消耗一個,探索速度x%s".formatted(String.valueOf(ROCKET_TOTAL_TIME), String.valueOf(MUL_ROCKET)),
+            "&7當放入元素法杖-風時,食物消耗x%s,探索速度x%s".formatted(String.valueOf(FOOD_MUL_WIND), String.valueOf(MUL_WIND)),
+            "&7當放入多功能工具時,多功能工具會消耗自身電力,探索速度x%s".formatted(MUL_TOOL));
     protected final ItemStack FOOD_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
             "&6食物槽",
             "&7可放入原版食物",
-            "&71刻消耗%s饱食度数值".formatted(String.valueOf(FOOD_SPEED)),
-            "&7当饱食度低于0时会消耗该槽位中的食物",
-            "&7注:饱食度数值=20*(食物饥饿回复值+饱和度回复值)");
+            "&71刻消耗%s飽食度數值".formatted(String.valueOf(FOOD_SPEED)),
+            "&7當飽食度低於0時會消耗該槽位中的食物",
+            "&7注:飽食度數值=20*(食物飢餓回覆值+飽和度回覆值)");
     //    protected final int POP_SLOT=23;
-    //    protected final ItemStack POP_ITEM_OFF=new CustomItemStack(Material.RED_STAINED_GLASS_PANE,"&6丢弃模式","&7当前状态:
-    // &c关","&7若开启,推送槽位满时,会将未能推送的物品")
+    //    protected final ItemStack POP_ITEM_OFF=new CustomItemStack(Material.RED_STAINED_GLASS_PANE,"&6丟棄模式","&7當前狀態:
+    // &c關","&7若開啓,推送槽位滿時,會將未能推送的物品")
     protected final int SEED_SLOT = 21;
     protected final ItemStack SEED_ITEM = new CustomItemStack(
             Material.WHEAT_SEEDS,
-            "&6点击输入预测的世界种子(LongType)以更改跑图速度",
-            "&7世界种子采用当前世界的种子(/seed)值(LongType)",
-            "&7当输入种子>真实种子时,75%概率进度增加,25%概率进度减少",
-            "&7当输入种子<真实种子时,75%概率进度减少,25%概率进度增加",
-            "&7当输入种子=真实种子时,100%概率进度增加");
+            "&6點擊輸入預測的世界種子(LongType)以更改跑圖速度",
+            "&7世界種子採用當前世界的種子(/seed)值(LongType)",
+            "&7當輸入種子>真實種子時,75%概率進度增加,25%概率進度減少",
+            "&7當輸入種子<真實種子時,75%概率進度減少,25%概率進度增加",
+            "&7當輸入種子=真實種子時,100%概率進度增加");
     protected final int INFO_SLOT = 22;
     protected final int WORLD_SLOT = 23;
-    protected final ItemStack WORLD_WORLD_ITEM = new CustomItemStack(Material.GRASS_BLOCK, "&6当前环境: &a主世界环境", "&7可以跑图");
-    protected final ItemStack WORLD_NETHER_ITEM = new CustomItemStack(Material.NETHERRACK, "&6当前环境: &c下界环境", "&7可以跑图");
-    protected final ItemStack WORLD_END_ITEM = new CustomItemStack(Material.END_STONE, "&6当前环境: &9末地环境", "&7可以跑图");
+    protected final ItemStack WORLD_WORLD_ITEM = new CustomItemStack(Material.GRASS_BLOCK, "&6當前環境: &a主世界環境", "&7可以跑圖");
+    protected final ItemStack WORLD_NETHER_ITEM = new CustomItemStack(Material.NETHERRACK, "&6當前環境: &c下界環境", "&7可以跑圖");
+    protected final ItemStack WORLD_END_ITEM = new CustomItemStack(Material.END_STONE, "&6當前環境: &9末地環境", "&7可以跑圖");
     protected final ItemStack WORLD_UNKNOWN_ITEM =
-            new CustomItemStack(Material.GRASS_BLOCK, "&6当前环境: &b???", "&7不可以跑图");
+            new CustomItemStack(Material.GRASS_BLOCK, "&6當前環境: &b???", "&7不可以跑圖");
     protected final int FLY_PROGRESS_SLOT = 19;
     protected final int FOOD_PROGRESS_SLOT = 25;
 
@@ -113,22 +113,22 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
                 if (isFly) {
                     return new CustomItemStack(
                             Material.GREEN_STAINED_GLASS_PANE,
-                            "&a跑图中",
-                            "&7当前饱食进度: %s/%s".formatted(String.valueOf(foodlevel), String.valueOf(totalFoodlevel)),
-                            "&7当前跑图速度: %s".formatted(String.valueOf(speed)),
-                            "&7当前预测种子: %s".formatted(String.valueOf(predictSeed)),
-                            "&7当前跑图进度: %s/%s".formatted(String.valueOf(progress), String.valueOf(totalProgress)));
+                            "&a跑圖中",
+                            "&7當前飽食進度: %s/%s".formatted(String.valueOf(foodlevel), String.valueOf(totalFoodlevel)),
+                            "&7當前跑圖速度: %s".formatted(String.valueOf(speed)),
+                            "&7當前預測種子: %s".formatted(String.valueOf(predictSeed)),
+                            "&7當前跑圖進度: %s/%s".formatted(String.valueOf(progress), String.valueOf(totalProgress)));
                 } else {
                     return new CustomItemStack(
                             Material.GREEN_STAINED_GLASS_PANE,
                             "&a挖掘中",
-                            "&7当前饱食进度: %s/%s".formatted(String.valueOf(foodlevel), String.valueOf(totalFoodlevel)),
-                            "&7当前挖掘速度: %s".formatted(String.valueOf(speed)),
-                            "&7当前预测种子: %s".formatted(String.valueOf(predictSeed)),
-                            "&7当前挖掘进度: %s/%s".formatted(String.valueOf(progress), String.valueOf(totalProgress)));
+                            "&7當前飽食進度: %s/%s".formatted(String.valueOf(foodlevel), String.valueOf(totalFoodlevel)),
+                            "&7當前挖掘速度: %s".formatted(String.valueOf(speed)),
+                            "&7當前預測種子: %s".formatted(String.valueOf(predictSeed)),
+                            "&7當前挖掘進度: %s/%s".formatted(String.valueOf(progress), String.valueOf(totalProgress)));
                 }
             } else {
-                return new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c未工作", "&7进度速度=0");
+                return new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c未工作", "&7進度速度=0");
             }
         } else {
             return new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c未工作", "&7食物不足!");
@@ -185,19 +185,19 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
 
     public void newMenuInstance(BlockMenu menu, Block block) {
         menu.addMenuClickHandler(SEED_SLOT, ((player, i, itemStack, clickAction) -> {
-            AddUtils.sendMessage(player, "&6[&7自动跑图机&6]&a 请输入种子:");
+            AddUtils.sendMessage(player, "&6[&7自動跑圖機&6]&a 請輸入種子:");
             player.closeInventory();
             ChatUtils.awaitInput(player, (str) -> {
                 try {
                     long seed = Long.parseLong(str);
                     DataCache.setCustomString(menu.getLocation(), KEY_SEED, str);
                     if (menu.getLocation().getWorld().getSeed() == seed) {
-                        AddUtils.sendMessage(player, "&6[&7自动跑图机&6]&a 种子正确!");
+                        AddUtils.sendMessage(player, "&6[&7自動跑圖機&6]&a 種子正確!");
                     } else {
-                        AddUtils.sendMessage(player, "&6[&7自动跑图机&6]&c 种子错误!");
+                        AddUtils.sendMessage(player, "&6[&7自動跑圖機&6]&c 種子錯誤!");
                     }
                 } catch (Throwable e) {
-                    AddUtils.sendMessage(player, "&6[&7自动跑图机&6]&a 这并不是有效的LongType!");
+                    AddUtils.sendMessage(player, "&6[&7自動跑圖機&6]&a 這並不是有效的LongType!");
                 }
             });
             return false;
@@ -379,7 +379,7 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
         if (loc.getWorld().getEnvironment() == World.Environment.CUSTOM) {
             if (menu.hasViewer()) {
                 menu.replaceExistingItem(
-                        INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c未工作", "不正确的世界环境!"));
+                        INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c未工作", "不正確的世界環境!"));
             }
             return;
         }

@@ -40,30 +40,30 @@ public class StorageOperator extends AbstractMachine {
     }
 
     protected final ItemStack[] INFO_ITEMS = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a输入槽1"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a输入槽2"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a输出槽1"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a输出槽2"),
-        new CustomItemStack(Material.BOOK, "&f机制", "&7将存储类物品放入两个输入槽进行转移", "&7转移结果将输入至输出槽", "&7操作之前请保证输出槽内不存在物品")
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a輸入槽1"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a輸入槽2"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a輸出槽1"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&a輸出槽2"),
+        new CustomItemStack(Material.BOOK, "&f機制", "&7將存儲類物品放入兩個輸入槽進行轉移", "&7轉移結果將輸入至輸出槽", "&7操作之前請保證輸出槽內不存在物品")
     };
     protected final int BOTTON_SLOT = 22;
     protected final ItemStack BOTTON_ITEM = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&a操作按钮",
-            "&7点击按钮 将会试图将输入槽2中存储的物品转移至输入槽1中的存储",
-            "&7shift点击按钮 将会试图将输入槽1,2中的存储物品数量调至其平均数",
-            "&7转移的结果数量会受到存储的最大数量限制",
-            "&7转移之后,输入槽1,2中的存储将会分别输出至输出槽1,2");
+            "&a操作按鈕",
+            "&7點擊按鈕 將會試圖將輸入槽2中存儲的物品轉移至輸入槽1中的存儲",
+            "&7shift點擊按鈕 將會試圖將輸入槽1,2中的存儲物品數量調至其平均數",
+            "&7轉移的結果數量會受到存儲的最大數量限制",
+            "&7轉移之後,輸入槽1,2中的存儲將會分別輸出至輸出槽1,2");
 
     public StorageOperator(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe, 0, 0);
         setDisplayRecipes(Utils.list(AddUtils.getInfoShow(
-                "&f机制",
-                "&7将存储类物品放入两个输入槽进行转移",
-                "&7点击操作按钮 将会试图将输入的第二个个存储的物品转移至第一个中的存储",
-                "&7shift点击操作按钮 将会试图将两个存储内的存储物品数量调至其平均数",
-                "&7转移的结果数量会受到存储的最大数量限制",
-                "&7转移结果将输入至输出槽")));
+                "&f機制",
+                "&7將存儲類物品放入兩個輸入槽進行轉移",
+                "&7點擊操作按鈕 將會試圖將輸入的第二個個存儲的物品轉移至第一個中的存儲",
+                "&7shift點擊操作按鈕 將會試圖將兩個存儲內的存儲物品數量調至其平均數",
+                "&7轉移的結果數量會受到存儲的最大數量限制",
+                "&7轉移結果將輸入至輸出槽")));
     }
 
     public void constructMenu(BlockMenuPreset preset) {
@@ -92,11 +92,11 @@ public class StorageOperator extends AbstractMachine {
             it1 = inv.getItemInSlot(INPUT_SLOT[0]);
             it2 = inv.getItemInSlot(INPUT_SLOT[1]);
             if (it1 == null || it2 == null || it1.getAmount() != 1 || it2.getAmount() != 1) {
-                AddUtils.sendMessage(player, "&c存储不能为空或者超过2个");
+                AddUtils.sendMessage(player, "&c存儲不能為空或者超過2個");
                 return false;
             }
             if (inv.getItemInSlot(OUTPUT_SLOT[0]) != null || inv.getItemInSlot(OUTPUT_SLOT[1]) != null) {
-                AddUtils.sendMessage(player, "&c输出槽必须为空!");
+                AddUtils.sendMessage(player, "&c輸出槽必須為空!");
                 return false;
             }
             IntFunction<ItemPusher> pusherIntFunction = FinalFeature.STORAGE_READER.getMenuInstance(
@@ -104,17 +104,17 @@ public class StorageOperator extends AbstractMachine {
             ItemPusher pusher1 =
                     pusherIntFunction.apply(0); // FinalFeature.STORAGE_READER.get(Settings.INPUT,it1,INPUT_SLOT[0]);
             if (pusher1 == null) {
-                AddUtils.sendMessage(player, "&c输入槽1的物品为无效存储");
+                AddUtils.sendMessage(player, "&c輸入槽1的物品為無效存儲");
                 return false;
             }
             ItemPusher pusher2 =
                     pusherIntFunction.apply(1); // FinalFeature.STORAGE_READER.get(Settings.INPUT,it2,INPUT_SLOT[1]);
             if (pusher2 == null) {
-                AddUtils.sendMessage(player, "&c输入槽2的物品为无效存储");
+                AddUtils.sendMessage(player, "&c輸入槽2的物品為無效存儲");
                 return false;
             }
             if (!CraftUtils.matchItemCounter(pusher1, pusher2, true)) {
-                AddUtils.sendMessage(player, "&c存储内的物品类型不匹配!");
+                AddUtils.sendMessage(player, "&c存儲內的物品類型不匹配!");
                 return false;
             }
             if (clickAction.isShiftClicked()) {

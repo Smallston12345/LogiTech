@@ -311,8 +311,8 @@ public class EquipmentFUManager implements Manager, Listener {
     private void asyncTriggerPlayerFUUpdate(Event trigger, Player player, int mainHandSlot, boolean delayed) {
         long timeStamp = System.currentTimeMillis();
         UUID uuid = player.getUniqueId();
-        // 1个玩家1秒内不得触发超过1次
-        // 如果触发吵过一次，计划在20t后执行一次update 期间所有update全部忽视
+        // 1個玩家1秒內不得觸發超過1次
+        // 如果觸發吵過一次，計劃在20t後執行一次update 期間所有update全部忽視
         if (!delayed
                 && (runningTasks.containsKey(uuid)
                         || updateTimeStamps.getOrDefault(player.getUniqueId(), 0L) + 500 > timeStamp)) {
@@ -410,11 +410,11 @@ public class EquipmentFUManager implements Manager, Listener {
             level = level == null ? equipmentFu.getValue() : level + equipmentFu.getValue();
             int maxLevel = equipmentFu.getKey().getMaxFULevel(item);
             if (level > maxLevel) {
-                // 记录上溢出
+                // 記錄上溢出
                 returnLevel.put(equipmentFu.getKey(), level - maxLevel);
                 level = maxLevel;
             } else if (level < 0) {
-                // 记录下溢出
+                // 記錄下溢出
                 returnLevel.put(equipmentFu.getKey(), level);
                 level = 0;
             }

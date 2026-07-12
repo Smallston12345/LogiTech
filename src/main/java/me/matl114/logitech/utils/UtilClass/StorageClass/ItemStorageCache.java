@@ -31,22 +31,22 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
     /**
      * should be the reference to the exact slotItem in menu
      */
-    // 由何种存储解析器所解析
+    // 由何種存儲解析器所解析
     protected StorageType storageType;
-    // 存储物品的物品源,记录一个CraftItemStack
+    // 存儲物品的物品源,記錄一個CraftItemStack
     protected ItemStack source;
-    // 存储物品的物品meta 记录着含有存储数据的pdc的meta
+    // 存儲物品的物品meta 記錄着含有存儲數據的pdc的meta
     protected ItemMeta sourceMeta;
     @Nullable
     protected final BlockMenu menu;
-    // 这个成员是记录该cache是否是长期cache
-    // 长期cache会被记录在Map中,并且代表着一个AbstractIOPort
-    // 短期cache比如存储解析器产物
+    // 這個成員是記錄該cache是否是長期cache
+    // 長期cache會被記錄在Map中,並且代表着一個AbstractIOPort
+    // 短期cache比如存儲解析器產物
     protected boolean persistent = false;
-    // 这个成员是记录存储数目的
+    // 這個成員是記錄存儲數目的
     protected long storageAmount;
-    // 这个成员是用来记录这个cache是否还可以使用的
-    // 当玩家尝试从menu里取出存储物品时 该物品将被标记为deprecated 之后的远程访问将不能访问该存储cache
+    // 這個成員是用來記錄這個cache是否還可以使用的
+    // 當玩家嘗試從menu裏取出存儲物品時 該物品將被標記為deprecated 之後的遠程訪問將不能訪問該存儲cache
     boolean deprecated = false;
     //
     private static byte[] lock = new byte[0];
@@ -113,7 +113,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
      * @return
      */
 
-    // 首先要保证数据安全!
+    // 首先要保證數據安全!
     public static ItemStorageCache getOrCreate(BlockMenu menu, ItemStack source, ItemMeta sourceMeta, int saveSlot) {
         return getOrCreate(menu, source, sourceMeta, saveSlot, i -> true);
     }
@@ -325,7 +325,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
         try {
             AbstractIOPort.setStorageAmount(loc, storageAmount, true);
         } catch (Throwable e) {
-            Debug.logger("存储cache与粘液机器不对应!位置[%s]疑似出现刷物行为,移除相应存储cache并抛出错误:"
+            Debug.logger("存儲cache與粘液機器不對應!位置[%s]疑似出現刷物行為,移除相應存儲cache並拋出錯誤:"
                     .formatted(DataCache.locationToDisplayString(loc)));
 
             ItemStorageCache cache = removeCache(loc);
@@ -353,7 +353,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
             if (menu.hasViewer() || !persistent) {
                 updateStorage();
             }
-            // 不是persistent 将物品的clone进行替换// 和保存有关
+            // 不是persistent 將物品的clone進行替換// 和保存有關
         }
         // for saving item data ,not for updating Menu
         if ((!persistent) && slot >= 0) {
@@ -374,7 +374,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
             toNull();
         }
     }
-    // 修复了setFrom存储时覆写maxSize的问题
+    // 修復了setFrom存儲時覆寫maxSize的問題
     public void setFrom(ItemCounter source) {
         if (wasNull || (source != null && source.getItem() != null)) {
             fromSource(source, false);

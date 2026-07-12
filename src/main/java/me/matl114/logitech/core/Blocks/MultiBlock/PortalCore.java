@@ -34,15 +34,15 @@ public class PortalCore extends MultiCore {
     protected final int LINK_SLOT = 13;
     protected final int HOLOGRAM_SLOT = 8;
     protected final ItemStack TOGGLE_ITEM_ON = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6点击切换传送门状态", "&7当前状态: &a开启", "&7若需要更改目标坐标需要重新构建传送门");
+            Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換傳送門狀態", "&7當前狀態: &a開啓", "&7若需要更改目標座標需要重新構建傳送門");
     protected final ItemStack TOGGLE_ITEM_OFF =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6点击切换传送门状态", "&7当前状态: &c关闭");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6點擊切換傳送門狀態", "&7當前狀態: &c關閉");
     protected final ItemStack HOLOGRAM_ITEM_ON = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a南北向");
+            Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a南北向");
     protected final ItemStack HOLOGRAM_ITEM_ON_2 = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a东西向");
+            Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a東西向");
     protected final ItemStack HOLOGRAM_ITEM_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &c关闭");
+            Material.RED_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &c關閉");
     protected final MultiBlockType MBTYPE;
     public HashMap<String, ItemStack> MBID_TO_ITEM = new HashMap<>() {
         {
@@ -219,7 +219,7 @@ public class PortalCore extends MultiCore {
         setupPortal(loc.getBlock());
     }
 
-    public MultiBlockService.DeleteCause NOLINK = new MultiBlockService.DeleteCause("不存在超链接", false);
+    public MultiBlockService.DeleteCause NOLINK = new MultiBlockService.DeleteCause("不存在超鏈接", false);
 
     public void updateMenu(BlockMenu inv, Block block, Settings mod) {
         int holoStatus = DataCache.getCustomData(inv.getLocation(), MultiBlockService.getHologramKey(), 0);
@@ -248,23 +248,23 @@ public class PortalCore extends MultiCore {
             Location loc = inv.getLocation();
             if (MultiBlockService.getStatus(loc) == 0) { // not working
                 if (loadLink(inv)) {
-                    AddUtils.sendMessage(player, "&a成功检测到目标传送门,成功建立超链接");
+                    AddUtils.sendMessage(player, "&a成功檢測到目標傳送門,成功建立超鏈接");
 
                     if (MultiBlockService.createNewHandler(
                             loc, getBuilder(), getMultiBlockType(), OutputStream.getPlayerOut(player))) {
                         inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM_ON);
-                        AddUtils.sendMessage(player, "&a成功激活传送门!");
+                        AddUtils.sendMessage(player, "&a成功激活傳送門!");
                     } else {
-                        AddUtils.sendMessage(player, "&c传送门结构不完整或者结构冲突!");
+                        AddUtils.sendMessage(player, "&c傳送門結構不完整或者結構衝突!");
                         inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM_OFF);
                     }
                 } else {
-                    AddUtils.sendMessage(player, "&c目标传送门已损坏,请检查超链接");
+                    AddUtils.sendMessage(player, "&c目標傳送門已損壞,請檢查超鏈接");
                     inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM_OFF);
                 }
             } else { // working toggle off
                 MultiBlockService.deleteMultiBlock(loc, MultiBlockService.MANUALLY);
-                AddUtils.sendMessage(player, "&a传送门成功关闭");
+                AddUtils.sendMessage(player, "&a傳送門成功關閉");
             }
             return false;
         }));
@@ -276,15 +276,15 @@ public class PortalCore extends MultiCore {
             MultiBlockService.removeHologramSync(loc);
             if (statusCode == 0) {
                 if (holoStatus == 0) {
-                    AddUtils.sendMessage(player, "&a全息投影已切换至南北向!");
+                    AddUtils.sendMessage(player, "&a全息投影已切換至南北向!");
                     MultiBlockService.createHologram(loc, MBTYPE, MultiBlockService.Direction.NORTH, MBID_TO_ITEM);
                     DataCache.setCustomData(loc, MultiBlockService.getHologramKey(), 1);
                 } else if (holoStatus == 1) {
-                    AddUtils.sendMessage(player, "&a全息投影已切换至东西向!");
+                    AddUtils.sendMessage(player, "&a全息投影已切換至東西向!");
                     MultiBlockService.createHologram(loc, MBTYPE, MultiBlockService.Direction.WEST, MBID_TO_ITEM);
                     DataCache.setCustomData(loc, MultiBlockService.getHologramKey(), 2);
                 } else {
-                    AddUtils.sendMessage(player, "&a全息投影已关闭!");
+                    AddUtils.sendMessage(player, "&a全息投影已關閉!");
                 }
             }
             updateMenu(inv, block, Settings.RUN);

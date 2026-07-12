@@ -86,7 +86,7 @@ public abstract class MultiLevelBlockType implements AbstractMultiBlockType {
             subparts.add(part);
         }
         if (level == 0) {
-            errorOut.out(() -> "&c创建1级多方块结构失败!");
+            errorOut.out(() -> "&c創建1級多方塊結構失敗!");
             return null;
         }
         return new MultiLevelBlock(this, level, dir, subparts);

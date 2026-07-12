@@ -48,7 +48,7 @@ public class BlockOpenListener implements Listener {
             if (sfItem instanceof MultiBlockPart) {
                 MultiBlockPart multiBlockPart = (MultiBlockPart) sfItem;
                 if (multiBlockPart.redirectMenu()) {
-                    // 如果是重定向菜单的方块 则阻拦掉event
+                    // 如果是重定向菜單的方塊 則阻攔掉event
                     Optional<Block> block = event.getClickedBlock();
                     if (block.isPresent()) {
                         Location location = block.get().getLocation();
@@ -59,7 +59,7 @@ public class BlockOpenListener implements Listener {
                             openInventory(event.getPlayer(), redirect.getBlock(), event);
                             return true;
                         } else {
-                            AddUtils.sendMessage(event.getPlayer(), "&c该多方块部件并没有组成多方块机器!");
+                            AddUtils.sendMessage(event.getPlayer(), "&c該多方塊部件並沒有組成多方塊機器!");
                         }
                     }
                 }

@@ -24,7 +24,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class LaserGun extends ChargableProps {
     protected final NamespacedKey LEVEL_KEY = AddUtils.getNameKey("laser-lvl");
-    protected final String LEVEL_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B发射器功率: &a");
+    protected final String LEVEL_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B發射器功率: &a");
     protected ItemSetting<Integer> distance = createForce("lazer-range", 100);
     protected ItemSetting<Integer> lazerLevel = createForce("lazer-basic-lvl", 4);
     protected ItemSetting<Integer> rankAmount = createForce("lazer-rank", 5);
@@ -49,9 +49,9 @@ public class LaserGun extends ChargableProps {
                             LEVEL_PREFIX,
                             "第",
                             String.valueOf(level + 1),
-                            "档/共",
+                            "檔/共",
                             String.valueOf(rankAmount.getValue()),
-                            "档"));
+                            "檔"));
         }
         meta.setLore(lores);
     }
@@ -65,7 +65,7 @@ public class LaserGun extends ChargableProps {
                         stack,
                         -3,
                         "&7射程: %dm".formatted(distance.getValue()),
-                        "&7伤害: 100*<功率档>(对怪物) 或 %d*<功率档>级激光伤害(对玩家)".formatted(lazerLevel.getValue()))
+                        "&7傷害: 100*<功率檔>(對怪物) 或 %d*<功率檔>級激光傷害(對玩家)".formatted(lazerLevel.getValue()))
                 .getItemMeta());
 
         super.addInfo(stack);
@@ -105,13 +105,13 @@ public class LaserGun extends ChargableProps {
         level = (level + 1) % rankAmount.getValue();
         setLevel(meta, level);
         stack.setItemMeta(meta);
-        AddUtils.sendMessage(p, "&a激光发射器功率切换成功.当前为 &6第%d档".formatted(level + 1));
+        AddUtils.sendMessage(p, "&a激光發射器功率切換成功.當前為 &6第%d檔".formatted(level + 1));
     }
 
     public void onLaser(Player p, ItemStack stack, boolean onHead, boolean withWarning) {
         if (PLAYERCOOLDOWN.contains(p)) {
             if (withWarning) {
-                AddUtils.sendMessage(p, "&c物品冷却中");
+                AddUtils.sendMessage(p, "&c物品冷卻中");
             }
             return;
         }
@@ -135,7 +135,7 @@ public class LaserGun extends ChargableProps {
         } else {
             // if(withWarning){
             AddUtils.sendMessage(
-                    p, AddUtils.concat("&c电力不足! ", String.valueOf(charge), "J/", String.valueOf(consumption), "J"));
+                    p, AddUtils.concat("&c電力不足! ", String.valueOf(charge), "J/", String.valueOf(consumption), "J"));
             // }
         }
     }

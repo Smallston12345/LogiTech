@@ -38,12 +38,12 @@ public class StorageCleaner extends AbstractMachine {
 
     protected final int BOTTON_SLOT = 22;
     protected final ItemStack BOTTON_ITEM = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&a信息", "&7上方输入槽,下方输出槽", "&7当对应输出槽为空时,将会执行重置操作", "&7除去存储外,其余物品也可以被重置");
+            Material.GREEN_STAINED_GLASS_PANE, "&a信息", "&7上方輸入槽,下方輸出槽", "&7當對應輸出槽為空時,將會執行重置操作", "&7除去存儲外,其餘物品也可以被重置");
 
     public StorageCleaner(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe, 0, 0);
         setDisplayRecipes(
-                Utils.list(AddUtils.getInfoShow("&f机制", "&7重置存储内的数据", "&7将会试图清除输入槽内的物品数据", "&7并转移至对应的输出槽位中")));
+                Utils.list(AddUtils.getInfoShow("&f機制", "&7重置存儲內的數據", "&7將會試圖清除輸入槽內的物品數據", "&7並轉移至對應的輸出槽位中")));
     }
 
     public void constructMenu(BlockMenuPreset preset) {

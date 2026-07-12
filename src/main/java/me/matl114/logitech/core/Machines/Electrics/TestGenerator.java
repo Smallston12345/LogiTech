@@ -69,9 +69,9 @@ public class TestGenerator extends AbstractEnergyProvider {
         this.ENERGY_ABSMAX = energyAbsMax;
         this.machineRecipes = new ArrayList<>();
         this.setDisplayRecipes(Utils.list(
-                AddUtils.getInfoShow("&f生成机制", "&7当机器中电力位于%dJ~%dJ时".formatted(outputMin, outputMax), "&7清空电力并生成"),
+                AddUtils.getInfoShow("&f生成機制", "&7當機器中電力位於%dJ~%dJ時".formatted(outputMin, outputMax), "&7清空電力並生成"),
                 OUTPUT,
-                AddUtils.getInfoShow("&f免责声明", "&7经过测试该机器的绝大部分卡顿来源于粘液电网方法", "&7由于粘液自身的电网性能问题", "&a作者不对该机器性能问题负责"),
+                AddUtils.getInfoShow("&f免責聲明", "&7經過測試該機器的絕大部分卡頓來源於粘液電網方法", "&7由於粘液自身的電網性能問題", "&a作者不對該機器性能問題負責"),
                 null));
         this.machineRecipes = new ArrayList<>();
         this.RANDOM_THREASHOLD = 2 * this.ENERGY_ABSMAX + 1;
@@ -108,7 +108,7 @@ public class TestGenerator extends AbstractEnergyProvider {
         }
         if (inv.hasViewer()) {
             inv.replaceExistingItem(
-                    DISPLAY_SLOT, AddUtils.getGeneratorDisplay(true, "虚空量子", charge, this.energybuffer));
+                    DISPLAY_SLOT, AddUtils.getGeneratorDisplay(true, "虛空量子", charge, this.energybuffer));
         }
     }
 

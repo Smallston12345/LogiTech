@@ -17,14 +17,14 @@ public class AdjacentCargoPlus extends AdjacentCargo {
         super(itemGroup, item, recipeType, recipe, displayList);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7这是一个智能货运机器",
-                        "&7智能货运机器的行为会包括若干对源方块和目标方块",
-                        "&7智能货运机器会进行从源方块到目标方块的物流传输",
-                        "&7智能货运机器支持目标方块设置的输入槽限制",
-                        "&7但是相应的,其最大传输量会被限制为min(576,配置数)"),
+                        "&f機制",
+                        "&7這是一個智能貨運機器",
+                        "&7智能貨運機器的行為會包括若干對源方塊和目標方塊",
+                        "&7智能貨運機器會進行從源方塊到目標方塊的物流傳輸",
+                        "&7智能貨運機器支持目標方塊設置的輸入槽限制",
+                        "&7但是相應的,其最大傳輸量會被限制為min(576,配置數)"),
                 null,
-                AddUtils.getInfoShow("&f机制", "&7本机器可以选择与其相邻的方块参与传输"),
+                AddUtils.getInfoShow("&f機制", "&7本機器可以選擇與其相鄰的方塊參與傳輸"),
                 null));
         this.transportSmarter = true;
     }

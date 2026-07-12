@@ -34,9 +34,9 @@ public class TrackingArrowLauncher extends ChargableProps {
         stack.setItemMeta(AddUtils.insertLore(
                         stack,
                         -1,
-                        "&7寻踪范围: %s".formatted(String.valueOf(trackRange.getValue())),
-                        "&7穿透数: 4",
-                        "&7箭矢伤害: %s+%s*<力量等级>+%s*<锋利等级>"
+                        "&7尋蹤範圍: %s".formatted(String.valueOf(trackRange.getValue())),
+                        "&7穿透數: 4",
+                        "&7箭矢傷害: %s+%s*<力量等級>+%s*<鋒利等級>"
                                 .formatted(
                                         String.valueOf(basicDamage.getValue()),
                                         String.valueOf(powerAmplifier.getValue()),
@@ -72,13 +72,13 @@ public class TrackingArrowLauncher extends ChargableProps {
                 AddUtils.sendMessage(
                         p,
                         AddUtils.concat(
-                                "&c电力不足! ", String.valueOf(charge), "J/", String.valueOf(ENERGYCONSUMPTION), "J"));
+                                "&c電力不足! ", String.valueOf(charge), "J/", String.valueOf(ENERGYCONSUMPTION), "J"));
             } else {
                 if (canUse(p, false)) {
                     this.setItemCharge(item, charge - ENERGYCONSUMPTION);
                     onArrowLaunched(p, item);
                 } else {
-                    AddUtils.sendMessage(p, "&c你没有权限使用该道具!");
+                    AddUtils.sendMessage(p, "&c你沒有權限使用該道具!");
                 }
             }
         }
@@ -92,7 +92,7 @@ public class TrackingArrowLauncher extends ChargableProps {
         float damage = (float) basicDamage.getValue()
                 + powerAmplifier.getValue().floatValue() * powerLevel
                 + sharpnessAmplifier.getValue().floatValue() * sharpnessLevel;
-        // 随机生成若干箭矢，需要针对location 朝向 motion做改动
+        // 隨機生成若干箭矢，需要針對location 朝向 motion做改動
         Location loc = WorldUtils.getHandLocation(p);
         HashSet<Arrow> arrows = new HashSet<>();
         for (int i = 0; i < ARROW_AMOUNT; i++) {
@@ -103,7 +103,7 @@ public class TrackingArrowLauncher extends ChargableProps {
                 WorldUtils.getEntityInDistance(targetCenter, 1.2 * trackRange.getValue(), (e) -> {
                     return e != p && WorldUtils.isTargetableLivingEntity(e);
                 });
-        // 索敌算法
+        // 索敵算法
         HashSet<LivingEntity> livingEntities = new HashSet<>();
         for (Entity entity : targetEntities) {
             if (entity instanceof LivingEntity li) {
@@ -130,7 +130,7 @@ public class TrackingArrowLauncher extends ChargableProps {
         a.setGravity(false);
         a.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
 
-        // 这样才有伤害
+        // 這樣才有傷害
         return a;
     }
 

@@ -33,12 +33,12 @@ public interface RecipeDisplay extends RecipeDisplayItem {
                     lore.add("&a材料 " + (index + 1));
 
                     if (pro < 1.0) {
-                        lore.add("&e等价物品输入");
-                        // lore.add("&e权重: " + AddUtils.getPercentFormat(pro));
+                        lore.add("&e等價物品輸入");
+                        // lore.add("&e權重: " + AddUtils.getPercentFormat(pro));
                     }
                 }
                 if (stack.getAmount() > 64 || stack.getAmount() <= 0) {
-                    lore.add("&c输入数量: " + stack.getAmount());
+                    lore.add("&c輸入數量: " + stack.getAmount());
                 }
                 stack = AddUtils.addLore(stack, lore.toArray(String[]::new));
                 break;
@@ -46,19 +46,19 @@ public interface RecipeDisplay extends RecipeDisplayItem {
             default:
                 if (pro >= 0.0) {
                     lore.add("");
-                    lore.add("&a产物 " + (index + 1));
+                    lore.add("&a產物 " + (index + 1));
 
                     if (pro < 1.0) {
-                        lore.add("&e随机物品输出");
+                        lore.add("&e隨機物品輸出");
                         lore.add("&e概率: " + AddUtils.getPercentFormat(pro));
                     }
                 }
                 if (stack instanceof RandAmountStack rand) {
-                    lore.add("&c随机输出数量: %d~%d".formatted(rand.getMin(), rand.getMax()));
+                    lore.add("&c隨機輸出數量: %d~%d".formatted(rand.getMin(), rand.getMax()));
                 } else if (stack.getAmount() > 64 || stack.getAmount() <= 0) {
-                    lore.add("&c输出数量: " + stack.getAmount());
+                    lore.add("&c輸出數量: " + stack.getAmount());
                 }
-                if (time >= 0) lore.add("&e进程耗时: " + (int) (time / 2) + "s (" + time + "tick)");
+                if (time >= 0) lore.add("&e進程耗時: " + (int) (time / 2) + "s (" + time + "tick)");
                 else lore.add("&e直接合成~");
                 stack = AddUtils.addLore(stack, lore.toArray(String[]::new));
 

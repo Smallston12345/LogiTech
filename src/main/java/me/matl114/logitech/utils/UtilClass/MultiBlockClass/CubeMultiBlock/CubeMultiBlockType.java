@@ -14,10 +14,10 @@ import org.bukkit.util.BlockVector;
 import org.bukkit.util.Vector;
 
 /**
- * 该方块适用与由一个"底部"
- * 若干层 "盘" 和一个"顶部" 构成的机器
- * 它应当生成对应的多方块实例
- * 我们希望它可以兼容到之前的handler里
+ * 該方塊適用與由一個"底部"
+ * 若干層 "盤" 和一個"頂部" 構成的機器
+ * 它應當生成對應的多方塊實例
+ * 我們希望它可以兼容到之前的handler裏
  */
 public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
     private HashMap<BlockVector, String> BOTTOM_MAP;
@@ -139,12 +139,12 @@ public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
             Location partloc = loc.clone().add(delta);
             // Debug.logger("check blockid ",i,this.getSchemaPartId(i),"check target id
             // ",MultiBlockService.safeGetPartId(partloc));
-            // 如果当前匹配 且并未在响应任意其他的多方块才能通过，否则任意一条均为false
+            // 如果當前匹配 且並未在響應任意其他的多方塊才能通過，否則任意一條均為false
             if (!this.BOTTOM_IDS[i].equals(MultiBlockService.safeGetPartId(partloc))) {
                 //  Debug.logger("wrong at ",delta.toString());
                 int a = i;
                 errorOut.out(() -> {
-                    return "&c位于%s的多方块部件并不是有效的底部部件,需要%s"
+                    return "&c位於%s的多方塊部件並不是有效的底部部件,需要%s"
                             .formatted(DataCache.locationToDisplayString(partloc), this.BOTTOM_IDS[a]);
                 });
                 return null;
@@ -152,15 +152,15 @@ public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
                 // use record but target block uuid not match core uuid
                 //                if(hasPrevRecord&&(!(id.equals( MultiBlockService.safeGetUUID(partloc))))){
                 //                    //    Debug.logger("wrong at ",delta.toString());
-                //                    errorOut.out(()->"&c错误!你不该看见该消息,请联系作者");
+                //                    errorOut.out(()->"&c錯誤!你不該看見該消息,請聯繫作者");
                 //                    return null;
                 //                    //no record but target block has been occupied by sth
                 //                }else
                 if (!hasPrevRecord
-                        && MultiBlockService.validHandler(MultiBlockService.safeGetUUID(partloc))) { // 如果是当前已经注册的别的机器的
+                        && MultiBlockService.validHandler(MultiBlockService.safeGetUUID(partloc))) { // 如果是當前已經註冊的別的機器的
                     // Debug.logger("wrong at ",delta.toString());
                     errorOut.out(() -> {
-                        return "&c结构冲突!位于%s的部件属于另个机器! id-%s,位于%s"
+                        return "&c結構衝突!位於%s的部件屬於另個機器! id-%s,位於%s"
                                 .formatted(
                                         DataCache.locationToDisplayString(partloc),
                                         MultiBlockService.safeGetUUID(partloc),
@@ -186,13 +186,13 @@ public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
                 Location partloc = loc.clone().add(delta).add(0, height, 0);
                 // Debug.logger("check blockid ",i,this.getSchemaPartId(i),"check target id
                 // ",MultiBlockService.safeGetPartId(partloc));
-                // 如果当前匹配 且并未在响应任意其他的多方块才能通过，否则任意一条均为false
+                // 如果當前匹配 且並未在響應任意其他的多方塊才能通過，否則任意一條均為false
                 if (!this.PLATE_IDS[i].equals(MultiBlockService.safeGetPartId(partloc))) {
                     //  Debug.logger("wrong at ",delta.toString());
                     final int endHeight = height + 1;
                     final int endI = i;
                     errorOut.out(() -> {
-                        return "&c位于%s的多方块部件并不是有效的顶层部件,当前搜索中的中间层高度:%s,需要%s;终止向上延申"
+                        return "&c位於%s的多方塊部件並不是有效的頂層部件,當前搜索中的中間層高度:%s,需要%s;終止向上延申"
                                 .formatted(
                                         DataCache.locationToDisplayString(partloc),
                                         String.valueOf(endHeight),
@@ -208,11 +208,11 @@ public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
                     //                    }else
                     if (!hasPrevRecord
                             && MultiBlockService.validHandler(
-                                    MultiBlockService.safeGetUUID(partloc))) { // 如果是当前已经注册的别的机器的
+                                    MultiBlockService.safeGetUUID(partloc))) { // 如果是當前已經註冊的別的機器的
                         // Debug.logger("wrong at ",delta.toString());
                         final int endHeight = height + 1;
                         errorOut.out(() -> {
-                            return "&c结构冲突!位于%s的部件属于另个机器! id-%s,位于%s,终止向上延申,当前高度:%h"
+                            return "&c結構衝突!位於%s的部件屬於另個機器! id-%s,位於%s,終止向上延申,當前高度:%h"
                                     .formatted(
                                             DataCache.locationToDisplayString(partloc),
                                             MultiBlockService.safeGetUUID(partloc),
@@ -234,13 +234,13 @@ public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
             Location partloc = loc.clone().add(delta).add(0, height - 1, 0);
             // Debug.logger("check blockid ",i,this.getSchemaPartId(i),"check target id
             // ",MultiBlockService.safeGetPartId(partloc));
-            // 如果当前匹配 且并未在响应任意其他的多方块才能通过，否则任意一条均为false
+            // 如果當前匹配 且並未在響應任意其他的多方塊才能通過，否則任意一條均為false
             if (!this.TOP_IDS[i].equals(MultiBlockService.safeGetPartId(partloc))) {
                 //  Debug.logger("wrong at ",delta.toString());
                 int a = i;
                 int h = height;
                 errorOut.out(() -> {
-                    return "&c位于%s的多方块部件并不是有效的顶层部件,当前中间层高度:%s,需要%s"
+                    return "&c位於%s的多方塊部件並不是有效的頂層部件,當前中間層高度:%s,需要%s"
                             .formatted(DataCache.locationToDisplayString(partloc), String.valueOf(h), this.TOP_IDS[a]);
                 });
                 return null;
@@ -248,15 +248,15 @@ public abstract class CubeMultiBlockType implements AbstractMultiBlockType {
                 // use record but target block uuid not match core uuid
                 //                if(hasPrevRecord&&(!(id.equals( MultiBlockService.safeGetUUID(partloc))))){
                 //                    //    Debug.logger("wrong at ",delta.toString());
-                //                    errorOut.out(()->"&c错误!你不该看见该消息,请联系作者");
+                //                    errorOut.out(()->"&c錯誤!你不該看見該消息,請聯繫作者");
                 //                    return null;
                 //                    //no record but target block has been occupied by sth
                 //                }else
                 if (!hasPrevRecord
-                        && MultiBlockService.validHandler(MultiBlockService.safeGetUUID(partloc))) { // 如果是当前已经注册的别的机器的
+                        && MultiBlockService.validHandler(MultiBlockService.safeGetUUID(partloc))) { // 如果是當前已經註冊的別的機器的
                     // Debug.logger("wrong at ",delta.toString());
                     errorOut.out(() -> {
-                        return "&c结构冲突!位于%s的部件属于另个机器! id-%s,位于%s"
+                        return "&c結構衝突!位於%s的部件屬於另個機器! id-%s,位於%s"
                                 .formatted(
                                         DataCache.locationToDisplayString(partloc),
                                         MultiBlockService.safeGetUUID(partloc),

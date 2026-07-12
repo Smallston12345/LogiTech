@@ -40,8 +40,8 @@ public abstract class AbstractTimerRange extends AbstractMachine implements Menu
         });
     }
 
-    private ItemStack PARTICLE_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a点击切换粒子效果", "&7当前状态: &c关");
-    private ItemStack PARTICLE_ON = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a点击切换粒子效果", "&7当前状态: &a开");
+    private ItemStack PARTICLE_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&a點擊切換粒子效果", "&7當前狀態: &c關");
+    private ItemStack PARTICLE_ON = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a點擊切換粒子效果", "&7當前狀態: &a開");
     private int PARTICLE_SLOT = 4;
 
     @Override
@@ -260,14 +260,14 @@ public abstract class AbstractTimerRange extends AbstractMachine implements Menu
     private List<org.bukkit.util.Vector> dv;
 
     private boolean isOnCubeEdge(int i, int j, int k) {
-        // 判断是否在前后面的边
+        // 判斷是否在前後面的邊
         boolean onFrontBack = (i == -Range || i == Range + 1) && (j == -Range || j == Range + 1);
-        // 判断是否在上下面的边
+        // 判斷是否在上下面的邊
         boolean onTopBottom = (j == -Range || j == Range + 1) && (k == -Range || k == Range + 1);
-        // 判断是否在左右面的边
+        // 判斷是否在左右面的邊
         boolean onLeftRight = (k == -Range || k == Range + 1) && (i == -Range || i == Range + 1);
 
-        // 只要满足任何一条边的条件，即为边框上的点
+        // 只要滿足任何一條邊的條件，即為邊框上的點
         return onFrontBack || onTopBottom || onLeftRight;
     }
 

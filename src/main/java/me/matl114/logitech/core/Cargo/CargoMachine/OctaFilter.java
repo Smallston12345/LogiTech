@@ -14,15 +14,15 @@ public class OctaFilter extends AbstractFilter {
 
     protected final int[] OUTPUT_BORDER = new int[] {36, 37, 38, 39, 40, 41, 42, 43, 44};
     protected final ItemStack[] OUTPUT_BORDERS_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方为输出槽0", "&7下方为白名单槽0"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位1", "&7上方为输出槽1", "&7下方为白名单槽1"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位2", "&7上方为输出槽2", "&7下方为白名单槽2"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位3", "&7上方为输出槽3", "&7下方为白名单槽3"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6默认槽位", "&7上方为默认输出槽", "&7下方为输入槽清空模式切换按钮"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位4", "&7上方为输出槽4", "&7下方为白名单槽4"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位5", "&7上方为输出槽5", "&7下方为白名单槽5"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位6", "&7上方为输出槽6", "&7下方为白名单槽6"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位7", "&7上方为输出槽7", "&7下方为白名单槽7")
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方為輸出槽0", "&7下方為白名單槽0"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位1", "&7上方為輸出槽1", "&7下方為白名單槽1"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位2", "&7上方為輸出槽2", "&7下方為白名單槽2"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位3", "&7上方為輸出槽3", "&7下方為白名單槽3"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6默認槽位", "&7上方為默認輸出槽", "&7下方為輸入槽清空模式切換按鈕"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位4", "&7上方為輸出槽4", "&7下方為白名單槽4"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位5", "&7上方為輸出槽5", "&7下方為白名單槽5"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位6", "&7上方為輸出槽6", "&7下方為白名單槽6"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位7", "&7上方為輸出槽7", "&7下方為白名單槽7")
     };
     protected final int[] OUTPUT_SLOTS = new int[] {27, 28, 29, 30, 32, 33, 34, 35, 31};
     protected final int[] OUTPUT_WLSLOTS = new int[] {45, 46, 47, 48, 50, 51, 52, 53};

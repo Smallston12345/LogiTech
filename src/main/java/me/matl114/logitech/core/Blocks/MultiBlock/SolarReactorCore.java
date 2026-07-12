@@ -42,41 +42,41 @@ public class SolarReactorCore extends MultiBlockProcessor {
     protected final ItemStack[] TOGGLE_ITEM = new ItemStack[] {
         new CustomItemStack(
                         Material.RED_STAINED_GLASS_PANE,
-                        "&6点击切换反应堆状态",
-                        "&6shift点击切换是否自动构建",
-                        "&7当前状态: &c关闭",
-                        "&7自动构建: &c关",
-                        "&7警告:你最好别在进程中破坏机器"),
+                        "&6點擊切換反應堆狀態",
+                        "&6shift點擊切換是否自動構建",
+                        "&7當前狀態: &c關閉",
+                        "&7自動構建: &c關",
+                        "&7警告:你最好別在進程中破壞機器"),
                 new CustomItemStack(
                         Material.RED_STAINED_GLASS_PANE,
-                        "&6点击切换反应堆状态",
-                        "&6shift点击切换是否自动构建",
-                        "&7当前状态: &c关闭",
-                        "&7自动构建: &a开",
-                        "&7警告:你最好别在进程中破坏机器"),
+                        "&6點擊切換反應堆狀態",
+                        "&6shift點擊切換是否自動構建",
+                        "&7當前狀態: &c關閉",
+                        "&7自動構建: &a開",
+                        "&7警告:你最好別在進程中破壞機器"),
         new CustomItemStack(
                         Material.GREEN_STAINED_GLASS_PANE,
-                        "&6点击切换反应堆状态",
-                        "&6shift点击切换是否自动构建",
-                        "&7当前状态: &a开启",
-                        "&7自动构建: &c关",
-                        "&7警告:你最好别在进程中破坏机器"),
+                        "&6點擊切換反應堆狀態",
+                        "&6shift點擊切換是否自動構建",
+                        "&7當前狀態: &a開啓",
+                        "&7自動構建: &c關",
+                        "&7警告:你最好別在進程中破壞機器"),
                 new CustomItemStack(
                         Material.GREEN_STAINED_GLASS_PANE,
-                        "&6点击切换反应堆状态",
-                        "&6shift点击切换是否自动构建",
-                        "&7当前状态: &a开启",
-                        "&7自动构建: &a开",
-                        "&7警告:你最好别在进程中破坏机器")
+                        "&6點擊切換反應堆狀態",
+                        "&6shift點擊切換是否自動構建",
+                        "&7當前狀態: &a開啓",
+                        "&7自動構建: &a開",
+                        "&7警告:你最好別在進程中破壞機器")
     };
     protected final ItemStack HOLOGRAM_ITEM_ON = new CustomItemStack(
-            SlimefunItems.HOLOGRAM_PROJECTOR, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a开启");
+            SlimefunItems.HOLOGRAM_PROJECTOR, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a開啓");
     protected final ItemStack HOLOGRAM_ITEM_OFF = new CustomItemStack(
-            SlimefunItems.HOLOGRAM_PROJECTOR, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &c关闭");
+            SlimefunItems.HOLOGRAM_PROJECTOR, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &c關閉");
     protected final int HALT_SLOT = 0;
-    protected final ItemStack HALT_ITEM = new CustomItemStack(Material.BARRIER, "&c点击安全终止进程", "&6不会引发爆炸");
+    protected final ItemStack HALT_ITEM = new CustomItemStack(Material.BARRIER, "&c點擊安全終止進程", "&6不會引發爆炸");
     protected final int INFO_SLOT = 22;
-    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a机器状态信息", "");
+    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a機器狀態信息", "");
     protected final int[] INPUT_SLOT = new int[] {19, 20, 21, 28, 29, 30, 37, 38, 39};
     protected final int[] OUTPUT_SLOT = new int[] {23, 24, 25, 32, 33, 34, 41, 42, 43};
 
@@ -136,7 +136,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
             Location loc, AbstractMultiBlockHandler handler, MultiBlockService.DeleteCause cause) {
         removeEffect(loc);
         SimpleCraftingOperation op = SolarReactorCore.this.processor.getOperation(loc);
-        if (cause.willExplode() && (op != null && (!op.isFinished()))) { // 如果还在进行中就暂停
+        if (cause.willExplode() && (op != null && (!op.isFinished()))) { // 如果還在進行中就暫停
             onDestroyEffect(loc, handler, cause);
         }
         super.onMultiBlockDisable(loc, handler, cause);
@@ -239,7 +239,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
         }
     }.toArray(BlockVector[]::new);
     protected Random rand = new Random();
-    public MultiBlockService.DeleteCause CRYSTAL_LOST = new MultiBlockService.DeleteCause("超新星特效丢失", false);
+    public MultiBlockService.DeleteCause CRYSTAL_LOST = new MultiBlockService.DeleteCause("超新星特效丟失", false);
 
     public static class NotFilledWithAirCause extends MultiBlockService.DeleteCause {
         public Block block;
@@ -251,9 +251,9 @@ public class SolarReactorCore extends MultiBlockProcessor {
         public NotFilledWithAirCause(Block block) {
             super(
                     AddUtils.concat(
-                            "超新星没有被空气包裹,在",
+                            "超新星沒有被空氣包裹,在",
                             DataCache.locationToDisplayString(block.getLocation()),
-                            "处发现了",
+                            "處發現了",
                             block.getType().toString()),
                     true);
             this.block = block;
@@ -261,7 +261,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
 
         @Override
         public String getRawCause() {
-            return "超新星没有被空气包裹";
+            return "超新星沒有被空氣包裹";
         }
     }
 
@@ -282,7 +282,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
         //        }
         // has block
         int len = checkedLocation.length;
-        for (int i = 0; i < 4; ++i) { // 26中选4个
+        for (int i = 0; i < 4; ++i) { // 26中選4個
             int locIndex = rand.nextInt(len);
             Location loc1 = loc.clone().add(checkedLocation[locIndex]);
             Block block = loc1.getBlock();
@@ -334,10 +334,10 @@ public class SolarReactorCore extends MultiBlockProcessor {
     public void onDestroyEffect(Location loc, AbstractMultiBlockHandler handler, MultiBlockService.DeleteCause cause) {
         removeEffect(loc);
         if (broadCastWhenDump.getValue()) {
-            AddUtils.broadCast("&e位于[%s,%.0f,%.0f,%.0f]的超新星模拟器因 [%s] 即将爆炸,快跑!"
+            AddUtils.broadCast("&e位於[%s,%.0f,%.0f,%.0f]的超新星模擬器因 [%s] 即將爆炸,快跑!"
                     .formatted(loc.getWorld().getName(), loc.getX(), loc.getY(), loc.getZ(), cause.getMessage()));
         } else {
-            AddUtils.broadCast("&e位于[&k看你吗呢,0.0,0.0,0.0&f&e]的超新星模拟器因 [%s] 即将爆炸,快跑!".formatted(cause.getRawCause()));
+            AddUtils.broadCast("&e位於[&k看你嗎呢,0.0,0.0,0.0&f&e]的超新星模擬器因 [%s] 即將爆炸,快跑!".formatted(cause.getRawCause()));
         }
 
         Location center = loc.clone();
@@ -359,13 +359,13 @@ public class SolarReactorCore extends MultiBlockProcessor {
         Schedules.launchSchedules(
                 Schedules.getRunnable(() -> {
                     MultiBlockService.deleteMultiBlock(center, TWICE_EXPLODE);
-                    // 清除方块
+                    // 清除方塊
                     BlockMenu inv = DataCache.getMenu(loc);
                     if (inv != null) {
                         inv.close();
                     }
 
-                    // 防止重新发起
+                    // 防止重新發起
                     this.processor.endOperation(loc);
                     WorldUtils.removeSlimefunBlock(center, true);
                     center.getBlock().setType(Material.CRYING_OBSIDIAN);
@@ -375,8 +375,8 @@ public class SolarReactorCore extends MultiBlockProcessor {
                 0);
         Schedules.launchSchedules(
                 Schedules.getRunnable(() -> {
-                    // 延后特效
-                    // 防止重新构建
+                    // 延後特效
+                    // 防止重新構建
                     int len = handler.getSize();
                     for (int i = 0; i < len; ++i) {
                         int chance = rand.nextInt(3);
@@ -420,21 +420,21 @@ public class SolarReactorCore extends MultiBlockProcessor {
 
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_IN;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 空白边框
+        // 空白邊框
         preset.addItem(PROCESSOR_SLOT, MenuUtils.PROCESSOR_NULL, ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(INFO_SLOT, INFO_ITEM, ChestMenuUtils.getEmptyClickHandler());
         preset.addItem(HALT_SLOT, HALT_ITEM);
@@ -450,7 +450,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
             inv.replaceExistingItem(HOLOGRAM_SLOT, HOLOGRAM_ITEM_ON);
         }
         int status = MultiBlockService.getStatus(loc) == 0 ? 0 : 1;
-        // 负数为
+        // 負數為
         int autoRec = DataCache.getCustomData(loc, MultiBlockService.getAutoKey(), 0) <= 0 ? 0 : 1;
         inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM[status * 2 + autoRec]);
         if (status == 0) {
@@ -476,22 +476,22 @@ public class SolarReactorCore extends MultiBlockProcessor {
             } else if (autoCode == 0) {
                 if (statusCode == 0) {
                     if (this.getCharge(loc) < energyConsumption) {
-                        // 没电,
-                        AddUtils.sendMessage(player, "&c电力不足,无法构建多方块结构!");
+                        // 沒電,
+                        AddUtils.sendMessage(player, "&c電力不足,無法構建多方塊結構!");
                     } else {
                         if (MultiBlockService.createNewHandler(
                                 loc, getBuilder(), getMultiBlockType(), OutputStream.getPlayerOut(player))) {
-                            AddUtils.sendMessage(player, "&a成功激活多方块结构!");
+                            AddUtils.sendMessage(player, "&a成功激活多方塊結構!");
                         } else {
-                            AddUtils.sendMessage(player, "&c多方块结构不全或者结构冲突!");
+                            AddUtils.sendMessage(player, "&c多方塊結構不全或者結構衝突!");
                         }
                     }
                 } else {
                     MultiBlockService.deleteMultiBlock(MultiBlockService.safeGetUUID(loc), MultiBlockService.MANUALLY);
-                    AddUtils.sendMessage(player, "&a成功关闭多方块结构!");
+                    AddUtils.sendMessage(player, "&a成功關閉多方塊結構!");
                 }
             } else {
-                AddUtils.sendMessage(player, "&c多方块核心处于自动构建模式无法进行手动操作");
+                AddUtils.sendMessage(player, "&c多方塊核心處於自動構建模式無法進行手動操作");
             }
             updateMenu(inv, block, Settings.RUN);
             return false;
@@ -504,11 +504,11 @@ public class SolarReactorCore extends MultiBlockProcessor {
             MultiBlockService.removeHologramSync(loc);
 
             if (holoStatus == 0 && statusCode == 0) {
-                AddUtils.sendMessage(player, "&a全息投影已开启!");
+                AddUtils.sendMessage(player, "&a全息投影已開啓!");
                 MultiBlockService.createHologram(loc, MBTYPE, MultiBlockService.Direction.NORTH, MBID_TO_ITEM);
                 DataCache.setCustomData(loc, MultiBlockService.getHologramKey(), 1);
             } else {
-                AddUtils.sendMessage(player, "&a全息投影已关闭!");
+                AddUtils.sendMessage(player, "&a全息投影已關閉!");
             }
             updateMenu(inv, block, Settings.RUN);
             return false;
@@ -524,17 +524,17 @@ public class SolarReactorCore extends MultiBlockProcessor {
         String code = data.getData(MultiBlockService.getAutoKey());
         int autoCode = code == null ? 0 : Integer.parseInt(code);
         if (statusCode == 0) {
-            if (autoCode > 0 && charge > 2 * energyConsumption) { // 自动构建开启 且有能量
+            if (autoCode > 0 && charge > 2 * energyConsumption) { // 自動構建開啓 且有能量
                 autoBuild(loc, data, autoCode);
             }
         } else if (MultiBlockService.acceptCoreRequest(b.getLocation(), getBuilder(), getMultiBlockType())) {
-            // runtime检查是否完整,每3tick检查一次,每次有1/10的概率检测一个方块
+            // runtime檢查是否完整,每3tick檢查一次,每次有1/10的概率檢測一個方塊
             runtimeCheck(loc, data, autoCode);
-            // 直接开销电量
+            // 直接開銷電量
             super.progressorCost(b, inv);
             Schedules.launchSchedules(() -> checkCondition(loc, data), 0, false, 0);
             if (charge < energyConsumption) {
-                // 避免重连的时候出现问题,重连的时候statusCode为-3到-1,但是如果没有电 直接寄
+                // 避免重連的時候出現問題,重連的時候statusCode為-3到-1,但是如果沒有電 直接寄
                 MultiBlockService.deleteMultiBlock(
                         MultiBlockService.safeGetUUID(loc),
                         MultiBlockService.EnergyOutCause.get(charge, energyConsumption));
@@ -547,9 +547,9 @@ public class SolarReactorCore extends MultiBlockProcessor {
                     SimpleCraftingOperation currentOperation = (SimpleCraftingOperation) this.processor.getOperation(b);
                     AddUtils.setLore(
                             it,
-                            "&7当前机器状态: %s".formatted((currentOperation == null) ? "&7待机中" : "&a进程中"),
-                            "&7当前电量: %dJ/%dJ".formatted(charge, energybuffer),
-                            "&7当前耗电: %dJ/t".formatted(energyConsumption));
+                            "&7當前機器狀態: %s".formatted((currentOperation == null) ? "&7待機中" : "&a進程中"),
+                            "&7當前電量: %dJ/%dJ".formatted(charge, energybuffer),
+                            "&7當前耗電: %dJ/t".formatted(energyConsumption));
                 } else inv.replaceExistingItem(INFO_SLOT, INFO_ITEM);
             }
             super.process(b, inv, data);
@@ -557,7 +557,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
     }
 
     public void progressorCost(Block b, BlockMenu inv) {
-        // 覆盖父类 让process中不扣电
-        // 转到我的ticker里扣
+        // 覆蓋父類 讓process中不扣電
+        // 轉到我的ticker里扣
     }
 }

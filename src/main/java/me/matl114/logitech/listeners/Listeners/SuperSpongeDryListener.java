@@ -30,7 +30,7 @@ public class SuperSpongeDryListener implements Listener {
                     ItemStack fuelSlot = fi.getFuel();
                     ItemStack outputSlot = fi.getResult();
                     if (outputSlot == null || outputSlot.getType().isAir()) {
-                        // 槽位是空的,直接输入该输出就行
+                        // 槽位是空的,直接輸入該輸出就行
                         // event.setResult(AddItem.SUPERSPONGE.clone());
                         fi.setResult(AddUtils.getCleaned(AddItem.SUPERSPONGE));
                         stack.setAmount(stack.getAmount() - 1);
@@ -39,7 +39,7 @@ public class SuperSpongeDryListener implements Listener {
                             fuelSlot.setType(Material.POWDER_SNOW_BUCKET);
                         }
                     } else if (CraftUtils.matchItemStack(outputSlot, AddItem.SUPERSPONGE, false)) {
-                        // 由于bukkit特性,需要我们自己设置数量
+                        // 由於bukkit特性,需要我們自己設置數量
                         outputSlot.setAmount(outputSlot.getAmount() + 1);
                         stack.setAmount(stack.getAmount() - 1);
                         if (fuelSlot != null && fuelSlot.getType() == Material.BUCKET) {

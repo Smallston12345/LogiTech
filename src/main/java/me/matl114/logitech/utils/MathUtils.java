@@ -27,7 +27,7 @@ public class MathUtils {
         return POW[k];
     }
     /**
-     * int型存储规则 采用小端存储
+     * int型存儲規則 採用小端存儲
      */
     public static boolean getBits(int code, int bit) {
         return ((code >> bit) & 1) != 0;
@@ -123,7 +123,7 @@ public class MathUtils {
     }
 
     /**
-     * 算数右移
+     * 算數右移
      * @param a
      * @return
      */

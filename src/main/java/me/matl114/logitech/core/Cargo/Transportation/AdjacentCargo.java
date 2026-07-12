@@ -26,20 +26,20 @@ public class AdjacentCargo extends AbstractCargo {
     protected final ItemStack[] INFO_ITEM = new ItemStack[] {
         new CustomItemStack(
                 Material.ORANGE_STAINED_GLASS_PANE,
-                "&b机制",
-                "&7在左侧配置源方方块邻接方向",
-                "&7在中间的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
-                "&7在下方放入黑/白名单物品",
-                "&e机器将从源方方块向目标方块进行传输",
-                "&c警告:当你设置两方块相同时,请不要让他们操作同样的槽位,否则后果自负"),
+                "&b機制",
+                "&7在左側配置源方方塊鄰接方向",
+                "&7在中間的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
+                "&7在下方放入黑/白名單物品",
+                "&e機器將從源方方塊向目標方塊進行傳輸",
+                "&c警告:當你設置兩方塊相同時,請不要讓他們操作同樣的槽位,否則後果自負"),
         new CustomItemStack(
                 Material.ORANGE_STAINED_GLASS_PANE,
-                "&b机制",
-                "&7在右侧配置目标方块邻接方向",
-                "&7在中间的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
-                "&7在下方放入黑/白名单物品",
-                "&e机器将从源方方块向目标方块进行传输",
-                "&c警告:当你设置两方块相同时,请不要让他们操作同样的槽位,否则后果自负")
+                "&b機制",
+                "&7在右側配置目標方塊鄰接方向",
+                "&7在中間的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
+                "&7在下方放入黑/白名單物品",
+                "&e機器將從源方方塊向目標方塊進行傳輸",
+                "&c警告:當你設置兩方塊相同時,請不要讓他們操作同樣的槽位,否則後果自負")
     };
     protected final int[] DIRECTION_SLOT = new int[] {10, 16};
 
@@ -68,14 +68,14 @@ public class AdjacentCargo extends AbstractCargo {
         super(itemGroup, item, recipeType, recipe, displayList);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7这是一个普通货运机器",
-                        "&7普通货运机器的行为会包括若干对源方块和目标方块",
-                        "&7普通货运机器会进行从源方块到目标方块的物流传输",
-                        "&7普通货运机器支持较大规模的传输量",
-                        "&7但是相应的,他会忽视机器对物品的输入槽位限制"),
+                        "&f機制",
+                        "&7這是一個普通貨運機器",
+                        "&7普通貨運機器的行為會包括若干對源方塊和目標方塊",
+                        "&7普通貨運機器會進行從源方塊到目標方塊的物流傳輸",
+                        "&7普通貨運機器支持較大規模的傳輸量",
+                        "&7但是相應的,他會忽視機器對物品的輸入槽位限制"),
                 null,
-                AddUtils.getInfoShow("&f机制", "&7本机器可以选择与其相邻的方块参与传输"),
+                AddUtils.getInfoShow("&f機制", "&7本機器可以選擇與其相鄰的方塊參與傳輸"),
                 null));
     }
 

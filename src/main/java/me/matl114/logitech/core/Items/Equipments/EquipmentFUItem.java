@@ -35,14 +35,14 @@ public class EquipmentFUItem extends MaterialItem {
     private ItemStack maxLevel = null;
 
     public EquipmentFUItem maxLevel(String... description) {
-        maxLevel = new CleanItemStack(Material.BOOK, "&a单装备等级限制", description);
+        maxLevel = new CleanItemStack(Material.BOOK, "&a單裝備等級限制", description);
         return this;
     }
 
     private ItemStack availableItem = null;
 
     public EquipmentFUItem availableItem(String... description) {
-        availableItem = new CleanItemStack(Material.BOOK, "&a可装配的装备范围", description);
+        availableItem = new CleanItemStack(Material.BOOK, "&a可裝配的裝備範圍", description);
         return this;
     }
 
@@ -50,7 +50,7 @@ public class EquipmentFUItem extends MaterialItem {
     private ItemStack costSample = AddItem.ABSTRACT_INGOT;
 
     public EquipmentFUItem cost(ItemStack costSample, String... description) {
-        cost = new CleanItemStack(Material.BOOK, "&a所需锻造材料", description);
+        cost = new CleanItemStack(Material.BOOK, "&a所需鍛造材料", description);
         this.costSample = costSample;
         return this;
     }
@@ -66,25 +66,25 @@ public class EquipmentFUItem extends MaterialItem {
                 slots.add("&8⇨ &b" + slot.name());
             }
         }
-        items.add(new CleanItemStack(Material.BOOK, "&a功能单元槽位限制", slots));
+        items.add(new CleanItemStack(Material.BOOK, "&a功能單元槽位限制", slots));
         items.add(null);
         items.add(
                 maxLevel == null
                         ? new CleanItemStack(
-                                Material.BOOK, "&a单装备等级限制", "&7最大等级: %s".formatted(fUnit.getMaxFULevel(null)))
+                                Material.BOOK, "&a單裝備等級限制", "&7最大等級: %s".formatted(fUnit.getMaxFULevel(null)))
                         : maxLevel);
         items.add(null);
         items.add(
                 availableItem == null
-                        ? new CleanItemStack(Material.BOOK, "&a可装配的装备范围", "&7支持装配至任意工具类物品")
+                        ? new CleanItemStack(Material.BOOK, "&a可裝配的裝備範圍", "&7支持裝配至任意工具類物品")
                         : availableItem);
         items.add(null);
         items.add(
                 cost == null
                         ? new CleanItemStack(
                                 Material.BOOK,
-                                "&a所需锻造材料",
-                                "&7抽象锭 x%d".formatted(fUnit.getRarity().getLevel()))
+                                "&a所需鍛造材料",
+                                "&7抽象錠 x%d".formatted(fUnit.getRarity().getLevel()))
                         : cost);
         items.add(MenuUtils.getDisplayItem(costSample));
         this.setDisplayRecipes(items);

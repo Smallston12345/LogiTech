@@ -31,7 +31,7 @@ public class EFUImplements {
             new SimpleFU(getNameKey("demo_fu"), EquipmentFU.FURarity.COMMON, EquipmentSlot.HAND) {};
 
     public static final EquipmentFU MINER = new SimplePotionEffectEquipmentFU(
-            "攻速强化",
+            "攻速強化",
             getNameKey("att-speed-fu"),
             EquipmentFU.FURarity.COMMON,
             10,
@@ -72,7 +72,7 @@ public class EFUImplements {
         List<LevelPotionEffectProvider> effects;
         int maxLevel;
         int maxTotalLevel;
-        // A*X+B 级别
+        // A*X+B 級別
         public SimplePotionEffectEquipmentFU(
                 String name,
                 NamespacedKey key,
@@ -91,14 +91,14 @@ public class EFUImplements {
 
         public ItemStack getInfoDisplay() {
             List<String> infos = new ArrayList<>();
-            infos.add("提供指定的药水效果增益");
-            infos.add("不同槽位的单元等级可叠加,最大%d级".formatted(maxTotalLevel));
-            infos.add("药水效果每5秒刷新一次");
-            infos.add("该单元提供的药水效果等级如下:");
+            infos.add("提供指定的藥水效果增益");
+            infos.add("不同槽位的單元等級可疊加,最大%d級".formatted(maxTotalLevel));
+            infos.add("藥水效果每5秒刷新一次");
+            infos.add("該單元提供的藥水效果等級如下:");
             effects.forEach(effectProvider -> {
                 infos.add("⇨ §b%s : §7".formatted(CraftUtils.getEffectName(effectProvider.getEffect()))
                         + (effectProvider.getBaseLevel() == 0 ? "" : "%d+".formatted(effectProvider.getBaseLevel()))
-                        + ".1f*<单元等级>".formatted(effectProvider.getAmplifier()));
+                        + ".1f*<單元等級>".formatted(effectProvider.getAmplifier()));
             });
             return getInfoFor(getFullName(), infos.toArray(String[]::new));
         }
@@ -134,7 +134,7 @@ public class EFUImplements {
             }
 
             public void applyEffect(Player player, int level) {
-                // 太高还是算了
+                // 太高還是算了
                 int potionLevel = Math.min(baseLevel + (int) (amplifier * level), 250);
                 player.addPotionEffect(new PotionEffect(effect, 200, potionLevel), true);
             }

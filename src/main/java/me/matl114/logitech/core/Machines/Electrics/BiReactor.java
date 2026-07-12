@@ -34,8 +34,8 @@ public class BiReactor extends AbstractEnergyProvider {
 
     protected final ItemStack[] INFO_ITEMS = new ItemStack[] {
         new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&6[%s]输入槽".formatted(Language.get("Items.FALSE_.Name"))),
-        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6[%s]输入槽".formatted(Language.get("Items.TRUE_.Name")))
+                Material.GREEN_STAINED_GLASS_PANE, "&6[%s]輸入槽".formatted(Language.get("Items.FALSE_.Name"))),
+        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6[%s]輸入槽".formatted(Language.get("Items.TRUE_.Name")))
     };
 
     public int[] getInputSlots() {
@@ -68,20 +68,20 @@ public class BiReactor extends AbstractEnergyProvider {
         super(category, item, recipeType, recipe, energyBuffer, energyProvider);
         this.energyConsumptionFalse = falseEnergy;
         STATUS_ITEM[0] = AddUtils.addGlow(new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&e状态: &a正", "&7发电量: %dJ/t".formatted(this.energyConsumption)));
+                Material.GREEN_STAINED_GLASS_PANE, "&e狀態: &a正", "&7發電量: %dJ/t".formatted(this.energyConsumption)));
         STATUS_ITEM[1] = AddUtils.addGlow(new CustomItemStack(
-                Material.RED_STAINED_GLASS_PANE, "&e状态: &c负", "&7发电量: %dJ/t".formatted(-this.energyConsumptionFalse)));
+                Material.RED_STAINED_GLASS_PANE, "&e狀態: &c負", "&7發電量: %dJ/t".formatted(-this.energyConsumptionFalse)));
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 &a正",
-                        "&7当同时输入%s和%s时,视为满足条件,发电 %dJ"
+                        "&f機制 &a正",
+                        "&7當同時輸入%s和%s時,視為滿足條件,發電 %dJ"
                                 .formatted(
                                         Language.get("Items.FALSE_.Name"),
                                         Language.get("Items.TRUE_.Name"),
                                         this.energyConsumption)),
                 new DisplayItemStack(AddItem.TRUE_),
                 AddUtils.getInfoShow(
-                        "&f机制 &c负", "&7当不满足’正‘的输入条件时候,视为不满足条件,发电 -%dJ".formatted(this.energyConsumptionFalse)),
+                        "&f機制 &c負", "&7當不滿足’正‘的輸入條件時候,視為不滿足條件,發電 -%dJ".formatted(this.energyConsumptionFalse)),
                 new DisplayItemStack(AddItem.FALSE_)));
     }
 

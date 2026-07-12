@@ -58,7 +58,7 @@ public interface ChunkLimit {
     default void onChunkReachLimit(Location location, SlimefunItem slimefunItem, Consumer<String> outputStream) {
         BukkitUtils.executeSync(() -> {
             location.getWorld().strikeLightningEffect(location);
-            outputStream.accept(AddUtils.resolveColor("&c不能在一个区块放置超过1个[%s]!"
+            outputStream.accept(AddUtils.resolveColor("&c不能在一個區塊放置超過1個[%s]!"
                     .formatted(slimefunItem.getItem().getItemMeta().getDisplayName())));
             DataCache.removeBlockData(location);
         });

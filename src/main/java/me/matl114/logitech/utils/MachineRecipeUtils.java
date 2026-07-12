@@ -53,7 +53,7 @@ public class MachineRecipeUtils {
             __flag = false;
             for (ItemCounter stack : stacks) {
                 if (CraftUtils.matchItemStack(a, stack, true)) {
-                    // 只在合并后不超过 maxStackSize 时才合并，防止产生超大堆叠
+                    // 只在合併後不超過 maxStackSize 時才合併，防止產生超大堆疊
                     long maxStack = stack.getItem() != null ? stack.getItem().getMaxStackSize() : 64;
                     if (maxStack <= 0) maxStack = 64;
                     if (stack.getAmount() + a.getAmount() <= maxStack) {
@@ -148,9 +148,9 @@ public class MachineRecipeUtils {
         if (noConsumeIndices == null || noConsumeIndices.isEmpty()) {
             return stackFrom(tick, input, output);
         }
-        // 手动执行 stackIn 并跟踪 noConsume 索引映射
+        // 手動執行 stackIn 並跟蹤 noConsume 索引映射
         LinkedHashSet<ItemCounter> stacks = new LinkedHashSet<>();
-        // 记录每个合并后位置是否为 noConsume
+        // 記錄每個合併後位置是否為 noConsume
         List<Boolean> mergedNoConsume = new ArrayList<>();
         boolean __flag;
         for (int i = 0; i < input.length; i++) {
@@ -168,7 +168,7 @@ public class MachineRecipeUtils {
             for (ItemCounter stack : stacks) {
                 if (CraftUtils.matchItemStack(a, stack, true)) {
                     stack.addAmount(a.getAmount());
-                    // 如果合并的任一原始输入是 noConsume，则合并后也是 noConsume
+                    // 如果合併的任一原始輸入是 noConsume，則合併後也是 noConsume
                     if (isNoConsume) {
                         mergedNoConsume.set(mergeIdx, true);
                     }
@@ -198,7 +198,7 @@ public class MachineRecipeUtils {
             }
             ++cnt;
         }
-        // 构建合并后的 noConsume 索引集合
+        // 構建合併後的 noConsume 索引集合
         Set<Integer> mergedNoConsumeSet = new HashSet<>();
         for (int i = 0; i < mergedNoConsume.size(); i++) {
             if (mergedNoConsume.get(i)) {
@@ -491,7 +491,7 @@ public class MachineRecipeUtils {
         } else {
             recipe1 = stackFromMachine(recipe);
         }
-        // 会删除某些元素为空，所以需要重新stack
+        // 會刪除某些元素為空，所以需要重新stack
         ItemStack[] input = stackIn(makeValidMGInput(recipe1.getInput()));
         ItemStack[] output = recipe1.getOutput();
         //        if(input.length==0){

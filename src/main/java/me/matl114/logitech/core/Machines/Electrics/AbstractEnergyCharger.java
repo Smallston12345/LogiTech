@@ -52,16 +52,16 @@ public abstract class AbstractEnergyCharger extends AbstractEnergyMachine implem
 
     protected final ItemStack LAZY_ITEM_OFF = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
-            "&6点击切换懒惰模式",
-            "&7当前状态: &c关闭",
-            "&7当启用懒惰模式时,只有电力剩余不足50%的机器会被充能",
-            "&7这会大幅度的减少充能耗时");
+            "&6點擊切換懶惰模式",
+            "&7當前狀態: &c關閉",
+            "&7當啓用懶惰模式時,只有電力剩餘不足50%的機器會被充能",
+            "&7這會大幅度的減少充能耗時");
     protected final ItemStack LAZY_ITEM_ON = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&6点击切换懒惰模式",
-            "&7当前状态: &a开启",
-            "&7当启用懒惰模式时,只有电力剩余不足50%的机器会被充能",
-            "&7这会大幅度的减少充能耗时");
+            "&6點擊切換懶惰模式",
+            "&7當前狀態: &a開啓",
+            "&7當啓用懶惰模式時,只有電力剩餘不足50%的機器會被充能",
+            "&7這會大幅度的減少充能耗時");
 
     public AbstractEnergyCharger(
             ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int energybuffer) {
@@ -71,9 +71,9 @@ public abstract class AbstractEnergyCharger extends AbstractEnergyMachine implem
     protected ItemStack getInfoShow(int charge, int machine, int errors) {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&7已存储: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)),
-                "&7范围用电器数目: %d/%d(max)".formatted(machine, getMaxChargeAmount()),
-                "&7充电报错数目: %d".formatted(errors));
+                "&7已存儲: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)),
+                "&7範圍用電器數目: %d/%d(max)".formatted(machine, getMaxChargeAmount()),
+                "&7充電報錯數目: %d".formatted(errors));
     }
 
     public boolean isBorder(int i) {

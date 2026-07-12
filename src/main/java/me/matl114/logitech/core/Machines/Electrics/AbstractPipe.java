@@ -144,8 +144,8 @@ public abstract class AbstractPipe extends AbstractMachine implements Directiona
             });
         }
         Location transferedTo;
-        // 因为异步处理,将置信度设置为延迟2个timestamp
-        // 一般地 这是恒定不变的
+        // 因為異步處理,將置信度設置為延遲2個timestamp
+        // 一般地 這是恆定不變的
         if ((transferedTo = (counter.read(ticker, 2))) != null) {
             Location fromLocation = dir.remote(loc, -1);
             if (!fromLocation.equals(transferedTo)) {
@@ -172,7 +172,7 @@ public abstract class AbstractPipe extends AbstractMachine implements Directiona
                 if (location.equals(POINTING_RECORD.get(testLocation))) {
                     // may need sf item test
                     if ((testCounter = PIP_DIRECTION.get(testLocation)) != null) {
-                        // 这个节点已经被人访问过了,跳过
+                        // 這個節點已經被人訪問過了,跳過
                         if (testCounter.read(timeStamp, 0) != null) {
                             testCounter.setValue(value);
                         } else {

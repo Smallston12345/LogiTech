@@ -39,7 +39,7 @@ public class BNoiseHead extends AbstractBlock {
             if (lore == null) {
                 lore = new ArrayList<>();
             }
-            lore.add(ChatColor.AQUA + "声音来源: " + sound.name());
+            lore.add(ChatColor.AQUA + "聲音來源: " + sound.name());
             itemMeta.setLore(lore);
             if (itemMeta instanceof SkullMeta meta) {
                 meta.setNoteBlockSound(sound.getKey());

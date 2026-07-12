@@ -73,30 +73,30 @@ public class FinalAltarCore extends MultiCore {
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ITEM_ON_1 = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&6点击切换祭坛状态",
-            "&6shift点击尝试刷新祭坛",
-            "&7祭坛状态: &a开启",
-            "&7等级: &6壹",
-            "&7关闭祭坛不会破坏祭坛本体,只会取消上方机器的激活状态");
+            "&6點擊切換祭壇狀態",
+            "&6shift點擊嘗試刷新祭壇",
+            "&7祭壇狀態: &a開啓",
+            "&7等級: &6壹",
+            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的激活狀態");
     protected final ItemStack STATUS_ITEM_ON_2 = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&6点击切换祭坛状态",
-            "&6shift点击尝试刷新祭坛",
-            "&7祭坛状态: &a开启",
-            "&7等级: &6贰",
-            "&7关闭祭坛不会破坏祭坛本体,只会取消上方机器的激活状态");
+            "&6點擊切換祭壇狀態",
+            "&6shift點擊嘗試刷新祭壇",
+            "&7祭壇狀態: &a開啓",
+            "&7等級: &6貳",
+            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的激活狀態");
     protected final ItemStack STATUS_ITEM_OFF = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
-            "&6点击切换祭坛状态",
-            "&6shift点击尝试刷新祭坛",
-            "&7祭坛状态: &c关闭",
-            "&7关闭祭坛不会破坏祭坛本体,只会取消上方机器的激活状态");
+            "&6點擊切換祭壇狀態",
+            "&6shift點擊嘗試刷新祭壇",
+            "&7祭壇狀態: &c關閉",
+            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的激活狀態");
     protected final ItemStack HOLOGRAM_ITEM_ON = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a一级祭坛");
+            Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a一級祭壇");
     protected final ItemStack HOLOGRAM_ITEM_ON_2 = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a二级祭坛");
+            Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a二級祭壇");
     protected final ItemStack HOLOGRAM_ITEM_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &c关闭");
+            Material.RED_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &c關閉");
     protected final MultiLevelBlockType MBTYPE;
     public HashMap<String, ItemStack> MBID_TO_ITEM = new HashMap<>() {
         {
@@ -123,11 +123,11 @@ public class FinalAltarCore extends MultiCore {
         super(itemGroup, item, recipeType, recipe, blockId);
         this.MBTYPE = MultiBlockTypes.FINAL_ALTAR;
         this.setDisplayRecipes(Utils.list(AddUtils.getInfoShow(
-                "&f机制 - &c多级多方块机器",
-                "&7终极祭坛拥有两个等级",
-                "&7其中,贰级终极祭坛需要在壹级终极祭坛上增加额外的多方块结构",
-                "&7两者的构造在内置的投影中均可查看",
-                "&7当你需要在壹,贰级终极祭坛切换时,请关闭多方块并重启,或者尝试点击刷新祭坛按钮")));
+                "&f機制 - &c多級多方塊機器",
+                "&7終極祭壇擁有兩個等級",
+                "&7其中,貳級終極祭壇需要在壹級終極祭壇上增加額外的多方塊結構",
+                "&7兩者的構造在內置的投影中均可查看",
+                "&7當你需要在壹,貳級終極祭壇切換時,請關閉多方塊並重啓,或者嘗試點擊刷新祭壇按鈕")));
         this.setAutoBuildDefault(false);
     }
 
@@ -168,9 +168,9 @@ public class FinalAltarCore extends MultiCore {
     public void onMultiBlockDisable(
             Location loc, AbstractMultiBlockHandler handler, MultiBlockService.DeleteCause cause) {
         super.onMultiBlockDisable(loc, handler, cause);
-        // 这里也要清除,lvl数据 防止上面重新读取回来
+        // 這裏也要清除,lvl數據 防止上面重新讀取回來
         DataCache.setCustomString(loc, LVL_KEY, "0");
-        // 要设置上面的机器,清除里面的force level数据
+        // 要設置上面的機器,清除裏面的force level數據
         Location poweredLoc = loc.clone().add(0, 1, 0);
         FinalAltarChargable.clearForced(poweredLoc);
         BlockMenu inv = DataCache.getMenu(loc);
@@ -223,19 +223,19 @@ public class FinalAltarCore extends MultiCore {
                     int code = DataCache.getCustomData(loc, LVL_KEY, 0);
                     if (code > 0) {
                         inv.replaceExistingItem(STATUS_SLOT, code == 1 ? STATUS_ITEM_ON_1 : STATUS_ITEM_ON_2);
-                        AddUtils.sendMessage(player, "&a成功激活终极祭坛!");
+                        AddUtils.sendMessage(player, "&a成功激活終極祭壇!");
                     } else {
                         MultiBlockService.deleteMultiBlock(loc, MultiBlockService.GENERIC);
-                        AddUtils.sendMessage(player, "&c构建祭坛时出现未知方块数据错误!请联系管理员");
+                        AddUtils.sendMessage(player, "&c構建祭壇時出現未知方塊數據錯誤!請聯繫管理員");
                     }
                 } else {
-                    AddUtils.sendMessage(player, "&c终极祭坛结构不完整或者结构冲突!");
+                    AddUtils.sendMessage(player, "&c終極祭壇結構不完整或者結構衝突!");
                     inv.replaceExistingItem(STATUS_SLOT, STATUS_ITEM_OFF);
                 }
 
             } else { // working toggle off
                 MultiBlockService.deleteMultiBlock(loc, MultiBlockService.MANUALLY);
-                AddUtils.sendMessage(player, "&a终极祭坛成功关闭");
+                AddUtils.sendMessage(player, "&a終極祭壇成功關閉");
                 inv.replaceExistingItem(STATUS_SLOT, STATUS_ITEM_OFF);
             }
             return false;
@@ -248,16 +248,16 @@ public class FinalAltarCore extends MultiCore {
             MultiBlockService.removeHologramSync(loc);
             if (statusCode == 0) {
                 if (holoStatus == 0) {
-                    AddUtils.sendMessage(player, "&a全息投影已切换至一级祭坛!");
+                    AddUtils.sendMessage(player, "&a全息投影已切換至一級祭壇!");
                     MultiBlockService.createHologram(
                             loc, MBTYPE.getSubParts(0), MultiBlockService.Direction.NORTH, MBID_TO_ITEM);
                     DataCache.setCustomData(loc, MultiBlockService.getHologramKey(), 1);
                 } else if (holoStatus == 1) {
-                    AddUtils.sendMessage(player, "&a全息投影已切换至二级祭坛!");
+                    AddUtils.sendMessage(player, "&a全息投影已切換至二級祭壇!");
                     MultiBlockService.createHologram(loc, MBTYPE, MultiBlockService.Direction.WEST, MBID_TO_ITEM);
                     DataCache.setCustomData(loc, MultiBlockService.getHologramKey(), 2);
                 } else {
-                    AddUtils.sendMessage(player, "&a全息投影已关闭!");
+                    AddUtils.sendMessage(player, "&a全息投影已關閉!");
                 }
             }
             updateMenu(inv, block, Settings.RUN);

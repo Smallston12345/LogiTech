@@ -30,7 +30,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class CustomItemGroup extends FlexItemGroup {
-    protected static final ItemStack INVOKE_ERROR = new CustomItemStack(Material.BARRIER, "&c", "", "&c获取物品组物品展示失败");
+    protected static final ItemStack INVOKE_ERROR = new CustomItemStack(Material.BARRIER, "&c", "", "&c獲取物品組物品展示失敗");
     protected MenuFactory menuFactory;
     protected int pages;
     protected int size;
@@ -183,7 +183,7 @@ public abstract class CustomItemGroup extends FlexItemGroup {
         this.subGroupIndex = new int[subGroups.size()];
         int groupSize = subGroups.size();
         for (int j = 0; j < groupSize; j++) {
-            // 非空,会一直寻找直到找到一个空的位置
+            // 非空,會一直尋找直到找到一個空的位置
             while (!(menuFactory.getInventory(i) == null
                     && (menuFactory.getHandler(i) == null
                             || menuFactory.getHandler(i) == ChestMenuUtils.getEmptyClickHandler()))) {
@@ -237,21 +237,21 @@ public abstract class CustomItemGroup extends FlexItemGroup {
         assert page >= 1 && page <= pages;
         var2.getGuideHistory().add(this, page);
         ChestMenu menu = menuFactory.build().constructPage(page);
-        // prev键
+        // prev鍵
         menu.addMenuClickHandler(this.size - 8, ((player, i, itemStack, clickAction) -> {
             if (page > 1) {
                 this.openPage(var1, var2, var3, page - 1);
             }
             return false;
         }));
-        // next键
+        // next鍵
         menu.addMenuClickHandler(this.size - 2, ((player, i, itemStack, clickAction) -> {
             if (page < this.pages) {
                 this.openPage(var1, var2, var3, page + 1);
             }
             return false;
         }));
-        // 搜索键
+        // 搜索鍵
         menu.replaceExistingItem(7, ChestMenuUtils.getSearchButton(var1));
         menu.addMenuClickHandler(7, (pl, slot, item, action) -> {
             pl.closeInventory();
@@ -262,12 +262,12 @@ public abstract class CustomItemGroup extends FlexItemGroup {
                     msg -> SlimefunGuide.openSearch(var2, msg, SlimefunGuideMode.SURVIVAL_MODE, true));
             return false;
         });
-        // 返回键
+        // 返回鍵
         menu.addMenuClickHandler(1, ((player, i, itemStack, clickAction) -> {
             var2.getGuideHistory().goBack(Slimefun.getRegistry().getSlimefunGuide(var3));
             return false;
         }));
-        // 依次按照计算好的index放入物品组，也可以自定义index放入
+        // 依次按照計算好的index放入物品組，也可以自定義index放入
         int groupSize = subGroups.size();
         int startIndex = (page - 1) * contentPerPage;
         int endIndex = page * contentPerPage;
@@ -307,9 +307,9 @@ public abstract class CustomItemGroup extends FlexItemGroup {
             String lore;
             if (VaultIntegration.isEnabled()) {
                 Object[] var10001 = new Object[] {research.getCurrencyCost()};
-                lore = String.format("%.2f", var10001) + " 游戏币";
+                lore = String.format("%.2f", var10001) + " 遊戲幣";
             } else {
-                lore = research.getLevelCost() + " 级经验";
+                lore = research.getLevelCost() + " 級經驗";
             }
 
             menu.addItem(
@@ -321,7 +321,7 @@ public abstract class CustomItemGroup extends FlexItemGroup {
                                 "&7" + sfitem.getId(),
                                 "&4&l" + Slimefun.getLocalization().getMessage(p, "guide.locked"),
                                 "",
-                                "&a> 单击解锁",
+                                "&a> 單擊解鎖",
                                 "",
                                 "&7需要 &b",
                                 lore

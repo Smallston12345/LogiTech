@@ -46,33 +46,33 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
     protected static final int[] MACHINEITEM_SLOT = new int[] {0, 1, 2, 9, 10, 11, 18, 19, 20};
     public MultiBlockMachine[] craftType;
     protected static final ItemStack DISPLAY_DEFAULT_BKGROUND =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c没有匹配的多方块机器");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c沒有匹配的多方塊機器");
     protected static final int DISPLAYEITEM_SLOT = 27;
     protected static final ItemStack INFO_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&6机制:",
+            "&6機制:",
             " ",
-            "&6在上方的3x3区域摆入多方块机器构造",
-            "&6即可加载配方",
-            "&a可以使用槽位伪装板填充空余的槽位!",
-            "&6在右边放入物品进行快捷合成");
+            "&6在上方的3x3區域擺入多方塊機器構造",
+            "&6即可加載配方",
+            "&a可以使用槽位偽裝板填充空餘的槽位!",
+            "&6在右邊放入物品進行快捷合成");
     protected static final int INFO_SLOT = 28;
-    protected static final ItemStack PREV = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&3搜索上一个配方");
+    protected static final ItemStack PREV = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&3搜索上一個配方");
     protected static final int PREV_SLOT = 36;
-    protected static final ItemStack NEXT = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&3搜索下一个配方");
+    protected static final ItemStack NEXT = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&3搜索下一個配方");
     protected static final int NEXT_SLOT = 38;
     protected static final ItemStack CRAFT_ONE = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&3单次合成", "&6左键&b合成 &d1次 &b当前物品", "&6右键&b合成 &d16次 &b当前物品");
+            Material.GREEN_STAINED_GLASS_PANE, "&3單次合成", "&6左鍵&b合成 &d1次 &b當前物品", "&6右鍵&b合成 &d16次 &b當前物品");
     protected static final int ONE_SLOT = 45;
     protected static final ItemStack CRAFT_MUL = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&3批量合成", "&6左键&b合成 &d64次 &b当前物品", "&6右键&b合成 &d3456次 &b当前物品");
+            Material.GREEN_STAINED_GLASS_PANE, "&3批量合成", "&6左鍵&b合成 &d64次 &b當前物品", "&6右鍵&b合成 &d3456次 &b當前物品");
     protected static final int MUL_SLOT = 47;
     protected static final ItemStack DISPLAY_NOMATCH =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c没有匹配的配方");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c沒有匹配的配方");
     protected static final int RECIPE_ITEM_SLOT = 37;
     protected static final int RECIPEBOOK_SHOW_SLOT = 29;
     protected static final ItemStack RECIPEBOOK_SHOW_ITEM =
-            new CustomItemStack(Material.BOOK, "&6点击查看配方", "", "&6但是并没有一键放置配方的功能");
+            new CustomItemStack(Material.BOOK, "&6點擊查看配方", "", "&6但是並沒有一鍵放置配方的功能");
 
     public MultiBlockManual(
             ItemGroup category,
@@ -158,7 +158,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -202,7 +202,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
                 int charge = this.getCharge(menu.getLocation()) / this.energyConsumption;
                 limit = Math.min(limit, charge);
                 if (limit == 0) {
-                    AddUtils.sendMessage(player, "&c电力不足!无法进行合成");
+                    AddUtils.sendMessage(player, "&c電力不足!無法進行合成");
                 }
             }
             MultiBlockManual.this.updateMenu(menu, block, Settings.RUN);
@@ -219,7 +219,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
                 int charge = this.getCharge(menu.getLocation()) / this.energyConsumption;
                 limit = Math.min(limit, charge);
                 if (limit == 0) {
-                    AddUtils.sendMessage(player, "&c电力不足!无法进行合成");
+                    AddUtils.sendMessage(player, "&c電力不足!無法進行合成");
                 }
             }
             MultiBlockManual.this.updateMenu(menu, block, Settings.RUN);
@@ -240,7 +240,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
                         .open(player);
             } else {
 
-                player.sendMessage(ChatColors.color("&e您所摆放的方式并不构成多方块机器"));
+                player.sendMessage(ChatColors.color("&e您所擺放的方式並不構成多方塊機器"));
 
                 // player.sendMessage();
             }
@@ -269,7 +269,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
         if (index_ >= 0) {
             MultiBlockMachine nowMachine = getCraftTypes()[index_];
             List<MachineRecipe> mRecipe = RecipeSupporter.MULTIBLOCK_RECIPES.get(nowMachine);
-            inv.replaceExistingItem(DISPLAYEITEM_SLOT, AddUtils.addLore(nowMachine.getItem(), "&8检测出的多方块机器"));
+            inv.replaceExistingItem(DISPLAYEITEM_SLOT, AddUtils.addLore(nowMachine.getItem(), "&8檢測出的多方塊機器"));
 
             int index = DataCache.getLastRecipe(loc);
             int indexRecord = getNowRecordRecipe(loc);
@@ -277,7 +277,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
                 MachineRecipe getRecipe = mRecipe.get(index);
                 inv.replaceExistingItem(
                         RECIPE_ITEM_SLOT,
-                        AddUtils.addLore(getRecipe.getOutput()[0], "&8匹配的产物", "&8若有多输出则显示第一个", "&8配方编号: " + index));
+                        AddUtils.addLore(getRecipe.getOutput()[0], "&8匹配的產物", "&8若有多輸出則顯示第一個", "&8配方編號: " + index));
                 if (index != indexRecord || mod == Settings.INIT) {
 
                     setNowRecordRecipe(loc, index);
@@ -343,7 +343,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
             }
         }
         MultiCraftType.setRecipeTypeIndex(loc, -1);
-        // 清空当前搜索缓存
+        // 清空當前搜索緩存
         return false;
     }
 
@@ -367,7 +367,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
         List<ItemStack> its = new ArrayList<>() {
             {
                 for (SlimefunItem item : RecipeSupporter.MULTIBLOCK_RECIPES.keySet()) {
-                    add(AddUtils.getInfoShow("&f支持的多方块机器", "&7将机器配方置于指定槽位以进行合成"));
+                    add(AddUtils.getInfoShow("&f支持的多方塊機器", "&7將機器配方置於指定槽位以進行合成"));
                     add(new DisplayItemStack(item.getItem()));
                 }
             }

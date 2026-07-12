@@ -92,7 +92,7 @@ public class CraftUtils {
         if (a == null) return null;
         if (a instanceof RandOutItem ro) {
             // return new ItemConsumer(a.clone());
-            // 当物品是随机输出物品时候,取其中的随机实例
+            // 當物品是隨機輸出物品時候,取其中的隨機實例
             return ItemConsumer.get(ro.getInstance());
         }
         return ItemConsumer.get(a);
@@ -100,7 +100,7 @@ public class CraftUtils {
 
     public static ItemCounter getCounter(ItemStack a) {
         if (a == null) return null;
-        // 用于比较和
+        // 用於比較和
         return ItemCounter.get(a);
     }
 
@@ -112,7 +112,7 @@ public class CraftUtils {
     public static ItemGreedyConsumer getGreedyConsumer(ItemStack a) {
         if (a == null) return null;
         if (a instanceof RandOutItem ro) {
-            // 当物品是随机输出物品时候,取其中的随机实例
+            // 當物品是隨機輸出物品時候,取其中的隨機實例
             // return new ItemConsumer(a.clone());
             return ItemGreedyConsumer.get(ro.getInstance());
         }
@@ -157,7 +157,7 @@ public class CraftUtils {
             if ((check = SlimefunItem.getByItem(itemStack)) != null) {
                 if (!check.canUse(player, true)) {
                     if (warn) {
-                        AddUtils.sendMessage(player, "&6[&7配方权限&6]&c 这个配方中含有你无法理解的物品,你不能合成它!");
+                        AddUtils.sendMessage(player, "&6[&7配方權限&6]&c 這個配方中含有你無法理解的物品,你不能合成它!");
                         Schedules.launchSchedules(player::closeInventory, 1, true, 0);
                     }
                     return true;
@@ -168,7 +168,7 @@ public class CraftUtils {
             if ((check = SlimefunItem.getByItem(itemStack)) != null) {
                 if (!check.canUse(player, true)) {
                     if (warn) {
-                        AddUtils.sendMessage(player, "&6[&7配方权限&6]&c 这个配方中含有你无法理解的物品,你不能合成它!");
+                        AddUtils.sendMessage(player, "&6[&7配方權限&6]&c 這個配方中含有你無法理解的物品,你不能合成它!");
                         Schedules.launchSchedules(player::closeInventory, 1, true, 0);
                     }
                     return true;
@@ -276,12 +276,12 @@ public class CraftUtils {
         int cnt = recipeInput.length;
         if (len2 <= 0) return null;
         ItemGreedyConsumer[] result = new ItemGreedyConsumer[cnt];
-        // 获取 noConsume 标记
+        // 獲取 noConsume 標記
         Set<Integer> noConsumeIndices = Collections.emptySet();
         if (recipe instanceof StackMachineRecipe smr) {
             noConsumeIndices = smr.getNoConsumeInputs();
         }
-        // 模拟时间加速 减少~
+        // 模擬時間加速 減少~
         maxMatchCount = (int) calMaxCraftAfterAccelerate(maxMatchCount, recipe.getTicks());
         if (maxMatchCount == 0) {
             return null;
@@ -453,11 +453,11 @@ public class CraftUtils {
                     itemCounter2.syncData();
                     visited[j] = true;
                 } else if (itemCounter2.isDirty()) {
-                    // 如果该counter已经被人绑定了 就跳过
+                    // 如果該counter已經被人綁定了 就跳過
                     continue;
                 }
                 if (CraftUtils.matchItemCounter(itemCounter2, recipeCounter[i], false)) {
-                    // 如果匹配 将其加入...list,并算入matchCnt
+                    // 如果匹配 將其加入...list,並算入matchCnt
                     recipeCounter[i].addRelate(itemCounter2);
                     recipeCounter[i].addMatchAmount(itemCounter2.getAmountLong());
                     if (recipeCounter[i].getStackNum() >= maxAmount) break;
@@ -516,12 +516,12 @@ public class CraftUtils {
         if (cnt2 <= 0 || maxAmount2 <= 0) {
             return null;
         }
-        // 预处理: 获取所有输出的 GreedyConsumer，并统计有效（非AIR/cnt>0）输出数目
-        // ProbItemStack 概率失败时 getInstance() 返回 AIR (cnt=0)，这些不需要输出槽
+        // 預處理: 獲取所有輸出的 GreedyConsumer，並統計有效（非AIR/cnt>0）輸出數目
+        // ProbItemStack 概率失敗時 getInstance() 返回 AIR (cnt=0)，這些不需要輸出槽
         for (int i = 0; i < cnt2; ++i) {
             recipeCounter2[i] = getGreedyConsumer(recipeOutput[i]);
         }
-        // 统计实际需要输出槽的数量
+        // 統計實際需要輸出槽的數量
         int effectiveCnt2 = 0;
         for (int i = 0; i < cnt2; ++i) {
             if (recipeCounter2[i].getAmount() > 0) {
@@ -529,9 +529,9 @@ public class CraftUtils {
             }
         }
         if (effectiveCnt2 <= 0) {
-            // 所有输出都是空的（概率全部失败），本次无实际产出
-            // 但仍需检查输出槽是否有空间：如果输出槽全满，说明即使概率成功也放不下
-            // 此时不应消耗材料，否则会持续吞材料但永远无产出
+            // 所有輸出都是空的（概率全部失敗），本次無實際產出
+            // 但仍需檢查輸出槽是否有空間：如果輸出槽全滿，説明即使概率成功也放不下
+            // 此時不應消耗材料，否則會持續吞材料但永遠無產出
             boolean hasAvailableSlot = false;
             for (int i = 0; i < len2; ++i) {
                 ItemPusher itemCounter = outputCounters.get(i);
@@ -543,7 +543,7 @@ public class CraftUtils {
             if (!hasAvailableSlot) {
                 return null;
             }
-            // 输出槽有空间，允许合成（本次概率全部落空，无产出但消耗输入）
+            // 輸出槽有空間，允許合成（本次概率全部落空，無產出但消耗輸入）
             for (int i = 0; i < cnt2; ++i) {
                 recipeCounter2[i].setStackNum(maxAmount2);
             }
@@ -553,11 +553,11 @@ public class CraftUtils {
             }
             return recipeCounter2;
         }
-        // 优化 当只有一个有效输出的时候 直接输出 匹配最大的匹配数
-        // 99%的情况都是这样的
-        // 应该不会有很多2b作者给这么高效的机器设置两个输出
+        // 優化 當只有一個有效輸出的時候 直接輸出 匹配最大的匹配數
+        // 99%的情況都是這樣的
+        // 應該不會有很多2b作者給這麼高效的機器設置兩個輸出
         if (effectiveCnt2 == 1) {
-            // 找到那个唯一的有效输出
+            // 找到那個唯一的有效輸出
             int effectiveIdx = -1;
             for (int i = 0; i < cnt2; ++i) {
                 if (recipeCounter2[i].getAmount() > 0) {
@@ -586,13 +586,13 @@ public class CraftUtils {
                 return null;
             }
         }
-        // 如果真的有,你喜欢就好
-        // 有可能是桶或者什么
+        // 如果真的有,你喜歡就好
+        // 有可能是桶或者什麼
         else {
-            // 维护一下当前matchAmount最小值
+            // 維護一下當前matchAmount最小值
             PriorityQueue<ItemGreedyConsumer> priorityRecipeOutput = new PriorityQueue<>(effectiveCnt2 + 1);
             for (int i = 0; i < cnt2; ++i) {
-                // 跳过 cnt==0 的输出项(概率失败的AIR)，它们不需要输出槽
+                // 跳過 cnt==0 的輸出項(概率失敗的AIR)，它們不需要輸出槽
                 if (recipeCounter2[i].getAmount() > 0) {
                     priorityRecipeOutput.add(recipeCounter2[i]);
                 }
@@ -624,7 +624,7 @@ public class CraftUtils {
                         continue;
                     } else if (CraftUtils.matchItemCounter(itemCounter2, itemCounter, false)) {
                         // what the fuck????
-                        // 为什么他妈的会覆盖啊 谁写的答辩玩意啊
+                        // 為什麼他媽的會覆蓋啊 誰寫的答辯玩意啊
                         // itemCounter.setFrom(itemCounter2);
                         itemCounter2.addRelate(itemCounter);
                         // must use itemCounter.getMaxStackCnt because ItemStorage
@@ -634,13 +634,13 @@ public class CraftUtils {
                     }
                 }
                 // ?
-                // 这是什么鬼玩意
+                // 這是什麼鬼玩意
                 // 哦
-                // 要判断是否有nextSlot
+                // 要判斷是否有nextSlot
                 if (hasNextPushSlot && itemCounter2.getStackNum() <= maxAmount2) {
                     priorityRecipeOutput.add(itemCounter2);
                 } else {
-                    // 这是不会再增加了 作为一个上线
+                    // 這是不會再增加了 作為一個上線
                     maxAmount2 = Math.min(maxAmount2, itemCounter2.getStackNum());
                     if (maxAmount2 <= 0) return null;
                 }
@@ -677,9 +677,9 @@ public class CraftUtils {
         long maxAmount2 = limit;
         if (cnt2 <= 0) {
             return recipeCounter2;
-        } // 优化 当一个输出的时候 直接输出 匹配最大的匹配数
-        // 99%的情况都是这样的
-        // 应该不会有很多2b作者给这么高效的机器设置两个输出
+        } // 優化 當一個輸出的時候 直接輸出 匹配最大的匹配數
+        // 99%的情況都是這樣的
+        // 應該不會有很多2b作者給這麼高效的機器設置兩個輸出
         else if (cnt2 == 1) {
             recipeCounter2[0] = getGreedyConsumer(recipeOutput[0]);
 
@@ -706,10 +706,10 @@ public class CraftUtils {
                 return null;
             }
         }
-        // 如果真的有,你喜欢就好
-        // 有可能是桶或者什么
+        // 如果真的有,你喜歡就好
+        // 有可能是桶或者什麼
         else {
-            // 维护一下当前matchAmount最小值
+            // 維護一下當前matchAmount最小值
             PriorityQueue<ItemGreedyConsumer> priorityRecipeOutput = new PriorityQueue<>(cnt2 + 1);
             for (int i = 0; i < cnt2; ++i) {
                 recipeCounter2[i] = getGreedyConsumer(recipeOutput[i]);
@@ -743,7 +743,7 @@ public class CraftUtils {
                 if (hasNextPushSlot && itemCounter2.getStackNum() <= maxAmount2) {
                     priorityRecipeOutput.add(itemCounter2);
                 } else {
-                    // 这是不会再增加了 作为一个上线
+                    // 這是不會再增加了 作為一個上線
                     maxAmount2 = Math.min(maxAmount2, itemCounter2.getStackNum());
                     if (maxAmount2 <= 0) return null;
                 }
@@ -774,11 +774,11 @@ public class CraftUtils {
      * itemCounter2.syncData();
      * }
      * if(itemCounter2.isDirty()){
-     * //如果该counter已经被人绑定了 就跳过
+     * //如果該counter已經被人綁定了 就跳過
      * continue;
      * }
      * if(CraftUtils.matchItemCounter(itemCounter2,recipeCounter[i],false)){
-     * //如果匹配 将其加入...list,并算入matchCnt
+     * //如果匹配 將其加入...list,並算入matchCnt
      * recipeCounter[i].addRelate(itemCounter2);
      * recipeCounter[i].addMatchAmount(itemCounter2.getAmount());
      *
@@ -823,27 +823,27 @@ public class CraftUtils {
             for (int j = 0; j < slots.length; ++j) {
                 previewItem = inv.getItemInSlot(slots[j]);
                 if (previewItem == null) {
-                    // 是空槽 绝对不可能是存储 直接上 不要创建缓存
+                    // 是空槽 絕對不可能是存儲 直接上 不要創建緩存
                     int amount = (int) Math.min(outputItem.getAmount(), maxAmount);
                     inv.replaceExistingItem(slots[j], outputItem.getItem(), false);
                     previewItem = inv.getItemInSlot(slots[j]);
                     if (previewItem != null) {
-                        // 防止某些脑瘫push一些null
+                        // 防止某些腦癱push一些null
                         previewItem.setAmount(amount);
                     }
                     outputItem.addAmount(-amount);
                     hasChanged = true;
-                    // 满槽 绝对不可能是存储，直接跳
-                    // 至于为什么不用maxAmount 因为outputItem可以是不可堆叠物品，但是存储暂时还没有不可堆叠物品
-                    // 如果以后有 在此处加上>1判断
+                    // 滿槽 絕對不可能是存儲，直接跳
+                    // 至於為什麼不用maxAmount 因為outputItem可以是不可堆疊物品，但是存儲暫時還沒有不可堆疊物品
+                    // 如果以後有 在此處加上>1判斷
                 } else if (previewItem.getAmount() >= previewItem.getMaxStackSize()) {
                     continue;
                 } else {
                     itemCounter = slotCounters2.get(j);
                     if (!itemCounter.isDirty()) {
-                        // 可能是存储里的 或者是被覆写的maxCNT
+                        // 可能是存儲裏的 或者是被覆寫的maxCNT
                         if (itemCounter.getItem() == null) {
-                            // 我们决定将这个分类留在这,为了安全性 毕竟谁也不知到之后会开发啥，不过显然 这玩意大概率是不会被调用的.
+                            // 我們決定將這個分類留在這,為了安全性 畢竟誰也不知到之後會開發啥，不過顯然 這玩意大概率是不會被調用的.
                             itemCounter.setFrom(outputItem);
                             itemCounter.grab(outputItem);
                             itemCounter.updateMenu(inv);
@@ -929,12 +929,12 @@ public class CraftUtils {
                     inv.replaceExistingItem(slots[j], outputItem.getItem(), false);
                     previewItem = inv.getItemInSlot(slots[j]);
                     if (previewItem != null) {
-                        // 防止某些脑瘫push一些null
+                        // 防止某些腦癱push一些null
                         previewItem.setAmount(amount);
                     } // 多倍匹配用的是MatchAmount
                     outputItem.addMatchAmount(-amount);
                     hasChanged = true;
-                    // 同上 不解释
+                    // 同上 不解釋
                 } else if (previewItem.getAmount() >= previewItem.getMaxStackSize()) {
                     continue;
                 } else {
@@ -1347,7 +1347,7 @@ public class CraftUtils {
         int len = recipes.length;
         if (len != 0) {
             for (int i = 0; i < len; ++i) {
-                // noConsume 的输入不限制合成次数
+                // noConsume 的輸入不限制合成次數
                 if (recipes[i].isNoConsume()) continue;
                 limit = Math.min(limit, recipes[i].getStackNum());
             }
@@ -1920,7 +1920,7 @@ public class CraftUtils {
         if (INDISTINGUISHABLE_MATERIALS.contains(material)) {
             return false;
         }
-        // 我们使用这个
+        // 我們使用這個
         if (!me.matl114.matlib.utils.CraftUtils.matchDisplayNameField(meta1, meta2)) {
             return false;
         }
@@ -1953,15 +1953,15 @@ public class CraftUtils {
             return false;
         }
 
-        // 如果非严格并且是sfid物品比较
+        // 如果非嚴格並且是sfid物品比較
         String id = parseSfId(meta1);
         if (id != null) {
             SlimefunItem it = SlimefunItem.getById(id);
-            // 自动跳过当前附属的物品
+            // 自動跳過當前附屬的物品
             if (it instanceof CustomSlimefunItem) {
                 return true;
             }
-            // distinctive物品必须判断
+            // distinctive物品必須判斷
             if (it instanceof DistinctiveItem dt) {
                 return dt.canStack(meta1, meta2);
             }
@@ -1971,14 +1971,14 @@ public class CraftUtils {
         }
 
         // 粘液物品一般不可修改displayName和Lore
-        // 不然则全非sf物品
+        // 不然則全非sf物品
 
         if (!meta1.hasLore() || !meta2.hasLore()) {
             return meta1.hasLore() == meta2.hasLore();
         }
         if (!me.matl114.matlib.utils.CraftUtils.matchLoreField(meta1, meta2)) {
             return false;
-            // 对于普通物品 检查完lore就结束是正常的
+            // 對於普通物品 檢查完lore就結束是正常的
         } else if (!strictCheck) {
             return true;
         }

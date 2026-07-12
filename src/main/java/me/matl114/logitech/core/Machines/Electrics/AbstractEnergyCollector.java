@@ -58,9 +58,9 @@ public abstract class AbstractEnergyCollector extends AbstractEnergyMachine
     }
 
     protected final ItemStack LAZY_ITEM_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6点击切换懒惰模式", "&7当前状态: &c关闭", "&7当启用懒惰模式时,只有自身电力不满时", "&7才会尝试收集发电机电力");
+            Material.RED_STAINED_GLASS_PANE, "&6點擊切換懶惰模式", "&7當前狀態: &c關閉", "&7當啓用懶惰模式時,只有自身電力不滿時", "&7才會嘗試收集發電機電力");
     protected final ItemStack LAZY_ITEM_ON = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6点击切换懒惰模式", "&7当前状态: &a开启", "&7当启用懒惰模式时,只有自身电力不满时", "&7才会尝试收集发电机电力");
+            Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換懶惰模式", "&7當前狀態: &a開啓", "&7當啓用懶惰模式時,只有自身電力不滿時", "&7才會嘗試收集發電機電力");
 
     public AbstractEnergyCollector(
             ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int energybuffer) {
@@ -71,9 +71,9 @@ public abstract class AbstractEnergyCollector extends AbstractEnergyMachine
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&6信息",
-                "&7已存储: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)),
-                "&7范围发电机数目: %d/%d(max)".formatted(machine, getMaxCollectAmount()),
-                "&7发电机报错数目: %d".formatted(errors));
+                "&7已存儲: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)),
+                "&7範圍發電機數目: %d/%d(max)".formatted(machine, getMaxCollectAmount()),
+                "&7發電機報錯數目: %d".formatted(errors));
     }
 
     public boolean isBorder(int i) {
@@ -158,7 +158,7 @@ public abstract class AbstractEnergyCollector extends AbstractEnergyMachine
                 SlimefunItem item = SlimefunItem.getById(sf.getSfId());
                 EnergyNetProvider ec = getEnergyProvider(item);
                 if (ec != null) {
-                    // 懒惰模式且满了
+                    // 懶惰模式且滿了
                     if (lazymod && (charge.enough())) {
                         break;
                     }
@@ -183,7 +183,7 @@ public abstract class AbstractEnergyCollector extends AbstractEnergyMachine
                                 if (!lazymod || !charge.enough()) {
                                     int energy = ec.getGeneratedOutput(testLocation, sf);
                                     tickGenerator = true;
-                                    // 尝试加入新energy
+                                    // 嘗試加入新energy
                                     more = MathUtils.safeAdd(more, charge.safeIncrement(energy));
                                 }
                                 if (more > 0 && ec.isChargeable()) {
@@ -261,7 +261,7 @@ public abstract class AbstractEnergyCollector extends AbstractEnergyMachine
                 SlimefunItem item = SlimefunItem.getById(sf.getSfId());
                 EnergyNetProvider ec = getEnergyProvider(item);
                 if (ec != null) {
-                    // 懒惰模式且满了
+                    // 懶惰模式且滿了
                     if (lazymod && (charge.enough())) {
                         break;
                     }
@@ -286,7 +286,7 @@ public abstract class AbstractEnergyCollector extends AbstractEnergyMachine
                                 if (!lazymod || !charge.enough()) {
                                     int energy = ec.getGeneratedOutput(testLocation, sf);
                                     tickGenerator = true;
-                                    // 尝试加入新energy
+                                    // 嘗試加入新energy
                                     more = MathUtils.safeAdd(more, charge.safeIncrement(energy));
                                 }
                                 if (more > 0 && ec.isChargeable()) {

@@ -44,7 +44,7 @@ public class CustomEffects {
 
         public void onDeathEvent(PlayerDeathEvent e, int level) {
             e.setDeathMessage(AddUtils.resolveColor(
-                    "%s &6在超新星的烈焰中化为灰烬".formatted(e.getEntity().getName())));
+                    "%s &6在超新星的烈焰中化為灰燼".formatted(e.getEntity().getName())));
         }
     };
     public static AbstractEffect RADIATION = new AbstractEffect("RADIATION") {
@@ -67,7 +67,7 @@ public class CustomEffects {
 
         public void onDeathEvent(PlayerDeathEvent e, int level) {
             e.setDeathMessage(AddUtils.resolveColor(
-                    "%s &6的身体被核辐射穿成了筛子".formatted(e.getEntity().getName())));
+                    "%s &6的身體被核輻射穿成了篩子".formatted(e.getEntity().getName())));
         }
     };
     public static AbstractEffect WRONG_BUTTON = new AbstractEffect("WRONG_BUTTON") {
@@ -85,10 +85,10 @@ public class CustomEffects {
         public void onDeathEvent(PlayerDeathEvent e, int level) {
             if (level == 1) {
                 e.setDeathMessage(AddUtils.resolveColor(
-                        "%s &6因选错了方向而被系统制裁".formatted(e.getEntity().getName())));
+                        "%s &6因選錯了方向而被系統制裁".formatted(e.getEntity().getName())));
             } else if (level == 2) {
                 e.setDeathMessage(AddUtils.resolveColor(
-                        "%s &6因尝试学习刷物而被系统制裁".formatted(e.getEntity().getName())));
+                        "%s &6因嘗試學習刷物而被系統制裁".formatted(e.getEntity().getName())));
             }
         }
     };
@@ -106,7 +106,7 @@ public class CustomEffects {
 
         public void onDeathEvent(PlayerDeathEvent e, int level) {
             e.setDeathMessage(AddUtils.resolveColor(
-                    "%s &6被%d级的强力激光融化了".formatted(e.getEntity().getName(), level)));
+                    "%s &6被%d級的強力激光融化了".formatted(e.getEntity().getName(), level)));
         }
     };
 }

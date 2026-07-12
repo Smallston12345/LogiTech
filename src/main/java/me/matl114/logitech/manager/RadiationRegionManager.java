@@ -89,7 +89,7 @@ public class RadiationRegionManager {
                 loc.getWorld().getNearbyEntities(loc, range, range, range, (entity -> entity instanceof Player));
         for (Entity entity : entities) {
             if (entity instanceof Player player) {
-                AddUtils.sendMessage(player, "&e警告!您已进入危险的辐射区!");
+                AddUtils.sendMessage(player, "&e警告!您已進入危險的輻射區!");
                 PlayerEffects.grantEffect(CustomEffects.RADIATION, player, level, 60, (player1 -> true));
             }
         }

@@ -27,7 +27,7 @@ import org.bukkit.inventory.ItemStack;
 public class AEMachine extends AbstractAdvancedProcessor {
     protected final int[] BORDER = {3, 4, 5, 12, 14, 21, 22, 23, 30, 31, 32, 39, 41, 48, 49, 50};
     protected final ItemStack INFO_ITEM =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a并行机器信息", "&7在上方槽位插入工件以增加并行数", "&7最大并行数: 64");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a並行機器信息", "&7在上方槽位插入工件以增加並行數", "&7最大並行數: 64");
 
     public AEMachine(
             ItemGroup category,
@@ -110,7 +110,7 @@ public class AEMachine extends AbstractAdvancedProcessor {
         }
         DataCache.setCustomData(menu.getLocation(), MAXCRAFT_KEY, num);
         menu.replaceExistingItem(
-                INFO_SLOT, AddUtils.addLore(this.INFO_ITEM, AddUtils.concat("&7当前并行数: ", String.valueOf(num))));
+                INFO_SLOT, AddUtils.addLore(this.INFO_ITEM, AddUtils.concat("&7當前並行數: ", String.valueOf(num))));
     }
 
     public boolean conditionHandle(Block b, BlockMenu menu) {
@@ -127,13 +127,13 @@ public class AEMachine extends AbstractAdvancedProcessor {
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_SLOT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -153,7 +153,7 @@ public class AEMachine extends AbstractAdvancedProcessor {
 
     public void addInfo(ItemStack stack) {
         super.addInfo(stack);
-        stack.setItemMeta(AddUtils.addLore(stack, "&7插入[%s]增加并行处理数".formatted(Language.get("Items.CHIP_CORE.Name")))
+        stack.setItemMeta(AddUtils.addLore(stack, "&7插入[%s]增加並行處理數".formatted(Language.get("Items.CHIP_CORE.Name")))
                 .getItemMeta());
     }
 

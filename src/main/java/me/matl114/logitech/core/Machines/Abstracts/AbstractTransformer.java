@@ -24,7 +24,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class AbstractTransformer extends AbstractMachine {
-    // 我们的目标是 最广的需求 最好的性能 最大的答辩(bushi
+    // 我們的目標是 最廣的需求 最好的性能 最大的答辯(bushi
     /**
      * public tick stuff
      */
@@ -34,11 +34,11 @@ public abstract class AbstractTransformer extends AbstractMachine {
 
     protected int PROCESSOR_SLOT = 22;
     public final ItemStack INFO_WORKING = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a工作中");
-    public final ItemStack INFO_NULL = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6空闲中");
+    public final ItemStack INFO_NULL = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6空閒中");
     public final int[] INPUT = new int[0];
 
     public ItemStack getWorkingItem(int tickLeft) {
-        return AddUtils.addLore(INFO_WORKING, AddUtils.concat("&7将在 ", String.valueOf(tickLeft), " tick后产出"));
+        return AddUtils.addLore(INFO_WORKING, AddUtils.concat("&7將在 ", String.valueOf(tickLeft), " tick後產出"));
     }
 
     public AbstractTransformer(
@@ -99,7 +99,7 @@ public abstract class AbstractTransformer extends AbstractMachine {
                 inv,
                 getInputSlots(),
                 getMachineRecipes(),
-                // 不许用高级的 你是多有病才能在不消耗的槽里面塞存储
+                // 不許用高級的 你是多有病才能在不消耗的槽裏面塞存儲
                 true,
                 Settings.SEQUNTIAL,
                 CraftUtils.getpusher);
@@ -111,7 +111,7 @@ public abstract class AbstractTransformer extends AbstractMachine {
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int[] tick = new int[2];
 
             public int getInt(int i) {
@@ -175,9 +175,9 @@ public abstract class AbstractTransformer extends AbstractMachine {
                     }
                     int maxCraftlimit = getCraftLimit(b, menu);
                     int tickNext = nextP.getTicks();
-                    if (tickNext != 0) { // 超频机制
-                        // 尝试让time归1
-                        // 按比例减少maxlimit ,按最小值取craftlimit
+                    if (tickNext != 0) { // 超頻機制
+                        // 嘗試讓time歸1
+                        // 按比例減少maxlimit ,按最小值取craftlimit
                         if (maxCraftlimit <= tickNext) {
                             tickNext = ((tickNext + 1) / maxCraftlimit) - 1;
                             maxCraftlimit = 1;

@@ -20,9 +20,9 @@ import org.bukkit.inventory.*;
 public class BukkitUtils {
     public static final RecipeType VANILLA_CRAFTTABLE = new RecipeType(
             AddUtils.getNameKey("vanilla_crafttable"),
-            new CustomItemStack(Material.CRAFTING_TABLE, null, "", "&6万物起源 工作台"));
+            new CustomItemStack(Material.CRAFTING_TABLE, null, "", "&6萬物起源 工作台"));
     public static final RecipeType VANILLA_FURNACE = new RecipeType(
-            AddUtils.getNameKey("vanilla_furnace"), new CustomItemStack(Material.FURNACE, null, "", "&6原版熔炉"));
+            AddUtils.getNameKey("vanilla_furnace"), new CustomItemStack(Material.FURNACE, null, "", "&6原版熔爐"));
 
     public static void sendRecipeToVanilla(NamespacedKey key, ShapedMachineRecipe recipe) {
         sendShapedRecipeToVanilla(key, recipe.getInput(), recipe.getOutput()[0]);

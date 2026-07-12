@@ -17,8 +17,8 @@ public class SpaceStorageCard extends DataRecordedItem {
     protected final NamespacedKey KEY_UID = AddUtils.getNameKey("space-st-uid");
     protected final NamespacedKey KEY_STATUS = AddUtils.getNameKey("space-st-status");
     protected final NamespacedKey KEY_INDEX = AddUtils.getNameKey("space-st-index");
-    protected final String LOCSIZE_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B存储的空间信息: ");
-    protected final String INDEX_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B空间磁盘编号: ");
+    protected final String LOCSIZE_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B存儲的空間信息: ");
+    protected final String INDEX_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B空間磁盤編號: ");
 
     public String getUid(ItemMeta meta) {
         PersistentDataContainer container = meta.getPersistentDataContainer();

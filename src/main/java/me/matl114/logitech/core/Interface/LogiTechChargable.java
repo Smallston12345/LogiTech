@@ -84,8 +84,8 @@ public interface LogiTechChargable extends Rechargeable {
         moreCustomCharges.add(howToGetMaxCharge);
         predicates.set(moreCustomCharges.toArray(Function[]::new));
     }
-    // 返回溢出量,设置电力为max(charge,maxCharge),返回多余的
-    // 不会考虑数量
+    // 返回溢出量,設置電力為max(charge,maxCharge),返回多餘的
+    // 不會考慮數量
     static float setChargeSafe(ItemStack item, float charge) {
         ItemMeta meta = item.getItemMeta();
         if (Slimefun.getItemDataService()
@@ -140,10 +140,10 @@ public interface LogiTechChargable extends Rechargeable {
         }
         return null;
     }
-    // 尝试改变charge
-    // 返回无法改变的量 例如change +3 实际+2 返回+1
-    // 当无法充电时返回charge
-    // 会考虑数量
+    // 嘗試改變charge
+    // 返回無法改變的量 例如change +3 實際+2 返回+1
+    // 當無法充電時返回charge
+    // 會考慮數量
     static float changeChargeSafe(ItemStack item, float charge) {
         return changeChargeSafe(item, charge, null);
     }

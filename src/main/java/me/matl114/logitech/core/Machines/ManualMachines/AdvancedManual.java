@@ -72,9 +72,9 @@ public class AdvancedManual extends AbstractBlock {
     private int rtypeAmount = supportedRtype.size();
     private ItemStack displayBorder = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, " ", " ");
     protected static final ItemStack CRAFT_ONE = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&3单次合成", "&6左键&b合成 &d1次 &b当前物品", "&6右键&b合成 &d16次 &b当前物品");
+            Material.GREEN_STAINED_GLASS_PANE, "&3單次合成", "&6左鍵&b合成 &d1次 &b當前物品", "&6右鍵&b合成 &d16次 &b當前物品");
     protected static final ItemStack CRAFT_MUL = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&3批量合成", "&6左键&b合成 &d64次 &b当前物品", "&6右键&b合成 &d3456次 &b当前物品");
+            Material.GREEN_STAINED_GLASS_PANE, "&3批量合成", "&6左鍵&b合成 &d64次 &b當前物品", "&6右鍵&b合成 &d3456次 &b當前物品");
     private int[] craftableSlots = IntStream.range(0, 36).toArray();
 
     public AdvancedManual(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -83,7 +83,7 @@ public class AdvancedManual extends AbstractBlock {
         PostSetupTasks.addPostRegisterTask(() -> {
             for (RecipeType rtype : supportedRtype) {
                 ItemStack icon = RecipeSupporter.RECIPETYPE_ICON.getOrDefault(rtype, nullRtype);
-                this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f支持的配方类型"));
+                this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f支持的配方類型"));
                 this.addDisplayRecipe(icon);
             }
         });
@@ -129,48 +129,48 @@ public class AdvancedManual extends AbstractBlock {
             super(title);
             setup();
         }
-        // 配方类型选择的图标偏移
+        // 配方類型選擇的圖標偏移
         private int rtypeDisplayOffset = 0;
-        // 上次选中的图标 记录在MENU中的位置
+        // 上次選中的圖標 記錄在MENU中的位置
         private int lastlySelectedTypeSlotIndex = -1;
-        // 上次选中的图标代表的配方类型
+        // 上次選中的圖標代表的配方類型
         private RecipeType selectedType = null;
-        // 上次选中的MACHINERECIPE的图标,todo 仅用于handler取消附魔
+        // 上次選中的MACHINERECIPE的圖標,todo 僅用於handler取消附魔
         private int lastlySelectedRecipeSlot = -1;
-        // 上次选中的配方类型的全部配方
+        // 上次選中的配方類型的全部配方
         private List<MachineRecipe> selectedTypeRecipes = null;
-        // 上次搜索时候匹配的配方下标集合，nonnull，重置时候应该重置到下方这样
+        // 上次搜索時候匹配的配方下標集合，nonnull，重置時候應該重置到下方這樣
         private List<Integer> lastlySearchedRecipeIndex = List.of();
-        // 设定的配方类型偏移量
+        // 設定的配方類型偏移量
         private int recipeDisplayOffset = 0;
-        // 上次选中的MACHINERECIPE的下标索引,记录在List中的位置
+        // 上次選中的MACHINERECIPE的下標索引,記錄在List中的位置
         private int selectedRecipeIndex = -1;
         private Player executor = null;
         AtomicReference<BukkitRunnable> asyncUpdateMenuTask = new AtomicReference<>(null);
-        // 上下文切换，点击icon列的上/下切换
+        // 上下文切換，點擊icon列的上/下切換
         private void addRtypeOffset(int offset) { // should be +-1 in case of safety
             if (rtypeDisplayOffset + offset >= 0 && rtypeDisplayOffset + offset + rTypeIconSlot.length <= rtypeAmount) {
-                // 维护偏移量和选中光标偏移量
+                // 維護偏移量和選中光標偏移量
                 rtypeDisplayOffset += offset;
                 int last = lastlySelectedTypeSlotIndex;
                 if (last >= 0) {
-                    // 相对屏幕往上挪
+                    // 相對屏幕往上挪
                     lastlySelectedTypeSlotIndex -= offset;
                     if (!(lastlySelectedTypeSlotIndex >= 0 && lastlySelectedTypeSlotIndex < rTypeIconSlot.length)) {
                         lastlySelectedTypeSlotIndex = -1;
                     }
                 }
-                // 重新绘制全部rtype icon 内容
+                // 重新繪製全部rtype icon 內容
                 resetTypeSlot();
-                // 光标溢出的时候需要重置rtype,并且触发重置rtype所带来的影响
+                // 光標溢出的時候需要重置rtype,並且觸發重置rtype所帶來的影響
                 if (last >= 0 && lastlySelectedTypeSlotIndex < 0) {
                     setRecipeType(null);
                 }
             }
         }
-        // 重置配方选择icon，一般在初始化或者上下文切换时使用
+        // 重置配方選擇icon，一般在初始化或者上下文切換時使用
         private void resetTypeSlot() {
-            // 重新绘制icon
+            // 重新繪製icon
             for (int i = 0; i < rTypeIconSlot.length; ++i) {
                 if (rtypeDisplayOffset + i < rtypeAmount) {
                     setTypeSlot(i, supportedRtype.get(rtypeDisplayOffset + i));
@@ -178,17 +178,17 @@ public class AdvancedManual extends AbstractBlock {
                     setTypeSlot(i, null);
                 }
             }
-            // 重新绘制光标
+            // 重新繪製光標
             int last = lastlySelectedTypeSlotIndex;
             lastlySelectedTypeSlotIndex = -1;
             changeSelectedTypeSlot(last);
         }
-        // 设置配方类型 generally的
-        // 切换类型的时候需要做到重置下方的所有内容
+        // 設置配方類型 generally的
+        // 切換類型的時候需要做到重置下方的所有內容
         private void setRecipeType(RecipeType type) {
             if (selectedType != type) {
                 selectedType = type;
-                // 主要触发修改物品展示界面 切换的时候需要全部删除
+                // 主要觸發修改物品展示界面 切換的時候需要全部刪除
                 this.clearRecordOnTypeChange();
                 this.reloadRecipeType();
             }
@@ -201,7 +201,7 @@ public class AdvancedManual extends AbstractBlock {
                 this.selectedTypeRecipes = null;
             }
         }
-        // 仅用于在handler中设置配方类型的光标的及时切换
+        // 僅用於在handler中設置配方類型的光標的及時切換
         private void changeSelectedTypeSlot(int index) {
             if (index != -1 && index < rTypeIconSlot.length) {
                 if (index != lastlySelectedTypeSlotIndex) {
@@ -227,14 +227,14 @@ public class AdvancedManual extends AbstractBlock {
                 this.lastlySelectedTypeSlotIndex = -1;
             }
         }
-        // 仅用于构造配方类型的icon列
+        // 僅用於構造配方類型的icon列
         private void setTypeSlot(int index, RecipeType type) {
             if (index > 6) return;
             if (type != null) {
                 this.replaceExistingItem(
                         rTypeIconSlot[index], RecipeSupporter.RECIPETYPE_ICON.getOrDefault(type, nullRtype));
                 this.addMenuClickHandler(rTypeIconSlot[index], ((player, i, itemStack, clickAction) -> {
-                    // 修改真实选项
+                    // 修改真實選項
                     setRecipeType(type);
                     changeSelectedTypeSlot(index);
                     return false;
@@ -244,13 +244,13 @@ public class AdvancedManual extends AbstractBlock {
                 this.addMenuClickHandler(rTypeIconSlot[index], ChestMenuUtils.getEmptyClickHandler());
             }
         }
-        // 顾名思义
+        // 顧名思義
         private void clearRecordOnTypeChange() {
             this.lastlySelectedRecipeSlot = -1;
             this.selectedTypeRecipes = null;
             this.lastlySearchedRecipeIndex = List.of();
             this.recipeDisplayOffset = 0;
-            // 包括了设置selectedRecipeIndex以及清除材料展示
+            // 包括了設置selectedRecipeIndex以及清除材料展示
             setRecipe(-1, true);
             // 刷新配方列表展示
             listMatchedRecipes();
@@ -264,8 +264,8 @@ public class AdvancedManual extends AbstractBlock {
                 listMatchedRecipes();
             }
         }
-        // 理论上这个是用于刷新所有配方展示的
-        // 实际上也会检测selected是否有效 若无效会自动删除
+        // 理論上這個是用於刷新所有配方展示的
+        // 實際上也會檢測selected是否有效 若無效會自動刪除
         private void listMatchedRecipes() {
             if (this.selectedTypeRecipes == null
                     || this.lastlySearchedRecipeIndex == null
@@ -292,7 +292,7 @@ public class AdvancedManual extends AbstractBlock {
                     }
                 }
                 if (!matched) {
-                    // 默认设置为index最小的
+                    // 默認設置為index最小的
                     this.lastlySelectedRecipeSlot = recipelistDisplaySlot[0];
                     Optional.of(this.getItemInSlot(recipelistDisplaySlot[0])).ifPresent(AddUtils::addGlow);
                     int index = this.lastlySearchedRecipeIndex.get(this.recipeDisplayOffset);
@@ -300,11 +300,11 @@ public class AdvancedManual extends AbstractBlock {
                 }
             }
         }
-        // 仅用于点击handler即时切换配方选择光标
+        // 僅用於點擊handler即時切換配方選擇光標
         private void forceChangeSelectedRecipeSlot(int index) {
 
             if (lastlySelectedRecipeSlot != -1) {
-                // 只有非0且与之前不一样才需要取消之前的附魔光效
+                // 只有非0且與之前不一樣才需要取消之前的附魔光效
                 if (lastlySelectedRecipeSlot != index) {
                     ItemStack stack = this.getItemInSlot(lastlySelectedRecipeSlot);
                     if (stack != null) {
@@ -312,7 +312,7 @@ public class AdvancedManual extends AbstractBlock {
                     }
                 }
             }
-            // 强制再来一遍附魔光效，用于tick刷新时无需调用
+            // 強制再來一遍附魔光效，用於tick刷新時無需調用
             if (index != -1) {
                 ItemStack stack = this.getItemInSlot(index);
                 if (stack != null) {
@@ -325,7 +325,7 @@ public class AdvancedManual extends AbstractBlock {
         // return if this recipeIndex matches selected
         private boolean setRecipeSlot(int index, int recipeIndex, MachineRecipe recipe) {
             if (recipe != null) {
-                ItemStack icon = AddUtils.addLore(recipe.getOutput()[0], "&a点击选择该配方", "&8配方编号: " + recipeIndex);
+                ItemStack icon = AddUtils.addLore(recipe.getOutput()[0], "&a點擊選擇該配方", "&8配方編號: " + recipeIndex);
                 this.replaceExistingItem(index, icon);
                 this.addMenuClickHandler(index, ((player, i, itemStack, clickAction) -> {
                     this.forceChangeSelectedRecipeSlot(index);
@@ -342,24 +342,24 @@ public class AdvancedManual extends AbstractBlock {
                 return false;
             }
         }
-        // 该方法用于generally的设置选中的配方项
+        // 該方法用於generally的設置選中的配方項
         private void setRecipe(int index, boolean force) {
             if (index != this.selectedRecipeIndex || force) {
                 if (index == -1 || this.selectedTypeRecipes == null || index >= this.selectedTypeRecipes.size()) {
                     // 非法的值或者是null
-                    // 强制重置并情空recipe展示
+                    // 強制重置並情空recipe展示
                     this.selectedRecipeIndex = -1;
                     for (int i = 0; i < recipeDisplaySlot.length; ++i) {
                         this.replaceExistingItem(recipeDisplaySlot[i], nullIngredient);
                     }
                     this.replaceExistingItem(outputSlot, nullIngredient);
                 } else {
-                    // 在合法范围内设置值
-                    // 设置选中值 构造recipe展示
+                    // 在合法範圍內設置值
+                    // 設置選中值 構造recipe展示
                     this.selectedRecipeIndex = index;
                     MachineRecipe recipe = this.selectedTypeRecipes.get(index);
                     ItemStack outputs =
-                            AddUtils.addLore(recipe.getOutput()[0], "&8匹配的产物", "&8若有多输出则显示第一个", "&8配方编号: " + index);
+                            AddUtils.addLore(recipe.getOutput()[0], "&8匹配的產物", "&8若有多輸出則顯示第一個", "&8配方編號: " + index);
                     ItemStack[] inputs = recipe.getInput();
                     for (int i = 0; i < recipeDisplaySlot.length; ++i) {
                         if (i < inputs.length) {
@@ -400,16 +400,16 @@ public class AdvancedManual extends AbstractBlock {
         public void setup() {
             this.setEmptySlotsClickable(true);
             this.setPlayerInventoryClickable(true);
-            // 设置背景板
+            // 設置背景板
             IntStream.range(0, 54).forEach(i -> this.addMenuClickHandler(i, ChestMenuUtils.getEmptyClickHandler()));
             for (int i : BORDER) {
                 this.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
             }
-            // 重置配方类型选择列表
+            // 重置配方類型選擇列表
             this.resetTypeSlot();
-            // 重置配方显示
+            // 重置配方顯示
             this.setRecipeType(null);
-            // 重置原材料显示
+            // 重置原材料顯示
             this.setRecipe(-1, true);
             this.addItem(prevRtype, MenuUtils.getPreviousButton(114, 514), ((player, i, itemStack, clickAction) -> {
                 addRtypeOffset(-1);
@@ -468,7 +468,7 @@ public class AdvancedManual extends AbstractBlock {
             this.executor = player;
             MachineRecipe recipe = getRecipe();
             if (recipe == null) {
-                AddUtils.sendMessage(player, "&6[高级快捷合成台] &c请先选择一个配方");
+                AddUtils.sendMessage(player, "&6[高級快捷合成台] &c請先選擇一個配方");
             } else {
                 BlockMenu inv = ContainerUtils.getPlayerBackPackWrapper(player);
                 Pair<ItemGreedyConsumer[], ItemGreedyConsumer[]> results =
@@ -483,7 +483,7 @@ public class AdvancedManual extends AbstractBlock {
                         return null;
                     });
                 }
-                AddUtils.sendMessage(player, "&6[高级快捷合成台] &a成功合成 %d 次".formatted(count));
+                AddUtils.sendMessage(player, "&6[高級快捷合成台] &a成功合成 %d 次".formatted(count));
             }
         }
     }

@@ -67,12 +67,12 @@ public class SimulateTestGenerator extends AbstractMachine {
         this.ENERGY_ABSMAX = energyAbsMax;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f生成机制",
-                        "&7该机器会模拟虚空量子发电机的行为",
-                        "&7在左侧机器槽插入能源调节器",
-                        "&7机器每次运行会模拟%d*log_2(2*<调节器>)次运行".formatted(MULTIPLE_TIME),
-                        "&7当机器中电力位于%dJ~%dJ时".formatted(outputMin, outputMax),
-                        "&7清空电力并生成"),
+                        "&f生成機制",
+                        "&7該機器會模擬虛空量子發電機的行為",
+                        "&7在左側機器槽插入能源調節器",
+                        "&7機器每次運行會模擬%d*log_2(2*<調節器>)次運行".formatted(MULTIPLE_TIME),
+                        "&7當機器中電力位於%dJ~%dJ時".formatted(outputMin, outputMax),
+                        "&7清空電力並生成"),
                 OUTPUT,
                 this.MACHINE_COUNTER.getItem(),
                 null));
@@ -115,7 +115,7 @@ public class SimulateTestGenerator extends AbstractMachine {
             this.setCharge(inv.getLocation(), charge);
             if (inv.hasViewer()) {
                 inv.replaceExistingItem(
-                        INFO_SLOT, AddUtils.getGeneratorDisplay(true, "虚空量子", charge, this.energybuffer));
+                        INFO_SLOT, AddUtils.getGeneratorDisplay(true, "虛空量子", charge, this.energybuffer));
             }
         } else {
             if (inv.hasViewer()) {

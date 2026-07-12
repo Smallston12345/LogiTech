@@ -52,16 +52,16 @@ public class ConfigCopier extends CustomProps {
                         SlimefunItem item = SlimefunItem.getById(data.getSfId());
                         PersistentDataContainer container = meta.getPersistentDataContainer();
                         if (p.isSneaking()) {
-                            // 复制方向配置
+                            // 複製方向配置
                             if (item instanceof DirectionalBlock directional && directional.canModify()) {
                                 Directions[] directions = directional.copyDirectionSettings(data);
                                 List<String> cfgs = Arrays.stream(directions)
                                         .map(Directions::toString)
                                         .toList();
                                 container.set(KEY_DIR, AbstractStringList.TYPE, cfgs);
-                                AddUtils.sendMessage(p, "&6[方向配置] &a已保存方块的方向配置,共 %s 项".formatted(cfgs.size()));
+                                AddUtils.sendMessage(p, "&6[方向配置] &a已保存方塊的方向配置,共 %s 項".formatted(cfgs.size()));
                             } else {
-                                AddUtils.sendMessage(p, "&6[方向配置] &c该方块不含有方向配置");
+                                AddUtils.sendMessage(p, "&6[方向配置] &c該方塊不含有方向配置");
                             }
                             if (item instanceof MenuTogglableBlock togglableBlock) {
                                 boolean[] settings = togglableBlock.getStatus(data.getBlockMenu());
@@ -70,14 +70,14 @@ public class ConfigCopier extends CustomProps {
                                     byteArray[i] = settings[i] ? (byte) 1 : (byte) 0;
                                 }
                                 container.set(KEY_SET, PersistentDataType.BYTE_ARRAY, byteArray);
-                                AddUtils.sendMessage(p, "&6[特殊选项] &c已保存方块的特殊选项,共 %s 项".formatted(byteArray.length));
+                                AddUtils.sendMessage(p, "&6[特殊選項] &c已保存方塊的特殊選項,共 %s 項".formatted(byteArray.length));
                             } else {
-                                AddUtils.sendMessage(p, "&6[特殊选项] &c该方块不含特殊选项");
+                                AddUtils.sendMessage(p, "&6[特殊選項] &c該方塊不含特殊選項");
                             }
 
                             configurator.setItemMeta(meta);
                         } else {
-                            // 拷贝方向配置
+                            // 拷貝方向配置
                             if (item instanceof DirectionalBlock directional && directional.canModify()) {
                                 List<String> cfgs = container.get(KEY_DIR, AbstractStringList.TYPE);
                                 if (cfgs != null) {
@@ -86,15 +86,15 @@ public class ConfigCopier extends CustomProps {
                                             .toArray(Directions[]::new);
                                     int result = directional.pasteDirectionSettings(data, directions);
                                     if (result >= 0) {
-                                        AddUtils.sendMessage(p, "&6[方向配置] &a已应用保存的 %d 个方向配置".formatted(result));
+                                        AddUtils.sendMessage(p, "&6[方向配置] &a已應用保存的 %d 個方向配置".formatted(result));
                                     } else {
-                                        AddUtils.sendMessage(p, "&6[方向配置] &c该方块的方向配置无法被修改");
+                                        AddUtils.sendMessage(p, "&6[方向配置] &c該方塊的方向配置無法被修改");
                                     }
                                 } else {
-                                    AddUtils.sendMessage(p, "&6[方向配置] &c配置器没有保存方向配置");
+                                    AddUtils.sendMessage(p, "&6[方向配置] &c配置器沒有保存方向配置");
                                 }
                             } else {
-                                AddUtils.sendMessage(p, "&6[方向配置] &c该方块不含有方向配置");
+                                AddUtils.sendMessage(p, "&6[方向配置] &c該方塊不含有方向配置");
                             }
                             if (item instanceof MenuTogglableBlock togglableBlock) {
                                 byte[] byteArray = container.get(KEY_SET, PersistentDataType.BYTE_ARRAY);
@@ -104,21 +104,21 @@ public class ConfigCopier extends CustomProps {
                                         settings[i] = byteArray[i] != 0;
                                     }
                                     togglableBlock.toggleStatus(data.getBlockMenu(), settings);
-                                    AddUtils.sendMessage(p, "&6[特殊选项] &c已应用保存的特殊选项");
+                                    AddUtils.sendMessage(p, "&6[特殊選項] &c已應用保存的特殊選項");
                                 } else {
-                                    AddUtils.sendMessage(p, "&6[特殊选项] &c配置器没有保存特殊选项");
+                                    AddUtils.sendMessage(p, "&6[特殊選項] &c配置器沒有保存特殊選項");
                                 }
                             } else {
-                                AddUtils.sendMessage(p, "&6[特殊选项] &c该方块不含特殊选项");
+                                AddUtils.sendMessage(p, "&6[特殊選項] &c該方塊不含特殊選項");
                             }
                         }
                         event.cancel();
                     }
                 } else {
-                    AddUtils.sendMessage(p, "&c你没有权限在这里使用该物品");
+                    AddUtils.sendMessage(p, "&c你沒有權限在這裏使用該物品");
                 }
             } else {
-                AddUtils.sendMessage(p, "&c无效的配置器");
+                AddUtils.sendMessage(p, "&c無效的配置器");
             }
         }
     }

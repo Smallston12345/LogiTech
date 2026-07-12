@@ -56,7 +56,7 @@ public class HypLink extends DataRecordedItem {
                         HyperLink.setLink(im, b.get().getLocation());
                         it.setItemMeta(im);
                     } else {
-                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎并不能在该位置使用此物品.");
+                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎並不能在該位置使用此物品.");
                     }
                 }
             }
@@ -81,7 +81,7 @@ public class HypLink extends DataRecordedItem {
                                 if (item.canUse(event.getPlayer(), true)
                                         && menu.canOpen(loc.getBlock(), event.getPlayer()))
                                     menu.open(event.getPlayer());
-                                else AddUtils.sendMessage(event.getPlayer(), "&c打开该粘液方块的行为被阻止!");
+                                else AddUtils.sendMessage(event.getPlayer(), "&c打開該粘液方塊的行為被阻止!");
                                 return;
                             }
                         }
@@ -92,11 +92,11 @@ public class HypLink extends DataRecordedItem {
                             try {
                                 Bukkit.getPluginManager().callEvent(interactTarget);
                                 if (interactTarget.isCancelled()) {
-                                    AddUtils.sendMessage(event.getPlayer(), "&c点击该方块的行为被阻止!");
+                                    AddUtils.sendMessage(event.getPlayer(), "&c點擊該方塊的行為被阻止!");
                                     return;
                                 }
                             } catch (Throwable ignored) {
-                                AddUtils.sendMessage(event.getPlayer(), "&c点击该方块时出现未知错误!");
+                                AddUtils.sendMessage(event.getPlayer(), "&c點擊該方塊時出現未知錯誤!");
                                 return;
                             }
                             // create only vanilla record
@@ -108,11 +108,11 @@ public class HypLink extends DataRecordedItem {
                                 HyperLinkListener.openHypInv(event.getPlayer(), record);
                             }
                         } else {
-                            AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但超链接所指向的方块似乎并不是一个有效的容器");
+                            AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但超鏈接所指向的方塊似乎並不是一個有效的容器");
                         }
 
                     } else {
-                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎并没有访问该位置的权限.");
+                        AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但您似乎並沒有訪問該位置的權限.");
                     }
                 }
             }

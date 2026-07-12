@@ -20,7 +20,7 @@ public class PortalTeleport implements Listener {
     public final int[] dz = new int[] {0, 0, 1, 0, -1, 1, -1, -1, 1};
 
     @EventHandler
-    // 沉浸式体验传送门 abab
+    // 沉浸式體驗傳送門 abab
     public void onTeleportRedirect(PlayerPortalEvent event) {
         Location loco = event.getFrom();
         int x = loco.getBlockX();
@@ -47,18 +47,18 @@ public class PortalTeleport implements Listener {
                         if (destinationData.isDataLoaded()) {
                             if (MultiBlockService.getStatus(destinationData) != 0) {
                                 player.teleport(dst.clone().add(0.5, 1, 0.5));
-                                AddUtils.sendMessage(player, "&a传送成功!");
+                                AddUtils.sendMessage(player, "&a傳送成功!");
                             } else {
-                                AddUtils.sendMessage(player, "&c目标传送门未启用!");
+                                AddUtils.sendMessage(player, "&c目標傳送門未啓用!");
                             }
                         } else {
-                            AddUtils.sendMessage(player, "&c目标传送门正在随区块加载中!请重试");
+                            AddUtils.sendMessage(player, "&c目標傳送門正在隨區塊加載中!請重試");
                         }
                     } else {
-                        AddUtils.sendMessage(player, "&c目标传送门核心已损坏!");
+                        AddUtils.sendMessage(player, "&c目標傳送門核心已損壞!");
                     }
                 } else {
-                    AddUtils.sendMessage(player, "&c该传送门中并无有效坐标!");
+                    AddUtils.sendMessage(player, "&c該傳送門中並無有效座標!");
                 }
 
                 return;
@@ -95,7 +95,7 @@ public class PortalTeleport implements Listener {
                     if (destinationData.isDataLoaded()) {
                         if (MultiBlockService.getStatus(destinationData) != 0) {
                             for (int i = 4; i >= 0; --i) {
-                                // 尽可能丢到门外面 如果没地方就传送到门里面
+                                // 儘可能丟到門外面 如果沒地方就傳送到門裏面
                                 Location loc2 = (dst.clone().add(0.5 + dx[i], 1, 0.5 + dz[i]));
                                 if (loc2.getBlock().getType().isAir() || i == 0) {
                                     //  Debug.logger("check loc ",i);

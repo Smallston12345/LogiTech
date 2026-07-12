@@ -207,7 +207,7 @@ public class AddUtils {
                 for (String i : a) {
                     finallist.add(desc(i));
                 }
-                // 减少开销
+                // 減少開銷
                 //                        finallist.add("");
                 //                        finallist.add(addonTag(Language.get("Theme.ITEM1.Name")));
                 return finallist;
@@ -219,7 +219,7 @@ public class AddUtils {
                 for (String i : a) {
                     finallist.add(desc(i));
                 }
-                // 减少开销
+                // 減少開銷
                 finallist.add("");
                 finallist.add(addonTag(Language.get("Theme.ITEM1.Name")));
                 return finallist;
@@ -752,7 +752,7 @@ public class AddUtils {
     }
 
     public static ItemStack advancedMachineShow(ItemStack stack, int limit) {
-        return AddUtils.addLore(stack, "&7机器合成进程数: %s".formatted(limit));
+        return AddUtils.addLore(stack, "&7機器合成進程數: %s".formatted(limit));
     }
 
     public static String getPercentFormat(double b) {
@@ -983,12 +983,12 @@ public class AddUtils {
 
     public static ItemStack[] formatInfoRecipe(ItemStack stack, String source) {
         return new ItemStack[] {
-            null, stack, null, null, getInfoShow("&f获取方式", "&7在 %s 中获取".formatted(source)), null, null, null, null
+            null, stack, null, null, getInfoShow("&f獲取方式", "&7在 %s 中獲取".formatted(source)), null, null, null, null
         };
     }
 
     public static MachineRecipe formatInfoMachineRecipe(ItemStack[] stack, int tick, String... description) {
-        return MachineRecipeUtils.From(tick, new ItemStack[] {getInfoShow("&f获取方式", description)}, stack);
+        return MachineRecipeUtils.From(tick, new ItemStack[] {getInfoShow("&f獲取方式", description)}, stack);
     }
 
     public static @Nonnull Optional<Material> getPlanks(@Nonnull Material log) {
@@ -1022,15 +1022,15 @@ public class AddUtils {
         if (working) {
             return new CustomItemStack(
                     Material.GREEN_STAINED_GLASS_PANE,
-                    "&a发电中",
-                    "&7类型:&6 %s".formatted(type),
-                    "&7&7电量: &6%s/%sJ".formatted(FORMAT.format((double) charge), FORMAT.format((double) buffer)));
+                    "&a發電中",
+                    "&7類型:&6 %s".formatted(type),
+                    "&7&7電量: &6%s/%sJ".formatted(FORMAT.format((double) charge), FORMAT.format((double) buffer)));
         } else {
             return new CustomItemStack(
                     Material.RED_STAINED_GLASS_PANE,
-                    "&a未发电",
-                    "&7类型:&6 %s".formatted(type),
-                    "&7&7电量: &6%s/%sJ".formatted(FORMAT.format((double) charge), FORMAT.format((double) buffer)));
+                    "&a未發電",
+                    "&7類型:&6 %s".formatted(type),
+                    "&7&7電量: &6%s/%sJ".formatted(FORMAT.format((double) charge), FORMAT.format((double) buffer)));
         }
     }
 

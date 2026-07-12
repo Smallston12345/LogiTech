@@ -26,7 +26,7 @@ public class SWAmplifyComponent extends MaterialItem {
         this.type = item.getType();
         materialJudgement.put(item.getType(), this);
         this.setDisplayRecipes(Utils.list(
-                AddUtils.getInfoShow("&f机制", "&7插入至锻铸工坊核心", "&7对四周的工坊接口产生增幅"),
+                AddUtils.getInfoShow("&f機制", "&7插入至鍛鑄工坊核心", "&7對四周的工坊接口產生增幅"),
                 this.getItem().clone()));
     }
 

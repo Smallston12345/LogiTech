@@ -71,28 +71,28 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         if (!PaperLib.isPaper()) {
             getLogger().log(Level.WARNING, "#######################################################");
             getLogger().log(Level.WARNING, "");
-            getLogger().log(Level.WARNING, "自 25/2/1 起 Slimefun及其附属");
-            getLogger().log(Level.WARNING, "转为 Paper 插件, 你必须要使用 Paper");
-            getLogger().log(Level.WARNING, "或其分支才可使用 Slimefun及其附属");
-            getLogger().log(Level.WARNING, "立即下载 Paper: https://papermc.io/downloads/paper");
+            getLogger().log(Level.WARNING, "自 25/2/1 起 Slimefun及其附屬");
+            getLogger().log(Level.WARNING, "轉為 Paper 插件, 你必須要使用 Paper");
+            getLogger().log(Level.WARNING, "或其分支才可使用 Slimefun及其附屬");
+            getLogger().log(Level.WARNING, "立即下載 Paper: https://papermc.io/downloads/paper");
             getLogger().log(Level.WARNING, "");
             getLogger().log(Level.WARNING, "#######################################################");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
         matlibInstance = new AddonInitialization(this, "LOGITECH")
-                .displayName("逻辑工艺")
+                .displayName("邏輯工藝")
                 .onEnable()
                 .cast();
         manager = getServer().getPluginManager();
         checkVersion();
-        // 从 config.yml 中读取插件配置
+        // 從 config.yml 中讀取插件配置
         Config cfg = new Config(this);
 
         if (cfg.getBoolean("options.auto-update")) {
             tryUpdate();
         }
-        // 你可以在这里添加自动更新功能
+        // 你可以在這裏添加自動更新功能
         //        }if(cfg.getBoolean("options.test")||testmod) {
         //            testmod = true;
         //            Debug.logger("Addon is running on TEST MODE");
@@ -102,76 +102,76 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         try {
             DependencyNetwork.init();
         } catch (Throwable e) {
-            Debug.logger("在加载软依赖 NETWORKS时出现错误! 出现版本不匹配的附属,禁用附属相应内容");
+            Debug.logger("在加載軟依賴 NETWORKS時出現錯誤! 出現版本不匹配的附屬,禁用附屬相應內容");
             Debug.logger(e);
         }
         try {
             DependencyInfinity.init();
         } catch (Throwable e) {
-            Debug.logger("在加载软依赖 INFINITY时出现错误! 出现版本不匹配的附属,禁用附属相应内容");
+            Debug.logger("在加載軟依賴 INFINITY時出現錯誤! 出現版本不匹配的附屬,禁用附屬相應內容");
             Debug.logger(e);
         }
         try {
             supportedPluginManager = new SupportedPluginManager();
         } catch (Throwable e) {
-            Debug.logger("在加载插件兼容时出现错误");
+            Debug.logger("在加載插件兼容時出現錯誤");
             Debug.logger(e);
         }
-        Debug.logger("软依赖检测完毕");
+        Debug.logger("軟依賴檢測完畢");
         AddGroups.registerGroups(this);
-        Debug.logger("物品组加载完毕");
-        Debug.logger("自定义物品加载完毕");
-        // 物品注册
+        Debug.logger("物品組加載完畢");
+        Debug.logger("自定義物品加載完畢");
+        // 物品註冊
         AddItem.registerItemStack();
-        Debug.logger("物品模板加载完毕");
-        // 粘液物品注册
+        Debug.logger("物品模板加載完畢");
+        // 粘液物品註冊
         AddSlimefunItems.registerSlimefunItems();
-        Debug.logger("粘液物品注册完毕");
+        Debug.logger("粘液物品註冊完畢");
         // 世界配置
         StorageSpace.setup();
-        Debug.logger("空间存储世界配置完毕");
-        // 注册关于依赖的相关内容
+        Debug.logger("空間存儲世界配置完畢");
+        // 註冊關於依賴的相關內容
         AddDepends.setup(this);
-        Debug.logger("依赖注册完毕");
+        Debug.logger("依賴註冊完畢");
         Schedules.setupSchedules(this);
-        Debug.logger("计划线程设立完毕");
-        // 载入监听器
+        Debug.logger("計劃線程設立完畢");
+        // 載入監聽器
         ListenerManager.registerListeners(getInstance(), getManager());
 
-        // 载入粘液保护模块
+        // 載入粘液保護模塊
         ProtectionManager.registerProtection(getInstance(), getManager());
 
-        Debug.logger("监听器注册完毕");
-        // 加载bs工具
+        Debug.logger("監聽器註冊完畢");
+        // 加載bs工具
         DataCache.setup();
-        // 注册存储类型
+        // 註冊存儲類型
         Storages.setup();
-        // 注册多方块服务
+        // 註冊多方塊服務
         MultiBlockService.setup();
-        // 注册多方块类型
+        // 註冊多方塊類型
         MultiBlockTypes.setup();
-        // 加载自定义效果机制
+        // 加載自定義效果機制
         CustomEffects.setup();
-        // 加载辐射机制
+        // 加載輻射機制
         RadiationRegionManager.setup();
-        // 加载装备监听管理器
+        // 加載裝備監聽管理器
         new EquipmentFUManager();
-        // 加载配方工具
+        // 加載配方工具
         CraftUtils.setup();
-        // 加载世界操作工具
+        // 加載世界操作工具
         WorldUtils.setup();
-        // 加载Bukkit操作工具
+        // 加載Bukkit操作工具
         BukkitUtils.setup();
-        // 加载货运工具
+        // 加載貨運工具
         TransportUtils.setup();
-        // 加载容器impl工具
+        // 加載容器impl工具
         ContainerUtils.setup();
-        Debug.logger("指令注册完毕");
+        Debug.logger("指令註冊完畢");
         //        command = new AddonCommand(this);
         //        command.register();
         command = new LogitechMain().registerCommand(this);
-        // 注册
-        Debug.logger("附属特性注册完毕");
+        // 註冊
+        Debug.logger("附屬特性註冊完畢");
         // test
 
     }
@@ -184,22 +184,22 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
 
     public void checkVersion() {
         if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
-            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
-            getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
-            getLogger().log(Level.SEVERE, "当出现该报错时,作者对一切后续的报错不负责");
+            getLogger().log(Level.SEVERE, "本插件需要 鬼斬前置庫插件(GuizhanLibPlugin) 才能運行!");
+            getLogger().log(Level.SEVERE, "從此處下載: https://50l.cc/gzlib");
+            getLogger().log(Level.SEVERE, "當出現該報錯時,作者對一切後續的報錯不負責");
             getServer().getPluginManager().disablePlugin(this);
             throw new RuntimeException("Dependency not found");
         }
         //        try {
         //            if( !Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20) ){
-        //                getLogger().log(Level.SEVERE, "本插件需要在MC 1.20/1.20.x的版本运行");
-        //                getLogger().log(Level.SEVERE, "当出现该报错时,作者对一切后续的报错不负责");
+        //                getLogger().log(Level.SEVERE, "本插件需要在MC 1.20/1.20.x的版本運行");
+        //                getLogger().log(Level.SEVERE, "當出現該報錯時,作者對一切後續的報錯不負責");
         //            }else{
-        //                Debug.logger("MC最低版本检测通过");
+        //                Debug.logger("MC最低版本檢測通過");
         //            }
         //        } catch (NoClassDefFoundError | NoSuchFieldError e) {
         //            for (int i = 0; i < 20; i++) {
-        //                getLogger().severe("你需要更新 Slimefun4 才能进行版本检测！");
+        //                getLogger().severe("你需要更新 Slimefun4 才能進行版本檢測！");
         //            }
         //        }
 
@@ -208,14 +208,14 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onDisable() {
         matlibInstance.onDisable();
-        // 禁用插件的逻辑...
+        // 禁用插件的邏輯...
         Schedules.onDisableSchedules(this);
         Bukkit.getScheduler().cancelTasks(this);
     }
 
     @Override
     public String getBugTrackerURL() {
-        // 你可以在这里返回你的问题追踪器的网址，而不是 null
+        // 你可以在這裏返回你的問題追蹤器的網址，而不是 null
         return null;
     }
 
@@ -226,8 +226,8 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
     @Override
     public JavaPlugin getJavaPlugin() {
         /*
-         * 你需要返回对你插件的引用。
-         * 如果这是你插件的主类，只需要返回 "this" 即可。
+         * 你需要返回對你插件的引用。
+         * 如果這是你插件的主類，只需要返回 "this" 即可。
          */
         return this;
     }

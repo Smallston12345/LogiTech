@@ -24,7 +24,7 @@ public class Schedules {
                 ScheduleSave.onPeriodicSave();
             }
         };
-        int periodAutoSave = 3 * 60 * 20; // 三分钟保存一次
+        int periodAutoSave = 3 * 60 * 20; // 三分鐘保存一次
         autoSaveThread.runTaskTimerAsynchronously(plugin, periodAutoSave, periodAutoSave);
 
         effectThread = new BukkitRunnable() {
@@ -45,9 +45,9 @@ public class Schedules {
     }
 
     public static void onDisableSchedules(Plugin plugin) {
-        Debug.logger("保存附属数据中");
+        Debug.logger("保存附屬數據中");
         ScheduleSave.onFinalSave();
-        Debug.logger("附属数据保存完成");
+        Debug.logger("附屬數據保存完成");
     }
 
     public static void execute(Runnable task, boolean isSync) {

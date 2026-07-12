@@ -118,28 +118,28 @@ public abstract class AbstractProcessor extends AbstractMachine
      * @param preset
      */
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = AbstractProcessor.BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = AbstractProcessor.BORDER_IN;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = AbstractProcessor.BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 空白边框
+        // 空白邊框
         preset.addItem(PROCESSOR_SLOT, MenuUtils.PROCESSOR_NULL, ChestMenuUtils.getEmptyClickHandler());
         border = this.getOutputSlots();
         len = border.length;

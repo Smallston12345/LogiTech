@@ -75,7 +75,7 @@ public class SequenceCraftingOperation implements CustomMachineOperation {
 
     public ItemStack getDisplays() {
         List<String> lines = new ArrayList<>();
-        lines.add("&7当前进程信息:");
+        lines.add("&7當前進程信息:");
         if (recipe instanceof SequenceMachineRecipe seqRecipe) {
             int total = getSeqCount();
             int now = getNowSeq();
@@ -90,11 +90,11 @@ public class SequenceCraftingOperation implements CustomMachineOperation {
                 lines.add(seqRecipe.displayedNames[i].formatted("&c", 0, "&c"));
             }
             lines.add(AddUtils.concat(
-                    "&7当前物品处理时间: ", String.valueOf(this.currentSeqTicks), "t/", String.valueOf(this.tickPerSeq), "t"));
-            ItemStack it = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a阶段输入进程", lines);
+                    "&7當前物品處理時間: ", String.valueOf(this.currentSeqTicks), "t/", String.valueOf(this.tickPerSeq), "t"));
+            ItemStack it = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a階段輸入進程", lines);
             return it;
         } else
             return new CustomItemStack(
-                    Material.GREEN_STAINED_GLASS_PANE, "&a阶段输入进程", "&7当前进程信息", "&c机器内部错误!无法显示该配方进度信息");
+                    Material.GREEN_STAINED_GLASS_PANE, "&a階段輸入進程", "&7當前進程信息", "&c機器內部錯誤!無法顯示該配方進度信息");
     }
 }

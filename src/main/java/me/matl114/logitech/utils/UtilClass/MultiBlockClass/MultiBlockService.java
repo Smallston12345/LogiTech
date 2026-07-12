@@ -72,7 +72,7 @@ public class MultiBlockService {
             return false;
         } else {
             String uuid = safeGetUUID(handler.getCore());
-            if (uid.equals(uuid)) { // uid 核验,说明人没炸 uuid nullable
+            if (uid.equals(uuid)) { // uid 核驗,説明人沒炸 uuid nullable
                 return true;
             }
             return false;
@@ -113,16 +113,16 @@ public class MultiBlockService {
             super(
                     AddUtils.concat(
                             DataCache.locationToDisplayString(b.getLocation()),
-                            "的方块",
+                            "的方塊",
                             b.getType().toString(),
-                            "被人为破坏"),
+                            "被人為破壞"),
                     true);
             this.b = b;
         }
 
         @Override
         public String getRawCause() {
-            return "方块被人为破坏";
+            return "方塊被人為破壞";
         }
     }
 
@@ -135,14 +135,14 @@ public class MultiBlockService {
         }
 
         public EnergyOutCause(int energy, int energyCom) {
-            super(AddUtils.concat("电力不足! ", String.valueOf(energy), "J/ ", String.valueOf(energyCom), "J"), true);
+            super(AddUtils.concat("電力不足! ", String.valueOf(energy), "J/ ", String.valueOf(energyCom), "J"), true);
             this.energy = energy;
             this.energyCom = energyCom;
         }
 
         @Override
         public String getRawCause() {
-            return "电力不足";
+            return "電力不足";
         }
     }
 
@@ -157,11 +157,11 @@ public class MultiBlockService {
         public StructureBreakCause(Location loc, String getId, String shouldId) {
             super(
                     AddUtils.concat(
-                            "多方块结构自检失败,在",
+                            "多方塊結構自檢失敗,在",
                             DataCache.locationToDisplayString(loc),
-                            "处检测到 [",
+                            "處檢測到 [",
                             getId,
-                            "],实际应为 [",
+                            "],實際應為 [",
                             shouldId,
                             "]"),
                     true);
@@ -169,12 +169,12 @@ public class MultiBlockService {
 
         @Override
         public String getRawCause() {
-            return "多方块结构自检失败";
+            return "多方塊結構自檢失敗";
         }
     }
 
-    public static DeleteCause MANUALLY = new DeleteCause("手动关闭", true);
-    public static DeleteCause GENERIC = new DeleteCause("服务器重启", false);
+    public static DeleteCause MANUALLY = new DeleteCause("手動關閉", true);
+    public static DeleteCause GENERIC = new DeleteCause("服務器重啓", false);
 
     public static void handleVanillaBlockBreak(Location loc) {
         if (getStatus(loc) != 0) {
@@ -307,7 +307,7 @@ public class MultiBlockService {
         AbstractMultiBlock block = null;
         for (MultiBlockService.Direction direction : MultiBlockService.Direction.values()) {
             // test this direction
-            errorOut.out(() -> "&a尝试以朝向 &e%s&a 构建多方块".formatted(direction.name()));
+            errorOut.out(() -> "&a嘗試以朝向 &e%s&a 構建多方塊".formatted(direction.name()));
             block = type.genMultiBlockFrom(loc, direction, false, errorOut);
 
             if (block != null) {
@@ -315,7 +315,7 @@ public class MultiBlockService {
             }
 
             if (type.isSymmetric()) {
-                errorOut.out(() -> "&c本多方块结构为中心对称多方块结构,构建失败");
+                errorOut.out(() -> "&c本多方塊結構為中心對稱多方塊結構,構建失敗");
                 break; // only test one direction is Symmetric
             }
         }
@@ -377,7 +377,7 @@ public class MultiBlockService {
             if (index < 0) {
                 return true;
             } else {
-                // 发出关闭信号,等待下一次coreRequest响应
+                // 發出關閉信號,等待下一次coreRequest響應
 
                 handler.toggleOff(StructureBreakCause.get(handler, index));
                 return false;
@@ -432,7 +432,7 @@ public class MultiBlockService {
      * @param type
      * @return
      */
-    public static DeleteCause AUTOCONNECT_FAILED = new DeleteCause("初始化多方块结构失败", false);
+    public static DeleteCause AUTOCONNECT_FAILED = new DeleteCause("初始化多方塊結構失敗", false);
 
     public static boolean acceptCoreRequest(Location loc, MultiBlockBuilder reconnect, AbstractMultiBlockType type) {
         int statusCode = getStatus(loc);
@@ -443,9 +443,9 @@ public class MultiBlockService {
             String uid = safeGetUUID(loc);
             AbstractMultiBlockHandler handler = MULTIBLOCK_CACHE.get(uid);
             if (handler == null) {
-                // 找不到handler 但是code非0 说明是意外中断，尝试重建handler
+                // 找不到handler 但是code非0 説明是意外中斷，嘗試重建handler
                 setStatus(loc, -20);
-                // 尝试异步构建\
+                // 嘗試異步構建\
                 MultiBlockCore.runAsyncOrReturnBlocked(loc, () -> {
                     AbstractMultiBlock block = type.genMultiBlockFrom(
                             loc, Direction.getDirection(loc), true, OutputStream.getNullStream());
@@ -458,7 +458,7 @@ public class MultiBlockService {
                         }
                     }
                     //                    else{
-                    //                        //不进行倒计时,
+                    //                        //不進行倒計時,
                     //                        setStatus(loc,-20);
                     //                    }
                 });
@@ -547,7 +547,7 @@ public class MultiBlockService {
      * @return
      */
     /**
-     * get status code ,0为暂停 1为正常运行 -3到-1为预备暂停
+     * get status code ,0為暫停 1為正常運行 -3到-1為預備暫停
      * @return
      */
     public static int getStatus(SlimefunBlockData data) {
@@ -572,7 +572,7 @@ public class MultiBlockService {
     public static int safeGetStatus(Location loc) {
         SlimefunItem item = DataCache.getSfItem(loc);
         if (item == null) {
-            // 此处之后可以增加原版方块作为多方块部件?
+            // 此處之後可以增加原版方塊作為多方塊部件?
             // MB_STATUS_MAP.remove(loc);
 
             return MB_STATUS_MAP.getOrDefault(loc, 0);
@@ -601,7 +601,7 @@ public class MultiBlockService {
         //        DataCache.setCustomString(data,MB_STATUS_KEY,String.valueOf(status));
         SlimefunItem item = DataCache.getSfItem(loc);
         if (item == null) {
-            // 此处之后可以增加原版方块作为多方块部件?
+            // 此處之後可以增加原版方塊作為多方塊部件?
             // MB_STATUS_MAP.remove(loc);
             if (status == 0) {
                 MB_STATUS_MAP.remove(loc);
@@ -623,7 +623,7 @@ public class MultiBlockService {
     public static String safeGetUUID(Location loc) {
         SlimefunItem item = DataCache.getSfItem(loc);
         if (item == null) {
-            // 此处之后可以增加原版方块作为多方块部件?
+            // 此處之後可以增加原版方塊作為多方塊部件?
             // MB_UUID_MAP.remove(loc);
             return MB_UUID_MAP.getOrDefault(loc, DEFAULT_UUID.get());
         }
@@ -648,7 +648,7 @@ public class MultiBlockService {
     public static void setUUID(Location loc, String uuid) {
         SlimefunItem item = DataCache.getSfItem(loc);
         if (item == null) {
-            // 此处之后可以增加原版方块作为多方块部件?
+            // 此處之後可以增加原版方塊作為多方塊部件?
             // MB_UUID_MAP.remove(loc);
             if (uuid == null || "null".equals(uuid)) {
                 MB_UUID_MAP.remove(loc);

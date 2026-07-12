@@ -34,15 +34,15 @@ public class SmithInterfaceListener implements Listener {
     //   private final HashMap<AnvilInventory,Location> openingAnvilTable= new HashMap<>();
 
     private final ItemStack INTERFACED_NO_RECIPE =
-            new CustomItemStack(Material.BARRIER, "&a点击进行合成", "&7该工作方块已成功接入锻铸合成端口", "&c暂无匹配的配方!");
+            new CustomItemStack(Material.BARRIER, "&a點擊進行合成", "&7該工作方塊已成功接入鍛鑄合成端口", "&c暫無匹配的配方!");
     private final ItemStack INTERFACED_CRAFTABLE = new CustomItemStack(
-            Material.CRAFTING_TABLE, "&a点击进行合成", "&7该工作方块已成功接入锻铸合成端口", "&a成功寻找到可行的合成配方", "&7点击后将于接口中输出合成结果");
+            Material.CRAFTING_TABLE, "&a點擊進行合成", "&7該工作方塊已成功接入鍛鑄合成端口", "&a成功尋找到可行的合成配方", "&7點擊後將於接口中輸出合成結果");
     private final ItemStack INTERFACED_ANVIL =
-            new CustomItemStack(Material.ANVIL, "&a点击进行锻造", "&7该工作方块已成功接入锻铸合成端口", "&a成功寻找到可行的锻造操作", "&7点击后将于接口中输出锻造结果");
+            new CustomItemStack(Material.ANVIL, "&a點擊進行鍛造", "&7該工作方塊已成功接入鍛鑄合成端口", "&a成功尋找到可行的鍛造操作", "&7點擊後將於接口中輸出鍛造結果");
     private final ItemStack INTERFACED_SMITH = new CustomItemStack(
-            Material.SMITHING_TABLE, "&a点击进行锻造", "&7该工作方块已成功接入锻铸合成端口", "&a成功寻找到可行的锻造操作", "&7点击后将于接口中输出锻造结果");
+            Material.SMITHING_TABLE, "&a點擊進行鍛造", "&7該工作方塊已成功接入鍛鑄合成端口", "&a成功尋找到可行的鍛造操作", "&7點擊後將於接口中輸出鍛造結果");
     private final ItemStack INTERFACED_GRIND = new CustomItemStack(
-            Material.GRINDSTONE, "&a点击进行卸载", "&7该工作方块已成功接入锻铸合成端口", "&a成功寻找到可行的卸载方案", "&7点击后将于接口中输出锻造结果");
+            Material.GRINDSTONE, "&a點擊進行卸載", "&7該工作方塊已成功接入鍛鑄合成端口", "&a成功尋找到可行的卸載方案", "&7點擊後將於接口中輸出鍛造結果");
 
     public boolean isSupportType(Inventory inventory) {
         return inventory instanceof CraftingInventory
@@ -161,8 +161,8 @@ public class SmithInterfaceListener implements Listener {
                 e.setResult(INTERFACED_NO_RECIPE);
             }
             // if(failed){
-            // 尝试同步inventory
-            // 当铁砧合成在内部被判定为不能的时候,不会向客户端发送inv变动，需要我们手动发送
+            // 嘗試同步inventory
+            // 當鐵砧合成在內部被判定為不能的時候,不會向客户端發送inv變動，需要我們手動發送
             List<HumanEntity> viewers = inv.getViewers();
             Schedules.launchSchedules(
                     () -> {
@@ -241,16 +241,16 @@ public class SmithInterfaceListener implements Listener {
                     var output = callBack.apply(result, interfaceLocation);
                     if (output != null) {
                         outport.acceptProgress(output, interfaceLocation);
-                        AddUtils.sendMessage(player, "&6[锻铸工坊] &a成功合成!");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &a成功合成!");
                     } else {
-                        AddUtils.sendMessage(player, "&6[锻铸工坊] &c该操作已被阻止!");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c該操作已被阻止!");
                     }
                 } else {
-                    AddUtils.sendMessage(player, "&6[锻铸工坊] &c未知的合成配方或操作方式!");
+                    AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c未知的合成配方或操作方式!");
                     failCallback.accept(inventory);
                 }
             } else {
-                AddUtils.sendMessage(player, "&6[锻铸工坊] &c该合成端口空间已满或被占用!");
+                AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c該合成端口空間已滿或被佔用!");
             }
         }
     }
@@ -327,7 +327,7 @@ public class SmithInterfaceListener implements Listener {
                     SlimefunItem item = SlimefunItem.getByItem(output);
                     if (item != null && item.isDisabled()) {
                         inventory.setResult(INTERFACED_CRAFTABLE);
-                        AddUtils.sendMessage(player, "&6[锻铸工坊] &c物品被禁用!");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c物品被禁用!");
                         return null;
                     } else {
                         inventory.setResult(INTERFACED_NO_RECIPE);
@@ -351,7 +351,7 @@ public class SmithInterfaceListener implements Listener {
                         int level = p.getLevel();
                         int expNeed = inventory.getRepairCost();
                         if (level < expNeed) {
-                            AddUtils.sendMessage(player, "&6[锻铸工坊] &c所需经验不足!");
+                            AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c所需經驗不足!");
                             inventory.setItem(2, INTERFACED_ANVIL);
                             return null;
                         } else {

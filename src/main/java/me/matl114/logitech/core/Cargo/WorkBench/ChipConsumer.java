@@ -39,9 +39,9 @@ public class ChipConsumer extends AbstractMachine {
 
     protected int[] INFO_SLOT = new int[] {1, 4, 7};
     protected ItemStack[] INFO_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6芯片输入槽", "&7将待操作的芯片放入该槽"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6逻辑物质输入槽", "&7将位运算对应的物品放入该槽"),
-        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a输出槽", "&7只有输入槽为空时才会输出")
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6芯片輸入槽", "&7將待操作的芯片放入該槽"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6邏輯物質輸入槽", "&7將位運算對應的物品放入該槽"),
+        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a輸出槽", "&7只有輸入槽為空時才會輸出")
     };
 
     public ChipConsumer(
@@ -53,27 +53,27 @@ public class ChipConsumer extends AbstractMachine {
             int energyConsumption) {
         super(category, item, recipeType, recipe, energybuffer, energyConsumption);
         setDisplayRecipes(Utils.list(
-                AddUtils.getInfoShow("&f机制", "&7机器可以进行取反,左移一位,右移一位 三种位运算", "&7将所需物品插入指定槽位即可消耗电力运算"), null,
+                AddUtils.getInfoShow("&f機制", "&7機器可以進行取反,左移一位,右移一位 三種位運算", "&7將所需物品插入指定槽位即可消耗電力運算"), null,
                 AddUtils.getInfoShow(
                                 "&f取反",
-                                "&7插入%s进行取反操作".formatted(Language.get("Items.NOLOGIC.Name")),
-                                "&7运算规则:",
-                                "&7依次对输入芯片的01位进行'~'运算",
+                                "&7插入%s進行取反操作".formatted(Language.get("Items.NOLOGIC.Name")),
+                                "&7運算規則:",
+                                "&7依次對輸入芯片的01位進行'~'運算",
                                 "&8⇨ &7~0=1",
                                 "&8⇨ &7~1=0"),
                         AddItem.NOLOGIC,
                 AddUtils.getInfoShow(
                                 "&f左移",
-                                "&7插入%s进行左移操作".formatted(Language.get("Items.EXISTE.Name")),
-                                "&7运算规则:",
-                                "&7对01码的首位加入0,丢弃最末尾"),
+                                "&7插入%s進行左移操作".formatted(Language.get("Items.EXISTE.Name")),
+                                "&7運算規則:",
+                                "&7對01碼的首位加入0,丟棄最末尾"),
                         AddItem.EXISTE,
                 AddUtils.getInfoShow(
                                 "&f右移",
-                                "&7插入%s进行右移操作".formatted(Language.get("Items.UNIQUE.Name")),
-                                "&7运算规则:",
-                                "&7当最末位是1时,向01码最末尾部加1,并丢掉首位",
-                                "&7当最末位是0时,向01码最末尾部加0,并丢掉首位"),
+                                "&7插入%s進行右移操作".formatted(Language.get("Items.UNIQUE.Name")),
+                                "&7運算規則:",
+                                "&7當最末位是1時,向01碼最末尾部加1,並丟掉首位",
+                                "&7當最末位是0時,向01碼最末尾部加0,並丟掉首位"),
                         AddItem.UNIQUE));
     }
 

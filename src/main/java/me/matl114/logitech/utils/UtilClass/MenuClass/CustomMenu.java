@@ -87,18 +87,18 @@ public class CustomMenu {
     }
 
     /**
-     * 将MenuFactory实例化 使用MenuFactory中的数据构造CustomMenu多界面对象(一个包含返回跳转处理函数 和 内部跳转方法的对象)
-     * 我们会在界面的时候尝试实例化一个CustomMenu并尝试从MenuFactory载入数据,同时设置跳转
+     * 將MenuFactory實例化 使用MenuFactory中的數據構造CustomMenu多界面對象(一個包含返回跳轉處理函數 和 內部跳轉方法的對象)
+     * 我們會在界面的時候嘗試實例化一個CustomMenu並嘗試從MenuFactory載入數據,同時設置跳轉
      *
      */
     String title;
     // 界面大小
     int size;
-    // 页数
+    // 頁數
     int pages;
-    // 页面中显示大小
+    // 頁面中顯示大小
     int pageContent;
-    // 总大小
+    // 總大小
     int inventorySize;
     MenuFactory factory;
     int nextSlot = -1;
@@ -118,7 +118,7 @@ public class CustomMenu {
         this.pageContent = size - fixlen;
         this.inventorySize = Math.max(menulens, factory.getInventorySize());
         this.pages = (1 + (inventorySize - 1) / this.pageContent);
-        if (this.pages == 0) this.pages = 1; // 防止有傻逼不塞东西 写0
+        if (this.pages == 0) this.pages = 1; // 防止有傻逼不塞東西 寫0
     }
 
     public int getPages() {
@@ -126,7 +126,7 @@ public class CustomMenu {
     }
 
     /**
-     * 设置当前对象跳转槽
+     * 設置當前對象跳轉槽
      * @param slot
      * @return
      */
@@ -154,7 +154,7 @@ public class CustomMenu {
     }
 
     /**
-     * 自动生成跳转槽物品
+     * 自動生成跳轉槽物品
      * @param slot
      * @param page
      * @return
@@ -171,7 +171,7 @@ public class CustomMenu {
     }
 
     /**
-     * 自动生成跳转槽处理程序
+     * 自動生成跳轉槽處理程序
      * @param slot
      * @param page
      *
@@ -200,7 +200,7 @@ public class CustomMenu {
     }
 
     /**
-     * 载入物品的逻辑
+     * 載入物品的邏輯
      * @param slot
      * @param page
      * @return
@@ -224,7 +224,7 @@ public class CustomMenu {
     }
 
     /**
-     * 获得指向该对象的打开槽,公共的
+     * 獲得指向該對象的打開槽,公共的
      * @return
      */
     public static CustomMenuHandler getOpenHandler(int page) {

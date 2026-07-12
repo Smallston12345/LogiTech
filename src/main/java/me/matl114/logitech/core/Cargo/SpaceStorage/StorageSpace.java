@@ -148,10 +148,10 @@ public class StorageSpace {
     public static int SYNC_THREAD_COUNTER = 0;
     // make sure startlocation<endlocation
     // actually we find that
-    // 事实上想要挪动粘液方块而不造成刷物是不可能的
-    // 因为挪动的时候不能调用onBlockBreak
+    // 事實上想要挪動粘液方塊而不造成刷物是不可能的
+    // 因為挪動的時候不能調用onBlockBreak
     // 但是很多操作都在onBlockBreak
-    // menu内含物掉落和这些操作在一起
+    // menu內含物掉落和這些操作在一起
     // todo need test
     private static void onSpaceExchangeAsync(
             Player player,
@@ -160,7 +160,7 @@ public class StorageSpace {
             Location storeStartLocation,
             int status,
             boolean checkPerms) {
-        // 存入的位置 status=1->上面 status变成2  status=2->下面 status变成1
+        // 存入的位置 status=1->上面 status變成2  status=2->下面 status變成1
         synchronized (COUNTER_LOCK) {
             SYNC_THREAD_COUNTER++;
         }
@@ -181,7 +181,7 @@ public class StorageSpace {
         int chunkz = startLocation.getBlockZ() >> 4;
         int chunkx_ = endLocation.getBlockX() >> 4;
         int chunkz_ = endLocation.getBlockZ() >> 4;
-        // 提前载入sfBlocks获取可能得位置，防止反复访问造成的开销
+        // 提前載入sfBlocks獲取可能得位置，防止反覆訪問造成的開銷
         HashSet<Location> sfBlocklocations = new HashSet<>();
         for (int i = chunkx; i <= chunkx_; ++i) {
             for (int j = chunkz; j <= chunkz_; ++j) {
@@ -192,7 +192,7 @@ public class StorageSpace {
         }
         Debug.debug("sf block collected");
         List<CompletableFuture> futures = new ArrayList<>();
-        // 8x8x8为一个单位发起替换线程
+        // 8x8x8為一個單位發起替換線程
         for (int dx = 0; dx < x; dx += 8) {
             for (int dy = 0; dy < y; dy += 8) {
                 for (int dz = 0; dz < z; dz += 8) {
@@ -212,8 +212,8 @@ public class StorageSpace {
                                 for (int k = 0; dz_ + k < z && k < 8; ++k) {
                                     Location originLocation =
                                             startLocation.clone().add(dx_ + i, dy_ + j, dz_ + k);
-                                    // 先进行简单权限检测 剔除保护module里保护的内容
-                                    // 这里保证100%没有粘液方块
+                                    // 先進行簡單權限檢測 剔除保護module裏保護的內容
+                                    // 這裏保證100%沒有粘液方塊
                                     if (!sfBlocklocations.contains(originLocation)
                                             && (!checkPerms
                                                     || WorldUtils.hasPermission(
@@ -227,7 +227,7 @@ public class StorageSpace {
                                         Material material = block1.getType();
                                         Material material2 = block2.getType();
                                         boolean haveToChange = false;
-                                        // 将非空方块转移 同时删除存储空间中已有的方块
+                                        // 將非空方塊轉移 同時刪除存儲空間中已有的方塊
                                         if (((!material.isAir())
                                                 || (!material2.isAir() && material2 != Material.BARRIER))) {
                                             depositePairs.put(block1, block2);
@@ -257,23 +257,23 @@ public class StorageSpace {
                                     ) {
                                         if (b2 == null) {
                                             if (!WorldUtils.copyBlockState(b3.getState(false), b1)) {
-                                                AddUtils.sendMessage(player, "&e转移方块数据时出现未知错误,请联系管理员查询日志历史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             b3.setType(Material.AIR, false);
                                         } else if (b3 == null) {
                                             if (!WorldUtils.copyBlockState(b1.getState(false), b2)) {
-                                                AddUtils.sendMessage(player, "&e转移方块数据时出现未知错误,请联系管理员查询日志历史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             b1.setType(Material.AIR, false);
                                         } else {
                                             if (!WorldUtils.copyBlockState(b1.getState(false), b2)) {
-                                                AddUtils.sendMessage(player, "&e转移方块数据时出现未知错误,请联系管理员查询日志历史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             if (!WorldUtils.copyBlockState(b3.getState(false), b1)) {
-                                                AddUtils.sendMessage(player, "&e转移方块数据时出现未知错误,请联系管理员查询日志历史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             b3.setType(Material.AIR, false);
@@ -290,7 +290,7 @@ public class StorageSpace {
                                 throw new RuntimeException(e);
                             }
                         }
-                        // 当有任务的时候 发起方块交换任务
+                        // 當有任務的時候 發起方塊交換任務
                     }));
                 }
             }
@@ -298,12 +298,12 @@ public class StorageSpace {
         CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new))
                 .orTimeout(30, TimeUnit.SECONDS)
                 .exceptionally((ex) -> {
-                    Debug.logger("StorageSpace线程运行中出现问题,请联系作者");
+                    Debug.logger("StorageSpace線程運行中出現問題,請聯繫作者");
                     ex.printStackTrace();
                     return null;
                 })
                 .whenComplete((a, t) -> {
-                    AddUtils.sendMessage(player, "&a空间IO操作执行完毕!空间塔进入冷却...");
+                    AddUtils.sendMessage(player, "&a空間IO操作執行完畢!空間塔進入冷卻...");
                     ExecutorUtils.sleep(5 * 1000);
                     synchronized (COUNTER_LOCK) {
                         SYNC_THREAD_COUNTER = 0;

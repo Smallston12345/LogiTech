@@ -33,30 +33,30 @@ public class ItemOperator extends AbstractMachine {
     protected final int CONSUMED_DISPLAY_SLOT = 37;
     protected final int OPERATED_DISPLAY_SLOT = 1;
     protected final ItemStack CONSUMED_DISPLAY_ITEM =
-            new CustomItemStack(Material.FURNACE, "&6消耗物品槽", "&7将操作所需求的物品置于该槽位");
-    protected final ItemStack OPERATED_DISPLAY_ITEM = new CustomItemStack(Material.ANVIL, "&6操作物品槽", "&7将要被操作的物品置于该槽位");
+            new CustomItemStack(Material.FURNACE, "&6消耗物品槽", "&7將操作所需求的物品置於該槽位");
+    protected final ItemStack OPERATED_DISPLAY_ITEM = new CustomItemStack(Material.ANVIL, "&6操作物品槽", "&7將要被操作的物品置於該槽位");
     protected final ItemStack[] FUNCTION_ITEM = new ItemStack[] {
         new CustomItemStack(
                 Material.NAME_TAG,
                 "&6重命名物品",
-                "&7点击输入名字以重命名物品",
+                "&7點擊輸入名字以重命名物品",
                 "&7需消耗 [命名牌]x1",
-                "&a可以使用颜色符号",
-                "&e仅可以对粘液物品或者不可堆叠物品操作",
-                "&e一次仅可对一个物品操作"),
-        new CustomItemStack(Material.LANTERN, "&6显示全部物品属性", "&7点击取消所有物品属性隐藏符", "&7无需消耗物品"),
+                "&a可以使用顏色符號",
+                "&e僅可以對粘液物品或者不可堆疊物品操作",
+                "&e一次僅可對一個物品操作"),
+        new CustomItemStack(Material.LANTERN, "&6顯示全部物品屬性", "&7點擊取消所有物品屬性隱藏符", "&7無需消耗物品"),
         new CustomItemStack(
                 Material.CRYING_OBSIDIAN,
-                "&6赋予无法破坏",
-                "&7点击赋予物品无法破坏属性",
+                "&6賦予無法破壞",
+                "&7點擊賦予物品無法破壞屬性",
                 "&7需消耗 [%s] x64".formatted(Language.get("Items.LSINGULARITY.Name")),
-                "&e一次仅可对一个物品操作"),
-        new CustomItemStack(Material.GRINDSTONE, "&6重置物品", "&7点击重置原版物品", "&7无需消耗物品", "&7仅限原版物品使用"),
+                "&e一次僅可對一個物品操作"),
+        new CustomItemStack(Material.GRINDSTONE, "&6重置物品", "&7點擊重置原版物品", "&7無需消耗物品", "&7僅限原版物品使用"),
         new CustomItemStack(
-                Material.WRITABLE_BOOK, "&6去除物品名字", "&7点击去除物品名字", "&7需消耗 [命名牌]x1", "&a粘液物品将恢复至原初的名字", "&e一次仅可对一个物品操作"),
-        new CustomItemStack(Material.SOUL_LANTERN, "&6隐藏全部物品属性", "&7点击添加所有物品属性隐藏符", "&7无需消耗物品"),
-        new CustomItemStack(Material.VERDANT_FROGLIGHT, "&6取消无法破坏", "&7点击取消物品无法破坏属性", "&7无需消耗物品"),
-        new CustomItemStack(Material.LOOM, "&6物品染色", "&7点击给可染色物品染色", "&7需消耗 [对应染料]x1")
+                Material.WRITABLE_BOOK, "&6去除物品名字", "&7點擊去除物品名字", "&7需消耗 [命名牌]x1", "&a粘液物品將恢復至原初的名字", "&e一次僅可對一個物品操作"),
+        new CustomItemStack(Material.SOUL_LANTERN, "&6隱藏全部物品屬性", "&7點擊添加所有物品屬性隱藏符", "&7無需消耗物品"),
+        new CustomItemStack(Material.VERDANT_FROGLIGHT, "&6取消無法破壞", "&7點擊取消物品無法破壞屬性", "&7無需消耗物品"),
+        new CustomItemStack(Material.LOOM, "&6物品染色", "&7點擊給可染色物品染色", "&7需消耗 [對應染料]x1")
     };
     protected final String RENAME_SF_PREFIX = AddUtils.resolveColor("&7&kS&f&r");
     protected final String RENAME_SF_SUFFIX = AddUtils.resolveColor("&7&kB&f&r");
@@ -120,12 +120,12 @@ public class ItemOperator extends AbstractMachine {
     public void newMenuInstance(BlockMenu inv, Block block) {
         inv.addMenuClickHandler(FUNCTION_SLOT[0], ((player, i, itemStack, clickAction) -> {
             player.closeInventory();
-            AddUtils.sendMessage(player, "&e请输入物品名字(支持颜色符号)");
+            AddUtils.sendMessage(player, "&e請輸入物品名字(支持顏色符號)");
             AddUtils.asyncWaitPlayerInput(player, (string) -> {
                 inv.open(player);
                 ItemStack stack = getOperated(inv, true);
                 if (stack == null) {
-                    AddUtils.sendMessage(player, "&c被操作物品为空或者非单个物品!");
+                    AddUtils.sendMessage(player, "&c被操作物品為空或者非單個物品!");
                     return;
                 }
                 ItemStack consumed = inv.getItemInSlot(INPUT_SLOTS[0]);
@@ -133,7 +133,7 @@ public class ItemOperator extends AbstractMachine {
                     ItemMeta meta = stack.getItemMeta();
                     boolean isSlimefunItem = CraftUtils.parseSfItem(meta) != null;
                     if (stack.getMaxStackSize() > 1 && !isSlimefunItem) {
-                        AddUtils.sendMessage(player, "&c仅可对粘液物品或者不可堆叠物品操作!");
+                        AddUtils.sendMessage(player, "&c僅可對粘液物品或者不可堆疊物品操作!");
                         return;
                     }
                     if (isSlimefunItem) {
@@ -155,7 +155,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[1], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, false);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空!");
+                AddUtils.sendMessage(player, "&c被操作物品為空!");
                 return false;
             }
             AddUtils.showAllFlags(stack);
@@ -165,7 +165,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[2], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, true);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空或者非单个物品!");
+                AddUtils.sendMessage(player, "&c被操作物品為空或者非單個物品!");
                 return false;
             }
             ItemStack consumed = inv.getItemInSlot(INPUT_SLOTS[0]);
@@ -183,7 +183,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[3], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, false);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空!");
+                AddUtils.sendMessage(player, "&c被操作物品為空!");
                 return false;
             }
             ItemMeta meta = stack.getItemMeta();
@@ -191,7 +191,7 @@ public class ItemOperator extends AbstractMachine {
                 stack.setItemMeta(Bukkit.getItemFactory().getItemMeta(stack.getType()));
                 AddUtils.sendMessage(player, "&a操作成功!");
             } else {
-                AddUtils.sendMessage(player, "&c不可对粘液物品操作!");
+                AddUtils.sendMessage(player, "&c不可對粘液物品操作!");
                 return false;
             }
             return false;
@@ -199,7 +199,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[4], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, true);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空或者非单个物品!");
+                AddUtils.sendMessage(player, "&c被操作物品為空或者非單個物品!");
                 return false;
             }
             ItemStack consumed = inv.getItemInSlot(INPUT_SLOTS[0]);
@@ -222,7 +222,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[5], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, false);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空!");
+                AddUtils.sendMessage(player, "&c被操作物品為空!");
                 return false;
             }
             AddUtils.hideAllFlags(stack);
@@ -232,7 +232,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[6], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, false);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空!");
+                AddUtils.sendMessage(player, "&c被操作物品為空!");
                 return false;
             }
             ItemMeta meta = stack.getItemMeta();
@@ -244,7 +244,7 @@ public class ItemOperator extends AbstractMachine {
         inv.addMenuClickHandler(FUNCTION_SLOT[7], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, false);
             if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品为空!");
+                AddUtils.sendMessage(player, "&c被操作物品為空!");
                 return false;
             }
             String dyed = stack.getType().toString();
@@ -270,7 +270,7 @@ public class ItemOperator extends AbstractMachine {
 
                 Material newMaterial = Material.getMaterial(dyed.replace(originColor, nowColor));
                 if (newMaterial == null) {
-                    AddUtils.sendMessage(player, "&c该物品不能被染色");
+                    AddUtils.sendMessage(player, "&c該物品不能被染色");
                     return false;
                 } else {
                     stack.setType(newMaterial);
@@ -279,17 +279,17 @@ public class ItemOperator extends AbstractMachine {
                     return false;
                 }
             } else if (dyed.startsWith("LEATHER_")) {
-                AddUtils.sendMessage(player, "&c暂时不支持对皮革盔甲的染色");
+                AddUtils.sendMessage(player, "&c暫時不支持對皮革盔甲的染色");
                 return false;
                 //                ItemMeta meta=stack.getItemMeta();
                 //                if(meta instanceof LeatherArmorMeta lam){
                 //                    lam.setColor();
                 //                }else {
-                //                    AddUtils.sendMessage(player,"&c该物品不能被染色");
+                //                    AddUtils.sendMessage(player,"&c該物品不能被染色");
                 //                    return false;
                 //                }
             } else {
-                AddUtils.sendMessage(player, "&c该物品不能被染色");
+                AddUtils.sendMessage(player, "&c該物品不能被染色");
                 return false;
             }
         }));

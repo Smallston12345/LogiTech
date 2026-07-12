@@ -21,22 +21,22 @@ public class OctaSorter extends AbstractSorter {
         12, 21, 30, 39, 41, 32, 23, 14
     };
     protected ItemStack[] INFO_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽0", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽1", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽2", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽3", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽4", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽5", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽6", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽7", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽0", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽1", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽2", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽3", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽4", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽5", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽6", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽7", "&7货运输入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽0", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽1", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽2", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽3", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽4", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽5", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽6", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽7", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽0", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽1", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽2", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽3", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽4", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽5", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽6", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽7", "&7貨運輸入~"),
     };
 
     public int[] getInputSlots() {

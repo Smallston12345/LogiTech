@@ -27,9 +27,9 @@ public abstract class AbstractFilter extends AbstractBlock implements Ticking {
     }
 
     public ItemStack CLEAN_ITEM_OFF =
-            new CustomItemStack(SlimefunItems.TRASH_CAN, "&3开启输入槽清空模式", "&7当输入槽物品无法匹配输出槽白名单时,会清空输入槽", "&7当前状态: &c关闭");
+            new CustomItemStack(SlimefunItems.TRASH_CAN, "&3開啓輸入槽清空模式", "&7當輸入槽物品無法匹配輸出槽白名單時,會清空輸入槽", "&7當前狀態: &c關閉");
     public ItemStack CLEAN_ITEM_ON =
-            new CustomItemStack(SlimefunItems.TRASH_CAN, "&3关闭输入槽清空模式", "&7当输入槽物品无法匹配输出槽白名单时,会清空输入槽", "&7当前状态: &a开启");
+            new CustomItemStack(SlimefunItems.TRASH_CAN, "&3關閉輸入槽清空模式", "&7當輸入槽物品無法匹配輸出槽白名單時,會清空輸入槽", "&7當前狀態: &a開啓");
 
     public int getMenuSize() {
         return 54;

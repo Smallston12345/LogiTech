@@ -19,16 +19,16 @@ public class QuarSorter extends AbstractSorter {
     protected int[] OUTPUT_SLOT = new int[] {31};
     protected int[] INFO_SLOT = new int[] {0, 2, 6, 8, 36, 38, 42, 44};
     protected ItemStack[] INFO_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽0", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽0", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽3", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽3", "&7设置白名单"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽0", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽0", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽3", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽3", "&7設置白名單"),
 
-        // new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE,"&a信息","&7下方为货运输出槽","&7上方为芯片槽"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽1", "&7设置白名单"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽1", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6输入槽2", "&7货运输入~"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名单槽2", "&7设置白名单"),
+        // new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE,"&a信息","&7下方為貨運輸出槽","&7上方為芯片槽"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽1", "&7設置白名單"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽1", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽2", "&7貨運輸入~"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽2", "&7設置白名單"),
     };
 
     public int[] getInputSlots() {

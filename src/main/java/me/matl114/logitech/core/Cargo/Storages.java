@@ -20,10 +20,10 @@ public class Storages {
 
         AddDepends.NTW_STORAGE_DISPLAY.addDisplayRecipe(AddUtils.getInfoShow(
                 "&c警告!",
-                "&7由于网络拓展未知错误,该物品已经不兼容",
-                "&7请联系服务器管理员检查网络版本",
-                "&7如果你认为这是一个偶发性错误或者损坏的物品导致的问题,请重启服务器",
-                "&7如果你认为这是网络版本问题,请更换网络版本以重新兼容该物品"));
+                "&7由於網絡拓展未知錯誤,該物品已經不兼容",
+                "&7請聯繫服務器管理員檢查網絡版本",
+                "&7如果你認為這是一個偶發性錯誤或者損壞的物品導致的問題,請重啓服務器",
+                "&7如果你認為這是網絡版本問題,請更換網絡版本以重新兼容該物品"));
         AddDepends.NTW_STORAGE_DISPLAY.addDisplayRecipe(null);
     }
 
@@ -32,10 +32,10 @@ public class Storages {
             ((CustomSlimefunItem) AddSlimefunItems.QUANTUM_LINK)
                     .addDisplayRecipe(AddUtils.getInfoShow(
                             "&c警告!",
-                            "&7由于网络拓展未知错误,该物品已经不兼容网络存储",
-                            "&7请联系服务器管理员检查网络版本",
-                            "&7如果你认为这是一个偶发性错误或者损坏的物品导致的问题,请重启服务器",
-                            "&7如果你认为这是网络版本问题,请更换网络版本以重新兼容该物品"));
+                            "&7由於網絡拓展未知錯誤,該物品已經不兼容網絡存儲",
+                            "&7請聯繫服務器管理員檢查網絡版本",
+                            "&7如果你認為這是一個偶發性錯誤或者損壞的物品導致的問題,請重啓服務器",
+                            "&7如果你認為這是網絡版本問題,請更換網絡版本以重新兼容該物品"));
             ((CustomSlimefunItem) AddSlimefunItems.QUANTUM_LINK).addDisplayRecipe(null);
         } catch (Throwable es) {
             Debug.logger(es);

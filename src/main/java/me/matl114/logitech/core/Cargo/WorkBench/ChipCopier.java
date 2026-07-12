@@ -31,8 +31,8 @@ public class ChipCopier extends AbstractSyncTickCargo {
 
     protected final int[] INFO_SLOT = new int[] {1, 7};
     protected final ItemStack[] INFO_ITEMS = new ItemStack[] {
-        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6样板芯片槽"),
-        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a输入/输出槽")
+        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6樣板芯片槽"),
+        new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a輸入/輸出槽")
     };
     protected final int STATUS_SLOT = 13;
     protected int[] SLOTS = {16};
@@ -49,28 +49,28 @@ public class ChipCopier extends AbstractSyncTickCargo {
         super(itemGroup, item, recipeType, recipe);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7这是一个同步货运机器,属于[CHIP_SYNC]组",
-                        "&7位于同组的机器将共享同一个ticker计数器",
-                        "&7出于对时序安全性的保障,&c每1s该计数器+1并让机器工作一次",
-                        "&7机器用该计数器数值顺序读取%s中记录的01码".formatted(Language.get("Items.CHIP.Name")),
-                        "&7具体地,机器会读取01码的第<ticker>(mod32)位",
-                        "&7机器根据读取结果是0/1会执行相应的行为"),
+                        "&f機制",
+                        "&7這是一個同步貨運機器,屬於[CHIP_SYNC]組",
+                        "&7位於同組的機器將共享同一個ticker計數器",
+                        "&7出於對時序安全性的保障,&c每1s該計數器+1並讓機器工作一次",
+                        "&7機器用該計數器數值順序讀取%s中記錄的01碼".formatted(Language.get("Items.CHIP.Name")),
+                        "&7具體地,機器會讀取01碼的第<ticker>(mod32)位",
+                        "&7機器根據讀取結果是0/1會執行相應的行為"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7机器拥有一个样板芯片槽和一个输入/输出槽",
-                        "&7机器会尝试读取样本槽中的01码",
-                        "&7机器会从输入/输出槽中读取目标芯片",
-                        "&7机器会尝试复刻当前读取的数据到目标芯片的对应01位上",
-                        "&a机器可以同时向一组芯片拷贝数据"),
+                        "&f機制",
+                        "&7機器擁有一個樣板芯片槽和一個輸入/輸出槽",
+                        "&7機器會嘗試讀取樣本槽中的01碼",
+                        "&7機器會從輸入/輸出槽中讀取目標芯片",
+                        "&7機器會嘗試復刻當前讀取的數據到目標芯片的對應01位上",
+                        "&a機器可以同時向一組芯片拷貝數據"),
                 null));
     }
 
     public ItemStack getInfoItem(int tickCount) {
         int ticks = tickCount % 32;
         return new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&a信息", AddUtils.concat("&7当前读取编码位数: ", String.valueOf(ticks)));
+                Material.GREEN_STAINED_GLASS_PANE, "&a信息", AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)));
     }
 
     public void constructMenu(BlockMenuPreset preset) {
@@ -114,7 +114,7 @@ public class ChipCopier extends AbstractSyncTickCargo {
         if (meta1 != null && ChipCardCode.isConfig(meta1)) {
             ItemMeta meta2 = it2.getItemMeta();
             final int syncTick = synTickCount % 32;
-            // 获取meta2副本之后直接开启异步计算
+            // 獲取meta2副本之後直接開啓異步計算
             CompletableFuture.runAsync(() -> {
                 if (meta2 != null && ChipCardCode.isConfig(meta2)) {
                     int code1 = ChipCardCode.getConfig(meta1);
@@ -130,7 +130,7 @@ public class ChipCopier extends AbstractSyncTickCargo {
                     if (tar != code2) {
                         ChipCardCode.setConfigCode(meta2, tar);
                         ChipCardCode.updateConfigCodeDisplay(meta2, tar);
-                        // 防止异步导致数量不符 如果有数量更改则直接删除
+                        // 防止異步導致數量不符 如果有數量更改則直接刪除
                         it2.setItemMeta(meta2);
                     }
                 }

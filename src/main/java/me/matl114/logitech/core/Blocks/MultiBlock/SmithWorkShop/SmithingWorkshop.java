@@ -35,23 +35,23 @@ public class SmithingWorkshop extends MultiCore {
     protected final int HOLOGRAM_SLOT = 8;
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ITEM_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6锻造核心信息", "&7工坊状态: &a开启", "&7自动构建:强制开启");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6鍛造核心信息", "&7工坊狀態: &a開啓", "&7自動構建:強制開啓");
     protected final ItemStack STATUS_ITEM_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6锻造核心信息", "&c点击查看结构错误", "&7工坊状态: &c关闭", "&7自动构建:强制开启");
+            Material.RED_STAINED_GLASS_PANE, "&6鍛造核心信息", "&c點擊查看結構錯誤", "&7工坊狀態: &c關閉", "&7自動構建:強制開啓");
     protected final ItemStack HOLOGRAM_ITEM_OFF = new CustomItemStack(
-            SlimefunItems.HOLOGRAM_PROJECTOR, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &c关闭");
+            SlimefunItems.HOLOGRAM_PROJECTOR, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &c關閉");
     protected final ItemStack[] HOLOGRAM_ITEM_ON = new ItemStack[] {
         new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a北向"),
+                Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a北向"),
         new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a东向"),
+                Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a東向"),
         new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a南向"),
+                Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a南向"),
         new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&6点击切换全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7当前状态: &a西向")
+                Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a西向")
     };
     protected final ItemStack PLUGIN_ITEM =
-            new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6工坊增幅组件槽", "&7于下方插入工坊增幅组件");
+            new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6工坊增幅組件槽", "&7於下方插入工坊增幅組件");
     protected final int PLUGIN_SLOT = 13;
     protected final int[] PLUG_SLOT = IntStream.range(18, 27).toArray();
     protected final MultiBlockType MBTYPE;
@@ -83,7 +83,7 @@ public class SmithingWorkshop extends MultiCore {
             ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, String blockId) {
         super(itemGroup, item, recipeType, recipe, blockId);
         this.MBTYPE = MultiBlockTypes.SMITHING_WORKSHOP;
-        this.setDisplayRecipes(Utils.list(AddUtils.getInfoShow("&f机制 - &c多方块机器", "&7")));
+        this.setDisplayRecipes(Utils.list(AddUtils.getInfoShow("&f機制 - &c多方塊機器", "&7")));
     }
 
     public MultiBlockType getMultiBlockType() {
@@ -134,14 +134,14 @@ public class SmithingWorkshop extends MultiCore {
                             cloned.setAmount(1);
                             stack.setAmount(stack.getAmount() - 1);
                             inv.replaceExistingItem(i, cloned);
-                            AddUtils.sendMessage(e.getWhoClicked(), "&6[锻铸工坊] &a成功设置增幅组件");
+                            AddUtils.sendMessage(e.getWhoClicked(), "&6[鍛鑄工坊] &a成功設置增幅組件");
                             return;
                         }
                     }
-                    AddUtils.sendMessage(e.getWhoClicked(), "&6[锻铸工坊] &c增幅槽位已满");
+                    AddUtils.sendMessage(e.getWhoClicked(), "&6[鍛鑄工坊] &c增幅槽位已滿");
                     return;
                 } else {
-                    AddUtils.sendMessage(e.getWhoClicked(), "&6[锻铸工坊] &c并不是有效的增幅组件");
+                    AddUtils.sendMessage(e.getWhoClicked(), "&6[鍛鑄工坊] &c並不是有效的增幅組件");
                 }
             } else if (e.getRawSlot() >= 0) {
                 for (int i : PLUG_SLOT) {
@@ -172,8 +172,8 @@ public class SmithingWorkshop extends MultiCore {
     public void onMultiBlockDisable(
             Location loc, AbstractMultiBlockHandler handler, MultiBlockService.DeleteCause cause) {
         super.onMultiBlockDisable(loc, handler, cause);
-        // 这里也要清除,lvl数据 防止上面重新读取回来
-        // 要设置上面的机器,清除里面的force level数据
+        // 這裏也要清除,lvl數據 防止上面重新讀取回來
+        // 要設置上面的機器,清除裏面的force level數據
         BlockMenu inv = DataCache.getMenu(loc);
         if (inv != null) {
             inv.replaceExistingItem(STATUS_SLOT, STATUS_ITEM_OFF);
@@ -216,17 +216,17 @@ public class SmithingWorkshop extends MultiCore {
             Location loc = inv.getLocation();
             int statusCode = MultiBlockService.getStatus(loc);
             if (clickAction.isShiftClicked()) {
-                AddUtils.sendMessage(player, "&c无法切换自动构建!");
+                AddUtils.sendMessage(player, "&c無法切換自動構建!");
             } else {
                 if (statusCode == 0) {
                     if (MultiBlockService.createNewHandler(
                             loc, getBuilder(), getMultiBlockType(), OutputStream.getPlayerOut(player))) {
-                        AddUtils.sendMessage(player, "&a成功激活多方块结构!");
+                        AddUtils.sendMessage(player, "&a成功激活多方塊結構!");
                     } else {
-                        AddUtils.sendMessage(player, "&c多方块结构不全或者结构冲突!");
+                        AddUtils.sendMessage(player, "&c多方塊結構不全或者結構衝突!");
                     }
                 } else {
-                    AddUtils.sendMessage(player, "&c多方块核心处于自动构建模式无法进行手动操作");
+                    AddUtils.sendMessage(player, "&c多方塊核心處於自動構建模式無法進行手動操作");
                 }
             }
             updateMenu(inv, block, Settings.RUN);
@@ -240,13 +240,13 @@ public class SmithingWorkshop extends MultiCore {
             MultiBlockService.removeHologramSync(loc);
             if (statusCode == 0) {
                 if (holoStatus != 4) {
-                    if (holoStatus == 0) AddUtils.sendMessage(player, "&a全息投影已开启!");
-                    else AddUtils.sendMessage(player, "&a全息投影已切换方向!");
+                    if (holoStatus == 0) AddUtils.sendMessage(player, "&a全息投影已開啓!");
+                    else AddUtils.sendMessage(player, "&a全息投影已切換方向!");
                     MultiBlockService.createHologram(
                             loc, MBTYPE, MultiBlockService.Direction.fromInt(holoStatus), MBID_TO_ITEM);
                     DataCache.setCustomData(loc, MultiBlockService.getHologramKey(), holoStatus + 1);
                 } else {
-                    AddUtils.sendMessage(player, "&a全息投影已关闭!");
+                    AddUtils.sendMessage(player, "&a全息投影已關閉!");
                 }
             }
             updateMenu(inv, block, Settings.RUN);
@@ -259,12 +259,12 @@ public class SmithingWorkshop extends MultiCore {
                     int amount = cloned.getAmount();
                     var leftOver = player.getInventory().addItem(cloned);
                     if (leftOver.get(0) != null && leftOver.get(0).getAmount() == amount) {
-                        AddUtils.sendMessage(player, "&6[锻铸工坊] &c玩家背包已满!");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c玩家揹包已滿!");
                     } else {
                         int realAmount =
                                 leftOver.get(0) == null ? 0 : leftOver.get(0).getAmount();
                         itemStack.setAmount(realAmount);
-                        AddUtils.sendMessage(player, "&6[锻铸工坊] &a成功取出增幅组件");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &a成功取出增幅組件");
                     }
                 } else if (itemStack == null
                         ^ player.getItemOnCursor().getType().isAir()) {
@@ -276,14 +276,14 @@ public class SmithingWorkshop extends MultiCore {
                             put.setAmount(1);
                             stack.setAmount(stack.getAmount() - 1);
                             inv.replaceExistingItem(i, put);
-                            AddUtils.sendMessage(player, "&6[锻铸工坊] &a成功设置增幅组件");
+                            AddUtils.sendMessage(player, "&6[鍛鑄工坊] &a成功設置增幅組件");
                         } else {
-                            AddUtils.sendMessage(player, "&6[锻铸工坊] &c并不是有效的增幅组件");
+                            AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c並不是有效的增幅組件");
                         }
                     } else {
                         player.setItemOnCursor(itemStack);
                         inv.replaceExistingItem(i, null);
-                        AddUtils.sendMessage(player, "&6[锻铸工坊] &a成功取出增幅组件");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &a成功取出增幅組件");
                     }
                 }
                 return false;

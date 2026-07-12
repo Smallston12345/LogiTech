@@ -47,13 +47,13 @@ public abstract class AbstractCargo extends CustomSlimefunItem
     }
 
     protected final ItemStack[] DIRECTION_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 无"),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向北")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向西")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向南")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向东")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向上")),
-        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6点击切换方向", "&3当前方向: 向下"))
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 無"),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向北")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向西")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向南")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向東")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向上")),
+        AddUtils.addGlow(new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6點擊切換方向", "&3當前方向: 向下"))
     };
 
     public AbstractCargo(

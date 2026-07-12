@@ -33,7 +33,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public abstract class AbstractMachine extends CustomSlimefunItem
         implements Ticking, MenuBlock, EnergyNetComponent, NotHopperable {
-    // 我们的目标是 最广的需求 最好的性能 最大的答辩(bushi
+    // 我們的目標是 最廣的需求 最好的性能 最大的答辯(bushi
     public List<MachineRecipe> machineRecipes;
     protected Supplier<List<MachineRecipe>> machineRecipeSupplier = null;
 
@@ -291,7 +291,7 @@ public abstract class AbstractMachine extends CustomSlimefunItem
         super.preRegister();
         //
         registerTick(this);
-        // 为menublock提供 需要
+        // 為menublock提供 需要
         registerBlockMenu(this);
     }
 

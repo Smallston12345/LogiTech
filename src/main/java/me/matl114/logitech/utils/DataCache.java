@@ -316,7 +316,7 @@ public class DataCache {
         } else {
             return false;
         }
-        // 这里是否要发出SlimefunBlockPlaceEvent?
+        // 這裏是否要發出SlimefunBlockPlaceEvent?
     }
 
     public static BlockMenu getMenu(Location loc) {

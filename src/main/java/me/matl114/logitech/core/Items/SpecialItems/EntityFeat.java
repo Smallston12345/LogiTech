@@ -40,13 +40,13 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
         ItemStack resultItemStack = generateSpawnerFrom(EntityType.ZOMBIE, 8, 60, 64, 6, 10, true);
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7将该物品丢出以合成普通的刷怪笼",
-                        "&7当一次性丢出数量不足一组时,将会按%d:1合成普通刷怪笼".formatted(MIDDLE_MERGE),
-                        "&7当一次性丢出数量达到%d时,将会按%d:1合成&e超频刷怪笼&7,&a其生成速率等数据将被大幅提高".formatted(SUPER_MERGE, SUPER_MERGE)),
+                        "&f機制",
+                        "&7將該物品丟出以合成普通的刷怪籠",
+                        "&7當一次性丟出數量不足一組時,將會按%d:1合成普通刷怪籠".formatted(MIDDLE_MERGE),
+                        "&7當一次性丟出數量達到%d時,將會按%d:1合成&e超頻刷怪籠&7,&a其生成速率等數據將被大幅提高".formatted(SUPER_MERGE, SUPER_MERGE)),
                 resultItemStack));
         for (EntityType type : availableEntityFeatTypes) {
-            this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f可掉落的生物特征"));
+            this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f可掉落的生物特徵"));
             this.addDisplayRecipe(getItemFromEntityType(type));
         }
     }
@@ -73,19 +73,19 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
         boolean hasTypeLore = false;
         for (int i = 0; i < lore.size(); i++) {
             String currentLine = lore.get(i);
-            if (currentLine.contains("<Type>") || currentLine.contains("<类型>")) {
+            if (currentLine.contains("<Type>") || currentLine.contains("<類型>")) {
                 String typeName = ChatUtils.humanize(entityType.name());
-                lore.set(i, currentLine.replace("<Type>", typeName).replace("<类型>", typeName));
+                lore.set(i, currentLine.replace("<Type>", typeName).replace("<類型>", typeName));
                 hasTypeLore = true;
                 break;
             }
         }
         if (!hasTypeLore) {
             lore.add("");
-            lore.add("&7类型: "
+            lore.add("&7類型: "
                     + AddUtils.color(
                             (entityType == null || entityType == EntityType.UNKNOWN)
-                                    ? "类型"
+                                    ? "類型"
                                     : ChatUtils.humanize(entityType.name())));
         }
 
@@ -101,7 +101,7 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
      * @param delay
      * @return
      */
-    public static final String SPAWNER_ATTRIBUTE = AddUtils.resolveColor(AddUtils.color("刷怪笼属性:"));
+    public static final String SPAWNER_ATTRIBUTE = AddUtils.resolveColor(AddUtils.color("刷怪籠屬性:"));
 
     private static final HashSet<EntityType> availableEntityFeatTypes = new HashSet<>() {
         {
@@ -232,16 +232,16 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
         if (displayAttribute) {
             List<String> lore = new ArrayList<>();
             lore.add(SPAWNER_ATTRIBUTE);
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7类型: &b", ChatUtils.humanize(type.name()))));
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7最小生成延迟: &b", String.valueOf(delay))));
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7最大邻近实体: &b", String.valueOf(maxNearbyEntities))));
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7玩家激活范围: &b", String.valueOf(requirePlayerRange))));
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7最大生成范围: &b", String.valueOf(spawnRange))));
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7单次生成数量: &b", String.valueOf(spawnCount))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7類型: &b", ChatUtils.humanize(type.name()))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7最小生成延遲: &b", String.valueOf(delay))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7最大鄰近實體: &b", String.valueOf(maxNearbyEntities))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7玩家激活範圍: &b", String.valueOf(requirePlayerRange))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7最大生成範圍: &b", String.valueOf(spawnRange))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7單次生成數量: &b", String.valueOf(spawnCount))));
             meta.setLore(lore);
         }
         if (delay < 20) {
-            meta.setDisplayName(AddUtils.resolveColor(AddUtils.color("超频刷怪笼")));
+            meta.setDisplayName(AddUtils.resolveColor(AddUtils.color("超頻刷怪籠")));
         }
         item.setItemMeta(meta);
         return item;
@@ -278,12 +278,12 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
 
         int amount = SupportedPluginManager.getInstance().getStackAmount(var3);
         if (amount < 3) {
-            AddUtils.sendMessage(var2, "&c数量不足!");
+            AddUtils.sendMessage(var2, "&c數量不足!");
             return;
         } else {
             EntityType type = getEntityTypeFromItem(targetItemStack);
             if ((type == null || !type.isSpawnable()) || !availableSpawnerTypes.contains(type)) {
-                AddUtils.sendMessage(var2, "&c该种类的刷怪笼并不支持获取!");
+                AddUtils.sendMessage(var2, "&c該種類的刷怪籠並不支持獲取!");
                 return;
             }
             var3.remove();
@@ -291,27 +291,27 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
             ItemStack resultItemStack;
             if (amount < SUPER_MERGE) {
                 if (!enableSpawnerCraft) {
-                    AddUtils.sendMessage(var2, "&c普通刷怪笼的合成并未启用!");
+                    AddUtils.sendMessage(var2, "&c普通刷怪籠的合成並未啓用!");
                     resultItemStack = null;
                 } else {
                     resultItemStack = generateSpawnerFrom(type, true);
                     resultItemStack.setAmount(amount / MIDDLE_MERGE);
                     extraStack.setAmount(amount % MIDDLE_MERGE);
-                    AddUtils.sendMessage(var2, "&a已合成%d个普通刷怪笼".formatted(amount / MIDDLE_MERGE));
+                    AddUtils.sendMessage(var2, "&a已合成%d個普通刷怪籠".formatted(amount / MIDDLE_MERGE));
                 }
 
             } else {
                 if (!enableSuperSpawnerCraft) {
-                    AddUtils.sendMessage(var2, "&c超频刷怪笼的合成并未启用!");
+                    AddUtils.sendMessage(var2, "&c超頻刷怪籠的合成並未啓用!");
                     resultItemStack = null;
                 } else if (!availableSuperSpawnerTypes.contains(type)) {
-                    AddUtils.sendMessage(var2, "&c该种类的超频刷怪笼并不支持获取!");
+                    AddUtils.sendMessage(var2, "&c該種類的超頻刷怪籠並不支持獲取!");
                     resultItemStack = null;
                 } else {
                     resultItemStack = generateSpawnerFrom(type, 2, 60, 64, 6, 10, true);
                     resultItemStack.setAmount(amount / SUPER_MERGE);
                     extraStack.setAmount(amount % SUPER_MERGE);
-                    AddUtils.sendMessage(var2, "&a已合成%d个超频刷怪笼".formatted(amount / SUPER_MERGE));
+                    AddUtils.sendMessage(var2, "&a已合成%d個超頻刷怪籠".formatted(amount / SUPER_MERGE));
                 }
             }
             if (extraStack.getAmount() > 0) {

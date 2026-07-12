@@ -22,7 +22,7 @@ public class HyperLinkListener implements Listener {
         Inventory inv = record.inventory();
         if (inv == null || !record.canPlayerOpen(player)) return;
         player.openInventory(inv);
-        AddUtils.sendMessage(player, "&a成功打开该容器!");
+        AddUtils.sendMessage(player, "&a成功打開該容器!");
         // open before putting this,because open may follow a close Event
         openedInventory.put(inv, record);
         // launch monitor task

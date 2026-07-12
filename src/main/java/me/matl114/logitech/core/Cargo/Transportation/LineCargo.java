@@ -27,26 +27,26 @@ public class LineCargo extends AbstractCargo {
     protected final ItemStack[] INFO_ITEM = new ItemStack[] {
         new CustomItemStack(
                 Material.ORANGE_STAINED_GLASS_PANE,
-                "&b机制",
-                "&7在左侧配置链式方向",
-                "&7在中间的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
-                "&7在下方放入黑/白名单物品",
-                "&e机器将进行链式传输",
-                "&c警告:只有连续方块长度长于1时才会进行传输"),
+                "&b機制",
+                "&7在左側配置鏈式方向",
+                "&7在中間的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
+                "&7在下方放入黑/白名單物品",
+                "&e機器將進行鏈式傳輸",
+                "&c警告:只有連續方塊長度長於1時才會進行傳輸"),
         new CustomItemStack(
                 Material.ORANGE_STAINED_GLASS_PANE,
-                "&b机制",
-                "&7在右侧配置链式设定",
-                "&7在中间的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
-                "&7在下方放入黑/白名单物品",
-                "&e机器将进行链式传输",
-                "&c警告:只有连续方块长度长于1时才会进行传输")
+                "&b機制",
+                "&7在右側配置鏈式設定",
+                "&7在中間的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
+                "&7在下方放入黑/白名單物品",
+                "&e機器將進行鏈式傳輸",
+                "&c警告:只有連續方塊長度長於1時才會進行傳輸")
     };
     protected final int[] CONFIG_SLOT = new int[] {16};
     protected final String[] CONFIG_KEYS = new String[] {"loop"};
     protected final ItemStack[] CONFIG_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.BAMBOO_CHEST_RAFT, "&6点击切换是否首尾循环", "&3当前设置: false"),
-        AddUtils.addGlow(new CustomItemStack(Material.BAMBOO_CHEST_RAFT, "&6点击切换是否首尾循环", "&3当前设置: true"))
+        new CustomItemStack(Material.BAMBOO_CHEST_RAFT, "&6點擊切換是否首尾循環", "&3當前設置: false"),
+        AddUtils.addGlow(new CustomItemStack(Material.BAMBOO_CHEST_RAFT, "&6點擊切換是否首尾循環", "&3當前設置: true"))
     };
     protected final int[] CONFIG_VALUE = new int[] {0, 2};
     protected final int DIRECTION_SLOT = 10;
@@ -79,20 +79,20 @@ public class LineCargo extends AbstractCargo {
         super(itemGroup, item, recipeType, recipe, displayList);
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7这是一个普通货运机器",
-                        "&7普通货运机器的行为会包括若干对源方块和目标方块",
-                        "&7普通货运机器会进行从源方块到目标方块的物流传输",
-                        "&7普通货运机器支持较大规模的传输量",
-                        "&7但是相应的,他会忽视机器对物品的输入槽位限制"),
+                        "&f機制",
+                        "&7這是一個普通貨運機器",
+                        "&7普通貨運機器的行為會包括若干對源方塊和目標方塊",
+                        "&7普通貨運機器會進行從源方塊到目標方塊的物流傳輸",
+                        "&7普通貨運機器支持較大規模的傳輸量",
+                        "&7但是相應的,他會忽視機器對物品的輸入槽位限制"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7本机器可以选择一个方向进行直线搜素",
-                        "&&搜索会在方块不存在方块菜单,或至最大搜索距离终止",
-                        "&7搜索最大距离为64",
-                        "&7在搜索链上的机器会向接下来的机器进行传输",
-                        "&7开启首位循环使搜索链上尾部机器向首部机器传输"),
+                        "&f機制",
+                        "&7本機器可以選擇一個方向進行直線搜素",
+                        "&&搜索會在方塊不存在方塊菜單,或至最大搜索距離終止",
+                        "&7搜索最大距離為64",
+                        "&7在搜索鏈上的機器會向接下來的機器進行傳輸",
+                        "&7開啓首位循環使搜索鏈上尾部機器向首部機器傳輸"),
                 null));
     }
 

@@ -52,12 +52,12 @@ public class VirtualKiller extends AbstractMachine {
     public ItemStack getInfoItem(EntityType type, int amount) {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&6机制",
-                "&7上方放入带生物种类的任意笼子",
-                "&7下方输出该生物可能的特殊掉落物",
-                "&7输出倍率=%d/%d(max)".formatted(amount * MULTIPLY, MAX_AMOUNT * MULTIPLY),
-                AddUtils.concat("&7当前生物: &a", type == null ? "&c无生物" : ChatUtils.humanize(type.name())),
-                AddUtils.concat("&7当前数量: &a", String.valueOf(amount)));
+                "&6機制",
+                "&7上方放入帶生物種類的任意籠子",
+                "&7下方輸出該生物可能的特殊掉落物",
+                "&7輸出倍率=%d/%d(max)".formatted(amount * MULTIPLY, MAX_AMOUNT * MULTIPLY),
+                AddUtils.concat("&7當前生物: &a", type == null ? "&c無生物" : ChatUtils.humanize(type.name())),
+                AddUtils.concat("&7當前數量: &a", String.valueOf(amount)));
     }
 
     public VirtualKiller(
@@ -72,11 +72,11 @@ public class VirtualKiller extends AbstractMachine {
         this.MULTIPLY = multiply;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7在机器输入槽内插入某种生物的任意类型刷怪笼",
-                        "&7包括破损的刷怪笼,已修复的刷怪笼,带nbt的刷怪笼掉落物,等等",
-                        "&7机器即可执行产出,会产出普通掉落物和所有附属加载的粘液特殊掉落物",
-                        "&a注明:普通掉落物部分由ChatGPT生成,并由@haiman补充完整,若有欠缺欢迎补充"),
+                        "&f機制",
+                        "&7在機器輸入槽內插入某種生物的任意類型刷怪籠",
+                        "&7包括破損的刷怪籠,已修復的刷怪籠,帶nbt的刷怪籠掉落物,等等",
+                        "&7機器即可執行產出,會產出普通掉落物和所有附屬加載的粘液特殊掉落物",
+                        "&a註明:普通掉落物部分由ChatGPT生成,並由@haiman補充完整,若有欠缺歡迎補充"),
                 null));
     }
 
@@ -108,7 +108,7 @@ public class VirtualKiller extends AbstractMachine {
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int amount;
             Object spawnerType;
 

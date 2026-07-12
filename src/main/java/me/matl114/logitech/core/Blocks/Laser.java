@@ -56,21 +56,21 @@ public class Laser extends AbstractMachine
         this.PARTID = partId;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                                "&f机制 - &c激光",
-                                "&7该机器满足指定条件会发射激光并消耗电力",
-                                "&7可选条件1: 被红石充能",
-                                "&7可选条件2: 置于终极祭坛上",
-                                "&7发射的激光等级lvl为%d+(祭坛等级)*%d".formatted(DEFAULT_LVL, FORCE_INCREASE),
-                                "&7激光会杀死非玩家实体,并对玩家造成0.5*(lvl)^2的真实伤害",
-                                "&7激光会沿该方块朝向进行延申,直至碰见首个非空气方块",
-                                "&7或者达到最大长度 %d 格".formatted(MAX_SEARCH_LEN)),
+                                "&f機制 - &c激光",
+                                "&7該機器滿足指定條件會發射激光並消耗電力",
+                                "&7可選條件1: 被紅石充能",
+                                "&7可選條件2: 置於終極祭壇上",
+                                "&7發射的激光等級lvl為%d+(祭壇等級)*%d".formatted(DEFAULT_LVL, FORCE_INCREASE),
+                                "&7激光會殺死非玩家實體,並對玩家造成0.5*(lvl)^2的真實傷害",
+                                "&7激光會沿該方塊朝向進行延申,直至碰見首個非空氣方塊",
+                                "&7或者達到最大長度 %d 格".formatted(MAX_SEARCH_LEN)),
                         null,
                 AddUtils.getInfoShow(
-                                "&f机制 - &c充能",
-                                "&7当置于终极祭坛上时",
-                                "&7该机器会尝试对激光最末端的机器尝试充能",
-                                "&7仅有特定机器才能被激光充能",
-                                "&7一般用于机器激活的前置条件"),
+                                "&f機制 - &c充能",
+                                "&7當置於終極祭壇上時",
+                                "&7該機器會嘗試對激光最末端的機器嘗試充能",
+                                "&7僅有特定機器才能被激光充能",
+                                "&7一般用於機器激活的前置條件"),
                         null));
     }
 
@@ -129,7 +129,7 @@ public class Laser extends AbstractMachine
                                 if (i == 0) return;
                                 Location launcher = loc.clone().add(0.5, 0.5, 0.5);
                                 if (force > 0) {
-                                    // 给机器充能
+                                    // 給機器充能
                                     // Debug.debug(loc2);
                                     SlimefunItem it = DataCache.getSfItem(loc2);
                                     if (it instanceof LaserChargable lc) {

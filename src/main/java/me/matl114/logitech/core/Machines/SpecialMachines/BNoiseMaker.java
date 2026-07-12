@@ -48,7 +48,7 @@ public class BNoiseMaker extends AbstractMachine {
 
     @Override
     public void newMenuInstance(@Nonnull BlockMenu blockMenu, @Nonnull Block block) {
-        blockMenu.addItem(MAKE_NOISY_HEAD, new CustomItemStack(Material.CREEPER_HEAD, "&e点击制造B动静头盔"), (p, s, i, t) -> {
+        blockMenu.addItem(MAKE_NOISY_HEAD, new CustomItemStack(Material.CREEPER_HEAD, "&e點擊製造B動靜頭盔"), (p, s, i, t) -> {
             Sound sound = makeNoise(p.getLocation());
             if (sound == null) {
                 return false;

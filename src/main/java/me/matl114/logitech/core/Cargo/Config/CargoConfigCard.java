@@ -14,19 +14,19 @@ public class CargoConfigCard {
     /**
      *
      */
-    public static final String LORE_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B通用货运配置卡: &f");
+    public static final String LORE_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B通用貨運配置卡: &f");
 
     public static final NamespacedKey KEY_LOC = AddUtils.getNameKey("cargo_config");
     public static final String LORE_MATCH = AddUtils.resolveColor("&8⇨ &7");
     public static final String[] LORE_PREFIX = new String[] {
-        AddUtils.resolveColor("&8⇨ &7强对称: &3"),
-        AddUtils.resolveColor("&8⇨ &7仅空传输: &3"),
-        AddUtils.resolveColor("&8⇨ &7懒惰模式: &3"),
-        AddUtils.resolveColor("&8⇨ &7白名单: &3"),
-        AddUtils.resolveColor("&8⇨ &7逆向传输: &3"),
-        AddUtils.resolveColor("&8⇨ &7源方块模式: &3"),
-        AddUtils.resolveColor("&8⇨ &7目标方模式: &3"),
-        AddUtils.resolveColor("&8⇨ &7传输数量: &3")
+        AddUtils.resolveColor("&8⇨ &7強對稱: &3"),
+        AddUtils.resolveColor("&8⇨ &7僅空傳輸: &3"),
+        AddUtils.resolveColor("&8⇨ &7懶惰模式: &3"),
+        AddUtils.resolveColor("&8⇨ &7白名單: &3"),
+        AddUtils.resolveColor("&8⇨ &7逆向傳輸: &3"),
+        AddUtils.resolveColor("&8⇨ &7源方塊模式: &3"),
+        AddUtils.resolveColor("&8⇨ &7目標方模式: &3"),
+        AddUtils.resolveColor("&8⇨ &7傳輸數量: &3")
     };
 
     public static void appendConfigLore(List<String> lore, int code) {
@@ -39,13 +39,13 @@ public class CargoConfigCard {
         lore.add(AddUtils.concat(
                 LORE_PREFIX[5],
                 (CargoConfigs.FROM_INPUT_FIRST.getConfig(code)
-                        ? ("输入槽" + (CargoConfigs.FROM_REVERSED.getConfig(code) ? "+输出槽" : ""))
-                        : ("输出槽" + (CargoConfigs.FROM_REVERSED.getConfig(code) ? "+输入槽" : "")))));
+                        ? ("輸入槽" + (CargoConfigs.FROM_REVERSED.getConfig(code) ? "+輸出槽" : ""))
+                        : ("輸出槽" + (CargoConfigs.FROM_REVERSED.getConfig(code) ? "+輸入槽" : "")))));
         lore.add(AddUtils.concat(
                 LORE_PREFIX[6],
                 (CargoConfigs.TO_OUTPUT_FIRST.getConfig(code)
-                        ? ("输出槽" + (CargoConfigs.TO_REVERSED.getConfig(code) ? "+输入槽" : ""))
-                        : ("输入槽" + (CargoConfigs.TO_REVERSED.getConfig(code) ? "+输出槽" : "")))));
+                        ? ("輸出槽" + (CargoConfigs.TO_REVERSED.getConfig(code) ? "+輸入槽" : ""))
+                        : ("輸入槽" + (CargoConfigs.TO_REVERSED.getConfig(code) ? "+輸出槽" : "")))));
         lore.add(AddUtils.concat(LORE_PREFIX[7], String.valueOf(CargoConfigs.TRANSLIMIT.getConfigInt(code))));
     }
 

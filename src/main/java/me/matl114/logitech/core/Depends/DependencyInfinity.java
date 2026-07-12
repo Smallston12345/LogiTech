@@ -14,7 +14,7 @@ import org.bukkit.Bukkit;
 public class DependencyInfinity {
     public static void init() {
         if (AddDepends.hasInfiniteExpansion) {
-            Debug.logger("已检测到无尽附属");
+            Debug.logger("已檢測到無盡附屬");
         }
     }
 

@@ -49,9 +49,9 @@ public class LogicReactor extends AbstractProcessor {
 
     protected final int processorTick;
     protected final int SWITCH_SLOT = 13;
-    protected final ItemStack SWITCH_OFF = new CustomItemStack(Material.SOUL_TORCH, "&6反应堆运行状态: &c关闭", "&7点击开启反应堆");
+    protected final ItemStack SWITCH_OFF = new CustomItemStack(Material.SOUL_TORCH, "&6反應堆運行狀態: &c關閉", "&7點擊開啓反應堆");
     protected final ItemStack SWITCH_ON =
-            new CustomItemStack(Material.REDSTONE_TORCH, "&6反应堆运行状态: &a开启", "&7点击关闭反应堆", "&c注意:关闭反应堆将丢失当前机器进度");
+            new CustomItemStack(Material.REDSTONE_TORCH, "&6反應堆運行狀態: &a開啓", "&7點擊關閉反應堆", "&c注意:關閉反應堆將丟失當前機器進度");
 
     public LogicReactor(
             ItemGroup category,
@@ -65,23 +65,23 @@ public class LogicReactor extends AbstractProcessor {
 
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7该机器拥有四对布尔输入槽,分别在&c同一列&7由相同颜色(蓝色或者黄色)的玻璃板标出",
-                        "&7这些槽位用于输入布尔组件,即 %s 和 %s"
+                        "&f機制",
+                        "&7該機器擁有四對布爾輸入槽,分別在&c同一列&7由相同顏色(藍色或者黃色)的玻璃板標出",
+                        "&7這些槽位用於輸入布爾組件,即 %s 和 %s"
                                 .formatted(Language.get("Items.TRUE_.Name"), Language.get("Items.FALSE_.Name")),
-                        "&7只有这些槽位的物品满足一定机制时,合成才会尝试进行"),
+                        "&7只有這些槽位的物品滿足一定機制時,合成才會嘗試進行"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7机器还有一个&c正常输入槽&7和&e正常输出槽&7,分别位于第三排的&e左侧&7和&e右侧空格,分别用于输入所需的 [%s] 和输出产物 "
+                        "&f機制",
+                        "&7機器還有一個&c正常輸入槽&7和&e正常輸出槽&7,分別位於第三排的&e左側&7和&e右側空格,分別用於輸入所需的 [%s] 和輸出產物 "
                                 .formatted(Language.get("Items.LOGIGATE.Name")),
-                        "&7机器中间一个开关,用于调控机器是否会进行合成进程,当点击关闭时,当前进程将被强制终止",
-                        "&7当机器为开启状态且为空闲,输出槽非满,四对布尔输入槽&c非空&7且满足右侧某个输入条件时",
-                        "&7才会尝试&e消耗&7正常输入槽内的 [%s] 进行合成".formatted(Language.get("Items.LOGIGATE.Name")),
-                        "&7警告:当机器尝试匹配输入条件进行合成时,四对布尔输入槽内的物品会被&c清空&7!",
-                        "&7指示:当机器在合成进程中运行时,四对布尔输入槽内的物品不会被&c清空!",
-                        "&7指示:不过玩家使用普通货运输入时,布尔槽位只会被输入布尔组件",
-                        "&7指示:你可以关闭机器来停止布尔组件的消耗"),
+                        "&7機器中間一個開關,用於調控機器是否會進行合成進程,當點擊關閉時,當前進程將被強制終止",
+                        "&7當機器為開啓狀態且為空閒,輸出槽非滿,四對布爾輸入槽&c非空&7且滿足右側某個輸入條件時",
+                        "&7才會嘗試&e消耗&7正常輸入槽內的 [%s] 進行合成".formatted(Language.get("Items.LOGIGATE.Name")),
+                        "&7警告:當機器嘗試匹配輸入條件進行合成時,四對布爾輸入槽內的物品會被&c清空&7!",
+                        "&7指示:當機器在合成進程中運行時,四對布爾輸入槽內的物品不會被&c清空!",
+                        "&7指示:不過玩家使用普通貨運輸入時,布爾槽位只會被輸入布爾組件",
+                        "&7指示:你可以關閉機器來停止布爾組件的消耗"),
                 AddItem.LOGIGATE));
 
         this.machineRecipes = new ArrayList<>() {
@@ -89,50 +89,50 @@ public class LogicReactor extends AbstractProcessor {
                 add(MachineRecipeUtils.FromMachine(AddUtils.formatInfoMachineRecipe(
                         Utils.array(AddItem.LOGIC),
                         tick,
-                        "&7当四对输入槽物品均为同样的布尔组件时",
-                        "&7将会尝试生成 %s".formatted(Language.get("Items.LOGIC.Name")))));
+                        "&7當四對輸入槽物品均為同樣的布爾組件時",
+                        "&7將會嘗試生成 %s".formatted(Language.get("Items.LOGIC.Name")))));
                 add(MachineRecipeUtils.FromMachine(AddUtils.formatInfoMachineRecipe(
                         Utils.array(AddItem.NOLOGIC),
                         tick,
-                        "&7当四对输入槽物品均为相反的布尔组件时",
-                        "&7将会尝试生成 %s".formatted(Language.get("Items.NOLOGIC.Name")))));
+                        "&7當四對輸入槽物品均為相反的布爾組件時",
+                        "&7將會嘗試生成 %s".formatted(Language.get("Items.NOLOGIC.Name")))));
                 add(MachineRecipeUtils.FromMachine(AddUtils.formatInfoMachineRecipe(
                         Utils.array(AddItem.UNIQUE),
                         tick,
-                        "&7当四对输入槽物品中只有一对布尔组件相异",
-                        "&7将会尝试生成 %s".formatted(Language.get("Items.UNIQUE.Name")))));
+                        "&7當四對輸入槽物品中只有一對布爾組件相異",
+                        "&7將會嘗試生成 %s".formatted(Language.get("Items.UNIQUE.Name")))));
                 add(MachineRecipeUtils.FromMachine(AddUtils.formatInfoMachineRecipe(
                         Utils.array(AddItem.EXISTE),
                         tick,
-                        "&7当前三个材料的生成条件均不满足",
-                        "&7将会尝试生成 %s".formatted(Language.get("Items.EXISTE.Name")))));
+                        "&7當前三個材料的生成條件均不滿足",
+                        "&7將會嘗試生成 %s".formatted(Language.get("Items.EXISTE.Name")))));
             }
         };
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_IN;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 空白边框
+        // 空白邊框
         border = PROCESSOR_SLOT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -194,14 +194,14 @@ public class LogicReactor extends AbstractProcessor {
         if (cnt < 0) {
             return -1;
         }
-        // 机制判断
+        // 機制判斷
         if (code1 == code2) {
             return 0;
         } else {
             int code = code1 ^ code2;
             if (code == 15) { // 均不同
                 return 1;
-            } else if (code == 1 || code == 2 || code == 4 || code == 8) { // 仅一位
+            } else if (code == 1 || code == 2 || code == 4 || code == 8) { // 僅一位
                 return 2;
             } else return 3; // else
         }

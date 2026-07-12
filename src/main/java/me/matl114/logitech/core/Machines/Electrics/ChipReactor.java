@@ -30,7 +30,7 @@ public class ChipReactor extends AbstractEnergyProcessor {
     protected final int[] OUTPUT_BORDER = new int[] {9, 10, 11, 12, 14, 15, 16, 17};
     protected final int[] INPUT_SLOTS = new int[] {13};
     protected final int INFO_SLOT = 4;
-    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6当前机器信息");
+    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6當前機器信息");
 
     public int[] getInputSlots() {
         return INPUT_SLOTS;
@@ -61,10 +61,10 @@ public class ChipReactor extends AbstractEnergyProcessor {
         AddUtils.addGlow(this.processor.getProgressBar());
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制",
-                        "&7当插入%s时".formatted(Language.get("Items.CHIP.Name")),
-                        "&7机器读取其中二进制码对应数字",
-                        "&7并按%f倍率发电%dtick".formatted(this.multiple, this.time)),
+                        "&f機制",
+                        "&7當插入%s時".formatted(Language.get("Items.CHIP.Name")),
+                        "&7機器讀取其中二進制碼對應數字",
+                        "&7並按%f倍率發電%dtick".formatted(this.multiple, this.time)),
                 example));
     }
 
@@ -95,7 +95,7 @@ public class ChipReactor extends AbstractEnergyProcessor {
 
     public int getGeneratedOutput(@Nonnull Location l, @Nonnull SlimefunBlockData data) {
         BlockMenu inv = data.getBlockMenu();
-        // 增加电力检测
+        // 增加電力檢測
         if (inv != null && conditionHandle(null, inv)) {
             EnergyProviderOperation currentOperation = processor.getOperation(l);
             if (currentOperation == null) {
@@ -113,7 +113,7 @@ public class ChipReactor extends AbstractEnergyProcessor {
             }
             if (currentOperation == null) {
                 if (inv.hasViewer()) {
-                    inv.replaceExistingItem(INFO_SLOT, AddUtils.addLore(this.INFO_ITEM, AddUtils.concat("&7当前不在发电")));
+                    inv.replaceExistingItem(INFO_SLOT, AddUtils.addLore(this.INFO_ITEM, AddUtils.concat("&7當前不在發電")));
 
                     inv.replaceExistingItem(PROCESSOR_SLOT, MenuUtils.PROCESSOR_NULL);
                 }
@@ -137,7 +137,7 @@ public class ChipReactor extends AbstractEnergyProcessor {
                         INFO_SLOT,
                         AddUtils.addLore(
                                 this.INFO_ITEM,
-                                AddUtils.concat("&7当前发电: ", String.valueOf(currentOperation.getEnergy()), "J/t")));
+                                AddUtils.concat("&7當前發電: ", String.valueOf(currentOperation.getEnergy()), "J/t")));
             }
             return currentOperation.getEnergy();
 

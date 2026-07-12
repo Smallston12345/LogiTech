@@ -50,7 +50,7 @@ public class EnergyStorage extends AbstractEnergyMachine {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&6信息",
-                "&7已存储: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)));
+                "&7已存儲: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)));
     }
 
     public void constructMenu(BlockMenuPreset preset) {

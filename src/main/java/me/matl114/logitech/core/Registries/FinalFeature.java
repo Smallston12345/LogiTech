@@ -40,7 +40,7 @@ public class FinalFeature {
             ItemMeta meta = null;
             if (item.getAmount() == 1) {
                 meta = item.getItemMeta();
-                // 只生成不是代理的缓存
+                // 只生成不是代理的緩存
                 tar = ItemStorageCache.getTempCache(item, meta, slot, (i -> !i.isStorageProxy()));
             }
             // get no yet
@@ -65,7 +65,7 @@ public class FinalFeature {
             ItemMeta meta = null;
             if (item.getAmount() == 1) {
                 meta = item.getItemMeta();
-                // 全部生成 全部启动
+                // 全部生成 全部啓動
                 tar = ItemStorageCache.getTempCache(item, meta, slot, i -> true);
             }
             // get no yet
@@ -91,10 +91,10 @@ public class FinalFeature {
                         if (proxyLocation == null) {
                             proxyLocation = new HashSet<>();
                         }
-                        // 禁止在一次模拟中制造超过两个连接
+                        // 禁止在一次模擬中製造超過兩個連接
                         Location loc = lsp.getProxyLocation();
                         if (proxyLocation.contains(loc)) {
-                            // 视为正常物品 不参与存储代理
+                            // 視為正常物品 不參與存儲代理
 
                             return CraftUtils.getpusher.get(settings, stackFunction.apply(slot), slots[slot]);
                         } else {
@@ -130,10 +130,10 @@ public class FinalFeature {
     };
     public static final ItemStack MANUAL_CARD_INFO = AddUtils.addGlow(new CleanItemStack(
             Material.CRAFTING_TABLE,
-            "&7机制 - &f替代",
-            "&7本机器支持你使用物品替代卡替代原有物品进行合成",
-            "&7同时,你可以使用槽位伪装板充当占位符",
-            "&a机器会自动忽略这些伪装板"));
+            "&7機制 - &f替代",
+            "&7本機器支持你使用物品替代卡替代原有物品進行合成",
+            "&7同時,你可以使用槽位偽裝板充當佔位符",
+            "&a機器會自動忽略這些偽裝板"));
 
     public static boolean isFinalAltarCharged(SlimefunItem that, SlimefunBlockData data) {
         if (that instanceof FinalAltarCore.FinalAltarChargable fac && that instanceof Laser.LaserChargable lc) {

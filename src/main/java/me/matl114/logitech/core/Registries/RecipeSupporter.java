@@ -44,7 +44,7 @@ public class RecipeSupporter {
 
     public static final SlimefunAddon PLUGIN = MyAddon.getInstance();
     //    public static final RecipeType VANILLA_MERCHANT=new RecipeType(AddUtils.getNameKey("vanilla_merchant"),
-    //            new CustomItemStack(Material.PLAYER_HEAD,"交易内容","","村民交易项目"));
+    //            new CustomItemStack(Material.PLAYER_HEAD,"交易內容","","村民交易項目"));
     private static final ArrayList<MachineRecipe> GOLDPAN_RECIPE = new ArrayList<>() {
         {
             add(MachineRecipeUtils.stackFrom(-1, new ItemStack[] {new ItemStack(Material.GRAVEL)}, new ItemStack[] {
@@ -138,16 +138,16 @@ public class RecipeSupporter {
         {
         }
     };
-    // 总统计表
+    // 總統計表
     public static final HashSet<RecipeType> RECIPE_TYPES = new LinkedHashSet<>();
-    // 是和多方块绑定的配方
+    // 是和多方塊綁定的配方
     public static final HashMap<RecipeType, MultiBlockMachine> MULTIBLOCK_RECIPETYPES = new LinkedHashMap<>();
-    // 检测存在TYPE成员的SlimefunItem，，或者也可以手动添加
+    // 檢測存在TYPE成員的SlimefunItem，，或者也可以手動添加
     public static final HashMap<SlimefunItem, RecipeType> CUSTOM_RECIPETYPES = new LinkedHashMap<>() {
         {
         }
     };
-    // 废弃的表
+    // 廢棄的表
     public static final HashSet<RecipeType> SUPPORTED_UNSHAPED_RECIPETYPE = new LinkedHashSet<>() {
         {
             add(RecipeType.ENHANCED_CRAFTING_TABLE);
@@ -173,7 +173,7 @@ public class RecipeSupporter {
             }
         }
     };
-    // 废弃的表
+    // 廢棄的表
     public static final HashSet<RecipeType> SUPPORTED_SHAPED_RECIPETYPE = new HashSet<>() {
         {
             add(RecipeType.MULTIBLOCK);
@@ -187,7 +187,7 @@ public class RecipeSupporter {
             }
         }
     };
-    // 一般来说不能让玩家合成的
+    // 一般來説不能讓玩家合成的
     public static final HashSet<RecipeType> ILLEGAL_RECIPETYPES = new HashSet<>() {
         {
             if (AddDepends.VOIDHARVEST != null) {
@@ -201,12 +201,12 @@ public class RecipeSupporter {
         }
     };
 
-    // 被禁用的多方块
+    // 被禁用的多方塊
     public static final HashSet<MultiBlockMachine> BLACKLIST_MULTIBLOCK = new HashSet<>() {
         {
         }
     };
-    // 检测全部为MultiBlockMachine的机器 并抓取配方
+    // 檢測全部為MultiBlockMachine的機器 並抓取配方
     public static final HashMap<MultiBlockMachine, List<MachineRecipe>> MULTIBLOCK_RECIPES = new LinkedHashMap<>();
 
     public static final HashMap<EntityType, ItemStack[]> ENTITY_DROPLIST = new LinkedHashMap<>();
@@ -426,7 +426,7 @@ public class RecipeSupporter {
                     Utils.recipe("MUSIC_DISC_RELIC", null, null, null, null, null, null, null),
                     Utils.recipe(AddSlimefunItems.REPLACE_CARD.getReplaceCard(Material.MUSIC_DISC_RELIC))));
 
-            // 旗帜图案
+            // 旗幟圖案
 
             add(MachineRecipeUtils.shapeFrom(
                     -1,
@@ -437,7 +437,7 @@ public class RecipeSupporter {
                     Utils.recipe("PIGLIN_BANNER_PATTERN", null, null, null, null, null, null, null),
                     Utils.recipe(AddSlimefunItems.REPLACE_CARD.getReplaceCard(Material.PIGLIN_BANNER_PATTERN))));
 
-            // 潜影盒
+            // 潛影盒
 
             add(MachineRecipeUtils.shapeFrom(
                     -1,
@@ -504,7 +504,7 @@ public class RecipeSupporter {
                     Utils.recipe("SHULKER_BOX", "BLACK_DYE", null, null, null, null, null, null),
                     Utils.recipe(AddSlimefunItems.REPLACE_CARD.getReplaceCard(Material.BLACK_SHULKER_BOX))));
 
-            // 其它装备
+            // 其它裝備
             add(MachineRecipeUtils.shapeFrom(
                     -1,
                     Utils.recipe("TRIDENT", null, null, null, null, null, null, null),
@@ -538,7 +538,7 @@ public class RecipeSupporter {
                     Utils.recipe("ENCHANTED_BOOK", null, null, null, null, null, null, null),
                     Utils.recipe(AddSlimefunItems.REPLACE_CARD.getReplaceCard(Material.ENCHANTED_BOOK))));
 
-            // 杂类
+            // 雜類
 
             add(MachineRecipeUtils.shapeFrom(
                     -1,
@@ -590,19 +590,19 @@ public class RecipeSupporter {
                     Utils.recipe(AddSlimefunItems.REPLACE_CARD.getReplaceCard(Material.LINGERING_POTION))));
         }
     };
-    // 注册为可识别icon的
+    // 註冊為可識別icon的
     public static final HashMap<RecipeType, ItemStack> RECIPETYPE_ICON = new LinkedHashMap<>();
-    // 堆叠机器黑名单
+    // 堆疊機器黑名單
     public static final HashSet<SlimefunItem> BLACKLIST_STACKMACHINE = new LinkedHashSet<>();
-    // 读取机器类黑名单 防止循环读取
+    // 讀取機器類黑名單 防止循環讀取
     public static final HashSet<Class> BLACKLIST_MACHINECLASS = new HashSet<>() {
         {
             // add(AbstractMachine.class);
         }
     };
-    // 读取的全部机器配方
+    // 讀取的全部機器配方
     public static final HashMap<SlimefunItem, List<MachineRecipe>> MACHINE_RECIPELIST = new LinkedHashMap<>();
-    // 记录机器类型和机器耗电
+    // 記錄機器類型和機器耗電
     public static final HashSet<SlimefunItem> MGENERATOR_FORCELIST = new LinkedHashSet<>();
     public static final HashMap<SlimefunItem, Integer> STACKMACHINE_LIST = new LinkedHashMap<>();
     public static final HashMap<SlimefunItem, Integer> STACKMGENERATOR_LIST = new LinkedHashMap<>();
@@ -822,11 +822,11 @@ public class RecipeSupporter {
             }
             if (!append) {
                 recipe.clear();
-            } // 加入机器列表
+            } // 加入機器列表
             recipe.addAll(recipes);
             if (applyToMachine && !isGenerator) {
                 if (!tryModifyStandardMachineRecipe(machine, recipes, append)) {
-                    Debug.logger("WARNING: %s 不是标准的机器,尝试修改机器配方列表失败,禁用该物品 + 模式".formatted(machineId));
+                    Debug.logger("WARNING: %s 不是標準的機器,嘗試修改機器配方列表失敗,禁用該物品 + 模式".formatted(machineId));
                 }
             }
         }
@@ -963,7 +963,7 @@ public class RecipeSupporter {
         try {
             boolean isDisplay = (Boolean) ReflectUtils.invokeGetRecursively(rsc, Settings.FIELD, "forDisplay");
             if (isDisplay) {
-                // 是用于展示的配方？
+                // 是用於展示的配方？
                 return null;
             }
             List<Integer> chances = (List<Integer>) ReflectUtils.invokeGetRecursively(rsc, Settings.FIELD, "chances");
@@ -980,7 +980,7 @@ public class RecipeSupporter {
             }
             if (outputlist.isEmpty()) return null;
 
-            // 处理 noConsume: 读取不消耗的输入索引，传递给 StackMachineRecipe
+            // 處理 noConsume: 讀取不消耗的輸入索引，傳遞給 StackMachineRecipe
             Set<Integer> noConsumeSet = new HashSet<>();
             try {
                 Object noConsumeObj = ReflectUtils.invokeGetRecursively(rsc, Settings.FIELD, "noConsume");
@@ -988,7 +988,7 @@ public class RecipeSupporter {
                     noConsumeObj = ReflectUtils.invokeGetRecursively(rsc, Settings.METHOD, "getNoConsume");
                 }
                 if (noConsumeObj != null) {
-                    // 通过反射调用 size() 和 getInt(int) 读取 fastutil IntList
+                    // 通過反射調用 size() 和 getInt(int) 讀取 fastutil IntList
                     try {
                         java.lang.reflect.Method sizeMethod = noConsumeObj.getClass().getMethod("size");
                         int size = (int) sizeMethod.invoke(noConsumeObj);
@@ -998,7 +998,7 @@ public class RecipeSupporter {
                             noConsumeSet.add((int) getIntMethod.invoke(noConsumeObj, idx));
                         }
                     } catch (Throwable e1) {
-                        // fallback: 尝试 Iterable 方式
+                        // fallback: 嘗試 Iterable 方式
                         if (noConsumeObj instanceof Iterable<?> noConsumeList) {
                             for (Object idx : noConsumeList) {
                                 if (idx instanceof Number num) {
@@ -1134,10 +1134,10 @@ public class RecipeSupporter {
         }
         hasInit = true;
         long a = System.nanoTime();
-        Debug.logger("配方供应器开始进行数据采集,预计耗时2秒");
-        Debug.logger("期间tps可能会下降,请不要在供应器工作时进入服务器");
-        Debug.logger("期间的报错信息均可忽略");
-        Debug.logger("读取全部配方中...");
+        Debug.logger("配方供應器開始進行數據採集,預計耗時2秒");
+        Debug.logger("期間tps可能會下降,請不要在供應器工作時進入服務器");
+        Debug.logger("期間的報錯信息均可忽略");
+        Debug.logger("讀取全部配方中...");
         RECIPE_TYPES.add(BukkitUtils.VANILLA_CRAFTTABLE);
         PROVIDED_SHAPED_RECIPES.put(BukkitUtils.VANILLA_CRAFTTABLE, new ArrayList<>());
         PROVIDED_UNSHAPED_RECIPES.put(BukkitUtils.VANILLA_CRAFTTABLE, new ArrayList<>());
@@ -1242,7 +1242,7 @@ public class RecipeSupporter {
             RECIPETYPE_TO_ITEMS
                     .computeIfAbsent(recipeType, t -> new ArrayList<>())
                     .add(item);
-            // 过会解析
+            // 過會解析
             if (!RECIPE_TYPES.contains(recipeType)) {
                 RECIPE_TYPES.add(recipeType);
                 PROVIDED_SHAPED_RECIPES.put(recipeType, new ArrayList<>());
@@ -1253,7 +1253,7 @@ public class RecipeSupporter {
             }
         }
         RECIPE_TYPES.addAll(CustomRecipeType.getCustomRecipeTypes());
-        // 先解析多方块机器的配方
+        // 先解析多方塊機器的配方
         for (RecipeType recipeType : RECIPE_TYPES) {
             if (!BLACKLIST_RECIPETYPES.contains(recipeType)) { // not in black list
                 SlimefunItem sfitem = recipeType.getMachine();
@@ -1265,12 +1265,12 @@ public class RecipeSupporter {
                         recipes.add(MachineRecipeUtils.stackFromMultiBlock(recipeInput, mb, -1));
                         shapedrecipes.add(MachineRecipeUtils.shapeFromMultiBlock(recipeInput, mb, -1));
                     }
-                    // 记录配方类型对应的多方块
+                    // 記錄配方類型對應的多方塊
                     MULTIBLOCK_RECIPETYPES.put(recipeType, (MultiBlockMachine) sfitem);
-                    // 将"多方块背后的配方类型"注册为多方块的列表
+                    // 將"多方塊背後的配方類型"註冊為多方塊的列表
                     PROVIDED_SHAPED_RECIPES.put(recipeType, shapedrecipes);
                     PROVIDED_UNSHAPED_RECIPES.put(recipeType, recipes);
-                    // 顺便注册了多方块的配方类型
+                    // 順便註冊了多方塊的配方類型
                     MULTIBLOCK_RECIPES.put((MultiBlockMachine) sfitem, recipes);
                 }
             }
@@ -1293,17 +1293,17 @@ public class RecipeSupporter {
                 }
             }
         }
-        // 非多方块的类型,基本上就是普通物品的配方注册，读取一遍
+        // 非多方塊的類型,基本上就是普通物品的配方註冊，讀取一遍
         for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
             RecipeType recipeType = item.getRecipeType();
-            // customRecipeType, 和 Multiblock type都被处理过了
+            // customRecipeType, 和 Multiblock type都被處理過了
             if ((!BLACKLIST_RECIPETYPES.contains(recipeType))
                     && (!MULTIBLOCK_RECIPETYPES.containsKey(recipeType))
                     && !(recipeType instanceof CustomRecipeType)) {
                 PROVIDED_SHAPED_RECIPES.get(recipeType).add(MachineRecipeUtils.shapeFromRecipe(item));
                 PROVIDED_UNSHAPED_RECIPES.get(recipeType).add(MachineRecipeUtils.stackFromRecipe(item));
             }
-            // 解析多方块机器
+            // 解析多方塊機器
             if (recipeType == RecipeType.MULTIBLOCK) {
                 if (item instanceof MultiBlockMachine) {
                     if (!BLACKLIST_MULTIBLOCK.contains(item) && (!MULTIBLOCK_RECIPES.containsKey(item))) {
@@ -1318,7 +1318,7 @@ public class RecipeSupporter {
                     }
                 }
             }
-            // 解析指定类型特殊机器配方类型
+            // 解析指定類型特殊機器配方類型
             try {
                 Object _Type = ReflectUtils.invokeGetRecursively(item, Settings.FIELD, "TYPE");
                 if (_Type instanceof RecipeType && !BLACKLIST_RECIPETYPES.contains((RecipeType) _Type)) {
@@ -1330,7 +1330,7 @@ public class RecipeSupporter {
                 // Debug.logger("generate an exception while registering recipes! :"+e.getMessage());
             }
         }
-        // 强制替换有问题的配方
+        // 強制替換有問題的配方
         PROVIDED_UNSHAPED_RECIPES.put(RecipeType.GOLD_PAN, GOLDPAN_RECIPE);
         PROVIDED_UNSHAPED_RECIPES.put(RecipeType.ORE_WASHER, ORE_WASHER_RECIPE);
         PROVIDED_SHAPED_RECIPES.put(RecipeType.GOLD_PAN, GOLDPAN_RECIPE);
@@ -1342,7 +1342,7 @@ public class RecipeSupporter {
         // 做生物掉落的配方
         HashMap<EntityType, ItemStack[]> preData = new HashMap<>() {
             {
-                // 敌对生物
+                // 敵對生物
                 put(
                         EntityType.ZOMBIE,
                         Utils.recipe(
@@ -1447,7 +1447,7 @@ public class RecipeSupporter {
                                 AddUtils.probItemStackFactory(new ItemStack(Material.DRAGON_HEAD), 5),
                                 new ProbItemStack(new ItemStack(Material.DRAGON_EGG), 0.003)));
                 put(EntityType.WARDEN, Utils.recipe("SCULK_CATALYST"));
-                // 实体
+                // 實體
                 put(EntityType.THROWN_EXP_BOTTLE, Utils.recipe("EXPERIENCE_BOTTLE"));
                 put(EntityType.EGG, Utils.recipe("EGG"));
                 put(EntityType.ENDER_PEARL, Utils.recipe("ENDER_PEARL"));
@@ -1561,9 +1561,9 @@ public class RecipeSupporter {
             }
         }
 
-        Debug.logger("全部配方读取完成");
-        Debug.logger("初始化配方类型显示界面...");
-        // 初始化对应物品
+        Debug.logger("全部配方讀取完成");
+        Debug.logger("初始化配方類型顯示界面...");
+        // 初始化對應物品
         for (RecipeType type : RECIPE_TYPES) {
             try {
                 ItemStack it = type.toItem();
@@ -1571,7 +1571,7 @@ public class RecipeSupporter {
                 String id = type.getKey().getKey().toUpperCase();
                 if (it != null) {
                     SlimefunItemStack sfit =
-                            new SlimefunItemStack(id + "_ICON", AddUtils.addLore(it, "", "&7配方类型:" + ns + ":" + id));
+                            new SlimefunItemStack(id + "_ICON", AddUtils.addLore(it, "", "&7配方類型:" + ns + ":" + id));
                     RECIPETYPE_ICON.put(type, sfit);
                 } else {
                     ILLEGAL_RECIPETYPES.add(type);
@@ -1580,16 +1580,16 @@ public class RecipeSupporter {
                 ILLEGAL_RECIPETYPES.add(type);
             }
         }
-        Debug.logger("初始化机器类型显示界面...");
-        Debug.logger("警告: 如果你发现有机器没有检测到,说明他们并不在已知格式中或者并不在配置文件中");
+        Debug.logger("初始化機器類型顯示界面...");
+        Debug.logger("警告: 如果你發現有機器沒有檢測到,説明他們並不在已知格式中或者並不在配置文件中");
 
-        // 解析含有recipe的机器类型
+        // 解析含有recipe的機器類型
         for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
             try {
                 List<MachineRecipe> recipes = new ArrayList<>();
                 if (item instanceof AContainer) {
                     recipes = ((AContainer) item).getMachineRecipes();
-                } else if (item instanceof AbstractTransformer atransformer) { // 自己实现的生成器 但是用的普通机器的格式 需要转掉
+                } else if (item instanceof AbstractTransformer atransformer) { // 自己實現的生成器 但是用的普通機器的格式 需要轉掉
                     List<MachineRecipe> recipeslst = atransformer.getMachineRecipes();
                     if (recipeslst != null) {
                         int i = recipeslst.size();
@@ -1736,7 +1736,7 @@ public class RecipeSupporter {
                                     if (machineRecipes != null) {
                                         if (machineRecipes instanceof List) {
                                             for (Object machineRecipe : (List) machineRecipes) {
-                                                // 压缩配方,用于提供给机器
+                                                // 壓縮配方,用於提供給機器
                                                 if (machineRecipe instanceof MachineRecipe) {
                                                     recipes.add((MachineRecipe) machineRecipe);
                                                 } else if (machineRecipe
@@ -1805,7 +1805,7 @@ public class RecipeSupporter {
                     List<MachineRecipe> result = new ArrayList<>();
                     MachineRecipe res = null;
                     for (MachineRecipe machineRecipe : recipes) {
-                        // 先检测是不是rsc的
+                        // 先檢測是不是rsc的
                         machineRecipe = transferRSCRecipes(machineRecipe);
                         if (machineRecipe == null) continue;
                         MGeneratorRecipe validGenerator = MachineRecipeUtils.tryGenerateMGFromMachine(machineRecipe);
@@ -1825,7 +1825,7 @@ public class RecipeSupporter {
                 e.printStackTrace();
             }
         }
-        Debug.logger("尝试载入机器配方修改配置文件");
+        Debug.logger("嘗試載入機器配方修改配置文件");
         try {
             List<String> enableAddons = ConfigLoader.INNER_MACHINES.getStringList("enable");
             if (!enableAddons.isEmpty()) {
@@ -1841,26 +1841,26 @@ public class RecipeSupporter {
         } catch (Throwable e) {
 
         }
-        // 解析机器用电,并提供给StackMachine和stackGenerator
-        // 到时候还需要解析生成器配方和用电
-        Debug.logger("注册堆叠机器的机器列表");
-        // 尝试获取
+        // 解析機器用電,並提供給StackMachine和stackGenerator
+        // 到時候還需要解析生成器配方和用電
+        Debug.logger("註冊堆疊機器的機器列表");
+        // 嘗試獲取
         for (Map.Entry<SlimefunItem, List<MachineRecipe>> e : MACHINE_RECIPELIST.entrySet()) {
             SlimefunItem item = e.getKey();
-            // 黑名单 本附属非processor的machine 和 高级processor
+            // 黑名單 本附屬非processor的machine 和 高級processor
             if (item instanceof ImportRecipes ir && ir.isConflict()) {
                 continue;
             }
             int energyComsumption;
             List<MachineRecipe> result = e.getValue();
             if (MachineRecipeUtils.isGeneratorRecipe(result)) {
-                // 剔除掉非AbstractTransformer的本附属机器
+                // 剔除掉非AbstractTransformer的本附屬機器
                 if (!(item instanceof AbstractMachine && (!(item instanceof AbstractTransformer)))) {
                     energyComsumption = tryGetMachineEnergy(item);
                     STACKMGENERATOR_LIST.put(item, energyComsumption);
                 }
             } else if (MachineRecipeUtils.isMachineRecipe(result)) {
-                // 剔除掉非AbstractProcessor的本附属机器
+                // 剔除掉非AbstractProcessor的本附屬機器
                 if (!(item instanceof AbstractMachine
                         && (!(item instanceof EMachine)
                                 && !(item instanceof MTMachine)
@@ -1870,7 +1870,7 @@ public class RecipeSupporter {
                 }
             }
         }
-        // 加载对堆叠机器列表的修改配置
+        // 加載對堆疊機器列表的修改配置
         try {
             List<String> enableAddons = ConfigLoader.INNER_MACHINES.getStringList("enable");
             if (!enableAddons.isEmpty()) {
@@ -1883,11 +1883,11 @@ public class RecipeSupporter {
         }
         loadStackMachineConfig(ConfigLoader.MACHINES, "stack_type", true, true);
 
-        Debug.logger("配方供应器工作完成, 耗时 " + (System.nanoTime() - a) + " 纳秒");
+        Debug.logger("配方供應器工作完成, 耗時 " + (System.nanoTime() - a) + " 納秒");
     }
 
     static {
-        Debug.logger("配方供应器开始初始化...");
+        Debug.logger("配方供應器開始初始化...");
         initRecipeSupportor();
     }
 

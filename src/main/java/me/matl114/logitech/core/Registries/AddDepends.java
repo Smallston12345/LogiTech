@@ -261,32 +261,32 @@ public class AddDepends {
                                         AddItem.STORAGE_SINGULARITY))
                         .setDisplayRecipes(Utils.list(
                                 AddUtils.getInfoShow(
-                                        "&f机制 - &c终极合成",
+                                        "&f機制 - &c終極合成",
                                         "&c特性 ",
-                                        "&7终极合成是本附属某些终极机器中的机制",
-                                        "&c具体说明请看\"版本与说明\"分类中的信息",
-                                        "&7直白了说是让物品存储中的物品直接参与合成/进程",
-                                        "&7从而打破槽位限制",
-                                        "&7该物品是终极机器支持的物品之一",
-                                        "&a建议:不推荐直接将量子存储放入终极机器,不方便且会有更高卡顿!"),
+                                        "&7終極合成是本附屬某些終極機器中的機制",
+                                        "&c具體説明請看\"版本與説明\"分類中的信息",
+                                        "&7直白了説是讓物品存儲中的物品直接參與合成/進程",
+                                        "&7從而打破槽位限制",
+                                        "&7該物品是終極機器支持的物品之一",
+                                        "&a建議:不推薦直接將量子存儲放入終極機器,不方便且會有更高卡頓!"),
                                 null,
                                 AddUtils.getInfoShow(
-                                        "&7机制 -&c 物品存储",
-                                        "&7本物品可以存储某种物品",
-                                        "&7本物品的最大存储量为2147483647",
-                                        "&7当该物品被放入终极机器的槽位中时,",
-                                        "&7可以代理其内部存储的物品&e直接参与合成!",
-                                        "&7产出的物品也可以&e直接进入内部存储的物品中!",
-                                        "&e本物品是网络附属里的支持物品,直接置于地上即可使用"),
+                                        "&7機制 -&c 物品存儲",
+                                        "&7本物品可以存儲某種物品",
+                                        "&7本物品的最大存儲量為2147483647",
+                                        "&7當該物品被放入終極機器的槽位中時,",
+                                        "&7可以代理其內部存儲的物品&e直接參與合成!",
+                                        "&7產出的物品也可以&e直接進入內部存儲的物品中!",
+                                        "&e本物品是網絡附屬裏的支持物品,直接置於地上即可使用"),
                                 null,
                                 AddUtils.getInfoShow(
-                                        "&7机制 -&c 报错",
-                                        "&e如果网络版本不兼容或使用了错误的测试版,会造成报错",
-                                        "&7如果使用量子存储进行合成时,出现合成不成功的情况",
-                                        "&7很可能这是数据损坏的存储或者错误版本导致的存储不兼容",
-                                        "&e请立刻将其移出槽位",
-                                        "&7并判断是存储数据损坏问题还是网络版本问题",
-                                        "&7若累计报错达到一定数目,将会禁用该兼容"),
+                                        "&7機制 -&c 報錯",
+                                        "&e如果網絡版本不兼容或使用了錯誤的測試版,會造成報錯",
+                                        "&7如果使用量子存儲進行合成時,出現合成不成功的情況",
+                                        "&7很可能這是數據損壞的存儲或者錯誤版本導致的存儲不兼容",
+                                        "&e請立刻將其移出槽位",
+                                        "&7並判斷是存儲數據損壞問題還是網絡版本問題",
+                                        "&7若累計報錯達到一定數目,將會禁用該兼容"),
                                 null))
                         .register();
 
@@ -299,7 +299,7 @@ public class AddDepends {
                 SlimefunItem instance = SlimefunItem.getById("INFINITY_CROWN");
                 //                SlimefunItemStack new_infinity_helmet=new
                 // SlimefunItemStack("INFINITY_CROWN",CustomHead.INF_HELMET.getItem(),
-                //                        AddUtils.color("无尽头盔"));
+                //                        AddUtils.color("無盡頭盔"));
                 try {
                     Config cfg = (Config) ReflectUtils.invokeGetRecursively(
                             Slimefun.getItemTextureService(), Settings.FIELD, "config");
@@ -345,7 +345,7 @@ public class AddDepends {
                                         AttributeModifier.Operation.ADD_NUMBER,
                                         EquipmentSlot.HEAD));
                 s.setCustomModelData(null);
-                s.setDisplayName(AddUtils.resolveColor(AddUtils.color("无尽头盔")));
+                s.setDisplayName(AddUtils.resolveColor(AddUtils.color("無盡頭盔")));
                 it.setItemMeta(s);
                 ReflectUtils.invokeSetRecursively(it, "locked", locked);
                 ReflectUtils.invokeSetRecursively(instance, "itemStackTemplate", new ConstSlimefunItemStack(it));

@@ -30,8 +30,8 @@ public class EnergyPipe extends AbstractPipe {
     public void addInfo(ItemStack stack) {
         stack.setItemMeta(AddUtils.addLore(
                         stack,
-                        "&7最大电力传输速率: %sJ/t".formatted(AddUtils.formatDouble(MAX_TRANSFER)),
-                        "&7能量传输损耗率: %s%%".formatted(AddUtils.formatDouble(100 * this.TRANSFER_COST)))
+                        "&7最大電力傳輸速率: %sJ/t".formatted(AddUtils.formatDouble(MAX_TRANSFER)),
+                        "&7能量傳輸損耗率: %s%%".formatted(AddUtils.formatDouble(100 * this.TRANSFER_COST)))
                 .getItemMeta());
     }
 

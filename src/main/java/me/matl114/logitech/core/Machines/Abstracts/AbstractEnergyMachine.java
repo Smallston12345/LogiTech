@@ -110,7 +110,7 @@ public abstract class AbstractEnergyMachine extends CustomSlimefunItem
         super.preRegister();
         //
         registerTick(this);
-        // 为menublock提供 需要
+        // 為menublock提供 需要
         registerBlockMenu(this);
     }
 

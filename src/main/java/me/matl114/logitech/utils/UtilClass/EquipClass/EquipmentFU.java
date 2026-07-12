@@ -46,20 +46,20 @@ public abstract class EquipmentFU {
 
     public EquipmentFU setDisplayName(String name) {
         this.name = name;
-        setDisplayPrefix(rarity.getStyle() + "%s&3单元: &7Lv.".formatted(name));
+        setDisplayPrefix(rarity.getStyle() + "%s&3單元: &7Lv.".formatted(name));
         return this;
     }
 
     public static ItemStack getInfoFor(String fuName, String... function) {
-        return AddUtils.themed(Material.KNOWLEDGE_BOOK, AddUtils.resolveColor(fuName + " : &f机制说明"), function);
+        return AddUtils.themed(Material.KNOWLEDGE_BOOK, AddUtils.resolveColor(fuName + " : &f機制説明"), function);
     }
 
     public String getFullName() {
-        return rarity.getStyle() + name + "§3功能单元";
+        return rarity.getStyle() + name + "§3功能單元";
     }
 
     public ItemStack getInfoDisplay() {
-        return getInfoFor(getFullName(), "这是一个样例功能单元", "你需要在这里写点啥来说明他的功能");
+        return getInfoFor(getFullName(), "這是一個樣例功能單元", "你需要在這裏寫點啥來説明他的功能");
     }
 
     private static final EnumMap<EquipmentSlot, HashMap<NamespacedKey, EquipmentFU>> registry =

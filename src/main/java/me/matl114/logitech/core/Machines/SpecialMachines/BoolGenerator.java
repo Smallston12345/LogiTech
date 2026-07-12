@@ -50,12 +50,12 @@ public class BoolGenerator extends AbstractProcessor {
         super(category, item, recipeType, recipe, progressItem, 5, 100, null);
         this.processtick = tick;
         setDisplayRecipes(Utils.list(
-                AddUtils.getInfoShow("&f生成机制", "&7当所有输入槽内物品全部相同且非空时,生成%s".formatted(Language.get("Items.TRUE_.Name"))),
+                AddUtils.getInfoShow("&f生成機制", "&7當所有輸入槽內物品全部相同且非空時,生成%s".formatted(Language.get("Items.TRUE_.Name"))),
                         AddItem.TRUE_,
                 AddUtils.getInfoShow(
-                                "&f生成机制", "&7当输入槽均非空且任两输入槽内物品互不相同时,生成%s".formatted(Language.get("Items.FALSE_.Name"))),
+                                "&f生成機制", "&7當輸入槽均非空且任兩輸入槽內物品互不相同時,生成%s".formatted(Language.get("Items.FALSE_.Name"))),
                         AddItem.FALSE_,
-                AddUtils.getInfoShow("&f生成机制", "&7当配方匹配时,槽位依次消耗min(槽位物品数,%s)个物品".formatted(inputCost)), null));
+                AddUtils.getInfoShow("&f生成機制", "&7當配方匹配時,槽位依次消耗min(槽位物品數,%s)個物品".formatted(inputCost)), null));
         this.machineRecipes = new ArrayList<>();
         this.machineRecipes.add(MachineRecipeUtils.stackFrom(
                 tick, new ItemStack[0], new ItemStack[] {AddSlimefunItems.setC(AddItem.TRUE_, 3)}));
@@ -65,28 +65,28 @@ public class BoolGenerator extends AbstractProcessor {
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
         int[] border = BORDER;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输入槽边框
+        // 輸入槽邊框
         border = BORDER_IN;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 输出槽边框
+        // 輸出槽邊框
         border = BORDER_OUT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
 
             preset.addItem(border[var4], ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
         }
-        // 空白边框
+        // 空白邊框
         border = PROCESSOR_SLOT;
         len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -103,7 +103,7 @@ public class BoolGenerator extends AbstractProcessor {
                 return null;
             }
         }
-        // 四个非null
+        // 四個非null
         boolean lastResult = CraftUtils.matchItemCounter(inputs[0], inputs[1], false);
         for (int var2 = 2; var2 < 4; ++var2) {
             if (lastResult != CraftUtils.matchItemCounter(inputs[0], inputs[var2], false)) {
@@ -113,10 +113,10 @@ public class BoolGenerator extends AbstractProcessor {
         }
         MachineRecipe result;
         if (lastResult) {
-            // 全相等的,输出
+            // 全相等的,輸出
             result = getMachineRecipes().get(0);
         } else {
-            // 现在it1与it2 it3 it4均不同，比较it2，it3，it4
+            // 現在it1與it2 it3 it4均不同，比較it2，it3，it4
             for (int var2 = 1; var2 < 3; ++var2) {
                 for (int var3 = var2 + 1; var3 < 4; ++var3) {
                     if (CraftUtils.matchItemCounter(inputs[var2], inputs[var3], false)) {
@@ -126,7 +126,7 @@ public class BoolGenerator extends AbstractProcessor {
                 }
             }
             result = getMachineRecipes().get(1);
-            // 通过了全部不同的检验
+            // 通過了全部不同的檢驗
         }
         ItemConsumer[] outCon = CraftUtils.countOneOutput(inv, output, result);
         if (outCon != null) {

@@ -53,57 +53,57 @@ public class AttributeOperator extends SmithingInterface {
     protected final int FORCE_ENCHANT_SLOT = 22;
     protected final int INPUT_ONE_INFO_SLOT = 9;
     protected final ItemStack INPUT_ONE_INFO_ITEM =
-            new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, "&6被转移者输入槽", "&7在此放入即将被转移的物品", "&7一次最多只能消耗一个");
+            new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, "&6被轉移者輸入槽", "&7在此放入即將被轉移的物品", "&7一次最多隻能消耗一個");
     protected final int INPUT_TWO_INFO_SLOT = 27;
     protected final ItemStack INPUT_TWO_INFO_ITEM = new CustomItemStack(
-            Material.PURPLE_STAINED_GLASS_PANE, "&6转移目标输入槽", "&7可以放入转移的目标装备,或者附魔书,或者书", "&7物品一次最多消耗一个");
+            Material.PURPLE_STAINED_GLASS_PANE, "&6轉移目標輸入槽", "&7可以放入轉移的目標裝備,或者附魔書,或者書", "&7物品一次最多消耗一個");
     protected final ItemStack TRANSFER_ALLENCHANT_ITEM = new CustomItemStack(
-            Material.ORANGE_STAINED_GLASS_PANE, "&6转移所有附魔", "&7点击转移一次", "&7shift点击切换是否自动运行", "&7自动运行: &c否");
+            Material.ORANGE_STAINED_GLASS_PANE, "&6轉移所有附魔", "&7點擊轉移一次", "&7shift點擊切換是否自動運行", "&7自動運行: &c否");
     protected final ItemStack TRANSFER_ALLENCHANT_ITEM_ON = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&6转移所有附魔",
-            "&7点击转移一次",
-            "&7shift点击切换是否自动运行",
-            "&7自动运行: &a是",
-            "&e当自动运行时禁止进行其他操作!");
+            "&6轉移所有附魔",
+            "&7點擊轉移一次",
+            "&7shift點擊切換是否自動運行",
+            "&7自動運行: &a是",
+            "&e當自動運行時禁止進行其他操作!");
     protected final ItemStack TRANSFER_ALLATTRIBUTE_ITEM = new CustomItemStack(
-            Material.ORANGE_STAINED_GLASS_PANE, "&6转移所有属性", "&7点击转移一次", "&7shift点击切换是否自动运行", "&7自动运行: &c否");
+            Material.ORANGE_STAINED_GLASS_PANE, "&6轉移所有屬性", "&7點擊轉移一次", "&7shift點擊切換是否自動運行", "&7自動運行: &c否");
     protected final ItemStack TRANSFER_ALLATTRIBUTE_ITEM_ON = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&6转移所有属性",
-            "&7点击转移一次",
-            "&7shift点击切换是否自动运行",
-            "&7自动运行: &a是",
-            "&e当自动运行时禁止进行其他操作!");
+            "&6轉移所有屬性",
+            "&7點擊轉移一次",
+            "&7shift點擊切換是否自動運行",
+            "&7自動運行: &a是",
+            "&e當自動運行時禁止進行其他操作!");
     protected final ItemStack TRANSFER_ONEENCHANT_ITEM =
-            new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6转移单一附魔", "&7点击转移一次", "&7使用上方的按钮切换选中的附魔");
+            new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6轉移單一附魔", "&7點擊轉移一次", "&7使用上方的按鈕切換選中的附魔");
     protected final ItemStack TRANSFER_ONEATTRIBUTE_ITEM =
-            new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6转移单一属性", "&7点击转移一次", "&7使用下方的按钮切换选中的属性");
+            new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6轉移單一屬性", "&7點擊轉移一次", "&7使用下方的按鈕切換選中的屬性");
     protected final ItemStack CHOOSE_ENCHANT_ITEM =
-            new CustomItemStack(Material.ENCHANTED_BOOK, "&6选择你的附魔", "&7左键点击顺序切换", "&7右键点击逆序切换", "&8⇨ &c当前暂无附魔");
+            new CustomItemStack(Material.ENCHANTED_BOOK, "&6選擇你的附魔", "&7左鍵點擊順序切換", "&7右鍵點擊逆序切換", "&8⇨ &c當前暫無附魔");
     protected final ItemStack CHOOSE_ATTRIBUTE_ITEM =
-            new CustomItemStack(Material.DIAMOND_CHESTPLATE, "&6选择你的附魔", "&7左键点击顺序切换", "&7右键点击逆序切换", "&8⇨ &c当前暂无属性");
+            new CustomItemStack(Material.DIAMOND_CHESTPLATE, "&6選擇你的附魔", "&7左鍵點擊順序切換", "&7右鍵點擊逆序切換", "&8⇨ &c當前暫無屬性");
     protected final ItemStack FORCE_ENCHANT_ITEM_OFF = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
-            "&6强制附魔",
-            "&7当前模式: &c关",
-            "&7关闭强制附魔将会在转移附魔时将书本转移为附魔书",
-            "&7或在附魔书的已有附魔存储中加入转移的附魔",
-            "&e开启则会强制附魔书本和附魔书,并不会加入附魔存储");
+            "&6強制附魔",
+            "&7當前模式: &c關",
+            "&7關閉強制附魔將會在轉移附魔時將書本轉移為附魔書",
+            "&7或在附魔書的已有附魔存儲中加入轉移的附魔",
+            "&e開啓則會強制附魔書本和附魔書,並不會加入附魔存儲");
     protected final ItemStack FORCE_ENCHANT_ITEM_ON = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
-            "&6强制附魔",
-            "&7当前模式: &a开",
-            "&7关闭强制附魔将读取附魔书中存储的附魔",
-            "&7若目标物品为书本,则会自动转为附魔书",
-            "&e开启则会强制附魔书本和附魔书,并不会加入附魔存储");
+            "&6強制附魔",
+            "&7當前模式: &a開",
+            "&7關閉強制附魔將讀取附魔書中存儲的附魔",
+            "&7若目標物品為書本,則會自動轉為附魔書",
+            "&e開啓則會強制附魔書本和附魔書,並不會加入附魔存儲");
     protected final ItemStack OUTPUT_BORDER_ITEM =
-            new CustomItemStack(Material.PINK_STAINED_GLASS_PANE, "&6输出槽", "&7对应输入槽的输出口");
+            new CustomItemStack(Material.PINK_STAINED_GLASS_PANE, "&6輸出槽", "&7對應輸入槽的輸出口");
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6运行中", "&7成功接入多方块结构");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6運行中", "&7成功接入多方塊結構");
     protected final ItemStack NO_MULTIBLOCK_ITEM =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c待机中", "&7没有接入多方块结构");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c待機中", "&7沒有接入多方塊結構");
     protected final ItemSetting<Boolean> CAN_TRANSFER_STACK_ABLE_ITEM = create("enable-stackable-item", true);
 
     public AttributeOperator(
@@ -116,24 +116,24 @@ public class AttributeOperator extends SmithingInterface {
         super(category, item, recipeType, recipe, energyBuffer, energyConsumption, false);
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                                "&f机制",
-                                "&7支持在物品之间转移属性增幅符和附魔",
-                                "&7分别可以选择转移单项附魔/增幅符或者转移全部附魔/增幅符",
-                                "&7单项选择器将显示在菜单中,可以选择单项附魔/增幅符",
-                                "&7点击后消耗电力执行转换",
-                                "&7该转移不受任何禁止附魔/驱魔的设定影响",
-                                "&7该转移不受物品材质的附魔种类限制"),
+                                "&f機制",
+                                "&7支持在物品之間轉移屬性增幅符和附魔",
+                                "&7分別可以選擇轉移單項附魔/增幅符或者轉移全部附魔/增幅符",
+                                "&7單項選擇器將顯示在菜單中,可以選擇單項附魔/增幅符",
+                                "&7點擊後消耗電力執行轉換",
+                                "&7該轉移不受任何禁止附魔/驅魔的設定影響",
+                                "&7該轉移不受物品材質的附魔種類限制"),
                         null,
                 AddUtils.getInfoShow(
-                                "&f机制",
-                                "&7该机器提供\"强制附魔\"机制",
-                                "&7当启用时,对于附魔书和书本,将会直接读取其附魔列表",
-                                "&7而非其存储的附魔列表",
-                                "&e启用该机制通常得不到正常玩家想要的结果",
-                                "&7当关闭该机制时,对于附魔书和书本",
-                                "&7当附魔书作为被转移物品时,会把书中存储的附魔附加至目标物品",
-                                "&7当普通书本作为目标物品时,会自动转为附魔书",
-                                "&7当附魔书作为目标物品时,会把被转移物品的附魔列表添加到存储的附魔中"),
+                                "&f機制",
+                                "&7該機器提供\"強制附魔\"機制",
+                                "&7當啓用時,對於附魔書和書本,將會直接讀取其附魔列表",
+                                "&7而非其存儲的附魔列表",
+                                "&e啓用該機制通常得不到正常玩家想要的結果",
+                                "&7當關閉該機制時,對於附魔書和書本",
+                                "&7當附魔書作為被轉移物品時,會把書中存儲的附魔附加至目標物品",
+                                "&7當普通書本作為目標物品時,會自動轉為附魔書",
+                                "&7當附魔書作為目標物品時,會把被轉移物品的附魔列表添加到存儲的附魔中"),
                         null));
     }
 
@@ -146,7 +146,7 @@ public class AttributeOperator extends SmithingInterface {
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             int[] intdata = new int[2];
             Object[] object = new Object[2];
             ItemStack itemStacks = null;
@@ -250,7 +250,7 @@ public class AttributeOperator extends SmithingInterface {
 
         inv.addMenuClickHandler(TRANSFER_ALLENCHANT_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             int code = getAutoTransferCode(inv);
@@ -262,12 +262,12 @@ public class AttributeOperator extends SmithingInterface {
                     DataCache.setCustomString(inv.getLocation(), AUTOKEY_E, "1");
                     inv.replaceExistingItem(TRANSFER_ALLENCHANT_SLOT, TRANSFER_ALLENCHANT_ITEM_ON);
                 }
-                AddUtils.sendMessage(player, "&a成功切换自动运行");
+                AddUtils.sendMessage(player, "&a成功切換自動運行");
                 return false;
             }
             if (code >= 0) {
 
-                AddUtils.sendMessage(player, "&c当前处于自动模式,禁止进行任何其余操作");
+                AddUtils.sendMessage(player, "&c當前處於自動模式,禁止進行任何其餘操作");
                 return false;
             }
             runTransferItemData(inv, 0, true, (str) -> AddUtils.sendMessage(player, str));
@@ -277,7 +277,7 @@ public class AttributeOperator extends SmithingInterface {
         }));
         inv.addMenuClickHandler(TRANSFER_ALLATTRIBUTE_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             int code = getAutoTransferCode(inv);
@@ -289,12 +289,12 @@ public class AttributeOperator extends SmithingInterface {
                     DataCache.setCustomString(inv.getLocation(), AUTOKEY_A, "1");
                     inv.replaceExistingItem(TRANSFER_ALLATTRIBUTE_SLOT, TRANSFER_ALLATTRIBUTE_ITEM_ON);
                 }
-                AddUtils.sendMessage(player, "&a成功切换自动运行");
+                AddUtils.sendMessage(player, "&a成功切換自動運行");
                 return false;
             }
             if (code >= 0) {
 
-                AddUtils.sendMessage(player, "&c当前处于自动模式,禁止进行任何其余操作");
+                AddUtils.sendMessage(player, "&c當前處於自動模式,禁止進行任何其餘操作");
                 return false;
             }
             runTransferItemData(inv, 1, true, (str) -> AddUtils.sendMessage(player, str));
@@ -304,11 +304,11 @@ public class AttributeOperator extends SmithingInterface {
         inv.replaceExistingItem(TRANSFER_ONEENCHANT_SLOT, TRANSFER_ONEENCHANT_ITEM);
         inv.addMenuClickHandler(TRANSFER_ONEENCHANT_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             if (getAutoTransferCode(inv) >= 0) {
-                AddUtils.sendMessage(player, "&c当前处于自动模式,禁止进行任何其余操作");
+                AddUtils.sendMessage(player, "&c當前處於自動模式,禁止進行任何其餘操作");
                 return false;
             }
             runTransferItemData(inv, 0, false, (str) -> AddUtils.sendMessage(player, str));
@@ -318,11 +318,11 @@ public class AttributeOperator extends SmithingInterface {
         inv.replaceExistingItem(TRANSFER_ONEATTRIBUTE_SLOT, TRANSFER_ONEATTRIBUTE_ITEM);
         inv.addMenuClickHandler(TRANSFER_ONEATTRIBUTE_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             if (getAutoTransferCode(inv) >= 0) {
-                AddUtils.sendMessage(player, "&c当前处于自动模式,禁止进行任何其余操作");
+                AddUtils.sendMessage(player, "&c當前處於自動模式,禁止進行任何其餘操作");
                 return false;
             }
             runTransferItemData(inv, 1, false, (str) -> AddUtils.sendMessage(player, str));
@@ -331,7 +331,7 @@ public class AttributeOperator extends SmithingInterface {
         }));
         inv.addMenuClickHandler(FORCE_ENCHANT_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             if (itemStack != null && itemStack.getType() == Material.RED_STAINED_GLASS_PANE) {
@@ -347,11 +347,11 @@ public class AttributeOperator extends SmithingInterface {
         inv.replaceExistingItem(CHOOSE_ATTRIBUTE_SLOT, CHOOSE_ATTRIBUTE_ITEM);
         inv.addMenuClickHandler(CHOOSE_ATTRIBUTE_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             if (getAutoTransferCode(inv) >= 0) {
-                AddUtils.sendMessage(player, "&c当前处于自动模式,禁止进行任何其余操作");
+                AddUtils.sendMessage(player, "&c當前處於自動模式,禁止進行任何其餘操作");
                 return false;
             }
             DataMenuClickHandler dh = getDataHolder(block, inv);
@@ -362,11 +362,11 @@ public class AttributeOperator extends SmithingInterface {
         inv.replaceExistingItem(CHOOSE_ENCHANT_SLOT, CHOOSE_ENCHANT_ITEM);
         inv.addMenuClickHandler(CHOOSE_ENCHANT_SLOT, ((player, i, itemStack, clickAction) -> {
             if (!online(inv)) {
-                AddUtils.sendMessage(player, "&c当前机器并未接入多方块结构");
+                AddUtils.sendMessage(player, "&c當前機器並未接入多方塊結構");
                 return false;
             }
             if (getAutoTransferCode(inv) >= 0) {
-                AddUtils.sendMessage(player, "&c当前处于自动模式,禁止进行任何其余操作");
+                AddUtils.sendMessage(player, "&c當前處於自動模式,禁止進行任何其餘操作");
                 return false;
             }
             DataMenuClickHandler dh = getDataHolder(block, inv);
@@ -647,7 +647,7 @@ public class AttributeOperator extends SmithingInterface {
             BlockMenu inv, int mode, boolean transferAll, Consumer<String> outputStream, int transferAmount) {
         if (!this.conditionHandle(null, inv)) {
             if (outputStream != null) {
-                outputStream.accept("&c电力不足!");
+                outputStream.accept("&c電力不足!");
             }
             return;
         }
@@ -655,7 +655,7 @@ public class AttributeOperator extends SmithingInterface {
         ItemStack it4 = inv.getItemInSlot(OUTPUT_SLOT[1]);
         if (it3 != null || it4 != null) {
             if (outputStream != null) {
-                outputStream.accept("&c输出空间不足!");
+                outputStream.accept("&c輸出空間不足!");
             }
             return;
         }
@@ -663,23 +663,23 @@ public class AttributeOperator extends SmithingInterface {
         ItemStack it2 = inv.getItemInSlot(INPUT_SLOT[1]);
         if (it1 == null || it1.getType().isAir()) {
             if (outputStream != null) {
-                outputStream.accept("&c被转换的物品不能为空!");
+                outputStream.accept("&c被轉換的物品不能為空!");
             }
             return;
         }
         if (it2 == null || it2.getType().isAir()) {
             if (outputStream != null) {
-                outputStream.accept("&c转换的目标物品不能为空");
+                outputStream.accept("&c轉換的目標物品不能為空");
             }
             return;
         }
         ItemStack forceFlag = inv.getItemInSlot(FORCE_ENCHANT_SLOT);
         boolean forceEnchant = forceFlag != null && forceFlag.getType() == Material.GREEN_STAINED_GLASS_PANE;
         if (!CAN_TRANSFER_STACK_ABLE_ITEM.getValue()) {
-            // 非force情况可以转book变成enchant book, force的情况不行
+            // 非force情況可以轉book變成enchant book, force的情況不行
             if (it2.getMaxStackSize() != 1 && (it2.getType() != Material.BOOK || forceEnchant)) {
                 if (outputStream != null) {
-                    outputStream.accept("&c转换的目标物品不可以堆叠!");
+                    outputStream.accept("&c轉換的目標物品不可以堆疊!");
                 }
                 return;
             }
@@ -699,14 +699,14 @@ public class AttributeOperator extends SmithingInterface {
                             forceEnchant);
                 } else {
                     if (outputStream != null) {
-                        outputStream.accept("&c被转换的物品不存在附魔");
+                        outputStream.accept("&c被轉換的物品不存在附魔");
                     }
                     return;
                 }
             } catch (Throwable e) {
                 Debug.debug(e);
                 if (outputStream != null) {
-                    outputStream.accept("&c未知错误,请检查MC版本并联系作者!");
+                    outputStream.accept("&c未知錯誤,請檢查MC版本並聯系作者!");
                 }
                 return;
             }
@@ -723,7 +723,7 @@ public class AttributeOperator extends SmithingInterface {
                     }
                 } else {
                     if (outputStream != null) {
-                        outputStream.accept("&c被转换的物品不存在属性增幅符");
+                        outputStream.accept("&c被轉換的物品不存在屬性增幅符");
                     }
                     return;
                 }
@@ -731,7 +731,7 @@ public class AttributeOperator extends SmithingInterface {
             } catch (Throwable e) {
                 Debug.debug(e);
                 if (outputStream != null) {
-                    outputStream.accept("&c转移失败,该属性增幅符疑似已在该物品上被注册过");
+                    outputStream.accept("&c轉移失敗,該屬性增幅符疑似已在該物品上被註冊過");
                 }
                 return;
             }
@@ -774,7 +774,7 @@ public class AttributeOperator extends SmithingInterface {
         }
         if (transferResult == null) {
             if (outputStream != null) {
-                outputStream.accept("&c转移失败!目标物品上已有更高级的附魔/相同属性值");
+                outputStream.accept("&c轉移失敗!目標物品上已有更高級的附魔/相同屬性值");
             }
             return;
         }
@@ -791,7 +791,7 @@ public class AttributeOperator extends SmithingInterface {
         if (it1.getAmount() == 0) refreshInputItemData(inv, handler, true);
         progressorCost(null, inv);
         if (outputStream != null) {
-            outputStream.accept("&a转移成功!");
+            outputStream.accept("&a轉移成功!");
         }
     }
 

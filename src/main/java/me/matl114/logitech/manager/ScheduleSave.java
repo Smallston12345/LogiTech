@@ -23,7 +23,7 @@ public class ScheduleSave {
         for (Runnable task : PERIODIC_SAVES) {
             task.run();
         }
-        // Debug.logger("阶段性数据保存成功!");
+        // Debug.logger("階段性數據保存成功!");
         return;
     }
 

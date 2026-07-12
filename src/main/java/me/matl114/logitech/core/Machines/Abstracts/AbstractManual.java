@@ -45,12 +45,12 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
         12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
     };
     protected static final ItemStack BORDER = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
-    //    protected static final ItemStack PREV=new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,"&3搜索上一个配方");
-    //    protected static final ItemStack NEXT=new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,"&3搜索下一个配方");
+    //    protected static final ItemStack PREV=new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,"&3搜索上一個配方");
+    //    protected static final ItemStack NEXT=new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,"&3搜索下一個配方");
     protected static final ItemStack CRAFT_ONE = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&3单次合成", "&6左键&b合成 &d1次 &b当前物品", "&6右键&b合成 &d16次 &b当前物品");
+            Material.GREEN_STAINED_GLASS_PANE, "&3單次合成", "&6左鍵&b合成 &d1次 &b當前物品", "&6右鍵&b合成 &d16次 &b當前物品");
     protected static final ItemStack CRAFT_MUL = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&3批量合成", "&6左键&b合成 &d64次 &b当前物品", "&6右键&b合成 &d3456次 &b当前物品");
+            Material.GREEN_STAINED_GLASS_PANE, "&3批量合成", "&6左鍵&b合成 &d64次 &b當前物品", "&6右鍵&b合成 &d3456次 &b當前物品");
 
     protected static ItemStack getMiddleItem(ItemStack stack, int index) {
         if (stack == null) return DISPLAY_NOMATCH_MID;
@@ -60,14 +60,14 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
         List<String> lore = meta.getLore();
         lore = lore == null ? new ArrayList<>() : lore;
         if (index >= 0) {
-            lore.add("§8匹配的产物");
-            lore.add("§8配方编号: " + index);
+            lore.add("§8匹配的產物");
+            lore.add("§8配方編號: " + index);
         }
         lore.add("");
-        lore.add("§3shift点击一键收拾机器内物品");
-        lore.add("§7将未堆满一组的相同物品合并");
-        lore.add("§6shift+左键 §b按输入槽顺序收拾");
-        lore.add("§6shift+右键 §b按输出槽顺序收拾");
+        lore.add("§3shift點擊一鍵收拾機器內物品");
+        lore.add("§7將未堆滿一組的相同物品合併");
+        lore.add("§6shift+左鍵 §b按輸入槽順序收拾");
+        lore.add("§6shift+右鍵 §b按輸出槽順序收拾");
         meta.setLore(lore);
         return new CleanItemStack(stack.getType(), stack.getAmount(), () -> meta);
     }
@@ -78,7 +78,7 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
         var meta = stack.getItemMeta();
         List<String> lore = meta.getLore();
         lore = lore == null ? new ArrayList<>() : lore;
-        lore.add("§3点击搜索上一个配方");
+        lore.add("§3點擊搜索上一個配方");
         meta.setLore(lore);
         return new CleanItemStack(stack.getType(), stack.getAmount(), () -> meta);
     }
@@ -89,13 +89,13 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
         var meta = stack.getItemMeta();
         List<String> lore = meta.getLore();
         lore = lore == null ? new ArrayList<>() : lore;
-        lore.add("§3点击搜索下一个配方");
+        lore.add("§3點擊搜索下一個配方");
         meta.setLore(lore);
         return new CleanItemStack(stack.getType(), stack.getAmount(), () -> meta);
     }
 
     protected static final ItemStack DISPLAY_NOMATCH =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c没有匹配的配方");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c沒有匹配的配方");
     protected static final ItemStack DISPLAY_NOMATCH_MID = getMiddleItem(DISPLAY_NOMATCH, -1);
     protected static final ItemStack DISPLAY_NOMATCH_PREV = getPrevItem(DISPLAY_NOMATCH);
     protected static final ItemStack DISPLAY_NOMATCH_NEXT = getNextItem(DISPLAY_NOMATCH);
@@ -245,7 +245,7 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
                 int charge = this.getCharge(menu.getLocation()) / this.energyConsumption;
                 limit = Math.min(limit, charge);
                 if (limit == 0) {
-                    AddUtils.sendMessage(player, "&c电力不足!无法进行合成");
+                    AddUtils.sendMessage(player, "&c電力不足!無法進行合成");
                 }
             }
             AbstractManual.this.updateMenu(menu, block, Settings.RUN);
@@ -262,7 +262,7 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
                 int charge = this.getCharge(menu.getLocation()) / this.energyConsumption;
                 limit = Math.min(limit, charge);
                 if (limit == 0) {
-                    AddUtils.sendMessage(player, "&c电力不足!无法进行合成");
+                    AddUtils.sendMessage(player, "&c電力不足!無法進行合成");
                 }
             }
             AbstractManual.this.updateMenu(menu, block, Settings.RUN);
@@ -322,7 +322,7 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
             Location loc = inv.getLocation();
             int recordIndex = getNowRecordRecipe(loc);
             List<MachineRecipe> mRecipe = getMachineRecipes(null, inv);
-            // 没有匹配配方会直接返回失败
+            // 沒有匹配配方會直接返回失敗
             if (recordIndex < 0 || recordIndex >= mRecipe.size()) {
                 return;
             }
@@ -336,10 +336,10 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
     }
 
     public void doCraft(BlockMenu inv, int limit, MachineRecipe recordRecipe) {
-        // 计算电力
+        // 計算電力
         Pair<ItemGreedyConsumer[], ItemGreedyConsumer[]> results = CraftUtils.countMultiRecipe(
                 inv, getInputSlots(), getOutputSlots(), recordRecipe, limit, CRAFT_PROVIDER);
-        // 输出满了会返回null
+        // 輸出滿了會返回null
         if (results == null) {
             return;
         }

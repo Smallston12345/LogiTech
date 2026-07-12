@@ -19,10 +19,10 @@ public class SingularityStorage extends StorageType {
         super();
     }
 
-    public static final String ITEM_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B压缩物品: &f");
+    public static final String ITEM_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B壓縮物品: &f");
     public static final String CORRUPTED_STORAGE_PREFIX =
-            AddUtils.resolveColor("&x&E&B&3&3&E&B压缩物品: &f&c该存储由于NBT过大而损坏,请不要从存储交互接口中移出,否则物品可能丢失!");
-    public static final String AMOUNT_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B压缩数量: &f");
+            AddUtils.resolveColor("&x&E&B&3&3&E&B壓縮物品: &f&c該存儲由於NBT過大而損壞,請不要從存儲交互接口中移出,否則物品可能丟失!");
+    public static final String AMOUNT_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B壓縮數量: &f");
     public static final NamespacedKey KEY_ITEM = AddUtils.getNameKey("sin_item");
     public static final NamespacedKey KEY_AMOUNT = AddUtils.getNameKey("sin_amount");
     protected static final long MAX_AMOUNT = Long.MAX_VALUE;
@@ -108,7 +108,7 @@ public class SingularityStorage extends StorageType {
             if (e != null) return e;
         } catch (Throwable ignored) {
         }
-        // 向后兼容: 旧存档使用 INTEGER 类型
+        // 向後兼容: 舊存檔使用 INTEGER 類型
         try {
             Integer e = meta.getPersistentDataContainer().get(KEY_AMOUNT, PersistentDataType.INTEGER);
             if (e != null) return e;

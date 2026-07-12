@@ -40,23 +40,23 @@ public class MultiBlockBuilder extends CustomProps {
                     event.cancel();
                     multiBlockForceBuild(location, mcore.getMultiBlockType(), mcore, player);
                 } else {
-                    AddUtils.sendMessage(player, "&c并不是一个多方块机器核心");
+                    AddUtils.sendMessage(player, "&c並不是一個多方塊機器核心");
                 }
             }
         } else {
-            AddUtils.sendMessage(player, "&c你没有使用这个物品的权限");
+            AddUtils.sendMessage(player, "&c你沒有使用這個物品的權限");
         }
     }
 
     public void multiBlockForceBuild(
             Location coreLocation, AbstractMultiBlockType type, MultiBlockCore core, Player player) {
-        AddUtils.sendMessage(player, "&a请输入生成的方向 (NORTH,WEST,SOUTH,EAST)");
+        AddUtils.sendMessage(player, "&a請輸入生成的方向 (NORTH,WEST,SOUTH,EAST)");
         AddUtils.asyncWaitPlayerInput(player, (dir) -> {
             MultiBlockService.Direction direction;
             try {
                 direction = MultiBlockService.Direction.valueOf(dir);
             } catch (Throwable e) {
-                AddUtils.sendMessage(player, "&c无效的方向! 搭建已取消");
+                AddUtils.sendMessage(player, "&c無效的方向! 搭建已取消");
                 return;
             }
             List<String> argList = type.getRequiredArguments();
@@ -92,7 +92,7 @@ public class MultiBlockBuilder extends CustomProps {
                                     }
                                 } else {
                                     this.cancel();
-                                    AddUtils.sendMessage(player, "&a搭建完毕!");
+                                    AddUtils.sendMessage(player, "&a搭建完畢!");
                                 }
                             }
                         },
@@ -108,7 +108,7 @@ public class MultiBlockBuilder extends CustomProps {
         if (arguments.isEmpty()) {
             callback.run();
         } else {
-            AddUtils.sendMessage(player, "&a请输入下面参数: " + arguments.get(0) + " (输入\"取消\"以取消)");
+            AddUtils.sendMessage(player, "&a請輸入下面參數: " + arguments.get(0) + " (輸入\"取消\"以取消)");
             AddUtils.asyncWaitPlayerInput(player, (dir) -> {
                 if (Objects.equals("取消", dir)) {
                     return;

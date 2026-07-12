@@ -25,7 +25,7 @@ public class ItemReplacerPusher extends ItemPusher {
         super.updateItemStack();
         source.setAmount((int) Math.min(cnt, Integer.MAX_VALUE));
     }
-    // 修复了setFrom存储时覆写maxSize的问题
+    // 修復了setFrom存儲時覆寫maxSize的問題
     public void setFrom(ItemCounter source) {
         super.setFrom(source);
     }

@@ -16,9 +16,9 @@ public class BiFilter extends AbstractFilter {
 
     protected final int[] OUTPUT_BORDER = new int[] {37, 40, 43};
     protected final ItemStack[] OUTPUT_BORDERS_ITEM = new ItemStack[] {
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方为输出槽0", "&7下方为白名单槽0"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6默认槽位", "&7上方为默认输出槽", "&7下方为输入槽清空模式切换按钮"),
-        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方为输出槽0", "&7下方为白名单槽0")
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方為輸出槽0", "&7下方為白名單槽0"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6默認槽位", "&7上方為默認輸出槽", "&7下方為輸入槽清空模式切換按鈕"),
+        new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6槽位0", "&7上方為輸出槽0", "&7下方為白名單槽0")
     };
     protected final int[] OUTPUT_SLOTS = new int[] {28, 34, 31};
     protected final int[] OUTPUT_WLSLOTS = new int[] {46, 52};

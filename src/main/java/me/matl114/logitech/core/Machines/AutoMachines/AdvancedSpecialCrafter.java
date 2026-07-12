@@ -9,7 +9,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import java.util.*;
-// TODO 做这个高级合成机
+// TODO 做這個高級合成機
 import me.matl114.logitech.core.Interface.MultiCraftType;
 import me.matl114.logitech.core.Interface.RecipeDisplay;
 import me.matl114.logitech.core.Interface.RecipeLock;
@@ -48,15 +48,15 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
     protected final HashSet<RecipeType> BW_LIST;
     protected final ItemStack PARSE_ITEM = new CustomItemStack(
             Material.ORANGE_STAINED_GLASS_PANE,
-            "&e点击解析配方",
-            "&b机制:",
-            "&6将配方表输出的物品(若有多个则第一个)，",
-            "&e置于下方第一个槽位",
-            "&6将合成该物品所使用的特殊机器(物品)",
-            "&e置于下方第二个槽位",
-            "&6右键本槽位,或者开关容器界面,配方将被解析",
-            "&6机器将按照解析出的指定配方合成",
-            "&a机器(物品)放的数量决定合成进程数");
+            "&e點擊解析配方",
+            "&b機制:",
+            "&6將配方表輸出的物品(若有多個則第一個)，",
+            "&e置於下方第一個槽位",
+            "&6將合成該物品所使用的特殊機器(物品)",
+            "&e置於下方第二個槽位",
+            "&6右鍵本槽位,或者開關容器界面,配方將被解析",
+            "&6機器將按照解析出的指定配方合成",
+            "&a機器(物品)放的數量決定合成進程數");
     protected final ItemStack DISPLAY_BKGROUND = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, " ");
     protected final ItemStack DISPLAY_DEFAULT_BKGROUND = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, " ");
 
@@ -113,7 +113,7 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
             Debug.debug(BW_LIST);
             for (RecipeType e : types.values()) {
                 Debug.debug(e.getKey());
-                if (BW_LIST.contains(e)) { // 黑名单
+                if (BW_LIST.contains(e)) { // 黑名單
                     Debug.debug(e.getKey());
                     continue;
                 }
@@ -133,9 +133,9 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        // 空白背景 禁止点击
+        // 空白背景 禁止點擊
 
-        // 输入槽边框
+        // 輸入槽邊框
         int[] border = BORDER_SLOT;
         int len = border.length;
         for (int var4 = 0; var4 < len; ++var4) {
@@ -185,7 +185,7 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
         int index = MultiCraftType.getRecipeTypeIndex(data);
         if (index >= 0) {
             RecipeType[] types = getCraftTypes();
-            if (index >= types.length) { // 下标越界检查
+            if (index >= types.length) { // 下標越界檢查
                 MultiCraftType.setRecipeTypeIndex(data, -1);
                 return null;
             }
@@ -388,7 +388,7 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
                         if (BW_LIST.contains(e.getValue())) {
                             continue;
                         }
-                        add(AddUtils.getInfoShow("&f支持的机器", "&7将机器插入指定槽位以进行合成"));
+                        add(AddUtils.getInfoShow("&f支持的機器", "&7將機器插入指定槽位以進行合成"));
                         add(new DisplayItemStack(e.getKey().getItem()));
                     }
                 }

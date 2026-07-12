@@ -126,12 +126,12 @@ public abstract class MultiBlockType implements AbstractMultiBlockType {
             Location partloc = loc.clone().add(delta);
             // Debug.logger("check blockid ",i,this.getSchemaPartId(i),"check target id
             // ",MultiBlockService.safeGetPartId(partloc));
-            // 如果当前匹配 且并未在响应任意其他的多方块才能通过，否则任意一条均为false
+            // 如果當前匹配 且並未在響應任意其他的多方塊才能通過，否則任意一條均為false
             if (!this.getSchemaPartId(i).equals(MultiBlockService.safeGetPartId(partloc))) {
                 //  Debug.logger("wrong at ",delta.toString());
                 final int a = i;
                 errorOut.out(() -> {
-                    return "&c位于%s的多方块部件并不是有效的部件,需要%s"
+                    return "&c位於%s的多方塊部件並不是有效的部件,需要%s"
                             .formatted(DataCache.locationToDisplayString(partloc), this.getSchemaPartId(a));
                 });
                 return null;
@@ -140,15 +140,15 @@ public abstract class MultiBlockType implements AbstractMultiBlockType {
                 // used to  reload multiblock Structure after server restart
                 //                if(hasPrevRecord&&false){
                 //                //    Debug.logger("wrong at ",delta.toString());
-                //                    errorOut.out(()->"&c错误!你不该看见该消息,请联系作者");
+                //                    errorOut.out(()->"&c錯誤!你不該看見該消息,請聯繫作者");
                 //                    return null;
                 //                    //no record but target block has been occupied by sth
                 //                }else
                 if (!hasPrevRecord
-                        && MultiBlockService.validHandler(MultiBlockService.safeGetUUID(partloc))) { // 如果是当前已经注册的别的机器的
+                        && MultiBlockService.validHandler(MultiBlockService.safeGetUUID(partloc))) { // 如果是當前已經註冊的別的機器的
                     // Debug.logger("wrong at ",delta.toString());
                     errorOut.out(() -> {
-                        return "&c结构冲突!位于%s的部件属于另个机器! id-%s,位于%s"
+                        return "&c結構衝突!位於%s的部件屬於另個機器! id-%s,位於%s"
                                 .formatted(
                                         DataCache.locationToDisplayString(partloc),
                                         MultiBlockService.safeGetUUID(partloc),
@@ -167,7 +167,7 @@ public abstract class MultiBlockType implements AbstractMultiBlockType {
                     // Debug.logger("wrong at ",entry.getKey().toString());
                     int a = i;
                     errorOut.out(() -> {
-                        return "&c位于%s的方块并不满足构建所需要的额外条件".formatted(DataCache.locationToDisplayString(reqLoc));
+                        return "&c位於%s的方塊並不滿足構建所需要的額外條件".formatted(DataCache.locationToDisplayString(reqLoc));
                     });
                     return null;
                 }

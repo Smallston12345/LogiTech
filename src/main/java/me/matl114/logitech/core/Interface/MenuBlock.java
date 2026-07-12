@@ -99,7 +99,7 @@ public interface MenuBlock extends InventoryBlock {
     }
 
     public abstract static class AdvancedBlockMenuPreset extends BlockMenuPreset {
-        // 双击 拖拽都无法监听！
+        // 雙擊 拖拽都無法監聽！
         boolean doubleClick;
         MenuBlock instance;
 

@@ -55,7 +55,7 @@ public class SpaceTower extends AbstractMachine {
         stack.setItemMeta(AddUtils.addLore(
                         stack,
                         LoreBuilder.powerBuffer(energybuffer),
-                        "&8⇨ &e⚡ &7" + AddUtils.formatDouble(energyConsumption) + " J/方块")
+                        "&8⇨ &e⚡ &7" + AddUtils.formatDouble(energyConsumption) + " J/方塊")
                 .getItemMeta());
     }
 
@@ -69,10 +69,10 @@ public class SpaceTower extends AbstractMachine {
                 OPERATE_SLOT,
                 new CustomItemStack(
                         Material.PURPLE_STAINED_GLASS_PANE,
-                        "&6点击进行空间IO操作",
-                        "&7单位体积耗电: %dJ".formatted(energyConsumption),
-                        "&e请确保你已经阅读机器说明"));
-        preset.addItem(INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6状态", "&c未检测出延申的空间塔框架"));
+                        "&6點擊進行空間IO操作",
+                        "&7單位體積耗電: %dJ".formatted(energyConsumption),
+                        "&e請確保你已經閲讀機器説明"));
+        preset.addItem(INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6狀態", "&c未檢測出延申的空間塔框架"));
     }
 
     public void newMenuInstance(BlockMenu menu, Block block) {
@@ -93,15 +93,15 @@ public class SpaceTower extends AbstractMachine {
         ItemStack storageCard = inv.getItemInSlot(INPUT_SLOTS[0]);
 
         if (storageCard == null) {
-            AddUtils.sendMessage(player, "&c磁盘槽位为空!");
+            AddUtils.sendMessage(player, "&c磁盤槽位為空!");
             return;
         }
         inv.replaceExistingItem(INPUT_SLOTS[0], storageCard);
-        // 防止数据保存不上!
+        // 防止數據保存不上!
         storageCard = MenuUtils.syncSlot(inv, INPUT_SLOTS[0]);
         var locationInfo = getSpaceTowerRange(loc);
         if (locationInfo == null) {
-            AddUtils.sendMessage(player, "&c未检测到延申的空间塔框架");
+            AddUtils.sendMessage(player, "&c未檢測到延申的空間塔框架");
             return;
         } else {
             Location start = locationInfo.getFirstValue();
@@ -113,7 +113,7 @@ public class SpaceTower extends AbstractMachine {
             int charge = this.getCharge(loc);
             if (charge >= volumn * this.energyConsumption) {
                 if (StorageSpace.threadRunning()) {
-                    AddUtils.sendMessage(player, "&c当前正在有空间塔进行IO操作,请稍后再试");
+                    AddUtils.sendMessage(player, "&c當前正在有空間塔進行IO操作,請稍後再試");
                     return;
                 } else {
                     onStorageOperation(
@@ -124,7 +124,7 @@ public class SpaceTower extends AbstractMachine {
                             storageCard);
                 }
             } else {
-                AddUtils.sendMessage(player, "&c电力不足! %d/%dJ".formatted(charge, volumn * this.energyConsumption));
+                AddUtils.sendMessage(player, "&c電力不足! %d/%dJ".formatted(charge, volumn * this.energyConsumption));
                 return;
             }
         }
@@ -157,12 +157,12 @@ public class SpaceTower extends AbstractMachine {
                 int status2 = ConfigLoader.SPACE_STORAGE.getInt(parentPath + "status");
                 try {
                     String[] intDatas = locationInfo.split(",");
-                    // 判断是否数据对其
+                    // 判斷是否數據對其
                     if (x_ - x != Integer.parseInt(intDatas[2])
                             || y_ - y != Integer.parseInt(intDatas[3])
                             || z_ - z != Integer.parseInt(intDatas[4])) {
                         AddUtils.sendMessage(
-                                player, "&c空间塔圈出的空间 %d,%d,%d 与磁盘中所记录的空间大小不符!".formatted(x_ - x, y_ - y, z_ - z));
+                                player, "&c空間塔圈出的空間 %d,%d,%d 與磁盤中所記錄的空間大小不符!".formatted(x_ - x, y_ - y, z_ - z));
                         return false;
                     }
                     storedLocation = new Location(
@@ -171,19 +171,19 @@ public class SpaceTower extends AbstractMachine {
                             0,
                             Integer.parseInt(intDatas[1]));
                 } catch (Throwable e) {
-                    AddUtils.sendMessage(player, "&c读取配置文件时出现异常,请找服务器管理员解决");
+                    AddUtils.sendMessage(player, "&c讀取配置文件時出現異常,請找服務器管理員解決");
                     Debug.logger(e);
-                    Debug.logger("请检查space-storage.yml中数据是否有异常,或者联系作者解决");
+                    Debug.logger("請檢查space-storage.yml中數據是否有異常,或者聯繫作者解決");
                     return false;
                 }
                 if (status != status2) {
-                    AddUtils.sendMessage(player, "&c磁盘中存储状态数据损坏!");
+                    AddUtils.sendMessage(player, "&c磁盤中存儲狀態數據損壞!");
                     return false;
                 }
                 String uid = card.getUid(meta);
                 String uid2 = ConfigLoader.SPACE_STORAGE.getString(parentPath + "uid");
                 if (!uid2.equals(uid)) {
-                    AddUtils.sendMessage(player, "&c磁盘中存储uid与配置文件不符!");
+                    AddUtils.sendMessage(player, "&c磁盤中存儲uid與配置文件不符!");
                     return false;
                 }
             }
@@ -197,14 +197,14 @@ public class SpaceTower extends AbstractMachine {
             ConfigLoader.SPACE_STORAGE.setValue(parentPath + "status", newStatus);
             ConfigLoader.SPACE_STORAGE.save();
 
-            AddUtils.sendMessage(player, "&a磁盘数据检测无误...");
-            AddUtils.sendMessage(player, "&a加载磁盘空间中...");
-            AddUtils.sendMessage(player, "&a空间转移中,这可能会持续数秒...");
+            AddUtils.sendMessage(player, "&a磁盤數據檢測無誤...");
+            AddUtils.sendMessage(player, "&a加載磁盤空間中...");
+            AddUtils.sendMessage(player, "&a空間轉移中,這可能會持續數秒...");
             cost.run();
             StorageSpace.onSpaceExchange(player, startLocation, endLocation, storedLocation, status, true);
             return true;
         } else {
-            AddUtils.sendMessage(player, "&c这不是有效的空间磁盘");
+            AddUtils.sendMessage(player, "&c這不是有效的空間磁盤");
             return false;
         }
     }
@@ -284,7 +284,7 @@ public class SpaceTower extends AbstractMachine {
         var locationInfo = getSpaceTowerRange(menu.getLocation());
         if (locationInfo == null) {
             menu.replaceExistingItem(
-                    INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6点击刷新状态", "&c未检测出延申的空间塔框架"));
+                    INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6點擊刷新狀態", "&c未檢測出延申的空間塔框架"));
         } else {
             Location start = locationInfo.getFirstValue();
             Location end = locationInfo.getSecondValue();
@@ -295,11 +295,11 @@ public class SpaceTower extends AbstractMachine {
                     INFO_SLOT,
                     new CustomItemStack(
                             Material.GREEN_STAINED_GLASS_PANE,
-                            "&6状态",
-                            "&a检测出框架圈成的空间",
+                            "&6狀態",
+                            "&a檢測出框架圈成的空間",
                             "&7位置1(包含): " + DataCache.locationToDisplayString(start),
                             "&7位置2(不包含): " + DataCache.locationToDisplayString(end),
-                            "&7空间大小: " + String.join("x", String.valueOf(dx), String.valueOf(dy), String.valueOf(dz))));
+                            "&7空間大小: " + String.join("x", String.valueOf(dx), String.valueOf(dy), String.valueOf(dz))));
         }
     }
 

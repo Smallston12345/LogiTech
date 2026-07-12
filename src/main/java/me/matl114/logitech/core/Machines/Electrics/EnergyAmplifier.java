@@ -47,14 +47,14 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
     protected final int RUNWHENFULL_SLOT = 8;
     protected final int STATUS_SLOT = 4;
     protected final int MACHINE_SLOT = 13;
-    protected final ItemStack STATUS_ITEM_OFF = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&c当前状态: 未发电");
+    protected final ItemStack STATUS_ITEM_OFF = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&c當前狀態: 未發電");
 
     protected ItemPusherProvider MACHINE_PROVIDER = FinalFeature.STORAGE_READER;
     protected double multiply;
     protected final ItemStack RUNWHENFULL_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6过载模式: &c关", "&7点击切换过载模式", "&7当过载模式启用时候,即使发电机存电量已满仍旧会发电");
+            Material.RED_STAINED_GLASS_PANE, "&6過載模式: &c關", "&7點擊切換過載模式", "&7當過載模式啓用時候,即使發電機存電量已滿仍舊會發電");
     protected final ItemStack RUNWHENFULL_ON = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6过载模式: &a开", "&7点击切换过载模式", "&7当过载模式启用时候,即使发电机存电量已满仍旧会发电");
+            Material.GREEN_STAINED_GLASS_PANE, "&6過載模式: &a開", "&7點擊切換過載模式", "&7當過載模式啓用時候,即使發電機存電量已滿仍舊會發電");
 
     public EnergyAmplifier(
             ItemGroup category,
@@ -67,20 +67,20 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
         this.multiply = multiply;
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
-                        "&f机制 - &c终极堆叠发电",
-                        "&7该机器可以模拟其上方的发电机发电",
-                        "&7在槽位中放入与&e该机器方块上方方块&7的&a发电机&7类型相同的粘液物品",
-                        "&a注意:你可以将发电机装入存储类物品放入该槽位",
-                        "&a机器将读取存储中的发电机类型和数目",
-                        "&7该机器将会发电<槽位中读取的机器数>*%.2f*<上方环境中发电机的发电量>J".formatted(this.multiply),
-                        "&a该槽位中支持的存储类物品与&c\"终极合成\"&a特性中的存储类物品相同"),
+                        "&f機制 - &c終極堆疊發電",
+                        "&7該機器可以模擬其上方的發電機發電",
+                        "&7在槽位中放入與&e該機器方塊上方方塊&7的&a發電機&7類型相同的粘液物品",
+                        "&a注意:你可以將發電機裝入存儲類物品放入該槽位",
+                        "&a機器將讀取存儲中的發電機類型和數目",
+                        "&7該機器將會發電<槽位中讀取的機器數>*%.2f*<上方環境中發電機的發電量>J".formatted(this.multiply),
+                        "&a該槽位中支持的存儲類物品與&c\"終極合成\"&a特性中的存儲類物品相同"),
                 null,
-                AddUtils.getInfoShow("&f示例", "&7右侧是一个示意图,讲述了该如何使用该机器"),
+                AddUtils.getInfoShow("&f示例", "&7右側是一個示意圖,講述了該如何使用該機器"),
                 AddUtils.resolveItem("ENERGY_REGULATOR"),
                 AddItem.OPPO_GEN,
                 item,
                 null,
-                AddUtils.getInfoShow("&f说明", "&7你将会看见下方的机器发电")));
+                AddUtils.getInfoShow("&f説明", "&7你將會看見下方的機器發電")));
     }
 
     public void constructMenu(BlockMenuPreset preset) {
@@ -99,21 +99,21 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
             if (charge > this.energybuffer) {
                 return new CustomItemStack(
                         Material.ORANGE_STAINED_GLASS_PANE,
-                        "&a当前状态: 发电中",
-                        "&7当前单体发电: 电力缓存已满!",
-                        "&7当前电机数目: %dx".formatted(stackNum),
-                        "&7当前工作效率: %.3f".formatted(multiply),
-                        "&7当前发电速率: 电力缓存已满!",
-                        "&7当前电力存储: %dJ".formatted(charge));
+                        "&a當前狀態: 發電中",
+                        "&7當前單體發電: 電力緩存已滿!",
+                        "&7當前電機數目: %dx".formatted(stackNum),
+                        "&7當前工作效率: %.3f".formatted(multiply),
+                        "&7當前發電速率: 電力緩存已滿!",
+                        "&7當前電力存儲: %dJ".formatted(charge));
             } else {
                 return new CustomItemStack(
                         Material.ORANGE_STAINED_GLASS_PANE,
-                        "&a当前状态: 发电中",
-                        "&7当前单体发电: %dJ/t".formatted(energyProvide),
-                        "&7当前电机数目: %dx".formatted(stackNum),
-                        "&7当前工作效率: %.3f".formatted(multiply),
-                        "&7当前发电速率: %sJ/t".formatted(workingAmount),
-                        "&7当前电力存储: %dJ".formatted(charge));
+                        "&a當前狀態: 發電中",
+                        "&7當前單體發電: %dJ/t".formatted(energyProvide),
+                        "&7當前電機數目: %dx".formatted(stackNum),
+                        "&7當前工作效率: %.3f".formatted(multiply),
+                        "&7當前發電速率: %sJ/t".formatted(workingAmount),
+                        "&7當前電力存儲: %dJ".formatted(charge));
             }
         }
     }
@@ -221,7 +221,7 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 为 数量 1 为 电力
+            // 0 為 數量 1 為 電力
             Object it = null;
             int t;
 

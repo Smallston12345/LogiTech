@@ -44,7 +44,7 @@ public class SpawnerListener implements Listener {
             if (DataCache.getSfItem(b.getLocation()) instanceof AbstractSpawner as) {
                 if (CraftUtils.parseSfItem(event.getPlayer().getInventory().getItemInMainHand())
                         instanceof PickaxeOfContainment) {
-                    AddUtils.sendMessage(event.getPlayer(), "&c你不能使用刷怪笼之镐挖掘本附属的刷怪笼!");
+                    AddUtils.sendMessage(event.getPlayer(), "&c你不能使用刷怪籠之鎬挖掘本附屬的刷怪籠!");
                     event.setCancelled(true);
                 }
             }
