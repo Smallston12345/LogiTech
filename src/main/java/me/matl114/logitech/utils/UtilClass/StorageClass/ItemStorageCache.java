@@ -325,7 +325,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
         try {
             AbstractIOPort.setStorageAmount(loc, storageAmount, true);
         } catch (Throwable e) {
-            Debug.logger("存儲cache與粘液機器不對應!位置[%s]疑似出現刷物行為,移除相應存儲cache並拋出錯誤:"
+            Debug.logger("存儲cache與黏液機器不對應!位置[%s]疑似出現刷物行為,移除相應存儲cache並拋出錯誤:"
                     .formatted(DataCache.locationToDisplayString(loc)));
 
             ItemStorageCache cache = removeCache(loc);

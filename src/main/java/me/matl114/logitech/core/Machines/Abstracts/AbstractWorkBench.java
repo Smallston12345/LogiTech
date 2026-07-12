@@ -294,7 +294,7 @@ public abstract class AbstractWorkBench extends AbstractMachine {
                 // try safe push
                 // 能全放下
                 if (itcs[slot].getAmount() <= 0 && itps[slot].safeAddAmount(recipeCount)) { // push的數量
-                    // 真的有地方,同步揹包裏的相關counter
+                    // 真的有地方,同步背包裏的相關counter
                     itcs[slot].updateItems(menu, Settings.PUSH);
                 } else {
                     // 放不進去,返回z物品

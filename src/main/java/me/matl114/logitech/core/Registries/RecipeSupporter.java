@@ -254,7 +254,7 @@ public class RecipeSupporter {
                     Utils.recipe("BUCKET", null, null, null, null, null, "BUCKET", null),
                     Utils.recipe(AddSlimefunItems.REPLACE_CARD.getReplaceCard(Material.TADPOLE_BUCKET))));
 
-            // 下界合金
+            // 地獄合金
             add(MachineRecipeUtils.shapeFrom(
                     -1,
                     Utils.recipe(

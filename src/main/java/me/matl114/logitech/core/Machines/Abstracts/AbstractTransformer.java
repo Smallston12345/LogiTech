@@ -76,7 +76,7 @@ public abstract class AbstractTransformer extends AbstractMachine {
             list.set(
                     0,
                     new DisplayItemStack(new CustomItemStack(
-                            Material.KNOWLEDGE_BOOK, "&7速度", "&7每 " + Integer.toString(time) + " 粘液刻生成一次")));
+                            Material.KNOWLEDGE_BOOK, "&7速度", "&7每 " + Integer.toString(time) + " 黏液刻生成一次")));
         }
         return list;
     }

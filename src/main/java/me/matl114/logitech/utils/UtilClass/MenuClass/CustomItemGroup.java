@@ -321,7 +321,7 @@ public abstract class CustomItemGroup extends FlexItemGroup {
                                 "&7" + sfitem.getId(),
                                 "&4&l" + Slimefun.getLocalization().getMessage(p, "guide.locked"),
                                 "",
-                                "&a> 單擊解鎖",
+                                "&a> 點擊解鎖",
                                 "",
                                 "&7需要 &b",
                                 lore

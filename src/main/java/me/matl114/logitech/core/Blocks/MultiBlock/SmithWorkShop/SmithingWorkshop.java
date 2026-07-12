@@ -259,7 +259,7 @@ public class SmithingWorkshop extends MultiCore {
                     int amount = cloned.getAmount();
                     var leftOver = player.getInventory().addItem(cloned);
                     if (leftOver.get(0) != null && leftOver.get(0).getAmount() == amount) {
-                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c玩家揹包已滿!");
+                        AddUtils.sendMessage(player, "&6[鍛鑄工坊] &c玩家背包已滿!");
                     } else {
                         int realAmount =
                                 leftOver.get(0) == null ? 0 : leftOver.get(0).getAmount();

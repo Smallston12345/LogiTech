@@ -69,7 +69,7 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
                 AddUtils.getInfoShow(
                         "&f機制 - &c終極堆疊發電",
                         "&7該機器可以模擬其上方的發電機發電",
-                        "&7在槽位中放入與&e該機器方塊上方方塊&7的&a發電機&7類型相同的粘液物品",
+                        "&7在槽位中放入與&e該機器方塊上方方塊&7的&a發電機&7類型相同的黏液物品",
                         "&a注意:你可以將發電機裝入存儲類物品放入該槽位",
                         "&a機器將讀取存儲中的發電機類型和數目",
                         "&7該機器將會發電<槽位中讀取的機器數>*%.2f*<上方環境中發電機的發電量>J".formatted(this.multiply),

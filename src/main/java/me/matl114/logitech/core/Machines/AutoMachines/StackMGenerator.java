@@ -64,8 +64,8 @@ public class StackMGenerator extends MMGenerator implements MultiCraftType, Impo
             "&6機器會進行模擬,其中",
             "&7<並行處理數>=<機器數*工作效率>",
             "&7<耗電數>=min(<機器數量*單個機器耗電/工作效率>,<最大電容量>)",
-            "&6有關高級機器和並行處理數的信息,請見粘液書<版本與説明>",
-            "&6支持的機器可以在粘液書<通用機器類型大全>",
+            "&6有關高級機器和並行處理數的信息,請見黏液書<版本與説明>",
+            "&6支持的機器可以在黏液書<通用機器類型大全>",
             "&6或者左邊按鈕查看",
             "&6機器支持的配方可以點擊右側按鈕查看");
     protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c機器信息", "&7待機中");

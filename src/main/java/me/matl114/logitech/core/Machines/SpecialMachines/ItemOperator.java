@@ -42,7 +42,7 @@ public class ItemOperator extends AbstractMachine {
                 "&7點擊輸入名字以重命名物品",
                 "&7需消耗 [命名牌]x1",
                 "&a可以使用顏色符號",
-                "&e僅可以對粘液物品或者不可堆疊物品操作",
+                "&e僅可以對黏液物品或者不可堆疊物品操作",
                 "&e一次僅可對一個物品操作"),
         new CustomItemStack(Material.LANTERN, "&6顯示全部物品屬性", "&7點擊取消所有物品屬性隱藏符", "&7無需消耗物品"),
         new CustomItemStack(
@@ -53,7 +53,7 @@ public class ItemOperator extends AbstractMachine {
                 "&e一次僅可對一個物品操作"),
         new CustomItemStack(Material.GRINDSTONE, "&6重置物品", "&7點擊重置原版物品", "&7無需消耗物品", "&7僅限原版物品使用"),
         new CustomItemStack(
-                Material.WRITABLE_BOOK, "&6去除物品名字", "&7點擊去除物品名字", "&7需消耗 [命名牌]x1", "&a粘液物品將恢復至原初的名字", "&e一次僅可對一個物品操作"),
+                Material.WRITABLE_BOOK, "&6去除物品名字", "&7點擊去除物品名字", "&7需消耗 [命名牌]x1", "&a黏液物品將恢復至原初的名字", "&e一次僅可對一個物品操作"),
         new CustomItemStack(Material.SOUL_LANTERN, "&6隱藏全部物品屬性", "&7點擊添加所有物品屬性隱藏符", "&7無需消耗物品"),
         new CustomItemStack(Material.VERDANT_FROGLIGHT, "&6取消無法破壞", "&7點擊取消物品無法破壞屬性", "&7無需消耗物品"),
         new CustomItemStack(Material.LOOM, "&6物品染色", "&7點擊給可染色物品染色", "&7需消耗 [對應染料]x1")
@@ -133,7 +133,7 @@ public class ItemOperator extends AbstractMachine {
                     ItemMeta meta = stack.getItemMeta();
                     boolean isSlimefunItem = CraftUtils.parseSfItem(meta) != null;
                     if (stack.getMaxStackSize() > 1 && !isSlimefunItem) {
-                        AddUtils.sendMessage(player, "&c僅可對粘液物品或者不可堆疊物品操作!");
+                        AddUtils.sendMessage(player, "&c僅可對黏液物品或者不可堆疊物品操作!");
                         return;
                     }
                     if (isSlimefunItem) {
@@ -191,7 +191,7 @@ public class ItemOperator extends AbstractMachine {
                 stack.setItemMeta(Bukkit.getItemFactory().getItemMeta(stack.getType()));
                 AddUtils.sendMessage(player, "&a操作成功!");
             } else {
-                AddUtils.sendMessage(player, "&c不可對粘液物品操作!");
+                AddUtils.sendMessage(player, "&c不可對黏液物品操作!");
                 return false;
             }
             return false;

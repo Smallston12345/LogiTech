@@ -726,7 +726,7 @@ public class AddUtils {
     }
 
     public static String tickPerGen(int time) {
-        return "&8⇨ &7速度: &b每 " + Integer.toString(time) + " 粘液刻生成一次";
+        return "&8⇨ &7速度: &b每 " + Integer.toString(time) + " 黏液刻生成一次";
     }
 
     public static ItemStack capacitorInfoAdd(ItemStack item, int energyBuffer) {

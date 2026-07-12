@@ -148,7 +148,7 @@ public class StorageSpace {
     public static int SYNC_THREAD_COUNTER = 0;
     // make sure startlocation<endlocation
     // actually we find that
-    // 事實上想要挪動粘液方塊而不造成刷物是不可能的
+    // 事實上想要挪動黏液方塊而不造成刷物是不可能的
     // 因為挪動的時候不能調用onBlockBreak
     // 但是很多操作都在onBlockBreak
     // menu內含物掉落和這些操作在一起
@@ -213,7 +213,7 @@ public class StorageSpace {
                                     Location originLocation =
                                             startLocation.clone().add(dx_ + i, dy_ + j, dz_ + k);
                                     // 先進行簡單權限檢測 剔除保護module裏保護的內容
-                                    // 這裏保證100%沒有粘液方塊
+                                    // 這裏保證100%沒有黏液方塊
                                     if (!sfBlocklocations.contains(originLocation)
                                             && (!checkPerms
                                                     || WorldUtils.hasPermission(

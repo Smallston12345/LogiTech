@@ -25,7 +25,7 @@ public class ProtectionManager {
         PostSetupTasks.addPostRegisterTask(() -> {
             try {
                 Slimefun.getProtectionManager().registerModule(manager, plugin.getName(), (pl) -> module);
-                Debug.logger("成功註冊粘液保護模塊 %s".formatted(module.getName()));
+                Debug.logger("成功註冊黏液保護模塊 %s".formatted(module.getName()));
             } catch (Throwable e) {
                 Debug.logger("LOADING PROTECTION MODULE FAILED %s".formatted(module.getName()));
                 e.printStackTrace();

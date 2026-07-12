@@ -93,8 +93,8 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
     protected final int INFO_SLOT = 22;
     protected final int WORLD_SLOT = 23;
     protected final ItemStack WORLD_WORLD_ITEM = new CustomItemStack(Material.GRASS_BLOCK, "&6當前環境: &a主世界環境", "&7可以跑圖");
-    protected final ItemStack WORLD_NETHER_ITEM = new CustomItemStack(Material.NETHERRACK, "&6當前環境: &c下界環境", "&7可以跑圖");
-    protected final ItemStack WORLD_END_ITEM = new CustomItemStack(Material.END_STONE, "&6當前環境: &9末地環境", "&7可以跑圖");
+    protected final ItemStack WORLD_NETHER_ITEM = new CustomItemStack(Material.NETHERRACK, "&6當前環境: &c地獄環境", "&7可以跑圖");
+    protected final ItemStack WORLD_END_ITEM = new CustomItemStack(Material.END_STONE, "&6當前環境: &9終界環境", "&7可以跑圖");
     protected final ItemStack WORLD_UNKNOWN_ITEM =
             new CustomItemStack(Material.GRASS_BLOCK, "&6當前環境: &b???", "&7不可以跑圖");
     protected final int FLY_PROGRESS_SLOT = 19;

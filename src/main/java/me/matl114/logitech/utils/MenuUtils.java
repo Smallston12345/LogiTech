@@ -49,7 +49,7 @@ public class MenuUtils {
                 meta.addItemFlags(new ItemFlag[] {ItemFlag.HIDE_ENCHANTS});
             });
     public static final ItemStack SEARCH_BUTTON =
-            new SlimefunItemStack("_UI_SEARCH", Material.NAME_TAG, "&b搜索...", "", ChatColor.GRAY + "⇨ " + "&b單擊搜索物品");
+            new SlimefunItemStack("_UI_SEARCH", Material.NAME_TAG, "&b搜索...", "", ChatColor.GRAY + "⇨ " + "&b點擊搜索物品");
     public static final ItemStack NO_ITEM = new SlimefunItemStack("_UI_NO_ITEM", Material.BARRIER, "&8 ");
     public static final ItemStack PRESET_INFO = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, "&3配方類型信息");
     public static final ItemStack PRESET_MORE = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a更多物品(已省略)");

@@ -71,7 +71,7 @@ public class TestGenerator extends AbstractEnergyProvider {
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow("&f生成機制", "&7當機器中電力位於%dJ~%dJ時".formatted(outputMin, outputMax), "&7清空電力並生成"),
                 OUTPUT,
-                AddUtils.getInfoShow("&f免責聲明", "&7經過測試該機器的絕大部分卡頓來源於粘液電網方法", "&7由於粘液自身的電網性能問題", "&a作者不對該機器性能問題負責"),
+                AddUtils.getInfoShow("&f免責聲明", "&7經過測試該機器的絕大部分卡頓來源於黏液電網方法", "&7由於黏液自身的電網性能問題", "&a作者不對該機器性能問題負責"),
                 null));
         this.machineRecipes = new ArrayList<>();
         this.RANDOM_THREASHOLD = 2 * this.ENERGY_ABSMAX + 1;

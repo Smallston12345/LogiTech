@@ -1970,7 +1970,7 @@ public class CraftUtils {
             }
         }
 
-        // 粘液物品一般不可修改displayName和Lore
+        // 黏液物品一般不可修改displayName和Lore
         // 不然則全非sf物品
 
         if (!meta1.hasLore() || !meta2.hasLore()) {

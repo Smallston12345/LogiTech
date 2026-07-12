@@ -109,7 +109,7 @@ public class ExportAddons {
             outputStream.accept("配方配置已導出至 %s".formatted(outputConfig.getFile().getPath()));
         } else {
             Debug.logger("this is not a SlimefunAddon");
-            outputStream.accept("這不是一個有效的粘液附屬名稱! %s".formatted(addonName));
+            outputStream.accept("這不是一個有效的黏液附屬名稱! %s".formatted(addonName));
         }
     }
 }

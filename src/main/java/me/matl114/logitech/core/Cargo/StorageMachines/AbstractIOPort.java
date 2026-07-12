@@ -181,7 +181,7 @@ public abstract class AbstractIOPort extends AbstractMachine {
             setAmount(data, t);
 
         } else {
-            if (withException) throw new IllegalArgumentException("該位置的粘液數據不是AbstractIOPort!");
+            if (withException) throw new IllegalArgumentException("該位置的黏液數據不是AbstractIOPort!");
         }
     }
 

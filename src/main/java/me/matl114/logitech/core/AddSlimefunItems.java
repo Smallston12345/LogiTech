@@ -698,7 +698,7 @@ public class AddSlimefunItems {
                             AddItem.END_MINER,
                             null,
                             null,
-                            getInfoShow("&f獲取方式", "&7在末地大部分羣系", "或風襲沙丘或蘑菇島開採", "&7或者在本附屬的礦機中獲取")),
+                            getInfoShow("&f獲取方式", "&7在終界大部分羣系", "或風襲沙丘或蘑菇島開採", "&7或者在本附屬的礦機中獲取")),
                     1,
                     new HashMap<>() {
                         {
@@ -2835,7 +2835,7 @@ public class AddSlimefunItems {
                     1280,
                     8848,
                     mkMp(
-                            // 重金核心銅鐵金 下界  重金核心-------
+                            // 重金核心銅鐵金 地獄  重金核心-------
                             // 鎂鉛錫鋅 冶煉核心-------
                             // 銀鋁 紅石 鑽石 科技核心-------
                             // 煤炭 青金石 石英 綠寶石 物質核心-------
@@ -3152,7 +3152,7 @@ public class AddSlimefunItems {
                             sendMessage(event.getPlayer(), "&c所需物品不足!");
                         }
                     } else {
-                        sendMessage(event.getPlayer(), "&c該方塊是粘液方塊!不能被該道具破壞");
+                        sendMessage(event.getPlayer(), "&c該方塊是黏液方塊!不能被該道具破壞");
                     }
                 } else {
                     sendMessage(event.getPlayer(), "&c抱歉,您沒有在這裏使用該物品的權限");
@@ -5624,7 +5624,7 @@ public class AddSlimefunItems {
                             "&7你將會在這裏的配方中找到所有可以在原版工作台中合成的物品的替代卡配方",
                             "&7其配方讀取於原版合成配方",
                             "&a你還會找到一些由@haiman添加的其他不可堆疊物品的替代卡配方",
-                            "&7如各種桶,下界合金工具等等"),
+                            "&7如各種桶,獄髓工具等等"),
                     FinalFeature.MANUAL_CARD_INFO))
             .register();
     public static final SlimefunItem ADV_MANUAL = new AdvancedManual(

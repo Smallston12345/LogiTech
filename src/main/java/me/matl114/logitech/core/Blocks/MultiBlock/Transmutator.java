@@ -86,7 +86,7 @@ public class Transmutator extends MultiBlockAdvancedProcessor {
             "&b冷卻劑輸入槽",
             "&7請保證冷卻劑供應",
             "&e上方填入冷卻劑",
-            "&e下方填入下界冰冷卻劑",
+            "&e下方填入地獄冰冷卻劑",
             "&7冷卻劑槽位會限制貨運只傳入冷卻劑");
     protected final int COOLER_INFO_SLOT = 27;
     protected final int HALT_SLOT = 0;

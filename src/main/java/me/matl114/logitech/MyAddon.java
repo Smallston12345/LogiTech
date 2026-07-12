@@ -124,9 +124,9 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         // 物品註冊
         AddItem.registerItemStack();
         Debug.logger("物品模板加載完畢");
-        // 粘液物品註冊
+        // 黏液物品註冊
         AddSlimefunItems.registerSlimefunItems();
-        Debug.logger("粘液物品註冊完畢");
+        Debug.logger("黏液物品註冊完畢");
         // 世界配置
         StorageSpace.setup();
         Debug.logger("空間存儲世界配置完畢");
@@ -138,7 +138,7 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         // 載入監聽器
         ListenerManager.registerListeners(getInstance(), getManager());
 
-        // 載入粘液保護模塊
+        // 載入黏液保護模塊
         ProtectionManager.registerProtection(getInstance(), getManager());
 
         Debug.logger("監聽器註冊完畢");

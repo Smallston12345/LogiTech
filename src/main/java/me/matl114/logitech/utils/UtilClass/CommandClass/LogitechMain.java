@@ -62,7 +62,7 @@ public class LogitechMain extends AbstractMainCommand {
                 @Override
                 public boolean onCommand(CommandSender var1, Command var2, String var3, String[] var4) {
                     if (var1 instanceof Player p) {
-                        final TextComponent link = new TextComponent("單擊此處打開附屬多方塊結構搭建教程");
+                        final TextComponent link = new TextComponent("點擊此處打開附屬多方塊結構搭建教程");
                         link.setColor(ChatColor.YELLOW);
                         link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, multiBlockVideo));
                         p.spigot().sendMessage(link);

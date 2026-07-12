@@ -81,7 +81,7 @@ public class HypLink extends DataRecordedItem {
                                 if (item.canUse(event.getPlayer(), true)
                                         && menu.canOpen(loc.getBlock(), event.getPlayer()))
                                     menu.open(event.getPlayer());
-                                else AddUtils.sendMessage(event.getPlayer(), "&c打開該粘液方塊的行為被阻止!");
+                                else AddUtils.sendMessage(event.getPlayer(), "&c打開該黏液方塊的行為被阻止!");
                                 return;
                             }
                         }

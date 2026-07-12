@@ -52,7 +52,7 @@ public class RegisteryLogger extends AbstractMachine {
             new CustomItemStack(Material.BEACON, "&a點擊打印本附屬物品註冊模板", "&7開發者專用", "&7因為其他人也不用這格式");
     protected final int ADDITEM_SLOT = 17;
     protected final ItemStack ADDSFITEM_ITEM =
-            new CustomItemStack(Material.SLIME_BLOCK, "&a點擊打印本附屬粘液物品註冊模板", "&7開發者專用", "&7因為其他人也不用這格式");
+            new CustomItemStack(Material.SLIME_BLOCK, "&a點擊打印本附屬黏液物品註冊模板", "&7開發者專用", "&7因為其他人也不用這格式");
     protected final int ADDSFITEM_SLOT = 26;
     protected final ItemStack LOGGER_ITEM =
             new CustomItemStack(Material.COMMAND_BLOCK, "&a點擊打印本附屬格式化配方註冊字符串", "&7開發者專用", "&7因為其他人也不用這格式");
@@ -181,7 +181,7 @@ public class RegisteryLogger extends AbstractMachine {
         }
         blockMenu.addMenuClickHandler(LOGGER_SLOT, ((player, i, itemStack, clickAction) -> {
             String recipeString = getRecipeString(blockMenu, READING_SLOT);
-            AddUtils.displayCopyString(player, "單擊此處拷貝recipe字符串", "點擊複製到剪貼板", recipeString);
+            AddUtils.displayCopyString(player, "點擊此處拷貝recipe字符串", "點擊複製到剪貼板", recipeString);
             return false;
         }));
         if (blockMenu.getItemInSlot(CHOOSE_SLOT) == null) {

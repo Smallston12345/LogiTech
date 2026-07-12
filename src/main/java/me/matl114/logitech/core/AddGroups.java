@@ -196,8 +196,8 @@ public class AddGroups {
                                     "&f宇宙安全説明",
                                     "&7最後,在此對&e所有覺得這個附屬沒救的玩家&7致辭",
                                     "",
-                                    "&7粘液圈雖然不大,但是比本附屬好的附屬也是比比皆是",
-                                    "&7作者的生活中也不只是有粘液,作者也要有自己的生活,並不能幫你救活這個附屬",
+                                    "&7黏液圈雖然不大,但是比本附屬好的附屬也是比比皆是",
+                                    "&7作者的生活中也不只是有黏液,作者也要有自己的生活,並不能幫你救活這個附屬",
                                     "&7您也不必拘泥於這個附屬,我們好聚好散,對大家都好"));
                     menuFactory.addInventory(
                             8, AddUtils.getInfoShow("&f宇宙安全説明", "&7最後聲明:本説明並不針對某一特定玩家", "&7當您對號入座時,請不要坐岔了,謝謝."));
@@ -390,7 +390,7 @@ public class AddGroups {
                                     "&7發掘了moveSfData的真相",
                                     "&7發掘了刷物特性",
                                     "&7修復了大量潛在問題,並增加刷物提示",
-                                    "&7空間塔不再支持移動粘液機器",
+                                    "&7空間塔不再支持移動黏液機器",
                                     "&7增加了隨機傳送符文",
                                     "&7增加了物品命名機(物品操作枱)",
                                     "&7忘了",
@@ -419,7 +419,7 @@ public class AddGroups {
                                     "&7加入了貨運管道,玩家一定會喜歡的",
                                     "&7加入了對原版容器的貨運支持",
                                     "&7加入了好多其他的東西,忘了",
-                                    "&7加入了粘液替代卡",
+                                    "&7加入了黏液替代卡",
                                     "&7加入了配置器",
                                     "&7加入了"));
                 }
@@ -460,7 +460,7 @@ public class AddGroups {
                     ItemStack menuBackGround = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, "");
                     factory.addOverrides(
                             4, AddItem.URL, (Player player1, int i1, ItemStack itemstack1, ClickAction clickAction) -> {
-                                final TextComponent link = new TextComponent("單擊此處訪問Github");
+                                final TextComponent link = new TextComponent("點擊此處訪問Github");
                                 link.setColor(ChatColor.YELLOW);
                                 link.setClickEvent(new ClickEvent(
                                         ClickEvent.Action.OPEN_URL, "https://github.com/m1919810/LogiTech"));
@@ -510,7 +510,7 @@ public class AddGroups {
                             13,
                             AddItem.WIKI,
                             (Player player1, int i1, ItemStack itemstack1, ClickAction clickAction) -> {
-                                final TextComponent link = new TextComponent("單擊此處訪問附屬wiki");
+                                final TextComponent link = new TextComponent("點擊此處訪問附屬wiki");
                                 link.setColor(ChatColor.YELLOW);
                                 link.setClickEvent(new ClickEvent(
                                         ClickEvent.Action.OPEN_URL, "https://github.com/m1919810/LogiTech/wiki"));
@@ -672,12 +672,12 @@ public class AddGroups {
                     ItemStack menuBackGround = new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, "");
                     factory.addOverrides(
                             4, AddItem.URL, (Player player1, int i1, ItemStack itemstack1, ClickAction clickAction) -> {
-                                final TextComponent link = new TextComponent("單擊此處訪問Github");
+                                final TextComponent link = new TextComponent("點擊此處訪問Github");
                                 link.setColor(ChatColor.YELLOW);
                                 link.setClickEvent(new ClickEvent(
                                         ClickEvent.Action.OPEN_URL, "https://github.com/m1919810/LogiTech"));
                                 player1.spigot().sendMessage(link);
-                                final TextComponent link2 = new TextComponent("單擊此處訪問附屬wiki");
+                                final TextComponent link2 = new TextComponent("點擊此處訪問附屬wiki");
                                 link2.setColor(ChatColor.YELLOW);
                                 link2.setClickEvent(new ClickEvent(
                                         ClickEvent.Action.OPEN_URL, "https://github.com/m1919810/LogiTech/wiki"));

@@ -38,7 +38,7 @@ public class HeadAnalyzer extends AbstractMachine {
     protected final int ENCODE_DISPLAY = 16;
     protected final int DECODE_INPUTSLOT = 10;
     protected final ItemStack CHANGE_ITEM = new CustomItemStack(
-            Material.CRAFTING_TABLE, "&e點擊轉換頭顱", "&7當下方為默認頭顱時,點擊輸入hash,可以更改頭顱樣式", "&7當下方為展示示例頭顱或非粘液物品時,將頭顱轉為默認頭顱");
+            Material.CRAFTING_TABLE, "&e點擊轉換頭顱", "&7當下方為默認頭顱時,點擊輸入hash,可以更改頭顱樣式", "&7當下方為展示示例頭顱或非黏液物品時,將頭顱轉為默認頭顱");
     protected final ItemStack ENCODE_ITEM = new CustomItemStack(Material.NAME_TAG, "&e點擊輸入hash", "&7將在下方顯示頭顱樣式");
     protected final ItemStack ENCODE_DISPLAY_NULL =
             new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c空", "&c暫未輸入hash或者不是有效的hash");
@@ -112,7 +112,7 @@ public class HeadAnalyzer extends AbstractMachine {
                 String res = "&3hash: &f" + st;
                 ItemStack it = blockMenu.getItemInSlot(DECODE_SLOT);
                 AddUtils.setLore(it, 1, res);
-                AddUtils.displayCopyString(player, "單擊此處拷貝hash碼", "點擊複製到剪貼板", st);
+                AddUtils.displayCopyString(player, "點擊此處拷貝hash碼", "點擊複製到剪貼板", st);
 
             } else {
                 blockMenu.replaceExistingItem(DECODE_SLOT, DECODE_ITEM);
