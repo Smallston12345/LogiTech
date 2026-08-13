@@ -24,7 +24,7 @@ public class ManualMachine extends AbstractManual implements ImportRecipes {
             Supplier<List<MachineRecipe>> machineRecipeSupplier) {
         super(category, item, recipeType, recipe, energybuffer, energyConsumption, null);
         this.machineRecipeSupplier = machineRecipeSupplier;
-        // 開服之後加載配方
+        // 開服之後載入配方
         PostSetupTasks.addPostRegisterTask(() -> {
             getDisplayRecipes();
         });

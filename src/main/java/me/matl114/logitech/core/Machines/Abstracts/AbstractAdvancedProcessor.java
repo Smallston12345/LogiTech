@@ -129,7 +129,7 @@ public abstract class AbstractAdvancedProcessor extends AbstractMachine
     }
 
     protected boolean USE_HISTORY = true;
-    // fixme 仍要更新界面
+    // fixme 仍要更新介面
     public void process(Block b, BlockMenu inv, SlimefunBlockData data) {
         MultiCraftingOperation currentOperation = this.processor.getOperation(b);
         ItemGreedyConsumer[] fastCraft = null;

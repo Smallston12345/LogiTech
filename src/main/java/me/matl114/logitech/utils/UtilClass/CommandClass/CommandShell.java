@@ -226,7 +226,7 @@ public class CommandShell {
         } catch (Throwable e) {
             Debug.debug(e);
             clear();
-            error("未知的指令,使用help獲取更多信息!");
+            error("未知的指令,使用help獲取更多資訊!");
             error(e.getMessage());
         }
         print();
@@ -288,7 +288,7 @@ public class CommandShell {
     }
 
     public static int typeNotSupported(CommandShell shell, String var1) {
-        shell.error(AddUtils.concat("不支持的常量類型: ", var1));
+        shell.error(AddUtils.concat("不支援的常量類型: ", var1));
         return -1;
     }
 
@@ -434,7 +434,7 @@ public class CommandShell {
     }
     // TODO 增加. 直接反射
     // TODO 增加import 作為環境變量
-    // TODO 反射全部加入enum支持
+    // TODO 反射全部加入enum支援
     // TODO 放在外面
     public static Object getVariableRaw(CommandShell shell, String val) {
         String[] vals = val.split("\\[");
@@ -512,10 +512,10 @@ public class CommandShell {
     }
 
     public static ShellCommand help = new ShellCommand() {
-        public String[] help = new String[] {"help 獲得全部指令的説明", "help <arg1> 獲得單個指令的説明"};
+        public String[] help = new String[] {"help 獲得全部指令的說明", "help <arg1> 獲得單個指令的說明"};
 
         public int cmd(String[] argv, CommandShell shell) {
-            shell.send("指令説明:");
+            shell.send("指令說明:");
             if (argv.length == 1) {
                 String arg = argv[0];
                 ShellCommand cmd = commands.get(arg);
@@ -724,7 +724,7 @@ public class CommandShell {
         }
     }.register("setStatic");
     public static ShellCommand get = new ShellCommand() {
-        public String[] help = new String[] {"get 打印當前選中的類path信息", "get <varName> 打印變量<varName>"};
+        public String[] help = new String[] {"get 打印當前選中的類path資訊", "get <varName> 打印變量<varName>"};
 
         public int cmd(String[] argv, CommandShell shell) {
             if (argv.length == 0) {
@@ -870,7 +870,7 @@ public class CommandShell {
 
     public static ShellCommand constant = new ShellCommand() {
         public String[] help = new String[] {
-            "const <type> <val> <var2> 將字符串<val>轉為支持的基類/字符串<type>並將變量<var2>設置為該值",
+            "const <type> <val> <var2> 將字符串<val>轉為支援的基類/字符串<type>並將變量<var2>設置為該值",
             "const list <len> <var2> 將變量<var2>設置為創建的長度為<len>的數組"
         };
 
@@ -1131,13 +1131,13 @@ public class CommandShell {
         public String[] help = new String[] {
             "break get <int> 獲取<int>處的斷點值,如果還未解除",
             "break get <int> <var2> 獲取<int>處的斷點值,如果還未解除,並將斷點Object存入<var2>",
-            "break <int> 啓動<int>處的斷點,當斷點位於主線程時,將會跳過,再次輸入將關閉斷點",
-            "break <int> <var2> 啓動<int>處的斷點,當斷點位於主線程時,將會跳過,再次輸入將關閉斷點,同時獲得斷點Object值存入<var2>"
+            "break <int> 啟動<int>處的斷點,當斷點位於主線程時,將會跳過,再次輸入將關閉斷點",
+            "break <int> <var2> 啟動<int>處的斷點,當斷點位於主線程時,將會跳過,再次輸入將關閉斷點,同時獲得斷點Object值存入<var2>"
         };
 
         public int cmd(String[] argv, CommandShell shell) {
             if (!MyAddon.testmode()) {
-                shell.warn("附屬並未在測試模式,無法啓用斷點功能");
+                shell.warn("附屬並未在測試模式,無法啟用斷點功能");
             }
             if ("get".equals(argv[0])) {
                 int index = Integer.valueOf(argv[1]);

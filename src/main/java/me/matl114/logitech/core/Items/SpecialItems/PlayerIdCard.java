@@ -61,7 +61,7 @@ public class PlayerIdCard extends DataRecordedItem {
                         meta.lore(lores);
                     }
                     item.setItemMeta(meta);
-                    AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功清除記錄的玩家信息");
+                    AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功清除記錄的玩家資訊");
                 }
             } else {
                 dataContainer.set(
@@ -73,7 +73,7 @@ public class PlayerIdCard extends DataRecordedItem {
                 lores.add(UID_DISPLAY_PREFIX + event.getPlayer().getUniqueId().toString());
                 meta.setLore(lores);
                 item.setItemMeta(meta);
-                AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功綁定當前玩家信息");
+                AddUtils.sendMessage(event.getPlayer(), "&7[&6玩家ID卡&7] &a成功綁定當前玩家資訊");
             }
         }
     }

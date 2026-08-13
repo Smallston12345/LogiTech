@@ -29,6 +29,12 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class VirtualKiller extends AbstractMachine {
+    private static final EntityType UNSUPPORTED_BOSS = EntityType.ENDER_DRAGON;
+
+    private boolean isSupportedEntity(EntityType type) {
+        return type != null && type != UNSUPPORTED_BOSS && getEntityMap().containsKey(type);
+    }
+
     protected final int[] INPUT_SLOTS = new int[0];
     protected final int[] OUTPUT_SLOTS = new int[] {
         18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
@@ -75,7 +81,7 @@ public class VirtualKiller extends AbstractMachine {
                         "&f機制",
                         "&7在機器輸入槽內插入某種生物的任意類型刷怪籠",
                         "&7包括破損的刷怪籠,已修復的刷怪籠,帶nbt的刷怪籠掉落物,等等",
-                        "&7機器即可執行產出,會產出普通掉落物和所有附屬加載的黏液特殊掉落物",
+                        "&7機器即可執行產出,會產出普通掉落物和所有附屬載入的黏液特殊掉落物",
                         "&a註明:普通掉落物部分由ChatGPT生成,並由@haiman補充完整,若有欠缺歡迎補充"),
                 null));
     }
@@ -84,7 +90,7 @@ public class VirtualKiller extends AbstractMachine {
         HashMap<EntityType, ItemStack[]> map = getEntityMap();
         List<MachineRecipe> providedRecipes = new ArrayList<>();
         for (Map.Entry<EntityType, ItemStack[]> entry : map.entrySet()) {
-            if (entry.getValue().length != 0)
+            if (isSupportedEntity(entry.getKey()) && entry.getValue().length != 0)
                 providedRecipes.add(MachineRecipeUtils.stackFrom(
                         0, new ItemStack[] {EntityFeat.getItemFromEntityType(entry.getKey())}, entry.getValue()));
         }
@@ -162,7 +168,7 @@ public class VirtualKiller extends AbstractMachine {
         DataMenuClickHandler handler = getDataHolder(block, menu);
         ItemStack stack = menu.getItemInSlot(SPAWNER_SLOT);
         EntityType e = EntityFeat.getEntityTypeFromItem(stack);
-        if (e != null) {
+        if (isSupportedEntity(e)) {
             int amount = Math.min(MAX_AMOUNT, stack.getAmount());
             handler.setInt(0, amount);
             handler.setObject(0, e);
@@ -186,7 +192,7 @@ public class VirtualKiller extends AbstractMachine {
         Object entity = handler.getObject(0);
         int amount = handler.getInt(0);
         if (entity != null && amount > 0) {
-            if (entity instanceof EntityType et) {
+            if (entity instanceof EntityType et && isSupportedEntity(et)) {
                 progressorCost(b, menu);
                 CraftUtils.multiPushItems(
                         getEntityMap().get(et), menu, getOutputSlots(), this.MULTIPLY * amount, this.CRAFT_PROVIDER);

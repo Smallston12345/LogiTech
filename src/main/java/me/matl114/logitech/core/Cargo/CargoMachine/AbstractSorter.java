@@ -39,7 +39,7 @@ public abstract class AbstractSorter extends AbstractSyncTickCargo implements Ch
                 AddUtils.getInfoShow(
                         "&f機制",
                         "&7機器擁有%d個輸入槽位以及%d個輸入白名單槽".formatted(divideAmount, divideAmount),
-                        "&7你將會在界面中看見用彩色玻璃板標出的槽位序號",
+                        "&7你將會在介面中看見用彩色玻璃板標出的槽位序號",
                         "&7白名單槽會對貨運的輸入流進行限制",
                         "&7其中,白名單槽不放物品代表對應槽位允許任意輸入",
                         "&7其中,白名單槽放物品代表對應槽位運行相同的物品的輸入",
@@ -78,7 +78,7 @@ public abstract class AbstractSorter extends AbstractSyncTickCargo implements Ch
         int ticks = tickCount % 32;
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a信息",
+                "&a資訊",
                 "&7下方為貨運輸出槽",
                 "&7上方為芯片槽",
                 AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)),
@@ -90,7 +90,7 @@ public abstract class AbstractSorter extends AbstractSyncTickCargo implements Ch
         int ticks = tickCount % 32;
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a信息",
+                "&a資訊",
                 "&7下方為貨運輸出槽",
                 "&7上方為芯片槽",
                 AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)),

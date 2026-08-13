@@ -24,7 +24,7 @@ public class ExportAddons {
         Plugin pl = Bukkit.getPluginManager().getPlugin(addonName);
         if (pl instanceof SlimefunAddon sfaddon) {
             outputStream.accept("檢測到相關的附屬! %s".formatted(sfaddon.toString()));
-            outputStream.accept("準備導出該附屬相關機器信息");
+            outputStream.accept("準備導出該附屬相關機器資訊");
             HashSet<SlimefunItem> addonItems = new LinkedHashSet<>();
             HashSet<SlimefunItem> addonItemsWithoutRecipe = new LinkedHashSet<>();
             for (SlimefunItem sfitem : Slimefun.getRegistry().getAllSlimefunItems()) {
@@ -41,7 +41,7 @@ public class ExportAddons {
             Config outputConfig = ConfigLoader.loadExternalConfig("exports/" + addonName);
             outputConfig.setValue(addonName + ".enable", true);
             if (doExportIfAbsent) {
-                outputStream.accept("提示:暫未支持轉換隨機配方!");
+                outputStream.accept("提示:暫未支援轉換隨機配方!");
             }
             for (SlimefunItem sfitem : addonItems) {
                 String root = addonName + "." + sfitem.getId();

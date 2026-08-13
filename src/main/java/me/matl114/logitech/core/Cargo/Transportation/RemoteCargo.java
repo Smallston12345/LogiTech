@@ -39,7 +39,7 @@ public class RemoteCargo extends AbstractCargo {
         new CustomItemStack(
                 Material.ORANGE_STAINED_GLASS_PANE,
                 "&b機制",
-                "&7在左側配置源方方塊超鏈接",
+                "&7在左側配置源方方塊超連結",
                 "&7在中間的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
                 "&7在下方放入黑/白名單物品",
                 "&e機器將從源方方塊向目標方塊進行傳輸",
@@ -47,7 +47,7 @@ public class RemoteCargo extends AbstractCargo {
         new CustomItemStack(
                 Material.ORANGE_STAINED_GLASS_PANE,
                 "&b機制",
-                "&7在右側配置目標方塊超鏈接",
+                "&7在右側配置目標方塊超連結",
                 "&7在中間的槽位插入[%s]".formatted(Language.get("Items.CARGO_CONFIG.Name")),
                 "&7在下方放入黑/白名單物品",
                 "&e機器將從源方方塊向目標方塊進行傳輸",
@@ -84,7 +84,7 @@ public class RemoteCargo extends AbstractCargo {
                         "&7這是一個普通貨運機器",
                         "&7普通貨運機器的行為會包括若干對源方塊和目標方塊",
                         "&7普通貨運機器會進行從源方塊到目標方塊的物流傳輸",
-                        "&7普通貨運機器支持較大規模的傳輸量",
+                        "&7普通貨運機器支援較大規模的傳輸量",
                         "&7但是相應的,他會忽視機器對物品的輸入槽位限制"),
                 null,
                 AddUtils.getInfoShow(

@@ -72,7 +72,7 @@ public class MultiBlockService {
             return false;
         } else {
             String uuid = safeGetUUID(handler.getCore());
-            if (uid.equals(uuid)) { // uid 核驗,説明人沒炸 uuid nullable
+            if (uid.equals(uuid)) { // uid 核驗,說明人沒炸 uuid nullable
                 return true;
             }
             return false;
@@ -174,7 +174,7 @@ public class MultiBlockService {
     }
 
     public static DeleteCause MANUALLY = new DeleteCause("手動關閉", true);
-    public static DeleteCause GENERIC = new DeleteCause("服務器重啓", false);
+    public static DeleteCause GENERIC = new DeleteCause("伺服器重啓", false);
 
     public static void handleVanillaBlockBreak(Location loc) {
         if (getStatus(loc) != 0) {
@@ -443,7 +443,7 @@ public class MultiBlockService {
             String uid = safeGetUUID(loc);
             AbstractMultiBlockHandler handler = MULTIBLOCK_CACHE.get(uid);
             if (handler == null) {
-                // 找不到handler 但是code非0 説明是意外中斷，嘗試重建handler
+                // 找不到handler 但是code非0 說明是意外中斷，嘗試重建handler
                 setStatus(loc, -20);
                 // 嘗試異步構建\
                 MultiBlockCore.runAsyncOrReturnBlocked(loc, () -> {

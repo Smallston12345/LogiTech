@@ -37,6 +37,18 @@ import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class AttributeOperator extends SmithingInterface {
+    private static final Set<String> RESTRICTED_ATTRIBUTES = FeatureConfig
+            .getStringList("ATTRIBUTE_OPERATOR.限制轉移屬性")
+            .stream()
+            .map(value -> value.toUpperCase(Locale.ROOT))
+            .collect(Collectors.toUnmodifiableSet());
+
+    private static boolean isRestrictedAttribute(Attribute attribute) {
+        if (attribute == null) return false;
+        String key = attribute.getKey().getKey().toUpperCase(Locale.ROOT);
+        return RESTRICTED_ATTRIBUTES.contains(key)
+                || RESTRICTED_ATTRIBUTES.contains(attribute.toString().toUpperCase(Locale.ROOT));
+    }
     protected final int[] BORDER = new int[] {
         0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 14, 15, 18, 19, 25, 26, 29, 30, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44
     };
@@ -117,9 +129,9 @@ public class AttributeOperator extends SmithingInterface {
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
                                 "&f機制",
-                                "&7支持在物品之間轉移屬性增幅符和附魔",
+                                "&7支援在物品之間轉移屬性增幅符和附魔",
                                 "&7分別可以選擇轉移單項附魔/增幅符或者轉移全部附魔/增幅符",
-                                "&7單項選擇器將顯示在菜單中,可以選擇單項附魔/增幅符",
+                                "&7單項選擇器將顯示在選單中,可以選擇單項附魔/增幅符",
                                 "&7點擊後消耗電力執行轉換",
                                 "&7該轉移不受任何禁止附魔/驅魔的設定影響",
                                 "&7該轉移不受物品材質的附魔種類限制"),
@@ -127,9 +139,9 @@ public class AttributeOperator extends SmithingInterface {
                 AddUtils.getInfoShow(
                                 "&f機制",
                                 "&7該機器提供\"強制附魔\"機制",
-                                "&7當啓用時,對於附魔書和書本,將會直接讀取其附魔列表",
+                                "&7當啟用時,對於附魔書和書本,將會直接讀取其附魔列表",
                                 "&7而非其存儲的附魔列表",
-                                "&e啓用該機制通常得不到正常玩家想要的結果",
+                                "&e啟用該機制通常得不到正常玩家想要的結果",
                                 "&7當關閉該機制時,對於附魔書和書本",
                                 "&7當附魔書作為被轉移物品時,會把書中存儲的附魔附加至目標物品",
                                 "&7當普通書本作為目標物品時,會自動轉為附魔書",
@@ -828,6 +840,7 @@ public class AttributeOperator extends SmithingInterface {
         }
         if (modifier == null) {
             for (Attribute a : VersionedRegistry.getInstance().getAttributes()) {
+                if (isRestrictedAttribute(a)) continue;
                 Collection<AttributeModifier> mods1 = meta1.getAttributeModifiers(a);
                 if (mods1 == null || mods1.isEmpty()) {
                     continue;
@@ -857,6 +870,7 @@ public class AttributeOperator extends SmithingInterface {
                 }
             }
         } else {
+            if (isRestrictedAttribute(attribute)) return null;
             if (!meta2.hasAttributeModifiers()
                     || meta2.getAttributeModifiers(attribute).stream()
                             .noneMatch(mod -> mod.getOperation() == modifier.getOperation()

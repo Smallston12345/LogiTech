@@ -45,9 +45,9 @@ public class Schedules {
     }
 
     public static void onDisableSchedules(Plugin plugin) {
-        Debug.logger("保存附屬數據中");
+        Debug.logger("保存附屬資料中");
         ScheduleSave.onFinalSave();
-        Debug.logger("附屬數據保存完成");
+        Debug.logger("附屬資料保存完成");
     }
 
     public static void execute(Runnable task, boolean isSync) {

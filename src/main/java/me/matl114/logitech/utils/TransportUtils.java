@@ -417,7 +417,7 @@ public class TransportUtils {
         //        ItemStack stack;
         //        for(int i=0;i<len2;++i){
         //            stack=to.getItemInSlot(toSlot[i]);
-        //            //如果是空 則大概率要考慮這玩意
+        //            //如果是空 則大機率要考慮這玩意
         //            if(stack==null){
         //                toCacheIndex[indexLen]=toSlot[i];
         //                ++indexLen;
@@ -461,7 +461,7 @@ public class TransportUtils {
                         if (fromAmount >= fromPusher.getMaxStackCnt()) {
                             // 滿了 或者非空了 ?,全轉,下次別來了
                             fromPusher.setAmount(0);
-                            // 標記為true説明已經轉完了
+                            // 標記為true說明已經轉完了
                             toRecord[slot] = true;
                             maxSizeSlotTill += (index == maxSizeSlotTill) ? 1 : 0;
                         } else {
@@ -531,7 +531,7 @@ public class TransportUtils {
         //        int[] slotMappers=new int[54];//we assert that slot is under 54
         //        for(int i=0;i<len2;++i){
         //            stack=to.getItemInSlot(toSlot[i]);
-        //            //如果是空 則大概率要考慮這玩意
+        //            //如果是空 則大機率要考慮這玩意
         //            if(stack==null){
         //                toCacheIndex[indexLen]=toSlot[i];
         //                ++indexLen;
@@ -586,7 +586,7 @@ public class TransportUtils {
                             if (fromAmount >= fromPusher.getMaxStackCnt()) {
                                 // 滿了 或者非空了 ?,全轉,下次別來了
                                 fromPusher.setAmount(0);
-                                // 標記為true説明已經轉完了
+                                // 標記為true說明已經轉完了
                                 toRecord[indexJ] = true;
                             } else {
                                 fromPusher.addAmount(-fromAmount);
@@ -648,7 +648,7 @@ public class TransportUtils {
         // TDO 還是先整個最簡單的
         for (int i = 0; i < len2; ++i) {
             stack = to.getItemInSlot(toSlot[i]);
-            // 如果是空 則大概率要考慮這玩意
+            // 如果是空 則大機率要考慮這玩意
             if (stack == null) {
                 toCacheIndex[indexLen] = toSlot[i];
                 ++indexLen;
@@ -688,7 +688,7 @@ public class TransportUtils {
                         if (fromAmount >= fromPusher.getMaxStackCnt()) {
                             // 滿了 或者非空了 ?,全轉,下次別來了
                             fromPusher.setAmount(0);
-                            // 標記為true説明已經轉完了
+                            // 標記為true說明已經轉完了
                             toRecord[index] = true;
                         } else {
                             fromPusher.addAmount(-fromAmount);

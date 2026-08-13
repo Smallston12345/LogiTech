@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class HyperLink {
-    public static final String LOC_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B鏈接的座標: &f");
+    public static final String LOC_DISPLAY_PREFIX = AddUtils.resolveColor("&x&E&B&3&3&E&B連結的座標: &f");
     public static final String LOC_DISPLAY = AddUtils.resolveColor("&3[%s,x=%d,y=%d,z=%d]");
     public static final Pattern LOC_DISPLAY_PATTERN =
             Pattern.compile(AddUtils.resolveColor("&3\\[.*?,x=.*?,y=.*?,z=.*?\\]"));

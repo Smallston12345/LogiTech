@@ -439,7 +439,7 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             if (itemInSlot == null) continue;
             // 出現類型匹配
             if (itemInSlot.getType() == item.getType() && itemInSlot.hasItemMeta() == hasItemMeta) {
-                // 如果pusher!=null,説明上面出現了兩個相同type 需要比較
+                // 如果pusher!=null,說明上面出現了兩個相同type 需要比較
                 // 如果比較不匹配 跳過
                 if (pusher != null && hasItemMeta && !CraftUtils.matchItemStack(itemInSlot, pusher, false)) {
                     continue;
@@ -462,7 +462,7 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
                 if (BW_LIST.contains(e.getValue())) {
                     continue;
                 }
-                displayRecipe.add(AddUtils.getInfoShow("&f支持的機器", "&7將機器插入指定槽位以進行合成"));
+                displayRecipe.add(AddUtils.getInfoShow("&f支援的機器", "&7將機器插入指定槽位以進行合成"));
                 displayRecipe.add(new DisplayItemStack(e.getKey().getItem()));
             }
         }

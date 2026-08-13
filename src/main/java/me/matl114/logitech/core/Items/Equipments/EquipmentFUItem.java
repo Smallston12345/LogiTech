@@ -76,7 +76,7 @@ public class EquipmentFUItem extends MaterialItem {
         items.add(null);
         items.add(
                 availableItem == null
-                        ? new CleanItemStack(Material.BOOK, "&a可裝配的裝備範圍", "&7支持裝配至任意工具類物品")
+                        ? new CleanItemStack(Material.BOOK, "&a可裝配的裝備範圍", "&7支援裝配至任意工具類物品")
                         : availableItem);
         items.add(null);
         items.add(

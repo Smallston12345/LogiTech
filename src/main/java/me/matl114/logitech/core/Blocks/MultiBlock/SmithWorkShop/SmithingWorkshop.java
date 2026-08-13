@@ -35,9 +35,9 @@ public class SmithingWorkshop extends MultiCore {
     protected final int HOLOGRAM_SLOT = 8;
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ITEM_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6鍛造核心信息", "&7工坊狀態: &a開啓", "&7自動構建:強制開啓");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6鍛造核心資訊", "&7工坊狀態: &a開啓", "&7自動構建:強制開啓");
     protected final ItemStack STATUS_ITEM_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6鍛造核心信息", "&c點擊查看結構錯誤", "&7工坊狀態: &c關閉", "&7自動構建:強制開啓");
+            Material.RED_STAINED_GLASS_PANE, "&6鍛造核心資訊", "&c點擊查看結構錯誤", "&7工坊狀態: &c關閉", "&7自動構建:強制開啓");
     protected final ItemStack HOLOGRAM_ITEM_OFF = new CustomItemStack(
             SlimefunItems.HOLOGRAM_PROJECTOR, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &c關閉");
     protected final ItemStack[] HOLOGRAM_ITEM_ON = new ItemStack[] {
@@ -172,8 +172,8 @@ public class SmithingWorkshop extends MultiCore {
     public void onMultiBlockDisable(
             Location loc, AbstractMultiBlockHandler handler, MultiBlockService.DeleteCause cause) {
         super.onMultiBlockDisable(loc, handler, cause);
-        // 這裏也要清除,lvl數據 防止上面重新讀取回來
-        // 要設置上面的機器,清除裏面的force level數據
+        // 這裏也要清除,lvl資料 防止上面重新讀取回來
+        // 要設置上面的機器,清除裏面的force level資料
         BlockMenu inv = DataCache.getMenu(loc);
         if (inv != null) {
             inv.replaceExistingItem(STATUS_SLOT, STATUS_ITEM_OFF);
@@ -221,7 +221,7 @@ public class SmithingWorkshop extends MultiCore {
                 if (statusCode == 0) {
                     if (MultiBlockService.createNewHandler(
                             loc, getBuilder(), getMultiBlockType(), OutputStream.getPlayerOut(player))) {
-                        AddUtils.sendMessage(player, "&a成功激活多方塊結構!");
+                        AddUtils.sendMessage(player, "&a成功啟動多方塊結構!");
                     } else {
                         AddUtils.sendMessage(player, "&c多方塊結構不全或者結構衝突!");
                     }

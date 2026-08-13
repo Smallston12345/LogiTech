@@ -31,7 +31,7 @@ public abstract class AbstractIOPort extends AbstractMachine {
                         "&7機制 - &e存儲性方塊",
                         "&7該方塊為存儲性方塊",
                         "提供一個特殊的存儲槽,用於承載和交互存儲類物品",
-                        "&7本交互接口支持的存儲類物品:",
+                        "&7本交互接口支援的存儲類物品:",
                         "&7- 邏輯工藝 概念奇點",
                         "&7- 網絡(拓展) 量子存儲系列",
                         "&7作為存儲性方塊,該方塊可以被[%s]綁定".formatted(Language.get("Cargo.QUANTUM_LINK.Name"))),
@@ -44,7 +44,7 @@ public abstract class AbstractIOPort extends AbstractMachine {
                         "&7當存儲槽中的存儲物品已設置物品種類,",
                         "&7該機器會嘗試將輸入槽中的物品輸入存儲,",
                         "&7該機器會嘗試將物品從存儲輸出至輸出槽",
-                        "&7註明: &e網絡量子系列不支持空存儲設置存儲種類")));
+                        "&7註明: &e網絡量子系列不支援空存儲設置存儲種類")));
     }
 
     public static final String ITEM_DISPLAY_INFO_1 = "&8奇點中存儲的物品樣式";
@@ -181,7 +181,7 @@ public abstract class AbstractIOPort extends AbstractMachine {
             setAmount(data, t);
 
         } else {
-            if (withException) throw new IllegalArgumentException("該位置的黏液數據不是AbstractIOPort!");
+            if (withException) throw new IllegalArgumentException("該位置的黏液資料不是AbstractIOPort!");
         }
     }
 
@@ -220,7 +220,7 @@ public abstract class AbstractIOPort extends AbstractMachine {
             if (cache != null) {
                 // 這裏是否要刷新？ 應該不用
                 // 這裏的情況是 存在一個cache 在某兩個tick之間 玩家切換了存儲為另一個物品，導致cache被標記為deprecated 或者是產生了奇怪的updateMenu使得cache與stack不同步了
-                // 不管怎麼樣 在鏈接斷開的時候 已經進行了同步了
+                // 不管怎麼樣 在連結斷開的時候 已經進行了同步了
                 // 這裏我們只需要執行移除就行
                 ItemStorageCache.removeCache(loc);
             }

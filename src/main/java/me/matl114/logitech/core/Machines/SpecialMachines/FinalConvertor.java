@@ -16,6 +16,7 @@ import me.matl114.logitech.core.Machines.Abstracts.AbstractMachine;
 import me.matl114.logitech.core.Registries.FinalFeature;
 import me.matl114.logitech.utils.AddUtils;
 import me.matl114.logitech.utils.Debug;
+import me.matl114.logitech.utils.FeatureConfig;
 import me.matl114.logitech.utils.MachineRecipeUtils;
 import me.matl114.logitech.utils.UtilClass.ItemClass.RandOutItem;
 import me.matl114.logitech.utils.UtilClass.ItemClass.RandomItemStack;
@@ -38,6 +39,7 @@ public class FinalConvertor extends AbstractMachine
     static final HashMap<Material, Integer> MATERIAL_TO_ID;
     static final int MAX;
     static final int MIN;
+    static final Set<String> EXCLUDED_OUTPUTS;
 
     static {
         HashMap<Integer, Material> map;
@@ -77,6 +79,8 @@ public class FinalConvertor extends AbstractMachine
                 MAX_TRY_COUNT = 36;
             }
         }
+        MAX_RANDOM_BUFFER = Math.max(1, FeatureConfig.getInt("FinalConvertor.隨機緩衝範圍", MAX_RANDOM_BUFFER));
+        MAX_TRY_COUNT = Math.max(1, FeatureConfig.getInt("FinalConvertor.最大嘗試次數", MAX_TRY_COUNT));
         MAX_RANDOM_BUFFER_SQARE = MAX_RANDOM_BUFFER * MAX_RANDOM_BUFFER;
 
         int maxValue = Collections.max(map.keySet()) + MAX_RANDOM_BUFFER_SQARE;
@@ -93,6 +97,7 @@ public class FinalConvertor extends AbstractMachine
         }
         MAX = max;
         MIN = min;
+        EXCLUDED_OUTPUTS = Set.copyOf(FeatureConfig.getStringList("FinalConvertor.排除產物"));
 
         Debug.debug("MATERIAL MAPPING DONE");
     }
@@ -114,7 +119,7 @@ public class FinalConvertor extends AbstractMachine
             int delta = start + (int) (sgn * x);
 
             mat = ID_TO_MATERIAL.get(delta);
-            if (mat != null) return mat;
+            if (mat != null && !EXCLUDED_OUTPUTS.contains(mat.name())) return mat;
         }
         return null;
     }
@@ -147,9 +152,9 @@ public class FinalConvertor extends AbstractMachine
 
     protected final int STATUS_SLOT = 4;
     protected final ItemStack STATUS_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6機器信息", "&7狀態: &a已激活");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6機器資訊", "&7狀態: &a已啟動");
     protected final ItemStack STATUS_OFF =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6機器信息", "&7狀態: &c未激活");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6機器資訊", "&7狀態: &c未啟動");
     protected final ItemStack NULL_OUTPUT;
     protected final RandOutItem NULL_OUT;
     protected final MachineRecipe RECIPE_FOR_DISPLAY;
@@ -171,7 +176,7 @@ public class FinalConvertor extends AbstractMachine
                         "&7當置於貳級終極祭壇上時",
                         "&7且機器被終極祭壇結構中的所有宏激光發射器充能時",
                         "&7即終極祭壇中四個宏激光發射器分別位於四個壹級以上終極祭壇上時",
-                        "&7機器激活,進行運轉"),
+                        "&7機器啟動,進行運轉"),
                 null,
                 AddUtils.getInfoShow(
                         "&f機制 - &c隨機波動",

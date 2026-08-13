@@ -5,7 +5,7 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 
 public interface CustomMenuHandler {
     /**
-     * change between cms ,在跳转中使用
+     * change between cms ,在跳轉中使用
      * @param cm
      * @return
      */

@@ -517,7 +517,7 @@ public class CraftUtils {
             return null;
         }
         // 預處理: 獲取所有輸出的 GreedyConsumer，並統計有效（非AIR/cnt>0）輸出數目
-        // ProbItemStack 概率失敗時 getInstance() 返回 AIR (cnt=0)，這些不需要輸出槽
+        // ProbItemStack 機率失敗時 getInstance() 返回 AIR (cnt=0)，這些不需要輸出槽
         for (int i = 0; i < cnt2; ++i) {
             recipeCounter2[i] = getGreedyConsumer(recipeOutput[i]);
         }
@@ -529,8 +529,8 @@ public class CraftUtils {
             }
         }
         if (effectiveCnt2 <= 0) {
-            // 所有輸出都是空的（概率全部失敗），本次無實際產出
-            // 但仍需檢查輸出槽是否有空間：如果輸出槽全滿，説明即使概率成功也放不下
+            // 所有輸出都是空的（機率全部失敗），本次無實際產出
+            // 但仍需檢查輸出槽是否有空間：如果輸出槽全滿，說明即使機率成功也放不下
             // 此時不應消耗材料，否則會持續吞材料但永遠無產出
             boolean hasAvailableSlot = false;
             for (int i = 0; i < len2; ++i) {
@@ -543,7 +543,7 @@ public class CraftUtils {
             if (!hasAvailableSlot) {
                 return null;
             }
-            // 輸出槽有空間，允許合成（本次概率全部落空，無產出但消耗輸入）
+            // 輸出槽有空間，允許合成（本次機率全部落空，無產出但消耗輸入）
             for (int i = 0; i < cnt2; ++i) {
                 recipeCounter2[i].setStackNum(maxAmount2);
             }
@@ -592,7 +592,7 @@ public class CraftUtils {
             // 維護一下當前matchAmount最小值
             PriorityQueue<ItemGreedyConsumer> priorityRecipeOutput = new PriorityQueue<>(effectiveCnt2 + 1);
             for (int i = 0; i < cnt2; ++i) {
-                // 跳過 cnt==0 的輸出項(概率失敗的AIR)，它們不需要輸出槽
+                // 跳過 cnt==0 的輸出項(機率失敗的AIR)，它們不需要輸出槽
                 if (recipeCounter2[i].getAmount() > 0) {
                     priorityRecipeOutput.add(recipeCounter2[i]);
                 }
@@ -843,7 +843,7 @@ public class CraftUtils {
                     if (!itemCounter.isDirty()) {
                         // 可能是存儲裏的 或者是被覆寫的maxCNT
                         if (itemCounter.getItem() == null) {
-                            // 我們決定將這個分類留在這,為了安全性 畢竟誰也不知到之後會開發啥，不過顯然 這玩意大概率是不會被調用的.
+                            // 我們決定將這個分類留在這,為了安全性 畢竟誰也不知到之後會開發啥，不過顯然 這玩意大機率是不會被調用的.
                             itemCounter.setFrom(outputItem);
                             itemCounter.grab(outputItem);
                             itemCounter.updateMenu(inv);

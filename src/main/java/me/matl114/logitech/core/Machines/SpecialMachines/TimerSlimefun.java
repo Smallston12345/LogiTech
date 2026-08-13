@@ -123,7 +123,7 @@ public class TimerSlimefun extends AbstractMachine implements ChunkLimit, MenuTo
         if (total >= 0) {
             return new CustomItemStack(
                     Material.GREEN_STAINED_GLASS_PANE,
-                    "&a運行信息",
+                    "&a運行資訊",
                     "&7加速機器總量: %s/%s(max)".formatted(String.valueOf(total), String.valueOf(MAX_MACHINE_PER_CHUNK)),
                     "&7異步並行數: %s".formatted(String.valueOf(async)),
                     "&7加速倍率: %sx".formatted(String.valueOf(timer)),
@@ -131,7 +131,7 @@ public class TimerSlimefun extends AbstractMachine implements ChunkLimit, MenuTo
         } else {
             return new CustomItemStack(
                     Material.RED_STAINED_GLASS_PANE,
-                    "&a運行信息",
+                    "&a運行資訊",
                     "&c該區塊內含有過多的機器! %s/%s(max)"
                             .formatted(String.valueOf(-total), String.valueOf(MAX_MACHINE_PER_CHUNK)));
         }

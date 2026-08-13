@@ -43,7 +43,7 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
                         "&f機制",
                         "&7將該物品丟出以合成普通的刷怪籠",
                         "&7當一次性丟出數量不足一組時,將會按%d:1合成普通刷怪籠".formatted(MIDDLE_MERGE),
-                        "&7當一次性丟出數量達到%d時,將會按%d:1合成&e超頻刷怪籠&7,&a其生成速率等數據將被大幅提高".formatted(SUPER_MERGE, SUPER_MERGE)),
+                        "&7當一次性丟出數量達到%d時,將會按%d:1合成&e超頻刷怪籠&7,&a其生成速率等資料將被大幅提高".formatted(SUPER_MERGE, SUPER_MERGE)),
                 resultItemStack));
         for (EntityType type : availableEntityFeatTypes) {
             this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f可掉落的生物特徵"));
@@ -235,7 +235,7 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
             lore.add(AddUtils.resolveColor(AddUtils.concat("&7類型: &b", ChatUtils.humanize(type.name()))));
             lore.add(AddUtils.resolveColor(AddUtils.concat("&7最小生成延遲: &b", String.valueOf(delay))));
             lore.add(AddUtils.resolveColor(AddUtils.concat("&7最大鄰近實體: &b", String.valueOf(maxNearbyEntities))));
-            lore.add(AddUtils.resolveColor(AddUtils.concat("&7玩家激活範圍: &b", String.valueOf(requirePlayerRange))));
+            lore.add(AddUtils.resolveColor(AddUtils.concat("&7玩家啟動範圍: &b", String.valueOf(requirePlayerRange))));
             lore.add(AddUtils.resolveColor(AddUtils.concat("&7最大生成範圍: &b", String.valueOf(spawnRange))));
             lore.add(AddUtils.resolveColor(AddUtils.concat("&7單次生成數量: &b", String.valueOf(spawnCount))));
             meta.setLore(lore);
@@ -283,7 +283,7 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
         } else {
             EntityType type = getEntityTypeFromItem(targetItemStack);
             if ((type == null || !type.isSpawnable()) || !availableSpawnerTypes.contains(type)) {
-                AddUtils.sendMessage(var2, "&c該種類的刷怪籠並不支持獲取!");
+                AddUtils.sendMessage(var2, "&c該種類的刷怪籠並不支援獲取!");
                 return;
             }
             var3.remove();
@@ -291,7 +291,7 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
             ItemStack resultItemStack;
             if (amount < SUPER_MERGE) {
                 if (!enableSpawnerCraft) {
-                    AddUtils.sendMessage(var2, "&c普通刷怪籠的合成並未啓用!");
+                    AddUtils.sendMessage(var2, "&c普通刷怪籠的合成並未啟用!");
                     resultItemStack = null;
                 } else {
                     resultItemStack = generateSpawnerFrom(type, true);
@@ -302,10 +302,10 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
 
             } else {
                 if (!enableSuperSpawnerCraft) {
-                    AddUtils.sendMessage(var2, "&c超頻刷怪籠的合成並未啓用!");
+                    AddUtils.sendMessage(var2, "&c超頻刷怪籠的合成並未啟用!");
                     resultItemStack = null;
                 } else if (!availableSuperSpawnerTypes.contains(type)) {
-                    AddUtils.sendMessage(var2, "&c該種類的超頻刷怪籠並不支持獲取!");
+                    AddUtils.sendMessage(var2, "&c該種類的超頻刷怪籠並不支援獲取!");
                     resultItemStack = null;
                 } else {
                     resultItemStack = generateSpawnerFrom(type, 2, 60, 64, 6, 10, true);

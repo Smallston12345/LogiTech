@@ -52,9 +52,9 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
     protected ItemPusherProvider MACHINE_PROVIDER = FinalFeature.STORAGE_READER;
     protected double multiply;
     protected final ItemStack RUNWHENFULL_OFF = new CustomItemStack(
-            Material.RED_STAINED_GLASS_PANE, "&6過載模式: &c關", "&7點擊切換過載模式", "&7當過載模式啓用時候,即使發電機存電量已滿仍舊會發電");
+            Material.RED_STAINED_GLASS_PANE, "&6過載模式: &c關", "&7點擊切換過載模式", "&7當過載模式啟用時候,即使發電機存電量已滿仍舊會發電");
     protected final ItemStack RUNWHENFULL_ON = new CustomItemStack(
-            Material.GREEN_STAINED_GLASS_PANE, "&6過載模式: &a開", "&7點擊切換過載模式", "&7當過載模式啓用時候,即使發電機存電量已滿仍舊會發電");
+            Material.GREEN_STAINED_GLASS_PANE, "&6過載模式: &a開", "&7點擊切換過載模式", "&7當過載模式啟用時候,即使發電機存電量已滿仍舊會發電");
 
     public EnergyAmplifier(
             ItemGroup category,
@@ -73,14 +73,14 @@ public class EnergyAmplifier extends AbstractEnergyProvider implements MenuToggl
                         "&a注意:你可以將發電機裝入存儲類物品放入該槽位",
                         "&a機器將讀取存儲中的發電機類型和數目",
                         "&7該機器將會發電<槽位中讀取的機器數>*%.2f*<上方環境中發電機的發電量>J".formatted(this.multiply),
-                        "&a該槽位中支持的存儲類物品與&c\"終極合成\"&a特性中的存儲類物品相同"),
+                        "&a該槽位中支援的存儲類物品與&c\"終極合成\"&a特性中的存儲類物品相同"),
                 null,
                 AddUtils.getInfoShow("&f示例", "&7右側是一個示意圖,講述了該如何使用該機器"),
                 AddUtils.resolveItem("ENERGY_REGULATOR"),
                 AddItem.OPPO_GEN,
                 item,
                 null,
-                AddUtils.getInfoShow("&f説明", "&7你將會看見下方的機器發電")));
+                AddUtils.getInfoShow("&f說明", "&7你將會看見下方的機器發電")));
     }
 
     public void constructMenu(BlockMenuPreset preset) {

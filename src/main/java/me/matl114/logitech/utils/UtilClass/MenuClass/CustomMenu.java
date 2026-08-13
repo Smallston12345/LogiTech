@@ -87,12 +87,12 @@ public class CustomMenu {
     }
 
     /**
-     * 將MenuFactory實例化 使用MenuFactory中的數據構造CustomMenu多界面對象(一個包含返回跳轉處理函數 和 內部跳轉方法的對象)
-     * 我們會在界面的時候嘗試實例化一個CustomMenu並嘗試從MenuFactory載入數據,同時設置跳轉
+     * 將MenuFactory實例化 使用MenuFactory中的資料構造CustomMenu多介面對象(一個包含返回跳轉處理函數 和 內部跳轉方法的對象)
+     * 我們會在介面的時候嘗試實例化一個CustomMenu並嘗試從MenuFactory載入資料,同時設置跳轉
      *
      */
     String title;
-    // 界面大小
+    // 介面大小
     int size;
     // 頁數
     int pages;

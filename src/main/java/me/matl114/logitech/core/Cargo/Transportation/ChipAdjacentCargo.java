@@ -41,10 +41,10 @@ public class ChipAdjacentCargo extends AdjacentCargo implements ChipControllable
                 AddUtils.getInfoShow(
                         "&f機制",
                         "&7本機器可以選擇與其相鄰的方塊參與傳輸",
-                        "&7本機器接受芯片信息的調控",
+                        "&7本機器接受芯片資訊的調控",
                         "&7當讀取結果為1時,執行運輸",
                         "&7當讀取結果為0時,待機",
-                        "&c信息將實時生效"),
+                        "&c資訊將實時生效"),
                 null));
     }
 
@@ -93,7 +93,7 @@ public class ChipAdjacentCargo extends AdjacentCargo implements ChipControllable
         int ticks = tickCount % 32;
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a信息",
+                "&a資訊",
                 "&7左側為貨運配置卡槽",
                 "&7右側為芯片槽",
                 "&7在左側配置源方方塊鄰接方向",
@@ -106,7 +106,7 @@ public class ChipAdjacentCargo extends AdjacentCargo implements ChipControllable
         int ticks = tickCount % 32;
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a信息",
+                "&a資訊",
                 "&7左側為貨運配置卡槽",
                 "&7右側為芯片槽",
                 "&7在左側配置源方方塊鄰接方向",

@@ -19,7 +19,7 @@ public class BiSorter extends AbstractSorter {
     protected ItemStack[] INFO_ITEM = new ItemStack[] {
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽0", "&7設置白名單"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽0", "&7貨運輸入~"),
-        // new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE,"&a信息","&7下方為貨運輸出槽","&7上方為芯片槽"),
+        // new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE,"&a資訊","&7下方為貨運輸出槽","&7上方為芯片槽"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽1", "&7貨運輸入~"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽1", "&7設置白名單"),
     };

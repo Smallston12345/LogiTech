@@ -48,7 +48,7 @@ public class BlockOpenListener implements Listener {
             if (sfItem instanceof MultiBlockPart) {
                 MultiBlockPart multiBlockPart = (MultiBlockPart) sfItem;
                 if (multiBlockPart.redirectMenu()) {
-                    // 如果是重定向菜單的方塊 則阻攔掉event
+                    // 如果是重定向選單的方塊 則阻攔掉event
                     Optional<Block> block = event.getClickedBlock();
                     if (block.isPresent()) {
                         Location location = block.get().getLocation();

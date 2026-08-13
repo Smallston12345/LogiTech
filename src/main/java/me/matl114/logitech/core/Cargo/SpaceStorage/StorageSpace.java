@@ -257,23 +257,23 @@ public class StorageSpace {
                                     ) {
                                         if (b2 == null) {
                                             if (!WorldUtils.copyBlockState(b3.getState(false), b1)) {
-                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊資料時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             b3.setType(Material.AIR, false);
                                         } else if (b3 == null) {
                                             if (!WorldUtils.copyBlockState(b1.getState(false), b2)) {
-                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊資料時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             b1.setType(Material.AIR, false);
                                         } else {
                                             if (!WorldUtils.copyBlockState(b1.getState(false), b2)) {
-                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊資料時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             if (!WorldUtils.copyBlockState(b3.getState(false), b1)) {
-                                                AddUtils.sendMessage(player, "&e轉移方塊數據時出現未知錯誤,請聯繫管理員查詢日誌歷史");
+                                                AddUtils.sendMessage(player, "&e轉移方塊資料時出現未知錯誤,請聯繫管理員查詢日誌歷史");
                                                 continue;
                                             }
                                             b3.setType(Material.AIR, false);

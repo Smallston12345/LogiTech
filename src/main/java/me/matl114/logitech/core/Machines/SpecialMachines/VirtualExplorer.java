@@ -87,9 +87,9 @@ public class VirtualExplorer extends AbstractMachine implements MachineProcessHo
             Material.WHEAT_SEEDS,
             "&6點擊輸入預測的世界種子(LongType)以更改跑圖速度",
             "&7世界種子採用當前世界的種子(/seed)值(LongType)",
-            "&7當輸入種子>真實種子時,75%概率進度增加,25%概率進度減少",
-            "&7當輸入種子<真實種子時,75%概率進度減少,25%概率進度增加",
-            "&7當輸入種子=真實種子時,100%概率進度增加");
+            "&7當輸入種子>真實種子時,75%機率進度增加,25%機率進度減少",
+            "&7當輸入種子<真實種子時,75%機率進度減少,25%機率進度增加",
+            "&7當輸入種子=真實種子時,100%機率進度增加");
     protected final int INFO_SLOT = 22;
     protected final int WORLD_SLOT = 23;
     protected final ItemStack WORLD_WORLD_ITEM = new CustomItemStack(Material.GRASS_BLOCK, "&6當前環境: &a主世界環境", "&7可以跑圖");

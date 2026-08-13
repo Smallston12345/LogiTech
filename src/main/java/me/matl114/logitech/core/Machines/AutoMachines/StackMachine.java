@@ -61,22 +61,22 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
             "&6機器會進行模擬,其中",
             "&7<並行處理數>=<機器數*工作效率>",
             "&7<耗電數>=min(<機器數量*單個機器耗電/工作效率>,<最大電容量>)",
-            "&6有關高級機器和並行處理數的信息,請見黏液書<版本與説明>",
-            "&6支持的機器可以在黏液書<通用機器類型大全>",
+            "&6有關高級機器和並行處理數的資訊,請見黏液書<版本與說明>",
+            "&6支援的機器可以在黏液書<通用機器類型大全>",
             "&6或者左邊按鈕查看",
-            "&6機器支持的配方可以點擊右側按鈕查看");
-    protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c機器信息", "&7待機中");
+            "&6機器支援的配方可以點擊右側按鈕查看");
+    protected final ItemStack MINFO_ITEM_OFF = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c機器資訊", "&7待機中");
     protected final int MACHINEMENU_SLOT = 3;
     protected final int RECIPEMENU_SLOT = 5;
     protected final ItemStack MACHINEMENU_ICON =
-            new CustomItemStack(Material.BLAST_FURNACE, "&b該機器支持的機器列表", "&6點擊打開菜單");
+            new CustomItemStack(Material.BLAST_FURNACE, "&b該機器支援的機器列表", "&6點擊打開選單");
     protected final ItemStack RECIPEMENU_ICON =
-            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b當前模擬的機器配方列表", "&6點擊打開菜單");
+            new CustomItemStack(Material.KNOWLEDGE_BOOK, "&b當前模擬的機器配方列表", "&6點擊打開選單");
 
     protected ItemStack getInfoItem(int craftlimit, int energyCost, int charge, double efficiency, String name) {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&a機器信息",
+                "&a機器資訊",
                 AddUtils.concat("&7當前模擬的機器名稱: ", (name)),
                 "&7當前並行處理數: %-3d".formatted(craftlimit),
                 "&7當前每刻耗電量: %sJ/t".formatted(AddUtils.formatDouble(energyCost)),
@@ -87,7 +87,7 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
     protected ItemStack getInfoOffItem(int craftlimit, int energyCost, int charge, String name) {
         return new CustomItemStack(
                 Material.RED_STAINED_GLASS_PANE,
-                "&c機器信息",
+                "&c機器資訊",
                 "&c缺少電力!",
                 AddUtils.concat("&7當前模擬的機器名稱: ", (name)),
                 "&7當前並行處理數: %-3d".formatted(craftlimit),
@@ -123,7 +123,7 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
         this.setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
                         "&f機制 - &c堆疊",
-                        "&7在界面的機器槽中放入機器",
+                        "&7在介面的機器槽中放入機器",
                         "&7堆疊機器會載入該機器的配方列表並進行進程",
                         "&7機器槽中的機器數目決定並行處理數",
                         "&7堆疊機器並行處理數=<機器數>*<工作效率>",
@@ -243,7 +243,7 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
                         })
                         .open(player);
             } else {
-                player.sendMessage(ChatColors.color("&e您所放置的機器為空或者為不支持的機器"));
+                player.sendMessage(ChatColors.color("&e您所放置的機器為空或者為不支援的機器"));
                 // player.sendMessage();
             }
             return false;
@@ -399,7 +399,7 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
     }
 
     public void tick(Block b, @Nullable BlockMenu inv, SlimefunBlockData data, int tickCount) {
-        // 首先 加載
+        // 首先 載入
         if (inv.hasViewer()) {
             updateMenu(inv, b, Settings.RUN);
         } else {

@@ -34,13 +34,13 @@ public class MultiBlockHandler implements AbstractMultiBlockHandler {
             Location partloc = core.clone().add(delta);
             // 設置部件的響應目標
             MultiBlockService.setUUID(partloc, uid);
-            // 啓用部件的響應
+            // 啟用部件的響應
             MultiBlockService.setStatus(partloc, 1);
             // 設置部件的響應碼
         }
         // 設置部件的響應目標
         MultiBlockService.setUUID(core, uid);
-        // 啓用部件的響應
+        // 啟用部件的響應
         MultiBlockService.setStatus(core, 1);
         // on enable
         SlimefunItem it = DataCache.getSfItem(core);

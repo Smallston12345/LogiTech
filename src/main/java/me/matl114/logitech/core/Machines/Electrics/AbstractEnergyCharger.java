@@ -54,13 +54,13 @@ public abstract class AbstractEnergyCharger extends AbstractEnergyMachine implem
             Material.RED_STAINED_GLASS_PANE,
             "&6點擊切換懶惰模式",
             "&7當前狀態: &c關閉",
-            "&7當啓用懶惰模式時,只有電力剩餘不足50%的機器會被充能",
+            "&7當啟用懶惰模式時,只有電力剩餘不足50%的機器會被充能",
             "&7這會大幅度的減少充能耗時");
     protected final ItemStack LAZY_ITEM_ON = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
             "&6點擊切換懶惰模式",
             "&7當前狀態: &a開啓",
-            "&7當啓用懶惰模式時,只有電力剩餘不足50%的機器會被充能",
+            "&7當啟用懶惰模式時,只有電力剩餘不足50%的機器會被充能",
             "&7這會大幅度的減少充能耗時");
 
     public AbstractEnergyCharger(

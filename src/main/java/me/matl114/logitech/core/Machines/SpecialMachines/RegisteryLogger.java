@@ -214,7 +214,7 @@ public class RegisteryLogger extends AbstractMachine {
             AddUtils.sendMessage(player, "&e請輸入新物品的slimefunID");
             player.closeInventory();
             AddUtils.asyncWaitPlayerInput(player, (msg) -> {
-                // displayCopyString(player,"點擊拷貝語言配置文件框架","點擊複製到剪貼板",LANGUAGE_CODE.formatted(msg));
+                // displayCopyString(player,"點擊拷貝語言設定檔框架","點擊複製到剪貼板",LANGUAGE_CODE.formatted(msg));
                 setRecordId(blockMenu.getLocation(), msg);
                 blockMenu.open(player);
             });
@@ -222,7 +222,7 @@ public class RegisteryLogger extends AbstractMachine {
         }));
         blockMenu.addMenuClickHandler(LANGUAGE_SLOT, ((player, i, itemStack, clickAction) -> {
             AddUtils.displayCopyString(
-                    player, "點擊拷貝語言配置文件框架", "點擊複製到剪貼板", LANGUAGE_CODE.formatted(getRecordId(blockMenu.getLocation())));
+                    player, "點擊拷貝語言設定檔框架", "點擊複製到剪貼板", LANGUAGE_CODE.formatted(getRecordId(blockMenu.getLocation())));
             return false;
         }));
         blockMenu.addMenuClickHandler(ADDITEM_SLOT, ((player, i, itemStack, clickAction) -> {

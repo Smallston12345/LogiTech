@@ -38,7 +38,7 @@ public class CargoConfigurator extends AbstractBlock {
                 "&a若配置卡上已有配置,只有非空配置槽位的配置會覆蓋原有配置項!",
                 "&c若配置卡上沒有配置, 留空將默認false/0",
                 "&a點擊這個按鈕,即可進行配置",
-                "&e支持一次配置一組配置卡"),
+                "&e支援一次配置一組配置卡"),
         new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&6配置 強對稱 的配置槽位",
@@ -95,7 +95,7 @@ public class CargoConfigurator extends AbstractBlock {
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&6配置 源方塊++ 的配置槽位",
                 "&e將[%s]或[%s]置於下方".formatted(Language.get("Items.TRUE_.Name"), Language.get("Items.FALSE_.Name")),
-                "&7配置是否啓用源方塊++模式",
+                "&7配置是否啟用源方塊++模式",
                 "&7該模式為True時,貨運會同時涉及輸入槽和輸出槽",
                 "&7++模式且抓取輸入槽優先:True時,最終源方塊模式為 &e輸入槽+輸出槽",
                 "&7++模式且抓取輸入槽優先:False,最終源方塊模式為 &e輸出槽+輸入槽"),
@@ -103,7 +103,7 @@ public class CargoConfigurator extends AbstractBlock {
                 Material.GREEN_STAINED_GLASS_PANE,
                 "&6配置 目標方塊++ 的配置槽位",
                 "&e將[%s]或[%s]置於下方".formatted(Language.get("Items.TRUE_.Name"), Language.get("Items.FALSE_.Name")),
-                "&7配置是否啓用目標方塊++模式",
+                "&7配置是否啟用目標方塊++模式",
                 "&7該模式為True時,貨運會同時涉及輸入槽和輸出槽",
                 "&7++模式且推送輸出槽優先:True時,最終目標方塊模式為 &e輸出槽+輸入槽",
                 "&7++模式且推送輸出槽優先:False,最終目標方塊模式為 &e輸入槽+輸出槽"),
@@ -126,7 +126,7 @@ public class CargoConfigurator extends AbstractBlock {
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7強對稱模式很強大,或許你會很好的利用它"), 200);
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7懶惰模式會在首次傳輸某槽位後終止傳輸"), 200);
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7請不要讓傳輸雙方的目標槽位重疊,除非你想丟物品!"), 800);
-            put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7若無特殊需求,儘量不要放置黑白名單,這有助於服務器健康"), 200);
+            put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7若無特殊需求,儘量不要放置黑白名單,這有助於伺服器健康"), 200);
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7將僅空模式設置為true可以減少機器運行開銷"), 200);
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7貨運配置卡可以同時配置一組!"), 200);
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7已經配置好的配置卡可以放入配置槽重配,這將覆蓋之前的設置"), 200);
@@ -136,7 +136,7 @@ public class CargoConfigurator extends AbstractBlock {
             put(new CustomItemStack(Material.KNOWLEDGE_BOOK, "&a小tips", "&7最有效的配置是除了僅空模式以外全設置false,同時調製合適的傳輸數量"), 100);
             put(
                     AddUtils.addGlow(new CustomItemStack(
-                            Material.KNOWLEDGE_BOOK, "&x&E&B&3&3&E&B小彩蛋", "&b恭喜您抽中了1/3600概率的彩蛋", "&b想來您今天的運勢一定很好!")),
+                            Material.KNOWLEDGE_BOOK, "&x&E&B&3&3&E&B小彩蛋", "&b恭喜您抽中了1/3600機率的彩蛋", "&b想來您今天的運勢一定很好!")),
                     1);
         }
     });

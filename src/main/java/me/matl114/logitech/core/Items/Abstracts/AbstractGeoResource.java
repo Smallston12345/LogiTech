@@ -100,7 +100,7 @@ public class AbstractGeoResource extends SlimefunItem implements GEOResource {
         if (AddSlimefunItems.INSTANCE != null) {
             register(AddSlimefunItems.INSTANCE);
         } else {
-            Debug.logger("找不到附屬實例!  註冊信息: " + this.toString());
+            Debug.logger("找不到附屬實例!  註冊資訊: " + this.toString());
         }
         register();
         return this;

@@ -116,7 +116,7 @@ public class AddGroups {
     public static ItemGroup MORE2 =
             new CustomItemGroup(
                     AddUtils.getNameKey("more2"),
-                    AddUtils.color("宇宙安全説明"),
+                    AddUtils.color("宇宙安全說明"),
                     AddItem.MORE2,
                     54,
                     36,
@@ -126,18 +126,18 @@ public class AddGroups {
                     menuFactory.addInventory(
                             0,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
-                                    "&7感謝您能點開到這裏,看到這份説明",
+                                    "&f宇宙安全說明",
+                                    "&7感謝您能點開到這裏,看到這份說明",
                                     "&7本附屬為我開發的首個附屬,無人問津是應該的",
-                                    "&7您能點進這一分類已經是對我最大的鼓勵和支持",
+                                    "&7您能點進這一分類已經是對我最大的鼓勵和支援",
                                     "&7本人水平很次,也沒有很好的創作能力創作讓所有玩家滿意的附屬",
                                     "&7還請包容"));
                     menuFactory.addInventory(
                             1,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7這個附屬在某些方面可以説很爛",
-                                    "&7他擁有冗長的機制説明書和昂貴的合成表",
+                                    "&7他擁有冗長的機制說明書和昂貴的合成表",
                                     "&7以及作者亂填的,毫無道理的材料消耗",
                                     "&7為什麼呢",
                                     "&7因為作者並不知道怎麼編一個讓玩家滿意的合成表",
@@ -145,7 +145,7 @@ public class AddGroups {
                     menuFactory.addInventory(
                             2,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7作者也不知道為什麼作者要寫這一個附屬",
                                     "&7作者已經投入很多閒暇時間進行附屬編寫",
                                     "&7作者也&a希望這個附屬能變得更好&7,而不是更讓玩家噁心",
@@ -154,7 +154,7 @@ public class AddGroups {
                     menuFactory.addInventory(
                             3,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7這個附屬還很糟糕,他沒有一個所謂的\"主題\"",
                                     "&7他既沒有亂碼科技的製造台,也沒有亂序技藝的塵埃反應堆",
                                     "&7作者一開始的目標是製作優秀的機器,雖然現在改為了製作高效的機器",
@@ -165,7 +165,7 @@ public class AddGroups {
                     menuFactory.addInventory(
                             4,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7作者能拿的出手的機制就這幾個",
                                     "&7雖説抱歉,但是作者也不會因此而做op機器和刷物機器",
                                     "&a但是玩家有什麼好的想法或者急切的機器需求",
@@ -176,16 +176,16 @@ public class AddGroups {
                     menuFactory.addInventory(
                             5,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7所以,作者在此懇請大家",
                                     "&a多多包容作者,並把自己的想法跟作者討論",
-                                    "&a你可以在版本與説明中找到作者的qq號和作者進行交流",
-                                    "&a也可以上附屬github鏈接提出issue",
+                                    "&a你可以在版本與說明中找到作者的qq號和作者進行交流",
+                                    "&a也可以上附屬github連結提出issue",
                                     "&a不管如何,作者都會聽取玩家的意見,爭取將附屬做得更好"));
                     menuFactory.addInventory(
                             6,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7雖説致歉,但是作者還是會&a堅定的繼續開發和維護這個附屬",
                                     "&7雖然作者也曾想過放棄該附屬",
                                     "&7但是也只是一時之念,大家不要當真",
@@ -193,14 +193,14 @@ public class AddGroups {
                     menuFactory.addInventory(
                             7,
                             AddUtils.getInfoShow(
-                                    "&f宇宙安全説明",
+                                    "&f宇宙安全說明",
                                     "&7最後,在此對&e所有覺得這個附屬沒救的玩家&7致辭",
                                     "",
                                     "&7黏液圈雖然不大,但是比本附屬好的附屬也是比比皆是",
                                     "&7作者的生活中也不只是有黏液,作者也要有自己的生活,並不能幫你救活這個附屬",
                                     "&7您也不必拘泥於這個附屬,我們好聚好散,對大家都好"));
                     menuFactory.addInventory(
-                            8, AddUtils.getInfoShow("&f宇宙安全説明", "&7最後聲明:本説明並不針對某一特定玩家", "&7當您對號入座時,請不要坐岔了,謝謝."));
+                            8, AddUtils.getInfoShow("&f宇宙安全說明", "&7最後聲明:本說明並不針對某一特定玩家", "&7當您對號入座時,請不要坐岔了,謝謝."));
                 }
 
                 @Override
@@ -232,7 +232,7 @@ public class AddGroups {
                             AddUtils.getInfoShow(
                                     "&f2024.8.29",
                                     "&7修改部分描述",
-                                    "&7修復了自定義菜單歷史記錄bug",
+                                    "&7修復了自定義選單歷史記錄bug",
                                     "&7平衡性調整",
                                     "&7修改了等價物品組配置的讀取方式",
                                     "&7修改了語言文件讀取方式,並研發了自動提取字符串腳本",
@@ -291,7 +291,7 @@ public class AddGroups {
                             AddUtils.getInfoShow(
                                     "&f2024.9.3",
                                     "&7我一定是記錯日期了,不然為什麼一覺醒來日期沒變呢",
-                                    "&7繼續完善存儲鏈接體系",
+                                    "&7繼續完善存儲連結體系",
                                     "&7應廣大玩家要求,修改邏輯反應堆為運行中不銷耗布爾組件,只在搜索階段消耗",
                                     "&7發現配方搜素算法一個cache未及時同步的bug",
                                     "&7好在在新測試員的幫助下很快解決.",
@@ -332,7 +332,7 @@ public class AddGroups {
                                     "&f2024.9.7",
                                     "&7開發了LogiTech shell",
                                     "&7一款基於原神(bushi)的shell命令行工具",
-                                    "&7可以查詢和修改類/對象的成員等等,支持設置變量",
+                                    "&7可以查詢和修改類/對象的成員等等,支援設置變量",
                                     "&7緊急修復了因dataload導致的卡服",
                                     "&7這就是依託"));
                     factory.addInventory(
@@ -369,9 +369,9 @@ public class AddGroups {
                                     "&7增加了烘乾機到快捷綜合機器",
                                     "&7增加赤石科技道具",
                                     "&7減少超頻刷怪籠的合成需求",
-                                    "&7修復了堆疊機器無法支持非消耗物品的bug",
+                                    "&7修復了堆疊機器無法支援非消耗物品的bug",
                                     "&7準備增加分揀機",
-                                    "&7增加堆疊機器配置文件直接導入配方類型的功能",
+                                    "&7增加堆疊機器設定檔直接導入配方類型的功能",
                                     "&7增加tnt複製機",
                                     "&7增加破基岩棒",
                                     "&7修復邏輯反應堆槽位提供異常",
@@ -390,7 +390,7 @@ public class AddGroups {
                                     "&7發掘了moveSfData的真相",
                                     "&7發掘了刷物特性",
                                     "&7修復了大量潛在問題,並增加刷物提示",
-                                    "&7空間塔不再支持移動黏液機器",
+                                    "&7空間塔不再支援移動黏液機器",
                                     "&7增加了隨機傳送符文",
                                     "&7增加了物品命名機(物品操作枱)",
                                     "&7忘了",
@@ -409,7 +409,7 @@ public class AddGroups {
                                     "&7修復部分bug,雖然忘了修了啥了",
                                     "&7增加了wiki",
                                     "&7好像修了點bug",
-                                    "&7重構部分代碼,優化了多方塊結構數據存儲",
+                                    "&7重構部分代碼,優化了多方塊結構資料存儲",
                                     "&7限制了區塊充能器",
                                     "&7完善了一個較為完整的電力系統",
                                     "&7完成了電線",
@@ -417,7 +417,7 @@ public class AddGroups {
                                     "&7加入了神金的小道具",
                                     "&7加入了高級快捷機器,我感覺很好用",
                                     "&7加入了貨運管道,玩家一定會喜歡的",
-                                    "&7加入了對原版容器的貨運支持",
+                                    "&7加入了對原版容器的貨運支援",
                                     "&7加入了好多其他的東西,忘了",
                                     "&7加入了黏液替代卡",
                                     "&7加入了配置器",
@@ -922,7 +922,7 @@ public class AddGroups {
                                 CustomHead.getHead("fd524332cdb381c9e51f77d4cec9bc6d4d1c5bdec1499d206d8383e9176bdfb0"),
                                 AddUtils.color("haiman"),
                                 "&7haiman科技作者",
-                                "&7海曼科技會為你提供足夠的物質支持")
+                                "&7海曼科技會為你提供足夠的物質支援")
                         .getItemMeta();
                 final ItemMeta s2 = new CustomItemStack(
                                 CustomHead.getHead("a9b046531a6182de634d6fed1f3b4f885ee99bfe2bc0c1684f7b97d396c2059f"),
@@ -939,7 +939,7 @@ public class AddGroups {
                 final ItemMeta s4 = new CustomItemStack(
                                 CustomHead.SUPPORTER2.getItem(),
                                 AddUtils.color("HgTlPbBi"),
-                                "&7邏輯工藝的支持者",
+                                "&7邏輯工藝的支援者",
                                 "&7提出了很多有用的點子")
                         .getItemMeta();
                 final ItemMeta s5 = new CustomItemStack(
@@ -949,7 +949,7 @@ public class AddGroups {
                                 "&7純傻逼,給爺死啊\uD83D\uDE21")
                         .getItemMeta();
                 final ItemMeta s6 = new CustomItemStack(
-                                CustomHead.BUSHIGEMEN.getItem(), "  ", "&7看得出你的視力很好", "&7所以一定要仔細閲讀", "&7版本説明與機器説明哦")
+                                CustomHead.BUSHIGEMEN.getItem(), "  ", "&7看得出你的視力很好", "&7所以一定要仔細閱讀", "&7版本說明與機器說明哦")
                         .getItemMeta();
                 final ItemStack head = new CustomItemStack(Material.PLAYER_HEAD, AddUtils.color("逝者的頭顱"));
                 final ItemMeta s7 = new CustomItemStack(
@@ -963,14 +963,14 @@ public class AddGroups {
                                 CustomHead.BIG_SNAKE.getItem(), AddUtils.color("taitaia"), "&7刷物?你在想屁吃\uD83D\uDE0B")
                         .getItemMeta();
                 final ItemMeta s9 = new CustomItemStack(
-                                Material.CHORUS_PLANT, AddUtils.color("xiaoUI1"), "&7知名服務器-&b魔芋&7 的腐竹", "&7感謝UI對本項目的支持")
+                                Material.CHORUS_PLANT, AddUtils.color("xiaoUI1"), "&7知名伺服器-&b魔芋&7 的腐竹", "&7感謝UI對本項目的支援")
                         .getItemMeta();
                 ItemMeta[] smetas;
                 final HashMap<UUID, String> LASTLY_CALCUATED_DATE = new HashMap<>();
                 // used to set GUIDE based handlers,an interface to adapt CustomMenu menus
                 public void addGuideRelated(
                         ChestMenu menu, Player p, PlayerProfile profile, SlimefunGuideMode mode, int page) {
-                    // 加入實例化之後的handler和item,同打開玩家等數據有關的handler
+                    // 加入實例化之後的handler和item,同打開玩家等資料有關的handler
                     if (page == 1) {
                         menu.addMenuClickHandler(
                                 27, ((Player player1, int i1, ItemStack itemstack1, ClickAction clickAction) -> {

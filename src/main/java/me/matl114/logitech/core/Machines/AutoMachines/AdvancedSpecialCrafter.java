@@ -54,7 +54,7 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
             "&e置於下方第一個槽位",
             "&6將合成該物品所使用的特殊機器(物品)",
             "&e置於下方第二個槽位",
-            "&6右鍵本槽位,或者開關容器界面,配方將被解析",
+            "&6右鍵本槽位,或者開關容器介面,配方將被解析",
             "&6機器將按照解析出的指定配方合成",
             "&a機器(物品)放的數量決定合成進程數");
     protected final ItemStack DISPLAY_BKGROUND = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, " ");
@@ -388,7 +388,7 @@ public abstract class AdvancedSpecialCrafter extends AbstractProcessor implement
                         if (BW_LIST.contains(e.getValue())) {
                             continue;
                         }
-                        add(AddUtils.getInfoShow("&f支持的機器", "&7將機器插入指定槽位以進行合成"));
+                        add(AddUtils.getInfoShow("&f支援的機器", "&7將機器插入指定槽位以進行合成"));
                         add(new DisplayItemStack(e.getKey().getItem()));
                     }
                 }

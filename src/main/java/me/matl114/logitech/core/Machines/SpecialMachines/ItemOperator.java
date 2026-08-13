@@ -120,7 +120,7 @@ public class ItemOperator extends AbstractMachine {
     public void newMenuInstance(BlockMenu inv, Block block) {
         inv.addMenuClickHandler(FUNCTION_SLOT[0], ((player, i, itemStack, clickAction) -> {
             player.closeInventory();
-            AddUtils.sendMessage(player, "&e請輸入物品名字(支持顏色符號)");
+            AddUtils.sendMessage(player, "&e請輸入物品名字(支援顏色符號)");
             AddUtils.asyncWaitPlayerInput(player, (string) -> {
                 inv.open(player);
                 ItemStack stack = getOperated(inv, true);
@@ -279,7 +279,7 @@ public class ItemOperator extends AbstractMachine {
                     return false;
                 }
             } else if (dyed.startsWith("LEATHER_")) {
-                AddUtils.sendMessage(player, "&c暫時不支持對皮革盔甲的染色");
+                AddUtils.sendMessage(player, "&c暫時不支援對皮革盔甲的染色");
                 return false;
                 //                ItemMeta meta=stack.getItemMeta();
                 //                if(meta instanceof LeatherArmorMeta lam){

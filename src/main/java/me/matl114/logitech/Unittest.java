@@ -5,9 +5,9 @@ public class Unittest {
     // 好問題
 
     // 測試1 測試dataload和menu的 順序
-    // 測試2 測試dataload時候區塊的加載狀態
+    // 測試2 測試dataload時候區塊的載入狀態
     // 測試3 測試chunkloadEvent調用順序
-    // 修改DataCache為不加載的反射方法
+    // 修改DataCache為不載入的反射方法
     public static boolean SFDATA_TEST = false;
     // 增加玩家編輯器//這個還是算了吧
     // 削弱屬性操作台
@@ -32,7 +32,7 @@ public class Unittest {
     // 修復刷物
     // 自動跑圖機 + 隨機進度條
     // 自動跑圖機模擬真實的 加入風杖 鞘翅和多功能工具 加入食物消耗 加入種子
-    // 種子機制 小於真實種子 概率25% 大於 75% 等於 100% 不輸入 50%
+    // 種子機制 小於真實種子 機率25% 大於 75% 等於 100% 不輸入 50%
     // fixme some recipe seems to return glass-bottle when no bottle-like item in recipe -納米工作台
     // TODO logisuit
     // todo logisuit 叫功能單元吧
@@ -50,18 +50,18 @@ public class Unittest {
     // todo 糾纏推送抓取器
     // todo 配置器增加配置物
     // 修復配方空桶合併失敗的問題 TODO 增加通用隨機物品解析？ 這是啥
-    // TODO 增加服務器信息显示 接入堆疊 奇點
+    // TODO 增加伺服器資訊顯示 接入堆疊 奇點
     // check IOPORT negative situation
     // TODO 展示框
     // todo 增加小箱子
     // ?
-    // 修復傳送門加載緩慢的問題
+    // 修復傳送門載入緩慢的問題
     // todo 增加充電器
-    // todo 增加量子堆疊 使用量子鏈接特性但是非終極
+    // todo 增加量子堆疊 使用量子連結特性但是非終極
     // todo 自動攪拌工廠
     // todo 使用投影 做棋子  農耕那種
     // todo 增加貨運卡片右鍵設置
-    // todo 投影學習交互實體，點擊显示信息
+    // todo 投影學習交互實體，點擊顯示資訊
     // 增加量子垃圾桶
     // fix the error in AUTO_BUILD
     // ATTR_OP 增加反向選擇
@@ -78,7 +78,7 @@ public class Unittest {
     // getStatus and getUUID method in MultiBlockService
 
     // todo 優化投影體系
-    // 修復堆疊機器久置后內部機器變磚的問題->sf issue!
+    // 修復堆疊機器久置後內部機器變磚的問題->sf issue!
     // 做測試道具-多方塊自動構建機
     // todo 增加物品效果管理器
     // todo 1 手中握着物品 事件觸發

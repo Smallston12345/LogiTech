@@ -35,7 +35,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
     protected StorageType storageType;
     // 存儲物品的物品源,記錄一個CraftItemStack
     protected ItemStack source;
-    // 存儲物品的物品meta 記錄着含有存儲數據的pdc的meta
+    // 存儲物品的物品meta 記錄着含有存儲資料的pdc的meta
     protected ItemMeta sourceMeta;
     @Nullable
     protected final BlockMenu menu;
@@ -113,7 +113,7 @@ public class ItemStorageCache extends ItemSlotPusher { // extends ItemPusher
      * @return
      */
 
-    // 首先要保證數據安全!
+    // 首先要保證資料安全!
     public static ItemStorageCache getOrCreate(BlockMenu menu, ItemStack source, ItemMeta sourceMeta, int saveSlot) {
         return getOrCreate(menu, source, sourceMeta, saveSlot, i -> true);
     }

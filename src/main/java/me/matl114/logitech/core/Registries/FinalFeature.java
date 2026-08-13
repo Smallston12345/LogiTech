@@ -65,7 +65,7 @@ public class FinalFeature {
             ItemMeta meta = null;
             if (item.getAmount() == 1) {
                 meta = item.getItemMeta();
-                // 全部生成 全部啓動
+                // 全部生成 全部啟動
                 tar = ItemStorageCache.getTempCache(item, meta, slot, i -> true);
             }
             // get no yet
@@ -131,7 +131,7 @@ public class FinalFeature {
     public static final ItemStack MANUAL_CARD_INFO = AddUtils.addGlow(new CleanItemStack(
             Material.CRAFTING_TABLE,
             "&7機制 - &f替代",
-            "&7本機器支持你使用物品替代卡替代原有物品進行合成",
+            "&7本機器支援你使用物品替代卡替代原有物品進行合成",
             "&7同時,你可以使用槽位偽裝板充當佔位符",
             "&a機器會自動忽略這些偽裝板"));
 

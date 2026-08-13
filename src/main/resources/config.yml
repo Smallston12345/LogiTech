@@ -4,3 +4,118 @@ options:
   #慎用
   clear-old-config: false
   disable-spacestorage: false
+
+# 附魔量化增幅器僅支援下列附魔；此處只能調整各附魔的等級上限。
+enchantment-limits:
+  sharpness: 53
+  mending: 30
+  unbreaking: 45
+  looting: 30
+  fortune: 45
+  protection: 45
+  thorns: 30
+  projectile_protection: 45
+  respiration: 45
+  fire_protection: 45
+  blast_protection: 45
+  aqua_affinity: 45
+  feather_falling: 10
+  depth_strider: 45
+  frost_walker: 4
+  soul_speed: 6
+  swift_sneak: 6
+  smite: 12
+  bane_of_arthropods: 12
+  knockback: 5
+  fire_aspect: 30
+  sweeping: 7
+  efficiency: 45
+  silk_touch: 8
+  power: 53
+  punch: 5
+  flame: 30
+  infinity: 38
+  luck_of_the_sea: 7
+  lure: 7
+  loyalty: 7
+  impaling: 12
+  riptide: 7
+  channeling: 1
+  multishot: 1
+  quick_charge: 5
+  piercing: 10
+
+FinalMGenerator:
+  產物:
+    COBBLESTONE: { 數量: 65536 }
+    NETHERRACK: { 數量: 32768 }
+    END_STONE: { 數量: 32768 }
+    GRANITE: { 數量: 16384 }
+    DIORITE: { 數量: 16384 }
+    ANDESITE: { 數量: 16384 }
+    STONE: { 數量: 32768 }
+    TUFF: { 數量: 16384 }
+    COBBLED_DEEPSLATE: { 數量: 16384 }
+    BASALT: { 數量: 16384 }
+    BLACKSTONE: { 數量: 16384 }
+    COAL: { 數量: 256 }
+    COPPER_INGOT: { 數量: 192 }
+    IRON_INGOT: { 數量: 192 }
+    GOLD_INGOT: { 數量: 128 }
+    REDSTONE: { 數量: 256 }
+    LAPIS_LAZULI: { 數量: 256 }
+    QUARTZ: { 數量: 256 }
+    DIAMOND: { 數量: 64 }
+    EMERALD: { 數量: 64 }
+    NETHERITE_INGOT: { 數量: 8 }
+    BUCKET_OF_OIL: { 數量: 6 }
+
+ATTRIBUTE_OPERATOR:
+  限制轉移屬性:
+    - SCALE
+    - BURNING_TIME
+    - FALL_DAMAGE_MULTIPLIER
+
+SpreadBlock:
+  Antimass:
+    enable-spread: false
+    life-default: 13
+    max-spread-per-tick: 10
+    chance-keep-material: 2
+    tick-rate: 5
+
+FinalConvertor:
+  隨機緩衝範圍: 10
+  最大嘗試次數: 48
+  排除產物:
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - COMMAND_BLOCK_MINECART
+    - BARRIER
+    - BEDROCK
+    - STRUCTURE_BLOCK
+    - STRUCTURE_VOID
+    - JIGSAW
+    - TEST_BLOCK
+    - TEST_INSTANCE_BLOCK
+    - DEBUG_STICK
+    - KNOWLEDGE_BOOK
+    - PETRIFIED_OAK_SLAB
+    - ENCHANTED_BOOK
+    - FILLED_MAP
+    - WRITTEN_BOOK
+    - POTION
+    - SPLASH_POTION
+    - LINGERING_POTION
+    - TIPPED_ARROW
+  保底產物:
+    COMPRESSED_COBBLESTONE_1: { 數量: 1, 機率: 0 }
+    LOGITECH_VIRTUALWORLD: { 數量: 1, 機率: 8.0 }
+    LOGITECH_STAR_GOLD_INGOT: { 數量: 32, 機率: 17.0 }
+    LOGITECH_ATOM_INGOT: { 數量: 32, 機率: 17.0 }
+    LOGITECH_LSINGULARITY: { 數量: 16, 機率: 17.0 }
+    LOGITECH_VIRTUAL_SPACE: { 數量: 1, 機率: 4.0 }
+    LOGITECH_HGTLPBBI: { 數量: 1, 機率: 3.0 }
+    LOGITECH_PDCECDMD: { 數量: 1, 機率: 3.0 }
+    LOGITECH_ANTIMASS: { 數量: 1, 機率: 0.075 }

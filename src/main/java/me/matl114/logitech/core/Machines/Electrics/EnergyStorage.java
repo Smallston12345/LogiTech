@@ -49,7 +49,7 @@ public class EnergyStorage extends AbstractEnergyMachine {
     protected ItemStack getInfoShow(int charge) {
         return new CustomItemStack(
                 Material.GREEN_STAINED_GLASS_PANE,
-                "&6信息",
+                "&6資訊",
                 "&7已存儲: %sJ/%sJ".formatted(AddUtils.formatDouble(charge), AddUtils.formatDouble(this.energybuffer)));
     }
 

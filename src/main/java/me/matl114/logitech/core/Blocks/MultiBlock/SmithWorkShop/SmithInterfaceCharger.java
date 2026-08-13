@@ -86,9 +86,9 @@ public class SmithInterfaceCharger extends SmithingInterface implements MenuTogg
             "&7充電台基礎充電速率: %dJ".formatted(energyConsumption),
             "&7本充電台擁有三種充電方式,他們同時進行",
             "&71.將可充電物品放入下方槽位,對所有可充電物品進行充電",
-            "&72.玩家打開界面時,將對玩家的盔甲槽和主副手進行充電",
+            "&72.玩家打開介面時,將對玩家的盔甲槽和主副手進行充電",
             "&73.將綁定了玩家的玩家ID卡插入右側槽位,會對玩家進行遠程充電",
-            "&7機器會盡可能嘗試保證自身加載(暫未實現)",
+            "&7機器會盡可能嘗試保證自身載入(暫未實現)",
             "&a向鍛鑄工坊插入對應增幅組件可以提升充電台的相應功能");
     // todo: 這個顯示正確數值
     protected final ItemStack[] DISPLAY_CHARGE_LEVEL = {

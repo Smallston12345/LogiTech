@@ -77,20 +77,20 @@ public class FinalAltarCore extends MultiCore {
             "&6shift點擊嘗試刷新祭壇",
             "&7祭壇狀態: &a開啓",
             "&7等級: &6壹",
-            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的激活狀態");
+            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的啟動狀態");
     protected final ItemStack STATUS_ITEM_ON_2 = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE,
             "&6點擊切換祭壇狀態",
             "&6shift點擊嘗試刷新祭壇",
             "&7祭壇狀態: &a開啓",
             "&7等級: &6貳",
-            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的激活狀態");
+            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的啟動狀態");
     protected final ItemStack STATUS_ITEM_OFF = new CustomItemStack(
             Material.RED_STAINED_GLASS_PANE,
             "&6點擊切換祭壇狀態",
             "&6shift點擊嘗試刷新祭壇",
             "&7祭壇狀態: &c關閉",
-            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的激活狀態");
+            "&7關閉祭壇不會破壞祭壇本體,只會取消上方機器的啟動狀態");
     protected final ItemStack HOLOGRAM_ITEM_ON = new CustomItemStack(
             Material.GREEN_STAINED_GLASS_PANE, "&6點擊切換全息投影", "&e或使用/logitech multiblock 查看搭建教程", "&7當前狀態: &a一級祭壇");
     protected final ItemStack HOLOGRAM_ITEM_ON_2 = new CustomItemStack(
@@ -168,9 +168,9 @@ public class FinalAltarCore extends MultiCore {
     public void onMultiBlockDisable(
             Location loc, AbstractMultiBlockHandler handler, MultiBlockService.DeleteCause cause) {
         super.onMultiBlockDisable(loc, handler, cause);
-        // 這裏也要清除,lvl數據 防止上面重新讀取回來
+        // 這裏也要清除,lvl資料 防止上面重新讀取回來
         DataCache.setCustomString(loc, LVL_KEY, "0");
-        // 要設置上面的機器,清除裏面的force level數據
+        // 要設置上面的機器,清除裏面的force level資料
         Location poweredLoc = loc.clone().add(0, 1, 0);
         FinalAltarChargable.clearForced(poweredLoc);
         BlockMenu inv = DataCache.getMenu(loc);
@@ -223,10 +223,10 @@ public class FinalAltarCore extends MultiCore {
                     int code = DataCache.getCustomData(loc, LVL_KEY, 0);
                     if (code > 0) {
                         inv.replaceExistingItem(STATUS_SLOT, code == 1 ? STATUS_ITEM_ON_1 : STATUS_ITEM_ON_2);
-                        AddUtils.sendMessage(player, "&a成功激活終極祭壇!");
+                        AddUtils.sendMessage(player, "&a成功啟動終極祭壇!");
                     } else {
                         MultiBlockService.deleteMultiBlock(loc, MultiBlockService.GENERIC);
-                        AddUtils.sendMessage(player, "&c構建祭壇時出現未知方塊數據錯誤!請聯繫管理員");
+                        AddUtils.sendMessage(player, "&c構建祭壇時出現未知方塊資料錯誤!請聯繫管理員");
                     }
                 } else {
                     AddUtils.sendMessage(player, "&c終極祭壇結構不完整或者結構衝突!");

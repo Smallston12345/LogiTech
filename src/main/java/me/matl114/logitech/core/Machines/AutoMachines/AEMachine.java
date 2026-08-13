@@ -27,7 +27,7 @@ import org.bukkit.inventory.ItemStack;
 public class AEMachine extends AbstractAdvancedProcessor {
     protected final int[] BORDER = {3, 4, 5, 12, 14, 21, 22, 23, 30, 31, 32, 39, 41, 48, 49, 50};
     protected final ItemStack INFO_ITEM =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a並行機器信息", "&7在上方槽位插入工件以增加並行數", "&7最大並行數: 64");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a並行機器資訊", "&7在上方槽位插入工件以增加並行數", "&7最大並行數: 64");
 
     public AEMachine(
             ItemGroup category,

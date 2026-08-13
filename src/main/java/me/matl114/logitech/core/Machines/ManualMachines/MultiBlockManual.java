@@ -53,7 +53,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
             "&6機制:",
             " ",
             "&6在上方的3x3區域擺入多方塊機器構造",
-            "&6即可加載配方",
+            "&6即可載入配方",
             "&a可以使用槽位偽裝板填充空餘的槽位!",
             "&6在右邊放入物品進行快捷合成");
     protected static final int INFO_SLOT = 28;
@@ -367,7 +367,7 @@ public class MultiBlockManual extends AbstractManual implements MultiCraftType, 
         List<ItemStack> its = new ArrayList<>() {
             {
                 for (SlimefunItem item : RecipeSupporter.MULTIBLOCK_RECIPES.keySet()) {
-                    add(AddUtils.getInfoShow("&f支持的多方塊機器", "&7將機器配方置於指定槽位以進行合成"));
+                    add(AddUtils.getInfoShow("&f支援的多方塊機器", "&7將機器配方置於指定槽位以進行合成"));
                     add(new DisplayItemStack(item.getItem()));
                 }
             }

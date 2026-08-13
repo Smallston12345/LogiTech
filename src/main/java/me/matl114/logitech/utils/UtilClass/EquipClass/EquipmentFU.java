@@ -51,7 +51,7 @@ public abstract class EquipmentFU {
     }
 
     public static ItemStack getInfoFor(String fuName, String... function) {
-        return AddUtils.themed(Material.KNOWLEDGE_BOOK, AddUtils.resolveColor(fuName + " : &f機制説明"), function);
+        return AddUtils.themed(Material.KNOWLEDGE_BOOK, AddUtils.resolveColor(fuName + " : &f機制說明"), function);
     }
 
     public String getFullName() {
@@ -59,7 +59,7 @@ public abstract class EquipmentFU {
     }
 
     public ItemStack getInfoDisplay() {
-        return getInfoFor(getFullName(), "這是一個樣例功能單元", "你需要在這裏寫點啥來説明他的功能");
+        return getInfoFor(getFullName(), "這是一個樣例功能單元", "你需要在這裏寫點啥來說明他的功能");
     }
 
     private static final EnumMap<EquipmentSlot, HashMap<NamespacedKey, EquipmentFU>> registry =

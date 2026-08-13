@@ -30,7 +30,7 @@ public class ChipReactor extends AbstractEnergyProcessor {
     protected final int[] OUTPUT_BORDER = new int[] {9, 10, 11, 12, 14, 15, 16, 17};
     protected final int[] INPUT_SLOTS = new int[] {13};
     protected final int INFO_SLOT = 4;
-    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6當前機器信息");
+    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6當前機器資訊");
 
     public int[] getInputSlots() {
         return INPUT_SLOTS;

@@ -6,7 +6,7 @@ import me.matl114.logitech.core.Registries.RecipeSupporter;
 import me.matl114.logitech.utils.Debug;
 
 public class PostSetupTasks {
-    // 在服务器启动之后执行的初始化
+    // 在伺服器啟動之後執行的初始化
     public static boolean startPostRegister = false;
     public static boolean recipeSupportorInit = false;
     public static HashSet<Runnable> registerTasks = new LinkedHashSet<>();

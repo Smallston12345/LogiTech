@@ -62,15 +62,15 @@ public class ChipCopier extends AbstractSyncTickCargo {
                         "&7機器擁有一個樣板芯片槽和一個輸入/輸出槽",
                         "&7機器會嘗試讀取樣本槽中的01碼",
                         "&7機器會從輸入/輸出槽中讀取目標芯片",
-                        "&7機器會嘗試復刻當前讀取的數據到目標芯片的對應01位上",
-                        "&a機器可以同時向一組芯片拷貝數據"),
+                        "&7機器會嘗試復刻當前讀取的資料到目標芯片的對應01位上",
+                        "&a機器可以同時向一組芯片拷貝資料"),
                 null));
     }
 
     public ItemStack getInfoItem(int tickCount) {
         int ticks = tickCount % 32;
         return new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&a信息", AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)));
+                Material.GREEN_STAINED_GLASS_PANE, "&a資訊", AddUtils.concat("&7當前讀取編碼位數: ", String.valueOf(ticks)));
     }
 
     public void constructMenu(BlockMenuPreset preset) {

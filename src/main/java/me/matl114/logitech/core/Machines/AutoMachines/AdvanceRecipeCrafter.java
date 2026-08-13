@@ -50,7 +50,7 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
             "&e點擊解析配方",
             "&b機制:",
             "&6將配方表輸出的物品(若有多個則第一個)置於下方",
-            "&6右鍵該槽位,或者開關容器界面,配方將被解析",
+            "&6右鍵該槽位,或者開關容器介面,配方將被解析",
             "&6機器將按照解析出的指定配方合成");
     protected final ItemStack DISPLAY_BKGROUND = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, " ");
     protected final ItemStack DISPLAY_DEFAULT_BKGROUND = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, " ");
@@ -424,7 +424,7 @@ public class AdvanceRecipeCrafter extends AbstractAdvancedProcessor implements R
             if (itemInSlot == null) continue;
             // 出現類型匹配
             if (itemInSlot.getType() == item.getType() && itemInSlot.hasItemMeta() == hasItemMeta) {
-                // 如果pusher!=null,説明上面出現了兩個相同type 需要比較
+                // 如果pusher!=null,說明上面出現了兩個相同type 需要比較
                 // 如果比較不匹配 跳過
                 if (pusher != null && hasItemMeta && !CraftUtils.matchItemStack(itemInSlot, pusher, false)) {
                     continue;

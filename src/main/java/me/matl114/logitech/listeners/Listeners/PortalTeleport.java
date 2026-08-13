@@ -49,10 +49,10 @@ public class PortalTeleport implements Listener {
                                 player.teleport(dst.clone().add(0.5, 1, 0.5));
                                 AddUtils.sendMessage(player, "&a傳送成功!");
                             } else {
-                                AddUtils.sendMessage(player, "&c目標傳送門未啓用!");
+                                AddUtils.sendMessage(player, "&c目標傳送門未啟用!");
                             }
                         } else {
-                            AddUtils.sendMessage(player, "&c目標傳送門正在隨區塊加載中!請重試");
+                            AddUtils.sendMessage(player, "&c目標傳送門正在隨區塊載入中!請重試");
                         }
                     } else {
                         AddUtils.sendMessage(player, "&c目標傳送門核心已損壞!");

@@ -146,7 +146,7 @@ public class HeadAnalyzer extends AbstractMachine {
                     if (id == null || id.equals(AddItem.SAMPLE_HEAD.getItemId())) {
                         it.setItemMeta(null);
                     } else {
-                        AddUtils.sendMessage(player, "&c不是合法物品,無法清除頭顱數據!");
+                        AddUtils.sendMessage(player, "&c不是合法物品,無法清除頭顱資料!");
                     }
                 }
             }

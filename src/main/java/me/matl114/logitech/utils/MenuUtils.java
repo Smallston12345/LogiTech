@@ -51,7 +51,7 @@ public class MenuUtils {
     public static final ItemStack SEARCH_BUTTON =
             new SlimefunItemStack("_UI_SEARCH", Material.NAME_TAG, "&b搜索...", "", ChatColor.GRAY + "⇨ " + "&b點擊搜索物品");
     public static final ItemStack NO_ITEM = new SlimefunItemStack("_UI_NO_ITEM", Material.BARRIER, "&8 ");
-    public static final ItemStack PRESET_INFO = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, "&3配方類型信息");
+    public static final ItemStack PRESET_INFO = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, "&3配方類型資訊");
     public static final ItemStack PRESET_MORE = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a更多物品(已省略)");
 
     public static final ChestMenu.MenuClickHandler CLOSE_HANDLER = ((player, i, itemStack, clickAction) -> {
@@ -391,7 +391,7 @@ public class MenuUtils {
                                 CraftUtils.getItemName(list.get(i)),
                                 " &e",
                                 getAmountDisplay(list.get(i)),
-                                " 概率: ",
+                                " 機率: ",
                                 AddUtils.getPercentFormat(wlist.get(i))));
                     }
                 }
@@ -603,7 +603,7 @@ public class MenuUtils {
             if (optionalItem instanceof RecipeDisplayItem recipeDisplay) {
                 a.addOverrides(
                         53,
-                        AddUtils.addGlow(new CleanItemStack(Material.KNOWLEDGE_BOOK, "&a點擊查看物品展示的配方", "&7以及物品額外説明")),
+                        AddUtils.addGlow(new CleanItemStack(Material.KNOWLEDGE_BOOK, "&a點擊查看物品展示的配方", "&7以及物品額外說明")),
                         (cm) -> ((player, i, itemStack, clickAction) -> {
                             List<ItemStack> displayedDown = recipeDisplay.getDisplayRecipes();
                             if (displayedDown.isEmpty()) {
@@ -668,7 +668,7 @@ public class MenuUtils {
     }
 
     /**
-     * 製造 “製造配方類型展示界面的MenuFactory” 並且將其返回CMHandler設置為backHandler
+     * 製造 “製造配方類型展示介面的MenuFactory” 並且將其返回CMHandler設置為backHandler
      * @param recipeTypes
      * @param backHandler
      * @return
@@ -712,7 +712,7 @@ public class MenuUtils {
             List<SlimefunItem> recipe = RecipeSupporter.RECIPETYPE_TO_ITEMS.get(entry);
             if (recipe == null || recipe.isEmpty()) {
                 a.addHandler(1, ((player, i1, itemStack, clickAction) -> {
-                    player.sendMessage(ChatColors.color("&e該配方類型在本附屬的配方類型黑名單中,暫不支持查看"));
+                    player.sendMessage(ChatColors.color("&e該配方類型在本附屬的配方類型黑名單中,暫不支援查看"));
                     return false;
                 }));
             } else {
@@ -766,7 +766,7 @@ public class MenuUtils {
             List<MachineRecipe> recipe = map.get(entry);
             if (recipe == null) {
                 a.addHandler(i, ((player, i1, itemStack, clickAction) -> {
-                    player.sendMessage(ChatColors.color("&e該機器類型無法識別,暫不支持查看"));
+                    player.sendMessage(ChatColors.color("&e該機器類型無法識別,暫不支援查看"));
                     return false;
                 }));
             } else {

@@ -71,6 +71,7 @@ import me.matl114.logitech.utils.UtilClass.FunctionalClass.AsyncResultRunnable;
 import me.matl114.logitech.utils.UtilClass.ItemClass.ItemConsumer;
 import me.matl114.logitech.utils.UtilClass.ItemClass.ItemCounter;
 import me.matl114.logitech.utils.UtilClass.ItemClass.ItemGreedyConsumer;
+import me.matl114.logitech.utils.UtilClass.ItemClass.RandomItemStack;
 import me.matl114.logitech.utils.UtilClass.MenuClass.MenuFactory;
 import me.matl114.logitech.utils.UtilClass.MultiBlockClass.MultiBlockService;
 import me.matl114.logitech.utils.UtilClass.RecipeClass.MultiCraftingOperation;
@@ -215,6 +216,32 @@ public class AddSlimefunItems {
             }
         };
     }
+
+    private static List<Pair<Object[], Object[]>> getFinalMGeneratorOutputs() {
+        PairList<Object[], Object[]> outputs = new PairList<>();
+        String root = "FinalMGenerator.產物";
+        for (String itemId : FeatureConfig.getKeys(root)) {
+            int amount = Math.max(1, FeatureConfig.getInt(root + "." + itemId + ".數量", 1));
+            outputs.put(mkl(itemId), mkl((amount == 1 ? "" : amount) + itemId));
+        }
+        return outputs;
+    }
+
+    private static RandomItemStack getFinalConvertorFallback() {
+        PairList<Object, Integer> outputs = new PairList<>();
+        String root = "FinalConvertor.保底產物";
+        int totalWeight = 0;
+        for (String itemId : FeatureConfig.getKeys(root)) {
+            int weight = (int) Math.round(Math.max(0.0, FeatureConfig.getDouble(root + "." + itemId + ".機率", 0.0)) * 1000.0);
+            if (weight <= 0) continue;
+            int amount = Math.max(1, FeatureConfig.getInt(root + "." + itemId + ".數量", 1));
+            outputs.put(setC(resolveItem(itemId), amount), weight);
+            totalWeight += weight;
+        }
+        if (totalWeight < 100_000) outputs.put(new ItemStack(Material.AIR), 100_000 - totalWeight);
+        if (outputs.isEmpty()) outputs.put(new ItemStack(Material.AIR), 1);
+        return randItemStackFactory(outputs);
+    }
     // items
     public static final CustomRecipeType STARSMELTERY = new CustomRecipeType(
             getNameKey("star_smeltery"),
@@ -276,7 +303,7 @@ public class AddSlimefunItems {
                             "&7不要害怕,這只是一個基礎材料...",
                             "&a它會出現在一些隱蔽的地方...",
                             "&7當你出現疑問,為什麼這個物品找不到配方時",
-                            "&7你可能需要多看看&e\"邏輯工藝 版本與説明\"&7分類(物理意義)")))
+                            "&7你可能需要多看看&e\"邏輯工藝 版本與說明\"&7分類(物理意義)")))
             .register();
 
     public static final SlimefunItem TRUE = new MaterialItem(
@@ -4501,7 +4528,7 @@ public class AddSlimefunItems {
     // 垃圾提 ok
     // 終極路線
     // 高級芯片之類的? 高級芯片機 ok
-    // 補充説明 堆疊機器 ok
+    // 補充說明 堆疊機器 ok
     // 正反發電機 ok
     // 方舟反應堆 ok
     // 百度
@@ -4673,16 +4700,16 @@ public class AddSlimefunItems {
                                     "&f機制",
                                     "&7該機器需要搭建超新星外殼方可運行",
                                     "&7搭建成功後需要保證外殼內部(除機器頂部)不包含任何非空氣方塊",
-                                    "&7才可以成功啓動多方塊機器",
-                                    "&7在此你可以使用[%s]等遠程訪問工具打開內部的界面".formatted(Language.get("Items.HYPER_LINK.Name")),
-                                    "&7或者開啓自動構建模式讓機器自行啓動"),
+                                    "&7才可以成功啟動多方塊機器",
+                                    "&7在此你可以使用[%s]等遠程訪問工具打開內部的介面".formatted(Language.get("Items.HYPER_LINK.Name")),
+                                    "&7或者開啓自動構建模式讓機器自行啟動"),
                             null,
                     getInfoShow(
                                     "&f機制",
                                     "&7該機器在構建/待機/運行時候擁有相同的電力消耗量",
                                     "&7當電力不足時會強制關機",
-                                    "&7注意:為了防止意外發生,當重啓/使用不安全的遠程傳輸時,請確認機器所在區塊的加載狀態",
-                                    "&7並確保能源網絡在加載範圍內並且能給機器提供足夠電力"),
+                                    "&7注意:為了防止意外發生,當重啓/使用不安全的遠程傳輸時,請確認機器所在區塊的載入狀態",
+                                    "&7並確保能源網絡在載入範圍內並且能給機器提供足夠電力"),
                             null,
                     getInfoShow(
                                     "&f機制",
@@ -4690,10 +4717,10 @@ public class AddSlimefunItems {
                                     "&7機器爆炸會在四周生成爆炸強度為80的爆炸,並伴有多方塊結構1/3損壞",
                                     "&7機器會在以下條件自動關閉",
                                     "&7- 電力不足",
-                                    "&7- 人為的破壞多方塊框架(挖掘,或者數據清除)",
+                                    "&7- 人為的破壞多方塊框架(挖掘,或者資料清除)",
                                     "&7- 手動關機而多方塊不處於\"自動構建\"模式",
                                     "&7- 超新星特效丟失或者距離源位置超過1格(&a不會發起爆炸)",
-                                    "&7服務器重啓時多方塊會安全關閉,並在重啓後自動恢復"),
+                                    "&7伺服器重啓時多方塊會安全關閉,並在重啓後自動恢復"),
                             null))
             .register();
     public static final SlimefunItem SOLAR_REACTOR_FRAME = new MultiPart(
@@ -4951,8 +4978,8 @@ public class AddSlimefunItems {
                                     "&f機制",
                                     "&7該機器在構建/待機/運行時候擁有相同的電力消耗量",
                                     "&7當電力不足時會強制關機",
-                                    "&7注意:為了防止意外發生,當重啓/使用不安全的遠程傳輸時,請確認機器所在區塊的加載狀態",
-                                    "&7並確保能源網絡在加載範圍內並且能給機器提供足夠電力"),
+                                    "&7注意:為了防止意外發生,當重啓/使用不安全的遠程傳輸時,請確認機器所在區塊的載入狀態",
+                                    "&7並確保能源網絡在載入範圍內並且能給機器提供足夠電力"),
                             null,
                     getInfoShow(
                                     "&f機制",
@@ -4961,9 +4988,9 @@ public class AddSlimefunItems {
                                     "&7並伴有所有\"原子合金燃料棒\"損壞",
                                     "&7機器會在以下條件自動關閉",
                                     "&7- 電力不足",
-                                    "&7- 人為的破壞多方塊框架(挖掘,或者數據清除)",
+                                    "&7- 人為的破壞多方塊框架(挖掘,或者資料清除)",
                                     "&7- 手動關機而多方塊不處於\"自動構建\"模式",
-                                    "&7服務器重啓時多方塊會安全關閉,並在重啓後自動恢復"),
+                                    "&7伺服器重啓時多方塊會安全關閉,並在重啓後自動恢復"),
                             null))
             .register();
     public static final SlimefunItem TIMER_RD = new TimerRandomtick(
@@ -5598,7 +5625,7 @@ public class AddSlimefunItems {
             for (int i = 0; i < size; ++i) {
                 targetRecipe.add(MachineRecipeUtils.stackFrom(
                         machineRecipes.get(i).getTicks(),
-                        Utils.array(getInfoShow("&f有序配方合成", "&7請在配方顯示界面或者機器界面查看")),
+                        Utils.array(getInfoShow("&f有序配方合成", "&7請在配方顯示介面或者機器介面查看")),
                         machineRecipes.get(i).getOutput()));
             }
             return targetRecipe;
@@ -5620,7 +5647,7 @@ public class AddSlimefunItems {
         }
     }.setDisplayRecipes(Utils.list(
                     getInfoShow(
-                            "&f配方説明",
+                            "&f配方說明",
                             "&7你將會在這裏的配方中找到所有可以在原版工作台中合成的物品的替代卡配方",
                             "&7其配方讀取於原版合成配方",
                             "&a你還會找到一些由@haiman添加的其他不可堆疊物品的替代卡配方",
@@ -6447,7 +6474,7 @@ public class AddSlimefunItems {
             };
             CountDownLatch latch = effectResult.runThreadBackground();
             Location loc = onRandomLocationFind(center, range);
-            // 預加載的過程中執行例子效果
+            // 預載入的過程中執行例子效果
             try {
                 latch.await();
             } catch (InterruptedException e) {
@@ -6509,7 +6536,7 @@ public class AddSlimefunItems {
                     validCoord(center.getBlockZ() + rand.nextDouble(-range, range), minZ, maxZ));
             int x = newLocation.getBlockX() >> 4;
             int z = newLocation.getBlockZ() >> 4;
-            // 執行預加載 提前生成3x3範圍
+            // 執行預載入 提前生成3x3範圍
             Schedules.launchRepeatingSchedule(
                     (i) -> {
                         newLocation.getWorld().getChunkAt(x - 1 + i % 3, z - 1 + i / 3, true);
@@ -7044,17 +7071,7 @@ public class AddSlimefunItems {
                     1,
                     1_440_000,
                     57_600,
-                    new PairList<>() {
-                        {
-                            put(mkl("COBBLESTONE"), mkl("666666COBBLESTONE"));
-                            put(mkl("NETHERRACK"), mkl("114514NETHERRACK"));
-                            put(mkl("END_STONE"), mkl("114514END_STONE"));
-                            put(mkl("GRANITE"), mkl("114514GRANITE"));
-                            put(mkl("DIORITE"), mkl("114514DIORITE"));
-                            put(mkl("ANDESITE"), mkl("114514ANDESITE"));
-                            put(mkl("STONE"), mkl("114514STONE"));
-                        }
-                    })
+                    getFinalMGeneratorOutputs())
             .register();
 
     public static final SlimefunItem FINAL_MANUAL = new FinalManual(
@@ -7145,17 +7162,7 @@ public class AddSlimefunItems {
                             setC(AddItem.SPACE_PLATE, 8)),
                     840_000_000,
                     100_000_000,
-                    eqRandItemStackFactory(Utils.list(
-                            probItemStackFactory(AddItem.VIRTUALWORLD, 50),
-                            setC(AddItem.STAR_GOLD_INGOT, 32),
-                            setC(AddItem.ATOM_INGOT, 32),
-                            setC(AddItem.LSINGULARITY, 16),
-                            probItemStackFactory(
-                                    randItemStackFactory(
-                                            Utils.list(AddItem.HGTLPBBI, AddItem.PDCECDMD, AddItem.ANTIMASS),
-                                            Utils.list(40, 40, 1)),
-                                    36),
-                            probItemStackFactory(AddItem.VIRTUAL_SPACE, 25))))
+                    getFinalConvertorFallback())
             .register();
     public static final SlimefunItem RAND_EDITOR = new RandomEditor(
                     BEYOND,
@@ -7649,7 +7656,7 @@ public class AddSlimefunItems {
 
         private static int TOGGLE_AUTO_SLOT = 46;
         private static ItemStack INFO_AUTO_ON = new CustomItemStack(
-                Material.GREEN_STAINED_GLASS_PANE, "&3切換自動合成", "&6當前狀態: &a啓用", "&6每刻&b合成 &d64次 &b當前物品", "&c測試功能,謹慎使用");
+                Material.GREEN_STAINED_GLASS_PANE, "&3切換自動合成", "&6當前狀態: &a啟用", "&6每刻&b合成 &d64次 &b當前物品", "&c測試功能,謹慎使用");
         private static ItemStack INFO_AUTO_OFF = new CustomItemStack(
                 Material.RED_STAINED_GLASS_PANE, "&3切換自動合成", "&6當前狀態: &c禁用", "&6每刻&b合成 &d64次 &b當前物品", "&c測試功能,謹慎使用");
 

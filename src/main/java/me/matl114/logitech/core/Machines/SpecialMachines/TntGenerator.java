@@ -39,9 +39,9 @@ public class TntGenerator extends AbstractMachine {
     protected final int[] BORDER = new int[] {1, 2, 3, 5, 6, 7};
     protected final int START_SLOT = 0;
     protected final ItemStack START_ITEM_ON =
-            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6當前狀態", "&a已啓動", "&e點擊關閉");
+            new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&6當前狀態", "&a已啟動", "&e點擊關閉");
     protected final ItemStack START_ITEM_OFF =
-            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6當前狀態", "&a已關閉", "&e點擊啓動");
+            new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6當前狀態", "&a已關閉", "&e點擊啟動");
     protected final int ADJUSTMENT_SLOT = 4;
     protected final int DELAY_SLOT = 8;
 
@@ -189,7 +189,7 @@ public class TntGenerator extends AbstractMachine {
     public ItemStack getAdjustmentDisplay(DataMenuClickHandler dh) {
         return new CustomItemStack(
                 Material.COMPASS,
-                "&6生成信息",
+                "&6生成資訊",
                 "&7上下偏移: %.1f格".formatted(dh.getInt(0) / 10.0),
                 "&7爆炸延時: %dgt".formatted(dh.getInt(1)),
                 "&e左鍵 增加偏移 0.1",
@@ -200,7 +200,7 @@ public class TntGenerator extends AbstractMachine {
 
     public ItemStack getDelayDisplay(DataMenuClickHandler dh) {
         return new CustomItemStack(
-                Material.CLOCK, "&6生成頻率信息", "&7生成間隔: %dgt".formatted(dh.getInt(2)), "&e左鍵 增加延時 1gt", "&e右鍵 減少延時 1gt");
+                Material.CLOCK, "&6生成頻率資訊", "&7生成間隔: %dgt".formatted(dh.getInt(2)), "&e左鍵 增加延時 1gt", "&e右鍵 減少延時 1gt");
     }
 
     public void saveData(Location loc, DataMenuClickHandler dh) {

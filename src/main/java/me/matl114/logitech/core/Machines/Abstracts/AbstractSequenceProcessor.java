@@ -182,9 +182,9 @@ public abstract class AbstractSequenceProcessor extends AbstractMachine
                 } else {
                     // 同步關聯的物品，即消耗
                     fastNext.updateItems(inv, Settings.GRAB);
-                    // 只清除記錄，不同步數據
+                    // 只清除記錄，不同步資料
                     fastNext.clearRelated();
-                    // 更新界面再+1
+                    // 更新介面再+1
 
                 }
                 // 進度加一

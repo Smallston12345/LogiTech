@@ -50,7 +50,7 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
             "&6配方匹配機制:",
             " ",
             "&b點擊左邊圖標切換合成類型",
-            "&b點擊右邊書本查看當前合成類型信息",
+            "&b點擊右邊書本查看當前合成類型資訊",
             "&b在輸入欄放入物品進行快捷合成");
     protected static final int INFO_SLOT = 1;
     protected static final int RECIPEBOOK_SHOW_SLOT = 2;
@@ -69,13 +69,13 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
             Material.BEACON,
             "&6合成機制: " + AddUtils.colorful("終極合成"),
             "",
-            "&b該快捷機器可直接消耗存儲類物品或者鏈接綁定的實體存儲內的物品參與合成",
-            "&b產出的物品也可以直接地存入存儲類物品或者鏈接綁定的實體存儲",
+            "&b該快捷機器可直接消耗存儲類物品或者連結綁定的實體存儲內的物品參與合成",
+            "&b產出的物品也可以直接地存入存儲類物品或者連結綁定的實體存儲",
             "&c配方總輸出數量最大會被限制至9223372036854775807(long上限)",
             "",
-            "&b當前支持的物品:",
+            "&b當前支援的物品:",
             "&7邏輯工藝 概念奇點存儲(存儲類物品)",
-            "&7邏輯工藝 量子糾纏奇點(存儲鏈接物品)",
+            "&7邏輯工藝 量子糾纏奇點(存儲連結物品)",
             "&7網絡(拓展) 量子存儲系列(存儲類物品)");
     protected static final int INFO2_SLOT = 19;
     protected static final ItemStack DISPLAY_BKGROUND = new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, " ");
@@ -116,22 +116,22 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
             registerRecipeList();
             initMenuFactory();
         });
-        // 啓動奇點合成的支持
+        // 啟動奇點合成的支援
         this.CRAFT_PROVIDER = SINGULARITY_PROVIDER;
         setDisplayRecipes(Utils.list(
                 AddUtils.getInfoShow(
                         "&f機制 - &c終極合成",
-                        "&7機器的輸入槽,輸出槽均支持終極合成的特性",
-                        "&e可以直接消耗存儲類物品或者鏈接綁定的實體存儲內的物品參與合成",
-                        "&e產出的物品也可以直接地存入存儲類物品或者鏈接綁定的實體存儲",
-                        "&7當前支持的物品:",
+                        "&7機器的輸入槽,輸出槽均支援終極合成的特性",
+                        "&e可以直接消耗存儲類物品或者連結綁定的實體存儲內的物品參與合成",
+                        "&e產出的物品也可以直接地存入存儲類物品或者連結綁定的實體存儲",
+                        "&7當前支援的物品:",
                         "&7邏輯工藝 概念奇點存儲(存儲類物品)",
-                        "&7邏輯工藝 量子糾纏奇點(存儲鏈接物品)",
+                        "&7邏輯工藝 量子糾纏奇點(存儲連結物品)",
                         "&7網絡(拓展) 量子存儲系列(存儲類物品)",
                         "&a建議:多使用量子糾纏奇點,可以大幅度減少卡頓!"),
                 null,
                 AddUtils.getInfoShow(
-                        "&f機制 - &c無限級一鍵合成", "&7本機器最多支持一鍵合成9,999,999次", "&7\"終極合成\"的特性讓它不再是空談", "&7是時候讓存儲裏的大批物品動起來了")));
+                        "&f機制 - &c無限級一鍵合成", "&7本機器最多支援一鍵合成9,999,999次", "&7\"終極合成\"的特性讓它不再是空談", "&7是時候讓存儲裏的大批物品動起來了")));
     }
 
     public static final ItemPusherProvider SINGULARITY_PROVIDER = FinalFeature.STORAGE_AND_LOCPROXY_READER;

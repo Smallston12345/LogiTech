@@ -24,7 +24,7 @@ public class QuarSorter extends AbstractSorter {
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽3", "&7貨運輸入~"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽3", "&7設置白名單"),
 
-        // new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE,"&a信息","&7下方為貨運輸出槽","&7上方為芯片槽"),
+        // new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE,"&a資訊","&7下方為貨運輸出槽","&7上方為芯片槽"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6白名單槽1", "&7設置白名單"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽1", "&7貨運輸入~"),
         new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&6輸入槽2", "&7貨運輸入~"),

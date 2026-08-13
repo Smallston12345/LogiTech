@@ -108,7 +108,7 @@ public class HypLink extends DataRecordedItem {
                                 HyperLinkListener.openHypInv(event.getPlayer(), record);
                             }
                         } else {
-                            AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但超鏈接所指向的方塊似乎並不是一個有效的容器");
+                            AddUtils.sendMessage(event.getPlayer(), "&c抱歉,但超連結所指向的方塊似乎並不是一個有效的容器");
                         }
 
                     } else {

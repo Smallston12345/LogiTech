@@ -219,7 +219,7 @@ public class PortalCore extends MultiCore {
         setupPortal(loc.getBlock());
     }
 
-    public MultiBlockService.DeleteCause NOLINK = new MultiBlockService.DeleteCause("不存在超鏈接", false);
+    public MultiBlockService.DeleteCause NOLINK = new MultiBlockService.DeleteCause("不存在超連結", false);
 
     public void updateMenu(BlockMenu inv, Block block, Settings mod) {
         int holoStatus = DataCache.getCustomData(inv.getLocation(), MultiBlockService.getHologramKey(), 0);
@@ -248,18 +248,18 @@ public class PortalCore extends MultiCore {
             Location loc = inv.getLocation();
             if (MultiBlockService.getStatus(loc) == 0) { // not working
                 if (loadLink(inv)) {
-                    AddUtils.sendMessage(player, "&a成功檢測到目標傳送門,成功建立超鏈接");
+                    AddUtils.sendMessage(player, "&a成功檢測到目標傳送門,成功建立超連結");
 
                     if (MultiBlockService.createNewHandler(
                             loc, getBuilder(), getMultiBlockType(), OutputStream.getPlayerOut(player))) {
                         inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM_ON);
-                        AddUtils.sendMessage(player, "&a成功激活傳送門!");
+                        AddUtils.sendMessage(player, "&a成功啟動傳送門!");
                     } else {
                         AddUtils.sendMessage(player, "&c傳送門結構不完整或者結構衝突!");
                         inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM_OFF);
                     }
                 } else {
-                    AddUtils.sendMessage(player, "&c目標傳送門已損壞,請檢查超鏈接");
+                    AddUtils.sendMessage(player, "&c目標傳送門已損壞,請檢查超連結");
                     inv.replaceExistingItem(TOGGLE_SLOT, TOGGLE_ITEM_OFF);
                 }
             } else { // working toggle off

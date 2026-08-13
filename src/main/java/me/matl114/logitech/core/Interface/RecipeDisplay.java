@@ -50,7 +50,7 @@ public interface RecipeDisplay extends RecipeDisplayItem {
 
                     if (pro < 1.0) {
                         lore.add("&e隨機物品輸出");
-                        lore.add("&e概率: " + AddUtils.getPercentFormat(pro));
+                        lore.add("&e機率: " + AddUtils.getPercentFormat(pro));
                     }
                 }
                 if (stack instanceof RandAmountStack rand) {

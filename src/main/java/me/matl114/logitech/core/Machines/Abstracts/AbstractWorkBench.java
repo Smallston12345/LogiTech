@@ -85,7 +85,7 @@ public abstract class AbstractWorkBench extends AbstractMachine {
         for (int i = 0; i < size; ++i) {
             targetRecipe.add(MachineRecipeUtils.stackFrom(
                     machineRecipes.get(i).getTicks(),
-                    Utils.array(AddUtils.getInfoShow("&f有序配方合成", "&7請在配方顯示界面或者機器界面查看")),
+                    Utils.array(AddUtils.getInfoShow("&f有序配方合成", "&7請在配方顯示介面或者機器介面查看")),
                     machineRecipes.get(i).getOutput()));
         }
         return targetRecipe;

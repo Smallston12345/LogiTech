@@ -83,7 +83,7 @@ public class AdvancedManual extends AbstractBlock {
         PostSetupTasks.addPostRegisterTask(() -> {
             for (RecipeType rtype : supportedRtype) {
                 ItemStack icon = RecipeSupporter.RECIPETYPE_ICON.getOrDefault(rtype, nullRtype);
-                this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f支持的配方類型"));
+                this.addDisplayRecipe(new CleanItemStack(Material.BOOK, "&f支援的配方類型"));
                 this.addDisplayRecipe(icon);
             }
         });
@@ -188,7 +188,7 @@ public class AdvancedManual extends AbstractBlock {
         private void setRecipeType(RecipeType type) {
             if (selectedType != type) {
                 selectedType = type;
-                // 主要觸發修改物品展示界面 切換的時候需要全部刪除
+                // 主要觸發修改物品展示介面 切換的時候需要全部刪除
                 this.clearRecordOnTypeChange();
                 this.reloadRecipeType();
             }

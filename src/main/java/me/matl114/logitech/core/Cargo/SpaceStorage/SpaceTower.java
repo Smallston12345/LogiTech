@@ -71,7 +71,7 @@ public class SpaceTower extends AbstractMachine {
                         Material.PURPLE_STAINED_GLASS_PANE,
                         "&6點擊進行空間IO操作",
                         "&7單位體積耗電: %dJ".formatted(energyConsumption),
-                        "&e請確保你已經閲讀機器説明"));
+                        "&e請確保你已經閱讀機器說明"));
         preset.addItem(INFO_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6狀態", "&c未檢測出延申的空間塔框架"));
     }
 
@@ -97,7 +97,7 @@ public class SpaceTower extends AbstractMachine {
             return;
         }
         inv.replaceExistingItem(INPUT_SLOTS[0], storageCard);
-        // 防止數據保存不上!
+        // 防止資料保存不上!
         storageCard = MenuUtils.syncSlot(inv, INPUT_SLOTS[0]);
         var locationInfo = getSpaceTowerRange(loc);
         if (locationInfo == null) {
@@ -157,7 +157,7 @@ public class SpaceTower extends AbstractMachine {
                 int status2 = ConfigLoader.SPACE_STORAGE.getInt(parentPath + "status");
                 try {
                     String[] intDatas = locationInfo.split(",");
-                    // 判斷是否數據對其
+                    // 判斷是否資料對其
                     if (x_ - x != Integer.parseInt(intDatas[2])
                             || y_ - y != Integer.parseInt(intDatas[3])
                             || z_ - z != Integer.parseInt(intDatas[4])) {
@@ -171,19 +171,19 @@ public class SpaceTower extends AbstractMachine {
                             0,
                             Integer.parseInt(intDatas[1]));
                 } catch (Throwable e) {
-                    AddUtils.sendMessage(player, "&c讀取配置文件時出現異常,請找服務器管理員解決");
+                    AddUtils.sendMessage(player, "&c讀取設定檔時出現異常,請找伺服器管理員解決");
                     Debug.logger(e);
-                    Debug.logger("請檢查space-storage.yml中數據是否有異常,或者聯繫作者解決");
+                    Debug.logger("請檢查space-storage.yml中資料是否有異常,或者聯繫作者解決");
                     return false;
                 }
                 if (status != status2) {
-                    AddUtils.sendMessage(player, "&c磁盤中存儲狀態數據損壞!");
+                    AddUtils.sendMessage(player, "&c磁盤中存儲狀態資料損壞!");
                     return false;
                 }
                 String uid = card.getUid(meta);
                 String uid2 = ConfigLoader.SPACE_STORAGE.getString(parentPath + "uid");
                 if (!uid2.equals(uid)) {
-                    AddUtils.sendMessage(player, "&c磁盤中存儲uid與配置文件不符!");
+                    AddUtils.sendMessage(player, "&c磁盤中存儲uid與設定檔不符!");
                     return false;
                 }
             }
@@ -197,8 +197,8 @@ public class SpaceTower extends AbstractMachine {
             ConfigLoader.SPACE_STORAGE.setValue(parentPath + "status", newStatus);
             ConfigLoader.SPACE_STORAGE.save();
 
-            AddUtils.sendMessage(player, "&a磁盤數據檢測無誤...");
-            AddUtils.sendMessage(player, "&a加載磁盤空間中...");
+            AddUtils.sendMessage(player, "&a磁盤資料檢測無誤...");
+            AddUtils.sendMessage(player, "&a載入磁盤空間中...");
             AddUtils.sendMessage(player, "&a空間轉移中,這可能會持續數秒...");
             cost.run();
             StorageSpace.onSpaceExchange(player, startLocation, endLocation, storedLocation, status, true);

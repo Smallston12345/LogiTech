@@ -49,27 +49,31 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
                         "&7被玩家放下或者被同化出來的方塊會進行一次同化",
                         "&a進行同化行為後該位置的方塊將將不會繼續同化,也不會被同化",
                         "&7在隨機的時長後被該位置的方塊將會轉變為目標物品",
-                        "&e當轉變為目標物品時,將有%d%%的概率不改變方塊材質".formatted(CHANCE_KEEP_MATERIAL)),
+                        "&e當轉變為目標物品時,將有%d%%的機率不改變方塊材質".formatted(CHANCE_KEEP_MATERIAL)),
                 AddUtils.addLore(result.getItem(), "&a同化最終的結果"),
                 AddUtils.getInfoShow(
                         "&f機制 - &c反能量",
                         "&7該物品同化的能量來源是所謂的\"反能量值\"",
                         "&7當玩家放下時候,方塊反能量值為%d".formatted(LIFE_DEFAULT),
-                        "&7被同化出的方塊將會繼承同化者的反能量值,並有60%的概率衰減1",
-                        "&7同化進行後的方塊每sft將有60%的概率將自身反能量值衰減1",
+                        "&7被同化出的方塊將會繼承同化者的反能量值,並有60%的機率衰減1",
+                        "&7同化進行後的方塊每sft將有60%的機率將自身反能量值衰減1",
                         "&7當反能量值為0的時候,方塊將轉變為目標物品"),
                 null,
                 AddUtils.getInfoShow(
                         "&f機制 - &c數量閾值",
-                        "&7整個服務器中最多有%d個方塊同時進行同化行為".formatted(ONE_TICK_SPREAD_MAXCNT),
+                        "&7整個伺服器中最多有%d個方塊同時進行同化行為".formatted(ONE_TICK_SPREAD_MAXCNT),
                         "&7當超過該閾值後餘下的方塊將&c停止運行",
-                        "&a因此該物品並不會對服務器tps造成影響")));
+                        "&a因此該物品並不會對伺服器tps造成影響")));
     }
 
     protected Random rand = new Random();
-    protected final int LIFE_DEFAULT = 13;
-    protected final int ONE_TICK_SPREAD_MAXCNT = 1600;
-    protected final int CHANCE_KEEP_MATERIAL = 2;
+    protected final boolean ENABLE_SPREAD = FeatureConfig.getBoolean("SpreadBlock.Antimass.enable-spread", true);
+    protected final int LIFE_DEFAULT = Math.max(0, FeatureConfig.getInt("SpreadBlock.Antimass.life-default", 13));
+    protected final int ONE_TICK_SPREAD_MAXCNT =
+            Math.max(0, FeatureConfig.getInt("SpreadBlock.Antimass.max-spread-per-tick", 1600));
+    protected final int CHANCE_KEEP_MATERIAL = Math.max(
+            0, Math.min(100, FeatureConfig.getInt("SpreadBlock.Antimass.chance-keep-material", 2)));
+    protected final int TICK_RATE = Math.max(1, FeatureConfig.getInt("SpreadBlock.Antimass.tick-rate", 1));
     protected final ConcurrentHashMap<Location, Player> SPREAD_PLAYER = new ConcurrentHashMap<>();
 
     public Map<Location, Player> getSpreadOwner() {
@@ -107,6 +111,7 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
     public void registerTick(SlimefunItem item) {
         item.addItemHandler(new BlockTicker() {
             int runPerTick = 0;
+            int currentTick = 0;
 
             public boolean isSynchronized() {
                 return isSync();
@@ -114,7 +119,7 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
 
             @ParametersAreNonnullByDefault
             public void tick(Block b, SlimefunItem item, SlimefunBlockData data) {
-                if (runPerTick > ONE_TICK_SPREAD_MAXCNT) return;
+                if (currentTick % TICK_RATE != 0) return;
                 Location loc = data.getLocation();
                 if (PENDING_CREATE.contains(loc)) {
                     return;
@@ -127,7 +132,7 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
                 } else {
                     int lifeToSet = life - (rand.nextInt(100) < 60 ? 1 : 0);
                     Player player = SPREAD_PLAYER.get(loc);
-                    for (int i = 0; i < SPREAD_DELTA.length; i++) {
+                    for (int i = 0; ENABLE_SPREAD && i < SPREAD_DELTA.length && runPerTick < ONE_TICK_SPREAD_MAXCNT; i++) {
                         Location loc2 = loc.clone().add(SPREAD_DELTA[i]);
                         if (SPREAD_TICKER.containsKey(loc2)) {
                             continue;
@@ -154,6 +159,7 @@ public class SpreadBlock extends AbstractBlock implements Ticking {
             @Override
             public void uniqueTick() {
                 this.runPerTick = 0;
+                this.currentTick = (this.currentTick + 1) % TICK_RATE;
             }
         });
     }

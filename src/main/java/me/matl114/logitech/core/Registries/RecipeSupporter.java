@@ -1134,9 +1134,9 @@ public class RecipeSupporter {
         }
         hasInit = true;
         long a = System.nanoTime();
-        Debug.logger("配方供應器開始進行數據採集,預計耗時2秒");
-        Debug.logger("期間tps可能會下降,請不要在供應器工作時進入服務器");
-        Debug.logger("期間的報錯信息均可忽略");
+        Debug.logger("配方供應器開始進行資料採集,預計耗時2秒");
+        Debug.logger("期間tps可能會下降,請不要在供應器工作時進入伺服器");
+        Debug.logger("期間的報錯資訊均可忽略");
         Debug.logger("讀取全部配方中...");
         RECIPE_TYPES.add(BukkitUtils.VANILLA_CRAFTTABLE);
         PROVIDED_SHAPED_RECIPES.put(BukkitUtils.VANILLA_CRAFTTABLE, new ArrayList<>());
@@ -1440,12 +1440,6 @@ public class RecipeSupporter {
                 put(EntityType.ZOGLIN, Utils.recipe("ROTTEN_FLESH", "LEATHER"));
                 // BOSS
                 put(EntityType.WITHER, Utils.recipe("NETHER_STAR", "WITHER_SKELETON_SKULL"));
-                put(
-                        EntityType.ENDER_DRAGON,
-                        Utils.recipe(
-                                "DRAGON_BREATH",
-                                AddUtils.probItemStackFactory(new ItemStack(Material.DRAGON_HEAD), 5),
-                                new ProbItemStack(new ItemStack(Material.DRAGON_EGG), 0.003)));
                 put(EntityType.WARDEN, Utils.recipe("SCULK_CATALYST"));
                 // 實體
                 put(EntityType.THROWN_EXP_BOTTLE, Utils.recipe("EXPERIENCE_BOTTLE"));
@@ -1562,7 +1556,7 @@ public class RecipeSupporter {
         }
 
         Debug.logger("全部配方讀取完成");
-        Debug.logger("初始化配方類型顯示界面...");
+        Debug.logger("初始化配方類型顯示介面...");
         // 初始化對應物品
         for (RecipeType type : RECIPE_TYPES) {
             try {
@@ -1580,8 +1574,8 @@ public class RecipeSupporter {
                 ILLEGAL_RECIPETYPES.add(type);
             }
         }
-        Debug.logger("初始化機器類型顯示界面...");
-        Debug.logger("警告: 如果你發現有機器沒有檢測到,説明他們並不在已知格式中或者並不在配置文件中");
+        Debug.logger("初始化機器類型顯示介面...");
+        Debug.logger("警告: 如果你發現有機器沒有檢測到,說明他們並不在已知格式中或者並不在設定檔中");
 
         // 解析含有recipe的機器類型
         for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
@@ -1825,7 +1819,7 @@ public class RecipeSupporter {
                 e.printStackTrace();
             }
         }
-        Debug.logger("嘗試載入機器配方修改配置文件");
+        Debug.logger("嘗試載入機器配方修改設定檔");
         try {
             List<String> enableAddons = ConfigLoader.INNER_MACHINES.getStringList("enable");
             if (!enableAddons.isEmpty()) {
@@ -1870,7 +1864,7 @@ public class RecipeSupporter {
                 }
             }
         }
-        // 加載對堆疊機器列表的修改配置
+        // 載入對堆疊機器列表的修改配置
         try {
             List<String> enableAddons = ConfigLoader.INNER_MACHINES.getStringList("enable");
             if (!enableAddons.isEmpty()) {

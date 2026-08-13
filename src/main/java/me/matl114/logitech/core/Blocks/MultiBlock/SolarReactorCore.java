@@ -76,7 +76,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
     protected final int HALT_SLOT = 0;
     protected final ItemStack HALT_ITEM = new CustomItemStack(Material.BARRIER, "&c點擊安全終止進程", "&6不會引發爆炸");
     protected final int INFO_SLOT = 22;
-    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a機器狀態信息", "");
+    protected final ItemStack INFO_ITEM = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a機器狀態資訊", "");
     protected final int[] INPUT_SLOT = new int[] {19, 20, 21, 28, 29, 30, 37, 38, 39};
     protected final int[] OUTPUT_SLOT = new int[] {23, 24, 25, 32, 33, 34, 41, 42, 43};
 
@@ -481,7 +481,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
                     } else {
                         if (MultiBlockService.createNewHandler(
                                 loc, getBuilder(), getMultiBlockType(), OutputStream.getPlayerOut(player))) {
-                            AddUtils.sendMessage(player, "&a成功激活多方塊結構!");
+                            AddUtils.sendMessage(player, "&a成功啟動多方塊結構!");
                         } else {
                             AddUtils.sendMessage(player, "&c多方塊結構不全或者結構衝突!");
                         }
@@ -528,7 +528,7 @@ public class SolarReactorCore extends MultiBlockProcessor {
                 autoBuild(loc, data, autoCode);
             }
         } else if (MultiBlockService.acceptCoreRequest(b.getLocation(), getBuilder(), getMultiBlockType())) {
-            // runtime檢查是否完整,每3tick檢查一次,每次有1/10的概率檢測一個方塊
+            // runtime檢查是否完整,每3tick檢查一次,每次有1/10的機率檢測一個方塊
             runtimeCheck(loc, data, autoCode);
             // 直接開銷電量
             super.progressorCost(b, inv);

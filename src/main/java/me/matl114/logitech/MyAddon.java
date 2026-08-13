@@ -102,28 +102,28 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         try {
             DependencyNetwork.init();
         } catch (Throwable e) {
-            Debug.logger("在加載軟依賴 NETWORKS時出現錯誤! 出現版本不匹配的附屬,禁用附屬相應內容");
+            Debug.logger("在載入軟依賴 NETWORKS時出現錯誤! 出現版本不匹配的附屬,禁用附屬相應內容");
             Debug.logger(e);
         }
         try {
             DependencyInfinity.init();
         } catch (Throwable e) {
-            Debug.logger("在加載軟依賴 INFINITY時出現錯誤! 出現版本不匹配的附屬,禁用附屬相應內容");
+            Debug.logger("在載入軟依賴 INFINITY時出現錯誤! 出現版本不匹配的附屬,禁用附屬相應內容");
             Debug.logger(e);
         }
         try {
             supportedPluginManager = new SupportedPluginManager();
         } catch (Throwable e) {
-            Debug.logger("在加載插件兼容時出現錯誤");
+            Debug.logger("在載入插件兼容時出現錯誤");
             Debug.logger(e);
         }
         Debug.logger("軟依賴檢測完畢");
         AddGroups.registerGroups(this);
-        Debug.logger("物品組加載完畢");
-        Debug.logger("自定義物品加載完畢");
+        Debug.logger("物品組載入完畢");
+        Debug.logger("自定義物品載入完畢");
         // 物品註冊
         AddItem.registerItemStack();
-        Debug.logger("物品模板加載完畢");
+        Debug.logger("物品模板載入完畢");
         // 黏液物品註冊
         AddSlimefunItems.registerSlimefunItems();
         Debug.logger("黏液物品註冊完畢");
@@ -142,7 +142,7 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         ProtectionManager.registerProtection(getInstance(), getManager());
 
         Debug.logger("監聽器註冊完畢");
-        // 加載bs工具
+        // 載入bs工具
         DataCache.setup();
         // 註冊存儲類型
         Storages.setup();
@@ -150,21 +150,21 @@ public class MyAddon extends JavaPlugin implements SlimefunAddon {
         MultiBlockService.setup();
         // 註冊多方塊類型
         MultiBlockTypes.setup();
-        // 加載自定義效果機制
+        // 載入自定義效果機制
         CustomEffects.setup();
-        // 加載輻射機制
+        // 載入輻射機制
         RadiationRegionManager.setup();
-        // 加載裝備監聽管理器
+        // 載入裝備監聽管理器
         new EquipmentFUManager();
-        // 加載配方工具
+        // 載入配方工具
         CraftUtils.setup();
-        // 加載世界操作工具
+        // 載入世界操作工具
         WorldUtils.setup();
-        // 加載Bukkit操作工具
+        // 載入Bukkit操作工具
         BukkitUtils.setup();
-        // 加載貨運工具
+        // 載入貨運工具
         TransportUtils.setup();
-        // 加載容器impl工具
+        // 載入容器impl工具
         ContainerUtils.setup();
         Debug.logger("指令註冊完畢");
         //        command = new AddonCommand(this);
