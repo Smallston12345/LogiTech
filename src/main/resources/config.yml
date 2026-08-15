@@ -46,32 +46,32 @@ enchantment-limits:
   piercing: 10
 
 FinalMGenerator:
-  產物:
-    COBBLESTONE: { 數量: 65536 }
-    NETHERRACK: { 數量: 32768 }
-    END_STONE: { 數量: 32768 }
-    GRANITE: { 數量: 16384 }
-    DIORITE: { 數量: 16384 }
-    ANDESITE: { 數量: 16384 }
-    STONE: { 數量: 32768 }
-    TUFF: { 數量: 16384 }
-    COBBLED_DEEPSLATE: { 數量: 16384 }
-    BASALT: { 數量: 16384 }
-    BLACKSTONE: { 數量: 16384 }
-    COAL: { 數量: 256 }
-    COPPER_INGOT: { 數量: 192 }
-    IRON_INGOT: { 數量: 192 }
-    GOLD_INGOT: { 數量: 128 }
-    REDSTONE: { 數量: 256 }
-    LAPIS_LAZULI: { 數量: 256 }
-    QUARTZ: { 數量: 256 }
-    DIAMOND: { 數量: 64 }
-    EMERALD: { 數量: 64 }
-    NETHERITE_INGOT: { 數量: 8 }
-    BUCKET_OF_OIL: { 數量: 6 }
+  outputs:
+    COBBLESTONE: { amount: 65536 }
+    NETHERRACK: { amount: 32768 }
+    END_STONE: { amount: 32768 }
+    GRANITE: { amount: 16384 }
+    DIORITE: { amount: 16384 }
+    ANDESITE: { amount: 16384 }
+    STONE: { amount: 32768 }
+    TUFF: { amount: 16384 }
+    COBBLED_DEEPSLATE: { amount: 16384 }
+    BASALT: { amount: 16384 }
+    BLACKSTONE: { amount: 16384 }
+    COAL: { amount: 256 }
+    COPPER_INGOT: { amount: 192 }
+    IRON_INGOT: { amount: 192 }
+    GOLD_INGOT: { amount: 128 }
+    REDSTONE: { amount: 256 }
+    LAPIS_LAZULI: { amount: 256 }
+    QUARTZ: { amount: 256 }
+    DIAMOND: { amount: 64 }
+    EMERALD: { amount: 64 }
+    NETHERITE_INGOT: { amount: 8 }
+    BUCKET_OF_OIL: { amount: 6 }
 
 ATTRIBUTE_OPERATOR:
-  限制轉移屬性:
+  blocked-attributes:
     - SCALE
     - BURNING_TIME
     - FALL_DAMAGE_MULTIPLIER
@@ -85,9 +85,9 @@ SpreadBlock:
     tick-rate: 5
 
 FinalConvertor:
-  隨機緩衝範圍: 10
-  最大嘗試次數: 48
-  排除產物:
+  random-buffer-range: 10
+  max-attempts: 48
+  excluded-outputs:
     - COMMAND_BLOCK
     - CHAIN_COMMAND_BLOCK
     - REPEATING_COMMAND_BLOCK
@@ -109,13 +109,13 @@ FinalConvertor:
     - SPLASH_POTION
     - LINGERING_POTION
     - TIPPED_ARROW
-  保底產物:
-    COMPRESSED_COBBLESTONE_1: { 數量: 1, 機率: 0 }
-    LOGITECH_VIRTUALWORLD: { 數量: 1, 機率: 8.0 }
-    LOGITECH_STAR_GOLD_INGOT: { 數量: 32, 機率: 17.0 }
-    LOGITECH_ATOM_INGOT: { 數量: 32, 機率: 17.0 }
-    LOGITECH_LSINGULARITY: { 數量: 16, 機率: 17.0 }
-    LOGITECH_VIRTUAL_SPACE: { 數量: 1, 機率: 4.0 }
-    LOGITECH_HGTLPBBI: { 數量: 1, 機率: 3.0 }
-    LOGITECH_PDCECDMD: { 數量: 1, 機率: 3.0 }
-    LOGITECH_ANTIMASS: { 數量: 1, 機率: 0.075 }
+  fallback-outputs:
+    COMPRESSED_COBBLESTONE_1: { amount: 1, chance: 0 }
+    LOGITECH_VIRTUALWORLD: { amount: 1, chance: 8.0 }
+    LOGITECH_STAR_GOLD_INGOT: { amount: 32, chance: 17.0 }
+    LOGITECH_ATOM_INGOT: { amount: 32, chance: 17.0 }
+    LOGITECH_LSINGULARITY: { amount: 16, chance: 17.0 }
+    LOGITECH_VIRTUAL_SPACE: { amount: 1, chance: 4.0 }
+    LOGITECH_HGTLPBBI: { amount: 1, chance: 3.0 }
+    LOGITECH_PDCECDMD: { amount: 1, chance: 3.0 }
+    LOGITECH_ANTIMASS: { amount: 1, chance: 0.075 }

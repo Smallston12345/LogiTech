@@ -38,7 +38,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class AttributeOperator extends SmithingInterface {
     private static final Set<String> RESTRICTED_ATTRIBUTES = FeatureConfig
-            .getStringList("ATTRIBUTE_OPERATOR.限制轉移屬性")
+            .getStringList("ATTRIBUTE_OPERATOR.blocked-attributes")
             .stream()
             .map(value -> value.toUpperCase(Locale.ROOT))
             .collect(Collectors.toUnmodifiableSet());

@@ -79,8 +79,8 @@ public class FinalConvertor extends AbstractMachine
                 MAX_TRY_COUNT = 36;
             }
         }
-        MAX_RANDOM_BUFFER = Math.max(1, FeatureConfig.getInt("FinalConvertor.隨機緩衝範圍", MAX_RANDOM_BUFFER));
-        MAX_TRY_COUNT = Math.max(1, FeatureConfig.getInt("FinalConvertor.最大嘗試次數", MAX_TRY_COUNT));
+        MAX_RANDOM_BUFFER = Math.max(1, FeatureConfig.getInt("FinalConvertor.random-buffer-range", MAX_RANDOM_BUFFER));
+        MAX_TRY_COUNT = Math.max(1, FeatureConfig.getInt("FinalConvertor.max-attempts", MAX_TRY_COUNT));
         MAX_RANDOM_BUFFER_SQARE = MAX_RANDOM_BUFFER * MAX_RANDOM_BUFFER;
 
         int maxValue = Collections.max(map.keySet()) + MAX_RANDOM_BUFFER_SQARE;
@@ -97,7 +97,7 @@ public class FinalConvertor extends AbstractMachine
         }
         MAX = max;
         MIN = min;
-        EXCLUDED_OUTPUTS = Set.copyOf(FeatureConfig.getStringList("FinalConvertor.排除產物"));
+        EXCLUDED_OUTPUTS = Set.copyOf(FeatureConfig.getStringList("FinalConvertor.excluded-outputs"));
 
         Debug.debug("MATERIAL MAPPING DONE");
     }

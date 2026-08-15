@@ -219,9 +219,9 @@ public class AddSlimefunItems {
 
     private static List<Pair<Object[], Object[]>> getFinalMGeneratorOutputs() {
         PairList<Object[], Object[]> outputs = new PairList<>();
-        String root = "FinalMGenerator.產物";
+        String root = "FinalMGenerator.outputs";
         for (String itemId : FeatureConfig.getKeys(root)) {
-            int amount = Math.max(1, FeatureConfig.getInt(root + "." + itemId + ".數量", 1));
+            int amount = Math.max(1, FeatureConfig.getInt(root + "." + itemId + ".amount", 1));
             outputs.put(mkl(itemId), mkl((amount == 1 ? "" : amount) + itemId));
         }
         return outputs;
@@ -229,12 +229,12 @@ public class AddSlimefunItems {
 
     private static RandomItemStack getFinalConvertorFallback() {
         PairList<Object, Integer> outputs = new PairList<>();
-        String root = "FinalConvertor.保底產物";
+        String root = "FinalConvertor.fallback-outputs";
         int totalWeight = 0;
         for (String itemId : FeatureConfig.getKeys(root)) {
-            int weight = (int) Math.round(Math.max(0.0, FeatureConfig.getDouble(root + "." + itemId + ".機率", 0.0)) * 1000.0);
+            int weight = (int) Math.round(Math.max(0.0, FeatureConfig.getDouble(root + "." + itemId + ".chance", 0.0)) * 1000.0);
             if (weight <= 0) continue;
-            int amount = Math.max(1, FeatureConfig.getInt(root + "." + itemId + ".數量", 1));
+            int amount = Math.max(1, FeatureConfig.getInt(root + "." + itemId + ".amount", 1));
             outputs.put(setC(resolveItem(itemId), amount), weight);
             totalWeight += weight;
         }
