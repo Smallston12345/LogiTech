@@ -8,8 +8,6 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import java.util.*;
-import me.matl114.logitech.Language;
-import me.matl114.logitech.core.AddItem;
 import me.matl114.logitech.core.Machines.Abstracts.AbstractMachine;
 import me.matl114.logitech.utils.AddUtils;
 import me.matl114.logitech.utils.CraftUtils;
@@ -45,24 +43,18 @@ public class ItemOperator extends AbstractMachine {
                 "&e僅可以對黏液物品或者不可堆疊物品操作",
                 "&e一次僅可對一個物品操作"),
         new CustomItemStack(Material.LANTERN, "&6顯示全部物品屬性", "&7點擊取消所有物品屬性隱藏符", "&7無需消耗物品"),
-        new CustomItemStack(
-                Material.CRYING_OBSIDIAN,
-                "&6賦予無法破壞",
-                "&7點擊賦予物品無法破壞屬性",
-                "&7需消耗 [%s] x64".formatted(Language.get("Items.LSINGULARITY.Name")),
-                "&e一次僅可對一個物品操作"),
+        ChestMenuUtils.getBackground(),
         new CustomItemStack(Material.GRINDSTONE, "&6重置物品", "&7點擊重置原版物品", "&7無需消耗物品", "&7僅限原版物品使用"),
         new CustomItemStack(
                 Material.WRITABLE_BOOK, "&6去除物品名字", "&7點擊去除物品名字", "&7需消耗 [命名牌]x1", "&a黏液物品將恢復至原初的名字", "&e一次僅可對一個物品操作"),
         new CustomItemStack(Material.SOUL_LANTERN, "&6隱藏全部物品屬性", "&7點擊添加所有物品屬性隱藏符", "&7無需消耗物品"),
-        new CustomItemStack(Material.VERDANT_FROGLIGHT, "&6取消無法破壞", "&7點擊取消物品無法破壞屬性", "&7無需消耗物品"),
+        ChestMenuUtils.getBackground(),
         new CustomItemStack(Material.LOOM, "&6物品染色", "&7點擊給可染色物品染色", "&7需消耗 [對應染料]x1")
     };
     protected final String RENAME_SF_PREFIX = AddUtils.resolveColor("&7&kS&f&r");
     protected final String RENAME_SF_SUFFIX = AddUtils.resolveColor("&7&kB&f&r");
     protected final String RENAME_VANILLA_PREFIX = AddUtils.resolveColor("&7&kT&f&r");
     protected final String RENAME_VANILLA_SUFFIX = AddUtils.resolveColor("&7&kM&f&r");
-    protected final ItemCounter LSIN = CraftUtils.getCounter(AddItem.LSINGULARITY);
     protected final ItemCounter NAMETAG = CraftUtils.getCounter(new ItemStack(Material.NAME_TAG));
     protected final HashSet<String> COLORS = new HashSet<>() {
         {
@@ -162,24 +154,6 @@ public class ItemOperator extends AbstractMachine {
             AddUtils.sendMessage(player, "&a操作成功!");
             return false;
         }));
-        inv.addMenuClickHandler(FUNCTION_SLOT[2], ((player, i, itemStack, clickAction) -> {
-            ItemStack stack = getOperated(inv, true);
-            if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品為空或者非單個物品!");
-                return false;
-            }
-            ItemStack consumed = inv.getItemInSlot(INPUT_SLOTS[0]);
-            if (consumed != null && consumed.getAmount() >= 64 && CraftUtils.matchItemStack(consumed, LSIN, true)) {
-                ItemMeta meta = stack.getItemMeta();
-                meta.setUnbreakable(true);
-                stack.setItemMeta(meta);
-                consumed.setAmount(consumed.getAmount() - 64);
-                AddUtils.sendMessage(player, "&a操作成功!");
-            } else {
-                AddUtils.sendMessage(player, "&c所需物品不足");
-            }
-            return false;
-        }));
         inv.addMenuClickHandler(FUNCTION_SLOT[3], ((player, i, itemStack, clickAction) -> {
             ItemStack stack = getOperated(inv, false);
             if (stack == null) {
@@ -226,18 +200,6 @@ public class ItemOperator extends AbstractMachine {
                 return false;
             }
             AddUtils.hideAllFlags(stack);
-            AddUtils.sendMessage(player, "&a操作成功!");
-            return false;
-        }));
-        inv.addMenuClickHandler(FUNCTION_SLOT[6], ((player, i, itemStack, clickAction) -> {
-            ItemStack stack = getOperated(inv, false);
-            if (stack == null) {
-                AddUtils.sendMessage(player, "&c被操作物品為空!");
-                return false;
-            }
-            ItemMeta meta = stack.getItemMeta();
-            meta.setUnbreakable(false);
-            stack.setItemMeta(meta);
             AddUtils.sendMessage(player, "&a操作成功!");
             return false;
         }));

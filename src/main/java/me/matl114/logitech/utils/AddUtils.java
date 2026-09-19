@@ -921,12 +921,6 @@ public class AddUtils {
         return stack;
     }
 
-    public static ItemStack setUnbreakable(ItemStack stack, boolean unbreakable) {
-        ItemMeta meta = stack.getItemMeta();
-        meta.setUnbreakable(unbreakable);
-        stack.setItemMeta(meta);
-        return stack;
-    }
     /**
      * get a info display item to present in SF machineRecipe display
      * @param title

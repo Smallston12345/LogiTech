@@ -39,6 +39,9 @@ permissions:
   logitech.command.op:
     description: Allows you to use operator commands
     default: op
+  logitech.command.antimass-status:
+    description: Allows you to view the current antimass production capacity
+    default: op
   logitech.shell.root:
     description: Allows you to open root shell without password
     default: op
@@ -48,3 +51,6 @@ permissions:
   logitech.experimental.test:
     description: Allows you to use experimental items
     default: op
+  logitech.antimass.limit-bypass:
+    description: Allows limited antimass placement after the global placement cap is reached
+    default: false

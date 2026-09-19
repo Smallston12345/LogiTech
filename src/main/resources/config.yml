@@ -75,18 +75,67 @@ ATTRIBUTE_OPERATOR:
     - SCALE
     - BURNING_TIME
     - FALL_DAMAGE_MULTIPLIER
+  # 只允許同類型物品之間轉移(劍→劍,鎬→鎬,頭盔→頭盔...)
+  require-same-item-category: true
+  # 書本/附魔書是否無視類型限制(關閉後附魔書將無法作為轉移對象)
+  allow-book-transfer: true
+  # 每次轉移時附魔等級的衰減量,最低會保留 1 級; 設為 0 則不衰減
+  enchant-level-decay: 1
+  # 轉移失敗的機率(百分比),設為 0 則必定成功
+  transfer-fail-chance: 20.0
+  # 失敗時被轉移者身上的附魔/屬性是否照樣消失
+  fail-loses-source: true
 
 SpreadBlock:
   Antimass:
-    enable-spread: false
-    life-default: 13
-    max-spread-per-tick: 10
-    chance-keep-material: 2
+    # 虛擬觸鬚只累積概念進度，不會讀取或改變附近地形
+    enable-spread: true
     tick-rate: 5
+    tendril-count: 6
+    # 每次更新的基礎觀測量；預設完整24格輪約45秒
+    base-observation-rate: 12
+    # 所有核心共享進度預算，足以容納32個核心同時進入獻祭超頻
+    active-observation-budget: 1152
+    # 全服共用核心放置上限
+    max-placed-processes: 32
+    # 每位玩家最多使用的共用池名額
+    max-shared-processes-per-player: 2
+    # 具備 logitech.antimass.limit-bypass 權限者擁有的額外名額，不計入上方的全服共用上限
+    max-bypass-processes-per-player: 2
+    # 全服同時進行觀測的核心數量；離線、暫停或區塊未載入時不占用產能
+    max-active-processes: 32
+    max-radius: 24
+    # 每輪完成可再次啟動並擴大24格，共6個完整輪次
+    maximum-observation-radius: 144
+    # 完整24格擴張輪需要累積的概念觀測；最後不足24格時會依比例縮短
+    observation-budget-per-full-step: 216
+    # 每8點觀測生成1個邏輯核心：每輪27顆，6輪全程162顆
+    logic-core-observation-cost: 8
+    # 超頻時每次消耗20點材料並額外增加24點觀測；完整輪共需120點材料
+    overclock-material-cost: 20
+    overclock-observation-bonus: 24
+    # 抵達最大半徑後，手動點擊原地重啟所需的獻祭點數
+    completed-reset-material-cost: 360
+    # 各黏液物品提供的獻祭點數；設為0即可停用該材料
+    # 高階材料價值較高，超出的點數會保留供後續超頻使用
+    sacrifice-material-values:
+      ENERGIZED_CAPACITOR: 1
+      LOGITECH_REINFORCED_CHIP_INGOT: 2
+      LOGITECH_SPACE_PLATE: 4
+      LOGITECH_PDCECDMD: 8
+      LOGITECH_HGTLPBBI: 8
+      LOGITECH_VIRTUAL_SPACE: 16
+      LOGITECH_FINAL_FRAME: 64
 
 FinalConvertor:
+  # 虛擬材質序號單次波動範圍的平方根
   random-buffer-range: 10
+  # 在判定轉換失敗前,最多尋找幾次可用材質
   max-attempts: 48
+  # 普通原版產物的單次數量範圍,不影響下方特殊產物的設定數量
+  # 物品本身堆疊上限低於最小值時,會依該物品上限產出
+  min-output-amount: 32
+  max-output-amount: 64
   excluded-outputs:
     - COMMAND_BLOCK
     - CHAIN_COMMAND_BLOCK

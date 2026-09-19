@@ -11,6 +11,7 @@ public class AttackPermissionTestEvent extends EntityDamageByEntityEvent {
     private float realDamage;
 
     public AttackPermissionTestEvent(Entity damager, Entity damagee, float realDamage) {
-        super(damager, damagee, EntityDamageEvent.DamageCause.ENTITY_ATTACK, 0.0);
+        super(damager, damagee, EntityDamageEvent.DamageCause.ENTITY_ATTACK, realDamage);
+        this.realDamage = realDamage;
     }
 }

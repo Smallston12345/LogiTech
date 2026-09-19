@@ -955,6 +955,19 @@ public class AddSlimefunItems {
                     formatInfoRecipe(AddItem.SOLAR_REACTOR, Language.get("MultiBlock.SOLAR_REACTOR.Name")),
                     null)
             .register();
+    public static final SlimefunItem QUANTUM_OBSERVATION_CORE = new MaterialItem(
+                    MATERIAL,
+                    AddItem.QUANTUM_OBSERVATION_CORE,
+                    STARSMELTERY,
+                    recipe(
+                            setC(AddItem.LSINGULARITY, 32),
+                            setC(AddItem.STAR_GOLD_INGOT, 16),
+                            setC(AddItem.ATOM_INGOT, 16),
+                            setC(AddItem.HGTLPBBI, 4),
+                            setC(AddItem.PDCECDMD, 4),
+                            setC(AddItem.LOGIC_CORE, 16)),
+                    null)
+            .register();
     public static final SlimefunItem ATOM_INGOT = new MaterialItem(
                     MATERIAL,
                     AddItem.ATOM_INGOT,
@@ -1428,13 +1441,6 @@ public class AddSlimefunItems {
                             null,
                             "IRON_BLOCK",
                             null))
-            .register();
-    public static final MyVanillaItem SUPER_COBALT_PICKAXE = new MyVanillaItem(
-                    TOOLS_FUNCTIONAL,
-                    AddItem.SUPER_COBALT_PICKAXE,
-                    "SUPER_COBALT_PICKAXE",
-                    SmithInterfaceProcessor.INTERFACED_SMITH_UPDATE,
-                    recipe(AddItem.ABSTRACT_INGOT, "COBALT_PICKAXE", "3DIAMOND", null, null, null, null, null, null))
             .register();
 
     // machines
@@ -6806,8 +6812,7 @@ public class AddSlimefunItems {
                     });
                 } else {
                     if (ANTIMASS instanceof SpreadBlock sb) {
-                        sb.getSpreadOwner().clear();
-                        sb.getSpreadTicker().clear();
+                        sb.abortAllProcesses();
                         WorldUtils.abortCreatingQueue();
                         HashSet<SlimefunBlockData> data = new HashSet<>();
                         Slimefun.getDatabaseManager()

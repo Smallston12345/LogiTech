@@ -4,6 +4,8 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+import me.matl114.logitech.core.AddSlimefunItems;
+import me.matl114.logitech.core.Blocks.SpreadBlock;
 import me.matl114.logitech.core.Interface.LogiTechChargable;
 import me.matl114.logitech.utils.AddUtils;
 import me.matl114.logitech.utils.Debug;
@@ -57,6 +59,60 @@ public class LogitechMain extends AbstractMainCommand {
     private SubCommand exportAddonCommand = new SubCommand("export", new SimpleCommandArgs(), "/logitech export 內部開發指令")
             .setCommandExecutor(new AddonCommand(null))
             .register(this);
+    private SubCommand antimassCommand =
+            new SubCommand("antimass", new SimpleCommandArgs(), "/logitech antimass 查看反概念產能狀態") {
+                @Override
+                public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+                    if (!sender.hasPermission("logitech.command.antimass-status")) {
+                        AddUtils.sendMessage(sender, "&c你沒有權限查看反概念產能");
+                        return true;
+                    }
+                    if (!(AddSlimefunItems.ANTIMASS instanceof SpreadBlock antimass)) {
+                        AddUtils.sendMessage(sender, "&c反概念產能資料目前不可用");
+                        return true;
+                    }
+                    SpreadBlock.CapacitySnapshot status = antimass.getCapacitySnapshot();
+                    int sharedActive = Math.min(status.sharedReady(), status.sharedActiveLimit());
+                    int bypassCapacity = status.bypassOwners() * status.bypassLimitPerOwner();
+                    int bypassActive = Math.min(status.bypassReady(), bypassCapacity);
+                    AddUtils.sendMessage(sender, "&6===== 反概念產能狀態 =====");
+                    AddUtils.sendMessage(
+                            sender,
+                            "&e共用池 &7生產中: &f%d/%d &7| 已追蹤放置: &f%d/%d &7| 等待: &f%d"
+                                    .formatted(
+                                            sharedActive,
+                                            status.sharedActiveLimit(),
+                                            status.sharedPlaced(),
+                                            status.sharedPlacementLimit(),
+                                            status.sharedWaiting()));
+                    AddUtils.sendMessage(
+                            sender,
+                            "&e共用預算 &7每次更新: &f%d點".formatted(status.sharedObservationBudget()));
+                    AddUtils.sendMessage(
+                            sender,
+                            "&dVIP獨立池 &7生產中: &f%d/%d &7| 已追蹤放置: &f%d &7| 擁有者: &f%d &7| 等待: &f%d"
+                                    .formatted(
+                                            bypassActive,
+                                            bypassCapacity,
+                                            status.bypassPlaced(),
+                                            status.bypassOwners(),
+                                            status.bypassWaiting()));
+                    AddUtils.sendMessage(
+                            sender,
+                            "&dVIP預算 &7每位擁有者: &f%d台 / %d點"
+                                    .formatted(
+                                            status.bypassLimitPerOwner(),
+                                            status.bypassObservationBudgetPerOwner()));
+                    AddUtils.sendMessage(
+                            sender,
+                            "&7已追蹤核心: &f%d &7| 離線停產: &f%d &7| 手動暫停: &f%d"
+                                    .formatted(
+                                            status.trackedProcesses(),
+                                            status.offlineProcesses(),
+                                            status.pausedProcesses()));
+                    return true;
+                }
+            }.register(this);
     private SubCommand multiBlockCommand =
             new SubCommand("multiblock", new SimpleCommandArgs(), "&a/logitech multiblock 獲取本附屬多方塊結構搭建教程") {
                 @Override

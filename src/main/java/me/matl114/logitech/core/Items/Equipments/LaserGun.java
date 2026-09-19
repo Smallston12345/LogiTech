@@ -175,11 +175,15 @@ public class LaserGun extends ChargableProps {
 
                                     if (entity instanceof Player player) {
                                         if (p != player) {
+                                            // 創造/旁觀模式玩家不受激光影響, 激光直接穿透
+                                            GameMode gameMode = player.getGameMode();
+                                            if (gameMode == GameMode.CREATIVE || gameMode == GameMode.SPECTATOR) {
+                                                continue;
+                                            }
                                             hasTarget = true;
                                             float damage = 4 * (level + 1);
                                             damage = 0.5f * damage * damage;
-                                            // remove permission check, shit
-                                            if (true || WorldUtils.testAttackPermission(p, player, damage)) {
+                                            if (WorldUtils.testAttackPermission(p, player, damage)) {
                                                 PlayerEffects.grantEffect(
                                                         CustomEffects.LASER, player, 4 * (level + 1), 1);
                                             }

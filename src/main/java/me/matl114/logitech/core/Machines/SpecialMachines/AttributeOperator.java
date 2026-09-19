@@ -10,6 +10,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
@@ -48,6 +49,65 @@ public class AttributeOperator extends SmithingInterface {
         String key = attribute.getKey().getKey().toUpperCase(Locale.ROOT);
         return RESTRICTED_ATTRIBUTES.contains(key)
                 || RESTRICTED_ATTRIBUTES.contains(attribute.toString().toUpperCase(Locale.ROOT));
+    }
+
+    /** 是否只允許同類型物品之間轉移 */
+    private static final boolean REQUIRE_SAME_CATEGORY =
+            FeatureConfig.getBoolean("ATTRIBUTE_OPERATOR.require-same-item-category", true);
+    /** 書本/附魔書是否可作為任意類型的轉移對象(附魔書機制依賴此項) */
+    private static final boolean ALLOW_BOOK_TRANSFER =
+            FeatureConfig.getBoolean("ATTRIBUTE_OPERATOR.allow-book-transfer", true);
+    /** 每次轉移附魔的等級衰減量 */
+    private static final int ENCHANT_LEVEL_DECAY =
+            Math.max(0, FeatureConfig.getInt("ATTRIBUTE_OPERATOR.enchant-level-decay", 1));
+    /** 轉移失敗機率(百分比) */
+    private static final double TRANSFER_FAIL_CHANCE =
+            Math.max(0.0, Math.min(100.0, FeatureConfig.getDouble("ATTRIBUTE_OPERATOR.transfer-fail-chance", 20.0)));
+    /** 轉移失敗時,被轉移者身上的附魔/屬性是否照樣消失 */
+    private static final boolean FAIL_LOSES_SOURCE =
+            FeatureConfig.getBoolean("ATTRIBUTE_OPERATOR.fail-loses-source", true);
+
+    private static final String[] CATEGORY_SUFFIXES =
+            new String[] {"_PICKAXE", "_SWORD", "_AXE", "_SHOVEL", "_HOE", "_HELMET", "_CHESTPLATE", "_LEGGINGS", "_BOOTS"};
+
+    /** 取得物品的"類型",同類型的物品之間才允許轉移 */
+    public static String getItemCategory(Material material) {
+        String name = material.toString();
+        if ("BOOK".equals(name) || "ENCHANTED_BOOK".equals(name)) {
+            return "BOOK";
+        }
+        for (String suffix : CATEGORY_SUFFIXES) {
+            if (name.endsWith(suffix)) {
+                return suffix.substring(1);
+            }
+        }
+        // 其餘物品(弓/弩/三叉戟/重錘/盾牌/鞘翅/釣竿...)各自成類,只能與同種材質互轉
+        return name;
+    }
+
+    /** 檢查兩個物品是否允許互相轉移 */
+    public static boolean canTransferBetween(Material from, Material to) {
+        if (!REQUIRE_SAME_CATEGORY) {
+            return true;
+        }
+        String c1 = getItemCategory(from);
+        String c2 = getItemCategory(to);
+        if (ALLOW_BOOK_TRANSFER && ("BOOK".equals(c1) || "BOOK".equals(c2))) {
+            return true;
+        }
+        return c1.equals(c2);
+    }
+
+    /** 套用等級衰減 */
+    private static int decayLevel(int level) {
+        if (ENCHANT_LEVEL_DECAY <= 0) {
+            return level;
+        }
+        return Math.max(1, level - ENCHANT_LEVEL_DECAY);
+    }
+
+    private static boolean rollFailed() {
+        return TRANSFER_FAIL_CHANCE > 0.0 && ThreadLocalRandom.current().nextDouble() * 100.0 < TRANSFER_FAIL_CHANCE;
     }
     protected final int[] BORDER = new int[] {
         0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 14, 15, 18, 19, 25, 26, 29, 30, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44
@@ -133,8 +193,14 @@ public class AttributeOperator extends SmithingInterface {
                                 "&7分別可以選擇轉移單項附魔/增幅符或者轉移全部附魔/增幅符",
                                 "&7單項選擇器將顯示在選單中,可以選擇單項附魔/增幅符",
                                 "&7點擊後消耗電力執行轉換",
-                                "&7該轉移不受任何禁止附魔/驅魔的設定影響",
-                                "&7該轉移不受物品材質的附魔種類限制"),
+                                "&c僅能在相同類型的物品之間轉移",
+                                "&7例如:劍→劍、鎬→鎬、頭盔→頭盔",
+                                "&7書本與附魔書不受物品類型限制",
+                                "&c每次轉移後,附魔等級降低1級",
+                                "&7附魔等級最低保留1級,不會降至0級",
+                                "&c每次轉移有20%機率失敗",
+                                "&7失敗時,目標物品不會獲得附魔/屬性",
+                                "&7來源物品的附魔/屬性仍會被移除"),
                         null,
                 AddUtils.getInfoShow(
                                 "&f機制",
@@ -605,7 +671,7 @@ public class AttributeOperator extends SmithingInterface {
             }
             if (!forceEnchant && meta2 instanceof EnchantmentStorageMeta esm) {
                 for (Map.Entry<Enchantment, Integer> e : ems.entrySet()) {
-                    int lvl = e.getValue();
+                    int lvl = decayLevel(e.getValue());
                     if (lvl > esm.getStoredEnchantLevel(e.getKey())) {
                         esm.addStoredEnchant(e.getKey(), lvl, true);
                     }
@@ -613,7 +679,7 @@ public class AttributeOperator extends SmithingInterface {
                 }
             } else {
                 for (Map.Entry<Enchantment, Integer> e : ems.entrySet()) {
-                    int lvl = e.getValue();
+                    int lvl = decayLevel(e.getValue());
                     if (lvl > meta2.getEnchantLevel(e.getKey())) {
                         meta2.addEnchant(e.getKey(), lvl, true);
                     }
@@ -630,13 +696,14 @@ public class AttributeOperator extends SmithingInterface {
                 lvl = meta1.getEnchantLevel(enchantment);
                 meta1.removeEnchant(enchantment);
             }
+            int newLvl = decayLevel(lvl);
             if (!forceEnchant && meta2 instanceof EnchantmentStorageMeta esm) {
-                if (lvl > esm.getStoredEnchantLevel(enchantment)) {
-                    esm.addStoredEnchant(enchantment, lvl, true);
+                if (newLvl > esm.getStoredEnchantLevel(enchantment)) {
+                    esm.addStoredEnchant(enchantment, newLvl, true);
                 }
             } else {
-                if (lvl > meta2.getEnchantLevel(enchantment)) {
-                    meta2.addEnchant(enchantment, lvl, true);
+                if (newLvl > meta2.getEnchantLevel(enchantment)) {
+                    meta2.addEnchant(enchantment, newLvl, true);
                 }
             }
             hasChanged = true;
@@ -682,6 +749,12 @@ public class AttributeOperator extends SmithingInterface {
         if (it2 == null || it2.getType().isAir()) {
             if (outputStream != null) {
                 outputStream.accept("&c轉換的目標物品不能為空");
+            }
+            return;
+        }
+        if (!canTransferBetween(it1.getType(), it2.getType())) {
+            if (outputStream != null) {
+                outputStream.accept("&c只能在同類型的物品之間轉移!");
             }
             return;
         }
@@ -790,6 +863,20 @@ public class AttributeOperator extends SmithingInterface {
             }
             return;
         }
+        boolean failed = rollFailed();
+        if (failed) {
+            // 失敗: 目標物品保持原樣; 來源是否照樣被剝離由設定決定
+            ItemStack keptTarget = new ItemStack(it2.getType(), 1);
+            keptTarget.setItemMeta(it2.getItemMeta());
+            ItemStack sourceResult;
+            if (FAIL_LOSES_SOURCE) {
+                sourceResult = transferResult.getFirstValue();
+            } else {
+                sourceResult = new ItemStack(it1.getType(), 1);
+                sourceResult.setItemMeta(it1.getItemMeta());
+            }
+            transferResult = new Pair<>(sourceResult, keptTarget);
+        }
         int transfer = Math.min(it1.getAmount(), it2.getAmount());
         transfer = Math.min(transfer, transferAmount);
         inv.replaceExistingItem(OUTPUT_SLOT[0], transferResult.getFirstValue());
@@ -803,7 +890,7 @@ public class AttributeOperator extends SmithingInterface {
         if (it1.getAmount() == 0) refreshInputItemData(inv, handler, true);
         progressorCost(null, inv);
         if (outputStream != null) {
-            outputStream.accept("&a轉移成功!");
+            outputStream.accept(failed ? "&c轉移失敗! 屬性在轉移過程中逸散了" : "&a轉移成功!");
         }
     }
 

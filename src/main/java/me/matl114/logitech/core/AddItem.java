@@ -10,7 +10,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import me.matl114.logitech.utils.UtilClass.SpecialItemClass.CustomFireworkStar;
 import me.matl114.logitech.utils.UtilClass.SpecialItemClass.CustomHead;
@@ -20,7 +19,6 @@ import me.matl114.matlib.utils.version.VersionedRegistry;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class AddItem {
 
@@ -36,7 +34,6 @@ public class AddItem {
         hideAllFlags(FU_BASE);
         hideAllFlags(DISPLAY_FU_USE_1);
         hideAllFlags(DISPLAY_REMOVE_FU_2);
-        setUnbreakable(UNBREAKING_SHIELD, true);
     }
 
     // Groups
@@ -438,6 +435,12 @@ public class AddItem {
             Theme.ITEM1,
             get("Items.LSINGULARITY.Name"),
             getList("Items.LSINGULARITY.Lore"));
+    public static final SlimefunItemStack QUANTUM_OBSERVATION_CORE = themed(
+            "QUANTUM_OBSERVATION_CORE",
+            Material.ECHO_SHARD,
+            Theme.ITEM1,
+            get("Items.QUANTUM_OBSERVATION_CORE.Name"),
+            getList("Items.QUANTUM_OBSERVATION_CORE.Lore"));
     public static final SlimefunItemStack RADIATION_CLEAR = themed(
             "RADIATION_CLEAR",
             Material.GLASS_BOTTLE,
@@ -545,17 +548,6 @@ public class AddItem {
             getList("Items.UNBREAKING_SHIELD.Lore"));
     public static final ItemStack MACE_ITEM = Holder.of(VersionedRegistry.material("MACE"))
             .branch(Objects::isNull, (f) -> null, ItemStack::new)
-            .get();
-    public static final ItemStack SUPER_COBALT_PICKAXE = Holder.of(getCopy(resolveItem("COBALT_PICKAXE")))
-            .thenPeek(ItemStack::setType, Material.NETHERITE_PICKAXE)
-            .thenPeek((item) -> {
-                ItemMeta meta = item.getItemMeta();
-                meta.setUnbreakable(true);
-                meta.addEnchant(VersionedRegistry.enchantment("efficiency"), 30, true);
-                meta.addEnchant(VersionedRegistry.enchantment("fortune"), 20, true);
-                meta.setLore(List.of(DEFAULT_COLOR + "超級鈷鎬"));
-                item.setItemMeta(meta);
-            })
             .get();
     public static final SlimefunItemStack FAKE_UI = themed(
             "FAKE_UI",
@@ -1759,6 +1751,7 @@ public class AddItem {
             add(MASS_CORE);
             add(PORTAL_FRAME);
             add(LSINGULARITY);
+            add(QUANTUM_OBSERVATION_CORE);
             add(ATOM_INGOT);
             add(PAGOLD);
             add(BISILVER);

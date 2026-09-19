@@ -6,8 +6,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import it.unimi.dsi.fastutil.ints.Int2ReferenceOpenHashMap;
-import java.lang.reflect.Field;
 import java.util.*;
 import javax.annotation.Nullable;
 import me.matl114.logitech.core.Blocks.Laser;
@@ -15,7 +13,6 @@ import me.matl114.logitech.core.Blocks.MultiBlock.FinalAltarCore;
 import me.matl114.logitech.core.Machines.Abstracts.AbstractMachine;
 import me.matl114.logitech.core.Registries.FinalFeature;
 import me.matl114.logitech.utils.AddUtils;
-import me.matl114.logitech.utils.Debug;
 import me.matl114.logitech.utils.FeatureConfig;
 import me.matl114.logitech.utils.MachineRecipeUtils;
 import me.matl114.logitech.utils.UtilClass.ItemClass.RandOutItem;
@@ -30,98 +27,39 @@ import org.bukkit.inventory.ItemStack;
 
 public class FinalConvertor extends AbstractMachine
         implements FinalAltarCore.FinalAltarChargable, Laser.LaserChargable {
-    static final Int2ReferenceOpenHashMap<Material> ID_TO_MATERIAL;
-    static int MAX_RANDOM_BUFFER;
-    static int MAX_RANDOM_BUFFER_SQARE;
-    static int MAX_TRY_COUNT;
     static final Random rand = new Random();
-    static Field ID_FIELD;
-    static final HashMap<Material, Integer> MATERIAL_TO_ID;
-    static final int MAX;
-    static final int MIN;
-    static final Set<String> EXCLUDED_OUTPUTS;
+    static final Material[] MATERIALS = Material.values();
+    static final int MAX_RANDOM_BUFFER =
+            Math.max(1, FeatureConfig.getInt("FinalConvertor.random-buffer-range", 10));
+    static final int MAX_RANDOM_OFFSET =
+            (int) Math.min((long) MAX_RANDOM_BUFFER * MAX_RANDOM_BUFFER, Integer.MAX_VALUE);
+    static final int MAX_TRY_COUNT = Math.max(1, FeatureConfig.getInt("FinalConvertor.max-attempts", 48));
+    static final int MIN_OUTPUT_AMOUNT = Math.max(1, FeatureConfig.getInt("FinalConvertor.min-output-amount", 32));
+    static final int MAX_OUTPUT_AMOUNT =
+            Math.max(MIN_OUTPUT_AMOUNT, FeatureConfig.getInt("FinalConvertor.max-output-amount", 64));
+    static final Set<String> EXCLUDED_OUTPUTS =
+            Set.copyOf(FeatureConfig.getStringList("FinalConvertor.excluded-outputs"));
 
-    static {
-        HashMap<Integer, Material> map;
-        MATERIAL_TO_ID = new HashMap<>();
-        try {
-            map = new HashMap<>();
-            Debug.debug("TRY PLAN A");
-            for (Material material : Material.values()) {
-                map.put(material.getId(), material);
+    public static Material getRandomMaterial(Material inputMaterial) {
+        int start = inputMaterial.ordinal();
+        for (int i = 0; i < MAX_TRY_COUNT; i++) {
+            int offset = rand.nextInt(MAX_RANDOM_OFFSET);
+            int direction = rand.nextBoolean() ? -1 : 1;
+            long candidateIndex = start + (long) direction * offset;
+            if (candidateIndex < 0 || candidateIndex >= MATERIALS.length) continue;
+
+            Material candidate = MATERIALS[(int) candidateIndex];
+            if (!candidate.isLegacy() && !EXCLUDED_OUTPUTS.contains(candidate.name())) {
+                return candidate;
             }
-            MAX_RANDOM_BUFFER = 64;
-            MAX_TRY_COUNT = 144;
-        } catch (Throwable e) {
-            Debug.debug("PLAN A FAILED");
-            Debug.debug(e);
-            try {
-                Debug.debug("TRY PLAN B");
-                map = new HashMap<>();
-                ID_FIELD = Material.class.getDeclaredField("id");
-                ID_FIELD.setAccessible(true);
-                for (Material material : Material.values()) {
-                    map.put((Integer) ID_FIELD.get(material), material);
-                }
-                MAX_RANDOM_BUFFER = 81;
-                MAX_TRY_COUNT = 576;
-            } catch (Throwable e2) {
-                Debug.debug("PLAN B FAILED");
-                Debug.debug(e2);
-                Debug.debug("USE PLAN C");
-                map = new HashMap<>();
-                int t = rand.nextInt(3);
-                for (Material material : Material.values()) {
-                    t += 1 + rand.nextInt(3);
-                    map.put(t, material);
-                }
-                MAX_RANDOM_BUFFER = 10;
-                MAX_TRY_COUNT = 36;
-            }
-        }
-        MAX_RANDOM_BUFFER = Math.max(1, FeatureConfig.getInt("FinalConvertor.random-buffer-range", MAX_RANDOM_BUFFER));
-        MAX_TRY_COUNT = Math.max(1, FeatureConfig.getInt("FinalConvertor.max-attempts", MAX_TRY_COUNT));
-        MAX_RANDOM_BUFFER_SQARE = MAX_RANDOM_BUFFER * MAX_RANDOM_BUFFER;
-
-        int maxValue = Collections.max(map.keySet()) + MAX_RANDOM_BUFFER_SQARE;
-        Debug.debug("GET MAX AVAILABLE MATERIAL VALUE ", maxValue);
-        Debug.debug("GET COUNT OF MATERIAL ", map.size());
-        ID_TO_MATERIAL = new Int2ReferenceOpenHashMap<>();
-        int max = 0;
-        int min = 0;
-        for (Map.Entry<Integer, Material> e : map.entrySet()) {
-            ID_TO_MATERIAL.put(e.getKey().intValue(), e.getValue());
-            MATERIAL_TO_ID.put(e.getValue(), e.getKey());
-            max = Math.max(max, e.getKey());
-            min = Math.min(min, e.getKey());
-        }
-        MAX = max;
-        MIN = min;
-        EXCLUDED_OUTPUTS = Set.copyOf(FeatureConfig.getStringList("FinalConvertor.excluded-outputs"));
-
-        Debug.debug("MATERIAL MAPPING DONE");
-    }
-
-    public static Material getRandomMaterial(Material material) {
-        Integer start_nullable = MATERIAL_TO_ID.get(material);
-        int start;
-        if (start_nullable == null) {
-            start = rand.nextInt(MAX - MIN + 1) + MIN;
-            Debug.debug("ERROR! MATERIAL NOT IN MAPPER ", material.toString());
-        } else {
-            start = start_nullable;
-        }
-        Material mat;
-        for (int i = 0; i < MAX_TRY_COUNT; ++i) {
-
-            double x = rand.nextInt(MAX_RANDOM_BUFFER_SQARE);
-            int sgn = rand.nextInt(2) == 0 ? -1 : 1;
-            int delta = start + (int) (sgn * x);
-
-            mat = ID_TO_MATERIAL.get(delta);
-            if (mat != null && !EXCLUDED_OUTPUTS.contains(mat.name())) return mat;
         }
         return null;
+    }
+
+    private static int getRandomOutputAmount(Material material) {
+        int maximum = Math.min(Math.max(1, material.getMaxStackSize()), MAX_OUTPUT_AMOUNT);
+        int minimum = Math.min(maximum, MIN_OUTPUT_AMOUNT);
+        return minimum + rand.nextInt(maximum - minimum + 1);
     }
 
     protected final int[] BORDER = new int[] {13, 22, 31, 40, 49};
@@ -181,11 +119,14 @@ public class FinalConvertor extends AbstractMachine
                 AddUtils.getInfoShow(
                         "&f機制 - &c隨機波動",
                         "&7當機器運轉時,",
-                        "&7機器會隨機波動若干次輸入測的物品材質id",
-                        "&7並嘗試將其轉為其他材質的原版物品",
-                        "&7同時賦予其隨機的數量",
-                        "&7當轉換失敗時,機器會隨機從下方可能的輸出中選擇一項",
-                        "&7進行輸出")));
+                        "&7機器會隨機波動輸入物的虛擬材質序號",
+                        "&7並嘗試將其重塑為附近序號的原版物品",
+                        "&7成功時隨機產出"
+                                + MIN_OUTPUT_AMOUNT
+                                + "至"
+                                + MAX_OUTPUT_AMOUNT
+                                + "個,不會超過物品堆疊上限",
+                        "&7若結果無法成為物品,將抽取下方的特殊產物")));
         this.RECIPE_FOR_DISPLAY = MachineRecipeUtils.stackFrom(
                 -1, new ItemStack[] {AddUtils.getInfoShow("&f可能的輸出", "&7如下所示")}, new ItemStack[] {NULL_OUTPUT});
     }
@@ -254,7 +195,7 @@ public class FinalConvertor extends AbstractMachine
             Material randMaterial = getRandomMaterial(input.getType());
 
             ItemStack result = (randMaterial != null && randMaterial.isItem() && !randMaterial.isAir())
-                    ? new ItemStack(randMaterial, rand.nextInt(Math.max(1, randMaterial.getMaxStackSize())) + 1)
+                    ? new ItemStack(randMaterial, getRandomOutputAmount(randMaterial))
                     : NULL_OUT.getInstance();
 
             inv.replaceExistingItem(OUTPUT_SLOT[hasPutOutput - 1], result);
