@@ -241,15 +241,15 @@ public class AddDepends {
             e.printStackTrace();
         }
         try {
-            if (hasNetwork)
-                NTW_STORAGE_DISPLAY = new MyVanillaItem(
-                                AddGroups.SINGULARITY,
-                                SlimefunItem.getById("NTW_QUANTUM_STORAGE_8")
-                                        .getItem()
-                                        .clone(),
-                                "NTW_QUANTUM_STORAGE_DISPLAY",
-                                RecipeType.ENHANCED_CRAFTING_TABLE,
-                                AddSlimefunItems.recipe(
+                if (hasNetwork) {
+                    SlimefunItem baseItem = SlimefunItem.getById("NTW_QUANTUM_STORAGE_8");
+                    ItemStack baseItemStack;
+                    Object[] rawRecipe;
+                    String storageCapacityText;
+                    if (baseItem != null) {
+                        baseItemStack = baseItem.getItem().clone();
+                            storageCapacityText = "&7本物品的最大儲存量為2147483647";
+                            rawRecipe = AddSlimefunItems.recipe(
                                         AddItem.ABSTRACT_INGOT,
                                         "NTW_QUANTUM_STORAGE_1",
                                         AddItem.ABSTRACT_INGOT,
@@ -258,7 +258,32 @@ public class AddDepends {
                                         AddItem.ABSTRACT_INGOT,
                                         AddItem.STORAGE_SINGULARITY,
                                         AddItem.ABSTRACT_INGOT,
-                                        AddItem.STORAGE_SINGULARITY))
+                                    AddItem.STORAGE_SINGULARITY);
+                        } else {
+                            // 如果獲取不到NTW_QUANTUM_STORAGE_8，丟擲異常或處理錯誤
+                            throw new IllegalArgumentException("AN ERROR OCCURED: DON'T FIND NTW_QUANTUM_STORAGE_8");
+                        }
+                    
+
+                    // 將 Object[] 轉換為 ItemStack[]
+                    ItemStack[] recipe = new ItemStack[rawRecipe.length];
+                    for (int i = 0; i < rawRecipe.length; i++) {
+                        if (rawRecipe[i] instanceof ItemStack) {
+                            recipe[i] = (ItemStack) rawRecipe[i];
+                        } else if (rawRecipe[i] == null) {
+                            recipe[i] = null; // 保持null值
+                        } else {
+                            // 如果不是ItemStack也不是null，可能需要處理或丟擲異常
+                            throw new IllegalArgumentException("配方中存在非ItemStack型別元素: " + rawRecipe[i].getClass());
+                        }
+                    }
+
+                    NTW_STORAGE_DISPLAY = new MyVanillaItem(
+                            AddGroups.SINGULARITY,
+                            baseItemStack,
+                            "NTW_QUANTUM_STORAGE_DISPLAY",
+                            RecipeType.ENHANCED_CRAFTING_TABLE,
+                            recipe)
                         .setDisplayRecipes(Utils.list(
                                 AddUtils.getInfoShow(
                                         "&f機制 - &c終極合成",
@@ -273,7 +298,7 @@ public class AddDepends {
                                 AddUtils.getInfoShow(
                                         "&7機制 -&c 物品存儲",
                                         "&7本物品可以存儲某種物品",
-                                        "&7本物品的最大存儲量為2147483647",
+                                            storageCapacityText,
                                         "&7當該物品被放入終極機器的槽位中時,",
                                         "&7可以代理其內部存儲的物品&e直接參與合成!",
                                         "&7產出的物品也可以&e直接進入內部存儲的物品中!",
@@ -289,7 +314,7 @@ public class AddDepends {
                                         "&7若累計報錯達到一定數目,將會禁用該兼容"),
                                 null))
                         .register();
-
+                }
         } catch (Throwable e) {
             Debug.logger("AN ERROR OCCURED WHILE REGISTERING ITEM: NTW_STORAGE_DISPLAY,ITEM DISABLED");
             e.printStackTrace();

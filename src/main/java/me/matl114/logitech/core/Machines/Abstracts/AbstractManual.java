@@ -15,6 +15,7 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import me.matl114.logitech.core.Interface.RecipeLock;
 import me.matl114.logitech.core.Registries.FinalFeature;
@@ -139,6 +140,19 @@ public abstract class AbstractManual extends AbstractMachine implements RecipeLo
             }
         } else {
             this.machineRecipes = new ArrayList<>();
+            // 如果沒有自定義配方，設定 machineRecipeSupplier
+            // 儲存原始的 machineRecipeSupplier，然後設定一個新的 lambda 來包裝它
+             final Supplier<List<MachineRecipe>> originalSupplier = this.machineRecipeSupplier;
+             if (originalSupplier != null) {
+                 this.machineRecipeSupplier = () -> {
+                    try {
+                        return originalSupplier.get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return new ArrayList<>();
+                    }
+                };
+            }
         }
         this.CRAFT_PROVIDER = FinalFeature.MANUAL_CARD_READER;
         this.setDisplayRecipes(Utils.list(FinalFeature.MANUAL_CARD_INFO, null));

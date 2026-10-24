@@ -27,6 +27,7 @@ import me.matl114.logitech.utils.*;
 import me.matl114.logitech.utils.UtilClass.ItemClass.ItemPusherProvider;
 import me.matl114.logitech.utils.UtilClass.MenuClass.MenuFactory;
 import me.matl114.logitech.utils.UtilClass.RecipeClass.ImportRecipes;
+import me.matl114.logitech.utils.Debug;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -112,10 +113,7 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
                 add(BukkitUtils.VANILLA_FURNACE);
             }
         };
-        PostSetupTasks.addPostRegisterTask(() -> {
-            registerRecipeList();
-            initMenuFactory();
-        });
+        // 延遲初始化配方列表和選單工廠
         // 啟動奇點合成的支援
         this.CRAFT_PROVIDER = SINGULARITY_PROVIDER;
         setDisplayRecipes(Utils.list(
@@ -132,6 +130,10 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
                 null,
                 AddUtils.getInfoShow(
                         "&f機制 - &c無限級一鍵合成", "&7本機器最多支援一鍵合成9,999,999次", "&7\"終極合成\"的特性讓它不再是空談", "&7是時候讓存儲裏的大批物品動起來了")));
+        // 非同步載入配方，確保 RecipeSupporter 已初始化
+        PostSetupTasks.addPostRegisterTask(() -> {
+            getMachineRecipes(null, null); // 觸發一次 getMachineRecipes 呼叫
+        });
     }
 
     public static final ItemPusherProvider SINGULARITY_PROVIDER = FinalFeature.STORAGE_AND_LOCPROXY_READER;
@@ -141,23 +143,49 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
     }
 
     public final List<RecipeType> BW_LIST;
-    public RecipeType[] craftType = new RecipeType[] {RecipeType.ENHANCED_CRAFTING_TABLE};
+    public RecipeType[] craftType = null;  // 改為 null，延遲初始化
     protected boolean isWhiteList = true;
 
+    public RecipeType[] getCraftTypes() {
+        if (craftType == null) {
+            registerRecipeList();
+        }
+        return craftType;
+    }
+
     public List<MachineRecipe> getMachineRecipes(Block b, BlockMenu inv) {
-        Location loc = inv.getLocation();
+        try {
+            // 確保 RecipeSupporter 已初始化
+            RecipeSupporter.init();
+            Location loc = inv != null ? inv.getLocation() : null;
         int index = MultiCraftType.getRecipeTypeIndex(loc);
+
+            if (getCraftTypes() == null || getCraftTypes().length == 0) {
+                return null;
+            }
+
         if (index >= 0 && index < getCraftTypes().length) {
-            return RecipeSupporter.PROVIDED_UNSHAPED_RECIPES.get(getCraftTypes()[index]);
+                RecipeType recipeType = getCraftTypes()[index];
+
+                if (recipeType == null) {
+                    return null;
+                }
+
+                List<MachineRecipe> recipes = RecipeSupporter.PROVIDED_UNSHAPED_RECIPES.get(recipeType);
+                if (recipes == null) {
+                    return null;
+                }
+
+                return recipes;
         } else if (index > 0) {
             MultiCraftType.forceSetRecipeTypeIndex(loc, 0);
             setNowRecordRecipe(loc, -1);
         }
         return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
     }
-
-    public RecipeType[] getCraftTypes() {
-        return craftType;
     }
 
     public MachineRecipe getRecordRecipe(SlimefunBlockData data) {
@@ -197,10 +225,12 @@ public class FinalManual extends AbstractManual implements MultiCraftType, Impor
     protected void initMenuFactory() {
         if (RECIPEMENU == null) {
             RECIPEMENU = new HashMap<>();
-            int len = craftType.length;
+            // 確保 craftType 已初始化
+            RecipeType[] types = getCraftTypes();
+            int len = types.length;
             RecipeType rp;
             for (int i = 0; i < len; i++) {
-                rp = craftType[i];
+                rp = types[i];
                 RECIPEMENU.put(
                         rp,
                         MenuUtils.createMRecipeListDisplay(

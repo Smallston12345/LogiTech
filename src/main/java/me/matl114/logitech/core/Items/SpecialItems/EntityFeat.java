@@ -108,8 +108,8 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
             for (EntityType type : EntityType.values()) {
                 if (type != EntityType.UNKNOWN) {
                     try {
-                        if ((!Version.getVersionInstance().isAtLeast(Version.v1_21_R7))
-                                && !type.isEnabledByFeature(Bukkit.getWorlds().get(0))) {
+                        if (!Bukkit.getWorlds().isEmpty()
+                                && !Bukkit.getWorlds().get(0).getFeatureFlags().containsAll(type.requiredFeatures())) {
                             // not enabled by feature
                             continue;
                         }
@@ -133,9 +133,8 @@ public class EntityFeat extends CustomItemWithHandler<ItemDropHandler> {
             for (EntityType entityType : EntityType.values()) {
                 if (entityType.isSpawnable()) {
                     try {
-                        if ((!Version.getVersionInstance().isAtLeast(Version.v1_21_R7))
-                                && !entityType.isEnabledByFeature(
-                                        Bukkit.getWorlds().get(0))) {
+                        if (!Bukkit.getWorlds().isEmpty()
+                                && !Bukkit.getWorlds().get(0).getFeatureFlags().containsAll(entityType.requiredFeatures())) {
                             // not enabled by feature
                             continue;
                         }

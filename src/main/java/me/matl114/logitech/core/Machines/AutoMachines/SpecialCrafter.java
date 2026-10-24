@@ -181,6 +181,14 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             updateMenu(menu, block, Settings.RUN);
             return false;
         });
+        menu.addMenuClickHandler(21, (player, i, itemStack, clickAction) -> {
+            switchRecipe(menu, block, false);
+            return false;
+        });
+        menu.addMenuClickHandler(23, (player, i, itemStack, clickAction) -> {
+            switchRecipe(menu, block, true);
+            return false;
+        });
         menu.addMenuOpeningHandler((player -> {
             updateMenu(menu, block, Settings.RUN);
         }));
@@ -188,6 +196,25 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             updateMenu(menu, block, Settings.RUN);
         }));
         updateMenu(menu, block, Settings.INIT);
+    }
+
+    public void switchRecipe(BlockMenu menu, Block block, boolean next) {
+        DataMenuClickHandler handler = getDataHolder(block, menu);
+        int currentIndex = handler.getInt(1);
+        List<Integer> indexes = (List<Integer>) handler.getObject(1);
+        if (currentIndex >= 0 && indexes != null && !indexes.isEmpty()) {
+            int currentPos = indexes.indexOf(currentIndex);
+            if (currentPos >= 0) {
+                int nextPos;
+                if (next) {
+                    nextPos = (currentPos + 1) % indexes.size();
+                } else {
+                    nextPos = (currentPos - 1 + indexes.size()) % indexes.size();
+                }
+                handler.setInt(1, indexes.get(nextPos));
+                updateMenu(menu, block, Settings.RUN);
+            }
+        }
     }
 
     public void onBreak(BlockBreakEvent e, BlockMenu menu) {
@@ -228,17 +255,42 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
         }
         ItemStack target = menu.getItemInSlot(RECIPEITEM_SLOT);
         if (target == null || target.getType() == Material.AIR) {
-            // record 1 配方位記錄-1
             handler.setInt(1, -1);
+            handler.setObject(0, null);
+            handler.setObject(1, null);
             return false;
         } else {
-            List<MachineRecipe> machineRecipes1 = RecipeSupporter.PROVIDED_UNSHAPED_RECIPES.get(type);
+            String targetId = AddUtils.getItemId(target);
+            int typeIndex = handler.getInt(0);
+            String lastTargetId = (String) handler.getObject(0);
+            Integer lastTypeIndex = (Integer) handler.getObject(2);
+            // 目標物品或機器型別(配方型別)變化時都需要重新搜尋配方
+            boolean needRecalculate =
+                    !targetId.equals(lastTargetId) || lastTypeIndex == null || lastTypeIndex != typeIndex;
+
+            if (needRecalculate) {
+                handler.setObject(0, targetId);
+                handler.setObject(2, typeIndex);
+                List<Integer> indexes = new ArrayList<>();
+                List<MachineRecipe> machineRecipes1 = RecipeSupporter.getStackedRecipes(type);
+                if (machineRecipes1 != null) {
             for (int i = 0; i < machineRecipes1.size(); ++i) {
                 MachineRecipe machineRecipe = machineRecipes1.get(i);
                 if (CraftUtils.matchItemStack(target, machineRecipe.getOutput()[0], false)) {
-                    handler.setInt(1, i);
-                    return true;
+                            indexes.add(i);
+                        }
+                    }
                 }
+                handler.setObject(1, indexes);
+            }
+            
+            List<Integer> indexes = (List<Integer>) handler.getObject(1);
+            if (indexes != null && !indexes.isEmpty()) {
+                int currentIndex = handler.getInt(1);
+                if (!indexes.contains(currentIndex)) {
+                    handler.setInt(1, indexes.get(0));
+                }
+                    return true;
             }
             handler.setInt(1, -1);
             return false;
@@ -247,8 +299,8 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
 
     public DataMenuClickHandler createDataHolder() {
         return new DataMenuClickHandler() {
-            // 0 為 數量 1 為 電力
             int[] intdata = new int[3];
+            Object[] objectdata = new Object[3];
 
             public int getInt(int i) {
                 return intdata[i];
@@ -256,6 +308,14 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
 
             public void setInt(int i, int val) {
                 intdata[i] = val;
+            }
+
+            public Object getObject(int i) {
+                return objectdata[i];
+            }
+
+            public void setObject(int i, Object val) {
+                objectdata[i] = val;
             }
 
             @Override
@@ -296,6 +356,21 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
             }
             for (int var4 = len; var4 < RECIPE_DISPLAY.length; ++var4) {
                 menu.replaceExistingItem(RECIPE_DISPLAY[var4], DISPLAY_BKGROUND);
+            }
+            
+            List<Integer> indexes = (List<Integer>) hd.getObject(1);
+            if (indexes != null && indexes.size() > 1) {
+                ItemStack prevRecipe = new CustomItemStack(
+                        Material.ORANGE_STAINED_GLASS_PANE,
+                        "&6搜尋上一個配方");
+                ItemStack nextRecipe = new CustomItemStack(
+                        Material.ORANGE_STAINED_GLASS_PANE,
+                        "&6搜尋下一個配方");
+                menu.replaceExistingItem(21, prevRecipe);
+                menu.replaceExistingItem(23, nextRecipe);
+            } else {
+                menu.replaceExistingItem(21, DISPLAY_BKGROUND);
+                menu.replaceExistingItem(23, DISPLAY_BKGROUND);
             }
         }
     }
@@ -385,9 +460,9 @@ public abstract class SpecialCrafter extends AbstractAdvancedProcessor implement
         int craftTypeIndex = handler.getInt(0);
         if (craftTypeIndex >= 0) {
             RecipeType type = getCraftTypes()[craftTypeIndex];
-            List<MachineRecipe> recipes = RecipeSupporter.PROVIDED_UNSHAPED_RECIPES.get(type);
+            List<MachineRecipe> recipes = RecipeSupporter.getStackedRecipes(type);
             int recipeIndex = handler.getInt(1);
-            if (recipeIndex >= 0 && recipeIndex < recipes.size()) {
+            if (recipes != null && recipeIndex >= 0 && recipeIndex < recipes.size()) {
                 return recipes.get(recipeIndex);
             }
         }

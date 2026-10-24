@@ -491,12 +491,11 @@ public class MachineRecipeUtils {
         } else {
             recipe1 = stackFromMachine(recipe);
         }
-        // 會刪除某些元素為空，所以需要重新stack
         ItemStack[] input = stackIn(makeValidMGInput(recipe1.getInput()));
         ItemStack[] output = recipe1.getOutput();
-        //        if(input.length==0){
-        //            return mgFrom(recipe1.getTicks(),input,output);
-        //        }else
+        if (input.length == 0 && output.length != 0) {
+            return mgFrom(recipe1.getTicks(), input, output);
+        }
         if (input.length != 0 && output.length != 0) {
             if (input.length == 1
                     && output.length == 1
@@ -504,9 +503,6 @@ public class MachineRecipeUtils {
                     && input[0].getAmount() >= output[0].getAmount()) {
                 return mgFrom(recipe1.getTicks(), input, output);
             }
-            //            if(input[0] instanceof DisplayItemStack){
-            //                return mgFrom(recipe1.getTicks(),new ItemStack[0],output);
-            //            }
         }
         return null;
     }

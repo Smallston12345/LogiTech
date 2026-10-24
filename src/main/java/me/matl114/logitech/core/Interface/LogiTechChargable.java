@@ -126,7 +126,11 @@ public interface LogiTechChargable extends Rechargeable {
     }
 
     @Nullable static Float getMaxItemChargeOrNull(@Nonnull ItemStack item) {
-        ItemMeta meta = item.getItemMeta();
+        return getMaxItemChargeOrNull(item, item.getItemMeta());
+    }
+
+    // Reuses an already-built ItemMeta: building it is expensive on heavily enchanted items.
+    @Nullable static Float getMaxItemChargeOrNull(@Nonnull ItemStack item, @Nullable ItemMeta meta) {
         if (meta != null) {
             if (Slimefun.getItemDataService()
                             .getItemData(meta)
@@ -150,7 +154,7 @@ public interface LogiTechChargable extends Rechargeable {
 
     static float changeChargeSafe(ItemStack item, float charge, ChargePredicate predicate) {
         ItemMeta meta = item.getItemMeta();
-        Float maxCharge = getMaxItemChargeOrNull(item);
+        Float maxCharge = getMaxItemChargeOrNull(item, meta);
         if (maxCharge == null) {
             return charge;
         }

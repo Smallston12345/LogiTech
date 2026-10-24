@@ -40,7 +40,11 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.*;
 
 public class RecipeSupporter {
-    public static void init() {}
+    public static void init() {
+        if (!hasInit) {
+            initRecipeSupportor();
+        }
+    }
 
     public static final SlimefunAddon PLUGIN = MyAddon.getInstance();
     //    public static final RecipeType VANILLA_MERCHANT=new RecipeType(AddUtils.getNameKey("vanilla_merchant"),
@@ -608,7 +612,7 @@ public class RecipeSupporter {
     public static final HashMap<SlimefunItem, Integer> STACKMGENERATOR_LIST = new LinkedHashMap<>();
 
     public static List<MachineRecipe> getStackedRecipes(RecipeType type) {
-        if (SUPPORTED_UNSHAPED_RECIPETYPE.contains(type)) {
+        if (type == BukkitUtils.VANILLA_CRAFTTABLE || SUPPORTED_UNSHAPED_RECIPETYPE.contains(type)) {
             if (PROVIDED_UNSHAPED_RECIPES.get(type) == null
                     || PROVIDED_UNSHAPED_RECIPES.get(type).size() == 0) {
                 initUnshapedRecipes(type);
@@ -718,8 +722,13 @@ public class RecipeSupporter {
                             try {
                                 List<MachineRecipe> rplist = PROVIDED_UNSHAPED_RECIPES.get(type);
                                 for (MachineRecipe mr : rplist) {
+                                    if (isGenerator) {
+                                        recipes.add(
+                                                MachineRecipeUtils.mgFrom(commonTick, mr.getInput(), mr.getOutput()));
+                                    } else {
                                     recipes.add(
                                             MachineRecipeUtils.stackFrom(commonTick, mr.getInput(), mr.getOutput()));
+                                    }
                                 }
                             } catch (Throwable e) {
                                 if (withWarning) {
@@ -736,8 +745,13 @@ public class RecipeSupporter {
                                         ? MULTIBLOCK_RECIPES.get(mb)
                                         : MACHINE_RECIPELIST.get(item);
                                 for (MachineRecipe mr : rplist) {
+                                    if (isGenerator) {
+                                        recipes.add(
+                                                MachineRecipeUtils.mgFrom(commonTick, mr.getInput(), mr.getOutput()));
+                                    } else {
                                     recipes.add(
                                             MachineRecipeUtils.stackFrom(commonTick, mr.getInput(), mr.getOutput()));
+                                    }
                                 }
                             } catch (Throwable e) {
                                 if (withWarning) {
@@ -1442,23 +1456,23 @@ public class RecipeSupporter {
                 put(EntityType.WITHER, Utils.recipe("NETHER_STAR", "WITHER_SKELETON_SKULL"));
                 put(EntityType.WARDEN, Utils.recipe("SCULK_CATALYST"));
                 // 實體
-                put(EntityType.THROWN_EXP_BOTTLE, Utils.recipe("EXPERIENCE_BOTTLE"));
+                put(EntityType.EXPERIENCE_BOTTLE, Utils.recipe("EXPERIENCE_BOTTLE"));
                 put(EntityType.EGG, Utils.recipe("EGG"));
                 put(EntityType.ENDER_PEARL, Utils.recipe("ENDER_PEARL"));
-                put(EntityType.ENDER_CRYSTAL, Utils.recipe("END_CRYSTAL"));
+                put(EntityType.END_CRYSTAL, Utils.recipe("END_CRYSTAL"));
                 put(EntityType.ITEM_FRAME, Utils.recipe("ITEM_FRAME"));
                 put(EntityType.GLOW_ITEM_FRAME, Utils.recipe("GLOW_ITEM_FRAME"));
                 put(EntityType.PAINTING, Utils.recipe("PAINTING"));
-                put(EntityType.BOAT, Utils.recipe("OAK_BOAT"));
-                put(EntityType.CHEST_BOAT, Utils.recipe("OAK_CHEST_BOAT"));
+                put(Utils.boatEntity(), Utils.recipe("OAK_BOAT"));
+                put(Utils.chestBoatEntity(), Utils.recipe("OAK_CHEST_BOAT"));
                 put(EntityType.MINECART, Utils.recipe("MINECART"));
-                put(EntityType.MINECART_CHEST, Utils.recipe("CHEST_MINECART"));
-                // put(EntityType.MINECART_COMMAND, Utils.recipe("COMMAND_BLOCK_MINECART"));
-                put(EntityType.MINECART_FURNACE, Utils.recipe("FURNACE_MINECART"));
-                put(EntityType.MINECART_HOPPER, Utils.recipe("HOPPER_MINECART"));
-                put(EntityType.MINECART_TNT, Utils.recipe("TNT_MINECART"));
+                put(EntityType.CHEST_MINECART, Utils.recipe("CHEST_MINECART"));
+                // put(EntityType.COMMAND_BLOCK_MINECART, Utils.recipe("COMMAND_BLOCK_MINECART"));
+                put(EntityType.FURNACE_MINECART, Utils.recipe("FURNACE_MINECART"));
+                put(EntityType.HOPPER_MINECART, Utils.recipe("HOPPER_MINECART"));
+                put(EntityType.TNT_MINECART, Utils.recipe("TNT_MINECART"));
                 put(
-                        EntityType.MINECART_MOB_SPAWNER,
+                        EntityType.SPAWNER_MINECART,
                         Utils.recipe("MINECART", AddUtils.probItemStackFactory(AddUtils.resolveItem("SPAWNER"), 1)));
                 // 友好生物
                 put(EntityType.VILLAGER, Utils.recipe("PAPER", "BREWING_STAND"));

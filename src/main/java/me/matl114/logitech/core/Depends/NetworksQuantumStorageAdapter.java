@@ -16,13 +16,37 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class NetworksQuantumStorageAdapter extends StorageType {
     int ExceptionTimes = 0;
 
+    /**
+     * 效能最佳化: QuantumCache 的 PDC 反序列化成本較高,
+     * 而機器執行時會在同一個 tick 內對同一個 ItemMeta 反覆查詢(內容/數量/容量/isStorage 各查一次)。
+     * 這裡按 ItemMeta 例項做短TTL(約1tick)的執行緒本地快取:
+     * - Bukkit 的 getItemMeta() 每次返回快照副本, 外部改動必然產生新的 meta 例項, 不會讀到髒資料;
+     * - 本附屬對數量的修改統一走 onStorageAmountWrite, 修改的是快取中同一個 QuantumCache 例項後再寫回,
+     *   因此快取物件始終與 meta 內資料一致, 不會產生數量錯亂/刷物問題。
+     */
+    private static final long CACHE_TTL_NANOS = 50_000_000L; // ~1 server tick
+    private static final int CACHE_MAX_SIZE = 256;
+
+    private static final class CacheEntry {
+        final QuantumCache cache;
+        final long born;
+
+        CacheEntry(QuantumCache cache, long born) {
+            this.cache = cache;
+            this.born = born;
+        }
+    }
+
+    private static final ThreadLocal<java.util.IdentityHashMap<ItemMeta, CacheEntry>> META_CACHE =
+            ThreadLocal.withInitial(java.util.IdentityHashMap::new);
+
     public NetworksQuantumStorageAdapter() {
         super();
     }
 
     @Override
     public boolean isStorage(ItemMeta meta) {
-        return (DataTypeMethods.hasCustom(meta, Keys.QUANTUM_STORAGE_INSTANCE, PersistentQuantumStorageType.TYPE));
+        return getQuantumCache(meta) != null;
     }
 
     @Override
@@ -51,14 +75,27 @@ public class NetworksQuantumStorageAdapter extends StorageType {
     }
 
     public QuantumCache getQuantumCache(ItemMeta meta) {
+        if (meta == null || AddDepends.NTWQUANTUMKEY == null) {
+            return null;
+        }
+        long now = System.nanoTime();
+        java.util.IdentityHashMap<ItemMeta, CacheEntry> map = META_CACHE.get();
+        CacheEntry entry = map.get(meta);
+        if (entry != null && now - entry.born < CACHE_TTL_NANOS) {
+            return entry.cache;
+        }
+        QuantumCache cache;
         try {
-            QuantumCache cache =
-                    DataTypeMethods.getCustom(meta, AddDepends.NTWQUANTUMKEY, PersistentQuantumStorageType.TYPE);
-            return cache;
+            cache = DataTypeMethods.getCustom(meta, AddDepends.NTWQUANTUMKEY, PersistentQuantumStorageType.TYPE);
         } catch (Throwable e) {
             disableNetworkQuantum(e);
             return null;
         }
+        if (map.size() >= CACHE_MAX_SIZE) {
+            map.clear();
+        }
+        map.put(meta, new CacheEntry(cache, now));
+        return cache;
     }
 
     public void disableNetworkQuantum(Throwable e) {

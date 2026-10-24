@@ -138,11 +138,11 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
     public static boolean hasInit = false;
 
     public static List<SlimefunItem> getMachineList() {
-        if (!hasInit)
             synchronized (BW_LIST) {
-                if (BW_LIST.isEmpty()) {
-                    RecipeSupporter.init();
-                    BWSIZE = RecipeSupporter.STACKMACHINE_LIST.size();
+            int currentSize = RecipeSupporter.STACKMACHINE_LIST.size();
+            if (currentSize != BWSIZE) {
+                BW_LIST.clear();
+                BWSIZE = currentSize;
                     BW_LIST_ENERGYCOMSUME = new int[BWSIZE];
                     int i = 0;
                     for (Map.Entry<SlimefunItem, Integer> e : RecipeSupporter.STACKMACHINE_LIST.entrySet()) {
@@ -150,8 +150,16 @@ public class StackMachine extends AbstractAdvancedProcessor implements MultiCraf
                         BW_LIST_ENERGYCOMSUME[i] = e.getValue();
                         ++i;
                     }
-                    hasInit = true;
+                Debug.debug("StackMachine初始化完成, 找到 " + currentSize + " 個堆疊機器:");
+                if (currentSize > 0) {
+                    for (int j = 0; j < BW_LIST.size(); j++) {
+                        Debug.debug("  " + (j + 1) + ". " + BW_LIST.get(j).getId());
+                    }
+                } else {
+                    Debug.debug("警告: STACKMACHINE_LIST 為空! 請檢查 LogiTechStackSupport 是否正確初始化");
                 }
+            }
+                    hasInit = true;
             }
         return BW_LIST;
     }
